@@ -71,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/components/buttons" class="btn btn-outlined btn-sm">Browse all components</a>
       </div>
       <div class="feat-visual">
-        <div class="feat-frame feat-frame--bento">
+        <div class="feat-frame--bento">
 
           <!-- Buttons card (full width) -->
           <div class="bento-card bento-card--full">
@@ -142,11 +142,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="section-gap anim">
     <div class="feat">
       <div class="feat-visual">
-        <div class="feat-frame">
+        <div class="feat-frame--bento feat-frame--bento-foundation">
 
-          <div>
-            <div class="feat-tag">Colour system · 5 families</div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <!-- Colours card (full width) -->
+          <div class="bento-card bento-card--full">
+            <div class="bento-label">Colour system · 5 families</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
               <div class="feat-swatch" style="background:#F26961"><span class="feat-swatch-name">Coral</span><span class="feat-swatch-hex">#F26961</span></div>
               <div class="feat-swatch" style="background:#282425;color:#fff"><span class="feat-swatch-name">Tire</span><span class="feat-swatch-hex">#282425</span></div>
               <div class="feat-swatch" style="background:#ABD1EA"><span class="feat-swatch-name">Sky</span><span class="feat-swatch-hex">#ABD1EA</span></div>
@@ -155,29 +156,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="feat-sep"></div>
-
-          <div>
-            <div class="feat-tag">Sora · one typeface, four weights</div>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
-              <div style="font-size:32px;font-weight:700;line-height:1;letter-spacing:-.025em;color:var(--content-heading-primary)">Unlock it.</div>
-              <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--content-heading-primary)">Start your ride</div>
-              <div style="font-size:14px;font-weight:400;color:var(--content-body-secondary)">Park in marked zones. Avoid blocking paths.</div>
+          <!-- Type card -->
+          <div class="bento-card bento-card--type">
+            <div class="bento-label">Sora · one typeface, four weights</div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
+              <div style="font-size:28px;font-weight:700;line-height:1;letter-spacing:-.025em;color:var(--content-heading-primary)">Unlock it.</div>
+              <div style="font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--content-heading-primary)">Start your ride</div>
+              <div style="font-size:13px;font-weight:400;color:var(--content-body-secondary)">Park in marked zones. Avoid blocking paths.</div>
               <div style="font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary)">Status · Active</div>
             </div>
           </div>
 
-          <div class="feat-sep"></div>
-
-          <div>
-            <div class="feat-tag">Shadows & Radius</div>
-            <div style="display:flex;gap:12px;align-items:flex-end;margin-top:12px">
-              <div style="width:44px;height:44px;border-radius:8px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-xs);border:1px solid var(--fill-neutral-soft-enabled)"></div>
-              <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-card)"></div>
-              <div style="width:44px;height:44px;border-radius:20px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-overlay)"></div>
-              <div style="width:44px;height:44px;border-radius:32px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-sticky)"></div>
-              <span style="font-size:11px;color:var(--content-body-tertiary);margin-left:4px">xs → sticky</span>
+          <!-- Shadows card -->
+          <div class="bento-card bento-card--shadows">
+            <div class="bento-label">Shadows & Radius</div>
+            <div style="display:flex;gap:10px;align-items:flex-end;margin-top:8px">
+              <div style="width:40px;height:40px;border-radius:8px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-xs);border:1px solid var(--fill-neutral-soft-enabled)"></div>
+              <div style="width:40px;height:40px;border-radius:12px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-card)"></div>
+              <div style="width:40px;height:40px;border-radius:20px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-overlay)"></div>
+              <div style="width:40px;height:40px;border-radius:32px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-sticky)"></div>
             </div>
+            <div style="font-size:10px;color:var(--content-body-tertiary);margin-top:8px">xs → sticky</div>
           </div>
 
         </div>
@@ -608,8 +607,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 /* ─── BENTO GRID ────────────────────────────────────────────────────── */
 .feat-frame--bento {
-  background: var(--surface-base-enabled);
-  padding: 10px;
+  padding: 0;
   gap: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -618,12 +616,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     "badges alert"
     "chips  colors";
 }
+.feat-frame--bento-foundation {
+  grid-template-areas:
+    "full   full"
+    "type   shadows";
+}
 .bento-card {
-  background: var(--surface-raised-enabled);
+  background: var(--surface-base-enabled);
   border-radius: 20px;
   padding: 16px 18px;
   box-shadow: var(--shadow-xs);
 }
+.bento-card--type    { grid-area: type; }
+.bento-card--shadows { grid-area: shadows; }
 .bento-card--full   { grid-area: full; }
 .bento-card--badges { grid-area: badges; }
 .bento-card--alert  { grid-area: alert; }
