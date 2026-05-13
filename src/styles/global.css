@@ -1239,14 +1239,13 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 .toggle-sm .toggle-track::after { width: 16px; height: 16px; top: 4px; left: 4px; }
 .toggle-sm input:checked ~ .toggle-track::after { transform: translateX(16px); }
 
-/* Nav frost toggle — snowflake icon in knob */
+/* Nav frost toggle — beaker/lab icon in knob */
 .nav-frost-toggle .toggle-track::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23282425' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='2' x2='12' y2='22'/%3E%3Cline x1='2' y1='12' x2='22' y2='12'/%3E%3Cline x1='4.9' y1='4.9' x2='19.1' y2='19.1'/%3E%3Cline x1='19.1' y1='4.9' x2='4.9' y2='19.1'/%3E%3Cline x1='12' y1='6' x2='9' y2='3'/%3E%3Cline x1='12' y1='6' x2='15' y2='3'/%3E%3Cline x1='12' y1='18' x2='9' y2='21'/%3E%3Cline x1='12' y1='18' x2='15' y2='21'/%3E%3Cline x1='6' y1='12' x2='3' y2='9'/%3E%3Cline x1='6' y1='12' x2='3' y2='15'/%3E%3Cline x1='18' y1='12' x2='21' y2='9'/%3E%3Cline x1='18' y1='12' x2='21' y2='15'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23282425' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 3h6M9 3v8l-4.5 7.5A1 1 0 005.4 20h13.2a1 1 0 00.9-1.5L15 11V3'/%3E%3Cline x1='6.5' y1='16' x2='17.5' y2='16'/%3E%3C/svg%3E");
   background-size: 10px 10px;
   background-repeat: no-repeat;
   background-position: center;
 }
-.nav-frost-toggle input:checked ~ .toggle-track { background: #7ab8d4; }
 
 /* Nav theme toggle — sun (light) / moon (dark) icons in knob */
 .nav-theme-toggle .toggle-track::after {
