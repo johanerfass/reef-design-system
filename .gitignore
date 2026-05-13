@@ -6,3 +6,4 @@ dist/
 .claude/
 .env
 *.log
+*.skill
