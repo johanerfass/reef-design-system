@@ -178,10 +178,6 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.18) !important;
 }
 /* Deepen nav shadow when background is richer */
-[data-frost="true"] .nav-bar {
-  box-shadow: 0 12px 48px 0 rgba(0,0,0,.28);
-}
-
 /* ─── NAV BAR (expandable pill) ───────────────────────────────────────── */
 .nav-bar {
   position: fixed;
@@ -191,17 +187,24 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--fill-frost-medium-enabled);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid var(--fill-frost-stroke);
+  background: var(--surface-raised-enabled);
+  border: 1px solid var(--fill-neutral-soft-enabled);
   border-radius: 16px;
-  box-shadow: 0 8px 40px 0 rgba(0,0,0,.20);
+  box-shadow: 0 8px 40px 0 rgba(0,0,0,.12);
   transition: height 0.55s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.25s ease, box-shadow 0.3s ease;
 }
 .nav-bar.nav-open {
-  /* height set dynamically by JS to fit content */
   border-radius: 20px;
+  box-shadow: 0 24px 80px 0 rgba(0,0,0,.18);
+}
+[data-frost="true"] .nav-bar {
+  background: var(--fill-frost-medium-enabled);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-color: var(--fill-frost-stroke);
+  box-shadow: 0 8px 40px 0 rgba(0,0,0,.20);
+}
+[data-frost="true"] .nav-bar.nav-open {
   box-shadow: 0 24px 80px 0 rgba(0,0,0,.28);
 }
 /* Pill row — always visible */
@@ -314,13 +317,16 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 
 /* ── BENTO nav layout ────────────────────────────────────────────────── */
 
-/* Subtle brand gradient in the panel itself */
+/* Mega menu — solid by default, gradient only when frosted */
 .nav-mega-inner {
+  background: var(--surface-raised-enabled);
+}
+[data-frost="true"] .nav-mega-inner {
   background:
     radial-gradient(ellipse at 100% 110%, rgba(242,105,97,0.055) 0%, transparent 48%),
     radial-gradient(ellipse at -2% -8%, rgba(171,209,234,0.07) 0%, transparent 48%);
 }
-[data-theme="dark"] .nav-mega-inner {
+[data-frost="true"][data-theme="dark"] .nav-mega-inner {
   background:
     radial-gradient(ellipse at 100% 110%, rgba(242,105,97,0.10) 0%, transparent 48%),
     radial-gradient(ellipse at -2% -8%, rgba(171,209,234,0.09) 0%, transparent 48%);
