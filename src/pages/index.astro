@@ -71,63 +71,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/components/buttons" class="btn btn-outlined btn-sm">Browse all components</a>
       </div>
       <div class="feat-visual">
-        <div class="feat-frame feat-frame--app">
+        <div class="feat-frame feat-frame--bento">
 
-          <!-- Simulated map surface -->
-          <div class="app-map">
-            <div class="app-map-grid"></div>
-            <div class="app-map-route"></div>
-            <!-- Scooter pin -->
-            <div class="app-map-pin app-map-pin--scooter">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            </div>
-            <!-- Destination pin -->
-            <div class="app-map-pin app-map-pin--dest">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="white" stroke="none"><circle cx="12" cy="12" r="6"/></svg>
-            </div>
-            <!-- Chips row on map -->
-            <div class="app-map-chips">
-              <button class="chip chip-filter-active" style="font-size:10px;padding:3px 10px;height:auto">E-bike</button>
-              <button class="chip chip-filter-inactive" style="font-size:10px;padding:3px 10px;height:auto">E-scooter</button>
-              <button class="chip chip-filter-inactive" style="font-size:10px;padding:3px 10px;height:auto">Cargo</button>
+          <!-- Buttons card (full width) -->
+          <div class="bento-card bento-card--full">
+            <div class="bento-label">Buttons · 5 variants</div>
+            <div class="bento-btn-row">
+              <button class="btn btn-contrast btn-sm">Start ride</button>
+              <button class="btn btn-outlined btn-sm">End ride</button>
+              <button class="btn btn-transparent btn-sm">Learn more</button>
+              <button class="btn btn-accent btn-sm">Voi+</button>
             </div>
           </div>
 
-          <!-- Ride card -->
-          <div class="app-ride-card">
-            <div class="app-ride-card__header">
-              <div>
-                <div class="app-ride-label">Active ride</div>
-                <div class="app-ride-id">VOI-4829 · Malmö</div>
-              </div>
-              <span class="badge badge-success">En route</span>
+          <!-- Badges card -->
+          <div class="bento-card bento-card--badges">
+            <div class="bento-label">Badges</div>
+            <div class="bento-badge-stack">
+              <span class="badge badge-success">Available</span>
+              <span class="badge badge-warning">Low battery</span>
+              <span class="badge badge-information">Charging</span>
+              <span class="badge badge-contrast">Out of zone</span>
+              <span class="badge badge-contrast">No parking</span>
             </div>
+          </div>
 
-            <div class="app-ride-stats">
-              <div class="app-ride-stat">
-                <div class="app-ride-stat__val">2.4<span>km</span></div>
-                <div class="app-ride-stat__label">Distance</div>
+          <!-- Alert card -->
+          <div class="bento-card bento-card--alert">
+            <div class="bento-label">Alert cards</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
+              <div class="alert-card alert-card-success">
+                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <div class="alert-card-content"><div class="title">Ride ended</div><div class="body">Parked correctly. €0.50 discount applied.</div></div>
               </div>
-              <div class="app-ride-stat-div"></div>
-              <div class="app-ride-stat">
-                <div class="app-ride-stat__val">8<span>min</span></div>
-                <div class="app-ride-stat__label">Time</div>
-              </div>
-              <div class="app-ride-stat-div"></div>
-              <div class="app-ride-stat">
-                <div class="app-ride-stat__val">€1<span>.20</span></div>
-                <div class="app-ride-stat__label">Cost so far</div>
+              <div class="alert-card alert-card-warning">
+                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <div class="alert-card-content"><div class="title">Battery at 12%</div><div class="body">This scooter may not reach your destination.</div></div>
               </div>
             </div>
+          </div>
 
-            <div class="alert-card alert-card-warning" style="margin-bottom:12px">
-              <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              <div class="alert-card-content"><div class="title">Battery at 18%</div><div class="body">Park before Stortorget to be safe.</div></div>
+          <!-- Chips card -->
+          <div class="bento-card bento-card--chips">
+            <div class="bento-label">Filter chips</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+              <button class="chip chip-filter-active">E-bike</button>
+              <button class="chip chip-filter-inactive">E-scooter</button>
+              <button class="chip chip-filter-inactive">Cargo</button>
             </div>
+          </div>
 
-            <div style="display:flex;gap:8px">
-              <button class="btn btn-contrast" style="flex:1">End ride</button>
-              <button class="btn btn-outlined" style="flex:1">Report issue</button>
+          <!-- Colour dots card -->
+          <div class="bento-card bento-card--colors">
+            <div class="bento-label">5 colour families</div>
+            <div class="bento-color-row">
+              <div class="bento-dot" style="background:#F26961"></div>
+              <div class="bento-dot" style="background:#282425"></div>
+              <div class="bento-dot" style="background:#ABD1EA"></div>
+              <div class="bento-dot" style="background:#243860"></div>
+              <div class="bento-dot" style="background:#F2F2F6;border:1.5px solid rgba(0,0,0,.1)"></div>
             </div>
           </div>
 
@@ -604,138 +606,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   background: var(--fill-neutral-soft-enabled);
 }
 
-/* ─── APP MOCKUP ────────────────────────────────────────────────────── */
-.feat-frame--app {
-  padding: 0;
-  overflow: hidden;
-  gap: 0;
+/* ─── BENTO GRID ────────────────────────────────────────────────────── */
+.feat-frame--bento {
+  background: var(--surface-base-enabled);
+  padding: 10px;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "full  full"
+    "badges alert"
+    "chips  colors";
 }
-.app-map {
-  position: relative;
-  height: 200px;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(171,209,234,0.35) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(171,209,234,0.20) 0%, transparent 55%),
-    #e8f0e4;
-  overflow: hidden;
+.bento-card {
+  background: var(--surface-raised-enabled);
+  border-radius: 20px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-xs);
 }
-:global([data-theme="dark"]) .app-map {
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(171,209,234,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(171,209,234,0.12) 0%, transparent 55%),
-    #1e2820;
+.bento-card--full   { grid-area: full; }
+.bento-card--badges { grid-area: badges; }
+.bento-card--alert  { grid-area: alert; }
+.bento-card--chips  { grid-area: chips; }
+.bento-card--colors { grid-area: colors; }
+.bento-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--content-body-tertiary);
+  margin-bottom: 12px;
 }
-.app-map-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
+.bento-btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
 }
-:global([data-theme="dark"]) .app-map-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-}
-.app-map-route {
-  position: absolute;
-  top: 50%; left: 20%;
-  width: 62%; height: 2px;
-  background: linear-gradient(90deg, #F26961 0%, #ABD1EA 100%);
-  border-radius: 2px;
-  transform: translateY(-50%) rotate(-8deg);
-  opacity: 0.7;
-}
-.app-map-route::before, .app-map-route::after {
-  content: '';
-  position: absolute;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  top: 50%; transform: translateY(-50%);
-}
-.app-map-route::before { left: -5px; background: #F26961; box-shadow: 0 0 0 3px rgba(242,105,97,.25); }
-.app-map-route::after  { right: -5px; background: #ABD1EA; box-shadow: 0 0 0 3px rgba(171,209,234,.3); }
-.app-map-pin {
-  position: absolute;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,.2);
-}
-.app-map-pin--scooter {
-  background: #F26961;
-  top: 38%; left: 22%;
-  transform: translate(-50%,-50%);
-}
-.app-map-pin--dest {
-  background: #243860;
-  top: 42%; left: 80%;
-  transform: translate(-50%,-50%);
-}
-.app-map-chips {
-  position: absolute;
-  top: 14px; left: 14px;
-  display: flex; gap: 6px;
-}
-.app-ride-card {
-  padding: 20px 24px 24px;
+.bento-badge-stack {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-.app-ride-card__header {
-  display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 6px;
 }
-.app-ride-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--content-body-tertiary);
-  margin-bottom: 3px;
-}
-.app-ride-id {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--content-heading-primary);
-  letter-spacing: -0.01em;
-}
-.app-ride-stats {
+.bento-color-row {
   display: flex;
+  gap: 8px;
   align-items: center;
-  background: var(--surface-base-enabled);
-  border-radius: 16px;
-  padding: 14px 0;
+  flex-wrap: wrap;
 }
-.app-ride-stat {
-  flex: 1;
-  text-align: center;
-}
-.app-ride-stat__val {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--content-heading-primary);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-.app-ride-stat__val span {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--content-body-tertiary);
-  letter-spacing: 0;
-}
-.app-ride-stat__label {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--content-body-tertiary);
-  margin-top: 4px;
-}
-.app-ride-stat-div {
-  width: 1px;
+.bento-dot {
+  width: 32px;
   height: 32px;
-  background: var(--fill-neutral-soft-enabled);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 .feat-swatch {
   border-radius: 14px;
