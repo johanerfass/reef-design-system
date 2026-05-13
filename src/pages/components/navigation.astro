@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Navigation">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Navigation</h1>
+  <p class="s-desc">Top navigation bar for the Voi app. Handles back navigation, screen title, and primary actions in a standardised two-row layout. Do not add custom content to the top row — use the toolbar component for contextual actions.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">Example</div>
+  <div style="display:flex;flex-direction:column;gap:32px;max-width:375px">
+
+    <!-- Standard -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:8px">Standard (96px)</div>
+      <div class="nav-standard">
+        <!-- Top row: 48px icon buttons -->
+        <div class="nav-icon-row">
+          <button class="nav-icon-btn" aria-label="Back" style="padding-left:2px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div style="flex:1"></div>
+          <button class="nav-icon-btn" aria-label="Filter">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+          </button>
+        </div>
+        <!-- Bottom row: 32px title -->
+        <div class="nav-title-row">
+          <div class="nav-title-std">My rides</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compact -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:8px">Compact (56px)</div>
+      <div class="nav-compact">
+        <button class="nav-icon-btn" aria-label="Back">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="nav-title-compact">Wallet</div>
+        <button class="nav-icon-btn" aria-label="More">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Standard — two-row layout */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-standard"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-icon-row"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"nav-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">style</span>=<span class="c-str">"flex:1"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"nav-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-title-row"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-title-std"</span><span class="c-tag">&gt;</span>Title<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Compact — single row */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-compact"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"nav-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"nav-title-compact"</span><span class="c-tag">&gt;</span>Title<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"nav-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Standard height</code></td><td><code>96px total</code></td><td>Top row 48px (icons) + bottom row 32px (title) + padding</td></tr>
+      <tr><td><code>Compact height</code></td><td><code>56px</code></td><td>Single row — icons left/right, centred title</td></tr>
+      <tr><td><code>Width</code></td><td><code>375px (full)</code></td><td>No border-radius — flush with screen edges</td></tr>
+      <tr><td><code>Background</code></td><td><code>var(--surface-base-enabled)</code></td><td>Matches page background</td></tr>
+      <tr><td><code>Icon buttons</code></td><td><code>48×48px</code></td><td>Touch target — transparent bg, 2px left padding on back button</td></tr>
+      <tr><td><code>Standard title</code></td><td><code>24px / 600 (H3)</code></td><td>Full-width bottom row, 16px left/right padding, 1px top/bottom padding</td></tr>
+      <tr><td><code>Compact title</code></td><td><code>16px / 600 (H5)</code></td><td>Centred between icon buttons</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<style>
+  /* Standard — two-row nav */
+  .nav-standard {
+    width: 100%;
+    background: var(--surface-base-enabled);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: var(--shadow-card);
+  }
+  .nav-icon-row {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+  }
+  .nav-title-row {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 1px 16px;
+  }
+  .nav-title-std {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+    line-height: 1;
+  }
+
+  /* Compact — single-row nav */
+  .nav-compact {
+    width: 100%;
+    height: 56px;
+    background: var(--surface-base-enabled);
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: var(--shadow-card);
+  }
+  .nav-title-compact {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+  }
+
+  /* Shared icon button */
+  .nav-icon-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    color: var(--content-body-primary);
+    flex-shrink: 0;
+  }
+  .nav-icon-btn { transition: background .12s, transform .1s; }
+  .nav-icon-btn:hover { background: var(--fill-neutral-soft-enabled); }
+  .nav-icon-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.92); }
+</style>

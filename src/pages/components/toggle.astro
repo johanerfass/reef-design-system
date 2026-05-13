@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Toggle">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Toggle</h1>
+  <p class="s-desc">54×32px pill switch for binary settings. Off state uses a warm dark charcoal (#403c3d), not a neutral grey. On state uses Reef steel blue (#6785a5). Always pair with a visible label — never a toggle in isolation.</p>
+  <hr class="s-rule" />
+
+  <!-- STATES -->
+  <div class="s-overline">States</div>
+  <div class="demo-row">
+
+    <div class="demo-item">
+      <label class="toggle"><input type="checkbox"><div class="toggle-track"></div></label>
+      <div class="demo-label">Off</div>
+    </div>
+
+    <div class="demo-item">
+      <label class="toggle"><input type="checkbox" checked><div class="toggle-track"></div></label>
+      <div class="demo-label">On</div>
+    </div>
+
+    <div class="demo-item">
+      <label class="toggle"><input type="checkbox" disabled><div class="toggle-track"></div></label>
+      <div class="demo-label">Off · disabled</div>
+    </div>
+
+    <div class="demo-item">
+      <label class="toggle"><input type="checkbox" checked disabled><div class="toggle-track"></div></label>
+      <div class="demo-label">On · disabled</div>
+    </div>
+
+  </div>
+
+  <!-- WITH LABEL -->
+  <div class="s-overline" style="margin-top:40px">With label</div>
+  <div class="card" style="border-radius:24px;max-width:400px;display:flex;flex-direction:column;gap:16px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div>
+        <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary)">Push notifications</div>
+        <div style="font-size:13px;color:var(--content-body-secondary);margin-top:2px">Get notified about ride credits and city updates</div>
+      </div>
+      <label class="toggle" aria-label="Push notifications"><input type="checkbox" checked><div class="toggle-track"></div></label>
+    </div>
+
+    <div style="height:1px;background:var(--fill-neutral-soft-enabled)"></div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div>
+        <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary)">Location services</div>
+        <div style="font-size:13px;color:var(--content-body-secondary);margin-top:2px">Required to start a ride near you</div>
+      </div>
+      <label class="toggle" aria-label="Location services"><input type="checkbox"><div class="toggle-track"></div></label>
+    </div>
+
+    <div style="height:1px;background:var(--fill-neutral-soft-enabled)"></div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div>
+        <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary)">Marketing emails</div>
+        <div style="font-size:13px;color:var(--content-body-secondary);margin-top:2px">Offers, promotions, and news from Voi</div>
+      </div>
+      <label class="toggle" aria-label="Marketing emails"><input type="checkbox"><div class="toggle-track"></div></label>
+    </div>
+
+  </div>
+
+  <!-- CODE -->
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">/* Off state */</span>
+<span class="c-tag">&lt;label</span> <span class="c-attr">class</span>=<span class="c-str">"toggle"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"checkbox"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toggle-track"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/label&gt;</span>
+
+<span class="c-comment">/* On state */</span>
+<span class="c-tag">&lt;label</span> <span class="c-attr">class</span>=<span class="c-str">"toggle"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"checkbox"</span> <span class="c-attr">checked</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toggle-track"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/label&gt;</span>
+
+<span class="c-comment">/* Disabled */</span>
+<span class="c-tag">&lt;label</span> <span class="c-attr">class</span>=<span class="c-str">"toggle"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"checkbox"</span> <span class="c-attr">disabled</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toggle-track"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/label&gt;</span></pre>
+  </div>
+
+  <!-- ANATOMY -->
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+
+  <div class="note-box">
+    The off-state colour <code>#403c3d</code> is a warm dark charcoal — not the neutral medium token.
+  </div>
+
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Width</code></td><td><code>54px</code></td><td>Fixed — do not resize</td></tr>
+      <tr><td><code>Height</code></td><td><code>32px</code></td><td>Fixed — do not resize</td></tr>
+      <tr><td><code>Track radius</code></td><td><code>16px</code></td><td>Equals half height (pill)</td></tr>
+      <tr><td><code>Handle</code></td><td><code>24×24px</code></td><td>4px inset from track edge</td></tr>
+      <tr><td><code>Off colour</code></td><td><code>#403c3d</code></td><td>Warm dark charcoal — not a neutral gray token</td></tr>
+      <tr><td><code>On colour</code></td><td><code>#6785a5</code></td><td>Reef steel blue — between Sea and Sky</td></tr>
+      <tr><td><code>Disabled</code></td><td><code>opacity: 0.35</code></td><td>Applied to track + handle together</td></tr>
+    </tbody>
+  </table>
+
+</BaseLayout>
+
+<style>
+  .demo-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 32px;
+    background: var(--surface-raised-enabled);
+    border-radius: 24px;
+    box-shadow: var(--shadow-card);
+  }
+  .demo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .demo-label {
+    font-size: 11px;
+    color: var(--content-body-tertiary);
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+  .note-box {
+    background: rgba(242, 105, 97, 0.06);
+    border-left: 3px solid #F26961;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--content-body-secondary);
+    margin-bottom: 16px;
+  }
+  :global([data-theme="dark"]) .note-box {
+    background: rgba(242, 105, 97, 0.12);
+  }
+  .note-box code {
+    font-family: monospace;
+    background: var(--fill-neutral-soft-enabled);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+</style>

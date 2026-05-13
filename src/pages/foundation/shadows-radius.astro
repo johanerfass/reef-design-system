@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Shadows & Radius">
+  <div class="s-overline">01 — Foundation</div>
+  <h1 class="s-title">Shadows & Radius</h1>
+  <p class="s-desc">Radius defines component character — rounded rectangles, never pills. Shadows communicate elevation without weight. Five shadow tokens cover all use cases, including directional deep shadows for bottom sheets and upward-floating surfaces.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Border radius</div>
+  <div class="grid-3" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;margin-bottom:32px">
+    <div>
+      <div class="radius-demo" style="border-radius:4px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">xs · 4px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-xs</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Token chips</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:8px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">sm · 8px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-sm</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Badges</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:12px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">md · 12px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-md</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Inputs, small chips</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:16px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">lg · 16px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-lg</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Alert cards, large chips</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:24px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">24px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">24px</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Switch cards</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:32px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">xl · 32px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-xl</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Cards, btn S/M</div>
+    </div>
+    <div>
+      <div class="radius-demo" style="border-radius:40px"><span style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary)">2xl · 40px</span></div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:8px">--radius-2xl</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary)">Buttons L/XL, dark slabs</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Shadows</div>
+  <div class="grid-3" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:32px;margin-bottom:32px">
+    <div>
+      <div class="shadow-demo" style="box-shadow:var(--shadow-shallow)">
+        <span style="font-size:11px;font-family:monospace;color:var(--content-body-tertiary)">--shadow-shallow</span>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:10px">0 0 16px 0 rgba(0,0,0,.12)</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary);margin-top:2px">Floating elements, tooltips</div>
+    </div>
+    <div>
+      <div class="shadow-demo" style="box-shadow:var(--shadow-card)">
+        <span style="font-size:11px;font-family:monospace;color:var(--content-body-tertiary)">--shadow-card</span>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:10px">0 0 16px 0 rgba(0,0,0,.08)</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary);margin-top:2px">Cards, raised surfaces (default)</div>
+    </div>
+    <div>
+      <div class="shadow-demo" style="box-shadow:var(--shadow-deep)">
+        <span style="font-size:11px;font-family:monospace;color:var(--content-body-tertiary)">--shadow-deep</span>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:10px">0 16px 48px 0 rgba(0,0,0,.12)</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary);margin-top:2px">Modals, overlays, hover lift</div>
+    </div>
+    <div>
+      <div class="shadow-demo" style="box-shadow:var(--shadow-deep-above)">
+        <span style="font-size:11px;font-family:monospace;color:var(--content-body-tertiary)">--shadow-deep-above</span>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:var(--content-body-secondary);margin-top:10px">0 -16px 48px 0 rgba(0,0,0,.12)</div>
+      <div style="font-size:11px;color:var(--content-body-tertiary);margin-top:2px">Bottom sheets, islands, upward-floating surfaces</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Motion — hover to feel</div>
+  <div style="display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap">
+    <div>
+      <div class="motion-box motion-spring" style="background:var(--fill-neutral-hard-enabled)">Spring</div>
+      <div class="motion-label">cubic-bezier(.34,1.56,.64,1)<br>state changes · 150–240ms</div>
+    </div>
+    <div>
+      <div class="motion-box motion-ease" style="background:var(--supporting-sea)">Ease-out</div>
+      <div class="motion-label">cubic-bezier(.20,.80,.20,1)<br>hovers · 150–240ms</div>
+    </div>
+    <div>
+      <div class="motion-box motion-spring" style="background:var(--supporting-brick)">Orb</div>
+      <div class="motion-label">ease-in-out<br>16–44s · imperceptible</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Gradient backgrounds — animated 9-orb system</div>
+  <div class="grid-2" style="gap:24px">
+    <div style="border-radius:32px;overflow:hidden;position:relative;min-height:200px;background:#faf4ec">
+      <div style="position:absolute;width:60%;aspect-ratio:1;border-radius:50%;filter:blur(60px);background:rgba(242,105,97,.18);bottom:-20%;left:-10%"></div>
+      <div style="position:absolute;width:45%;aspect-ratio:1;border-radius:50%;filter:blur(60px);background:rgba(171,209,234,.22);top:-10%;right:-5%"></div>
+      <div style="position:relative;z-index:1;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;height:100%">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.01em;color:rgba(40,36,37,.4);margin-bottom:6px">Light · 9 orbs: 5 coral + 4 sky</div>
+        <div style="font-size:14px;font-weight:400;color:var(--core-tire)">Coral 0.14 opacity · Sky 0.20 · blur 85px</div>
+      </div>
+    </div>
+    <div style="border-radius:32px;overflow:hidden;position:relative;min-height:200px;background:#161314">
+      <div style="position:absolute;width:55%;aspect-ratio:1;border-radius:50%;filter:blur(60px);background:rgba(242,105,97,.28);bottom:-20%;left:-10%"></div>
+      <div style="position:absolute;width:40%;aspect-ratio:1;border-radius:50%;filter:blur(60px);background:rgba(171,209,234,.15);top:-10%;right:-5%"></div>
+      <div style="position:relative;z-index:1;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;height:100%">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.3);margin-bottom:6px">Dark · same keyframes, different opacities</div>
+        <div style="font-size:14px;font-weight:400;color:rgba(255,255,255,.65)">Coral 0.28 · Sky 0.15 · blur 85px</div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

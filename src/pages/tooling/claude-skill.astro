@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Claude Code skill">
+  <div class="s-overline">04 — Tooling</div>
+  <h1 class="s-title">Claude Code skill</h1>
+  <p class="s-desc">Load Reef into Claude. It knows every token, component rule, and voice guideline — and generates code that looks right on the first try.</p>
+  <hr class="s-rule" />
+
+  <!-- ── HERO CARD ── -->
+  <div style="position:relative;border-radius:32px;overflow:hidden;margin-bottom:40px;min-height:220px;display:flex;align-items:flex-end">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 15% 85%,rgba(242,105,97,.22) 0%,transparent 55%),radial-gradient(ellipse at 85% 10%,rgba(171,209,234,.28) 0%,transparent 55%),#faf4ec"></div>
+    <div style="position:relative;z-index:1;padding:40px;width:100%">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--core-tire);display:flex;align-items:center;justify-content:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span style="font-size:13px;font-weight:600;color:var(--content-body-secondary)">Reef · ui-designer.skill</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--fill-neutral-soft-enabled);color:var(--content-body-tertiary);padding:3px 8px;border-radius:6px">Claude Code</span>
+      </div>
+      <div style="font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--content-heading-primary);margin-bottom:8px;max-width:560px;line-height:1.2">A Reef-aware AI pair for designers and developers.</div>
+      <div style="font-size:14px;color:var(--content-body-secondary);margin-bottom:28px;max-width:480px;line-height:1.6">Drop the skill file into Claude Code and every conversation becomes Reef-fluent. Ask it to build components, review implementations, or explain a token — and get answers grounded in the actual system.</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/ui-designer.skill" download class="btn btn-contrast btn-md" style="text-decoration:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download skill
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHAT IT KNOWS ── -->
+  <div class="sub-label">What Claude knows</div>
+  <div class="grid-auto" style="margin-bottom:40px">
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--shell),var(--marble));display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Foundation</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Every token by name and value. Colour roles, spacing scale, shadow levels, border-radius system, and the Sora type scale.</div>
+    </div>
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#282425,#585455);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Components</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Props, anatomy, states, and exact spec for every component — buttons, inputs, chips, cards, checkboxes, search, and more.</div>
+    </div>
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#abd1ea,#243860);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Motion</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">The 9-orb atmosphere system — calibrated blur, opacity, keyframes, pointer reactivity, and scatter. Ready to generate or tune.</div>
+    </div>
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f4f0f1,#d0cccd);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--core-tire)" stroke-width="2.5"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      </div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Voice & tone</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Brand voice principles, writing rules, the tone spectrum, number formatting, and dos & don'ts for UI copy.</div>
+    </div>
+
+  </div>
+
+  <!-- ── THE ONE RULE ── -->
+  <div class="card" style="border-radius:24px;background:rgba(40,36,37,.04);box-shadow:none;border:1.5px solid rgba(40,36,37,.1);margin-bottom:40px;display:flex;gap:20px;align-items:flex-start">
+    <div style="width:40px;height:40px;border-radius:12px;background:var(--core-tire);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--content-heading-primary);margin-bottom:6px">The golden rule is baked in</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Claude knows that <strong>Coral (#F26961) is brand-only</strong> — never a primary CTA. Primary actions are always <strong>Tire (#282425)</strong>. It will correct you, and itself, automatically.</div>
+    </div>
+  </div>
+
+  <!-- ── EXAMPLE PROMPTS ── -->
+  <div class="sub-label">Example prompts</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px;line-height:1.5">Copy any of these straight into Claude Code with the skill loaded.</p>
+
+  <div class="col" style="gap:10px;margin-bottom:40px">
+    {[
+      { icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build', prompt: 'Build a Reef-compliant pricing card with a strikethrough price, current price, and a primary CTA button.' },
+      { icon: 'M9 12l2 2 4-4M7 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2', label: 'Review', prompt: 'Review this component for Reef compliance — check token usage, button variants, and copy tone.' },
+      { icon: 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z', label: 'Motion', prompt: 'Generate the Voi atmosphere background for a dark hero section. Include pointer reactivity JS.' },
+      { icon: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z', label: 'Copy', prompt: 'Write button label copy for an action that starts a scooter ride. Follow Reef voice guidelines.' },
+      { icon: 'M3 12h18M3 6h18M3 18h18', label: 'Explain', prompt: 'What is the difference between fill.neutral.soft and fill.neutral.medium, and when do I use each?' },
+    ].map(item => (
+      <div class="prompt-row" onclick={`navigator.clipboard.writeText('${item.prompt}')`} style="background:var(--surface-raised-enabled);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;border:1.5px solid var(--fill-neutral-soft-enabled);transition:border-color .15s,box-shadow .15s" onmouseover="this.style.borderColor='var(--fill-neutral-hard-enabled)';this.style.boxShadow='var(--shadow-card)'" onmouseout="this.style.borderColor='var(--fill-neutral-soft-enabled)';this.style.boxShadow='none'">
+        <div style="width:32px;height:32px;border-radius:9px;background:var(--fill-neutral-soft-enabled);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--content-icon-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={item.icon}/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--content-body-tertiary);margin-right:8px">{item.label}</span>
+          <span style="font-size:13px;color:var(--content-body-primary)">{item.prompt}</span>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--content-body-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </div>
+    ))}
+  </div>
+
+  <!-- ── HOW TO USE ── -->
+  <div class="sub-label">How to use</div>
+  <div class="grid-2" style="gap:24px;margin-bottom:40px">
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        {[
+          { n: '1', head: 'Download the skill', body: 'Click the download button above. You get a single ui-designer.skill file — no dependencies, no install step.' },
+          { n: '2', head: 'Load it in Claude Code', body: 'Drag the file into your Claude Code conversation, or drop it in your project repo and reference it with @ui-designer.skill.' },
+          { n: '3', head: 'Start building', body: 'Ask Claude anything about Reef. It now has full context — tokens, components, patterns, and voice — for the life of the conversation.' },
+        ].map(step => (
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:8px;background:var(--core-tire);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">{step.n}</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--content-heading-primary);margin-bottom:3px">{step.head}</div>
+              <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">{step.body}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card card-sm" style="border-radius:20px;background:var(--fill-neutral-soft-enabled);box-shadow:none;border:1.5px solid var(--fill-neutral-medium-enabled)">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:10px">Best for</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          {[
+            'Building Reef-compliant UI from scratch',
+            'Reviewing components before shipping',
+            'Checking copy against voice guidelines',
+            'Explaining token choices to teammates',
+          ].map(item => (
+            <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--content-body-secondary)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--content-icon-primary)" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><polyline points="20 6 9 17 4 12"/></svg>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card card-sm" style="border-radius:20px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:10px">Skill covers</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          {['Colours', 'Typography', 'Spacing', 'Shadows', 'Radius', 'Buttons', 'Inputs', 'Chips', 'Badges', 'Cards', 'Checkbox', 'Radio', 'Search', 'Atmospheres', 'Voice & tone', 'Dos & don\'ts'].map(tag => (
+            <span class="token" style="font-size:11px">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── DOWNLOAD FOOTER ── -->
+  <div style="border-radius:24px;border:1.5px dashed var(--fill-neutral-medium-enabled);padding:32px;text-align:center;margin-bottom:8px">
+    <div style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Ready when you are</div>
+    <div style="font-size:13px;color:var(--content-body-secondary);margin-bottom:24px">One file. Drop it in. Reef is loaded.</div>
+    <a href="/ui-designer.skill" download class="btn btn-contrast btn-lg" style="text-decoration:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download ui-designer.skill
+    </a>
+  </div>
+
+</BaseLayout>

@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Icon Buttons">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Icon buttons</h1>
+  <p class="s-desc">Compact circular action triggers for toolbars, navigation, and contextual menus. Always pair with a tooltip or aria-label — the icon must not be the only accessible description. Eight material variants.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">All 8 variants — large (64px)</div>
+  <div class="demo">
+    <div class="row">
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-primary" aria-label="Share">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+        <span class="ann">primary</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-secondary" aria-label="Bookmark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <span class="ann">secondary</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-outlined" aria-label="Filter">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        </button>
+        <span class="ann">outlined</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-transparent" aria-label="More options">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </button>
+        <span class="ann">transparent</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-contrast" aria-label="Navigate">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        </button>
+        <span class="ann">contrast</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-accent" aria-label="Add">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <span class="ann">accent</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-positive" aria-label="Confirm">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+        <span class="ann">positive</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-negative" aria-label="Remove">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <span class="ann">negative</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Sizes</div>
+  <div class="demo">
+    <div class="row">
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-lg icon-btn-contrast" aria-label="Add large">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <span class="ann">lg · 64px · r32</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-md icon-btn-contrast" aria-label="Add medium">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <span class="ann">md · 48px · r24</span>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-sm icon-btn-contrast" aria-label="Add small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <span class="ann">sm · 40px · r20</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Floating action (map CTA)"}</span>
+<span class="c-tag">{"<IconButton"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"contrast"'}</span> <span class="c-attr">{"size="}</span><span class="c-string">{'"lg"'}</span> <span class="c-attr">{"aria-label="}</span><span class="c-string">{'"Navigate"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<NavigateIcon"}</span> <span class="c-tag">{"/>"}</span>
+<span class="c-tag">{"</IconButton>"}</span>
+
+<span class="c-comment">{"// Primary floating surface"}</span>
+<span class="c-tag">{"<IconButton"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"primary"'}</span> <span class="c-attr">{"aria-label="}</span><span class="c-string">{'"Share"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<ShareIcon"}</span> <span class="c-tag">{"/>"}</span>
+<span class="c-tag">{"</IconButton>"}</span>
+
+<span class="c-comment">{"// Destructive action"}</span>
+<span class="c-tag">{"<IconButton"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"negative"'}</span> <span class="c-attr">{"aria-label="}</span><span class="c-string">{'"Remove"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<CloseIcon"}</span> <span class="c-tag">{"/>"}</span>
+<span class="c-tag">{"</IconButton>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Variant guide</div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    {[
+      { variant: 'primary', label: 'White surface + shadow-card', use: 'Floating action, map controls' },
+      { variant: 'secondary', label: 'Pearl surface, no shadow', use: 'Inline actions, toolbars' },
+      { variant: 'outlined', label: 'Transparent + Granite border', use: 'Secondary actions on raised surfaces' },
+      { variant: 'transparent', label: 'No background', use: 'Navigation, icon-only controls on any bg' },
+      { variant: 'contrast', label: 'Tire fill, white icon', use: 'Primary action on light surfaces' },
+      { variant: 'accent', label: 'Coral fill, white icon', use: 'Brand moments, maximum one per screen' },
+      { variant: 'positive', label: 'Success green fill', use: 'Confirm, approve, end ride success' },
+      { variant: 'negative', label: 'Error red fill', use: 'Delete, cancel, destructive action' },
+    ].map(row => (
+      <div class="card card-sm" style="border-radius:14px;display:flex;align-items:center;gap:16px;padding:16px 20px">
+        <span style="font-size:12px;font-weight:600;font-family:monospace;color:var(--supporting-brick);min-width:80px">{row.variant}</span>
+        <span style="font-size:12px;color:var(--content-body-secondary);flex:1">{row.label}</span>
+        <span style="font-size:11px;color:var(--content-body-tertiary)">{row.use}</span>
+      </div>
+    ))}
+  </div>
+</BaseLayout>

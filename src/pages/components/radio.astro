@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Radio">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Radio</h1>
+  <p class="s-desc">Single-select option within a mutually exclusive group. Always group at least two options together — a standalone radio makes no sense. Use segmented control for 2–4 short options in a horizontal space.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">States</div>
+  <div class="demo">
+    <div class="col" style="max-width:400px">
+      <label class="radio-wrapper">
+        <input type="radio" class="radio-input" name="demo" />
+        <span class="radio-label">Default — unselected</span>
+      </label>
+      <label class="radio-wrapper">
+        <input type="radio" class="radio-input" name="demo" checked />
+        <span class="radio-label">Selected</span>
+      </label>
+      <label class="radio-wrapper">
+        <input type="radio" class="radio-input" name="demo-dis" disabled />
+        <span class="radio-label" style="opacity:.4">Disabled — unselected</span>
+      </label>
+      <label class="radio-wrapper">
+        <input type="radio" class="radio-input" name="demo-dis" disabled checked />
+        <span class="radio-label" style="opacity:.4">Disabled — selected</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="sub-label">In a group — ride type selector</div>
+  <div class="demo">
+    <div class="card card-sm" style="border-radius:24px;max-width:440px">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:20px">Choose your ride</p>
+      <div class="col" id="ride-type">
+        {[
+          { id: 'scooter', label: 'E-scooter', hint: 'Most available · from €0.10/min' },
+          { id: 'ebike',   label: 'E-bike',    hint: 'Longer range · from €0.12/min' },
+          { id: 'seated',  label: 'Seated scooter', hint: 'More comfort · limited cities' },
+        ].map((opt, i) => (
+          <label class="radio-wrapper" style="padding:12px 0;border-bottom:1px solid var(--fill-neutral-soft-enabled)">
+            <input type="radio" class="radio-input" name="ride-type" value={opt.id} checked={i === 0} />
+            <div>
+              <span class="radio-label">{opt.label}</span>
+              <div style="font-size:12px;color:var(--content-body-tertiary);margin-top:2px">{opt.hint}</div>
+            </div>
+          </label>
+        ))}
+      </div>
+      <button class="btn btn-contrast btn-md" style="margin-top:24px;width:100%">Find rides</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Radio group"}</span>
+<span class="c-tag">{"<RadioGroup"}</span>
+  <span class="c-attr">{"name="}</span><span class="c-string">{'"ride-type"'}</span>
+  <span class="c-attr">{"value="}</span><span class="c-value">{"{selected}"}</span>
+  <span class="c-attr">{"onChange="}</span><span class="c-value">{"setSelected"}</span>
+<span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<Radio"}</span> <span class="c-attr">{"value="}</span><span class="c-string">{'"scooter"'}</span> <span class="c-attr">{"label="}</span><span class="c-string">{'"E-scooter"'}</span> <span class="c-attr">{"hint="}</span><span class="c-string">{'"from €0.10/min"'}</span><span class="c-tag">{" />"}</span>
+  <span class="c-tag">{"<Radio"}</span> <span class="c-attr">{"value="}</span><span class="c-string">{'"ebike"'}</span> <span class="c-attr">{"label="}</span><span class="c-string">{'"E-bike"'}</span> <span class="c-attr">{"hint="}</span><span class="c-string">{'"from €0.12/min"'}</span><span class="c-tag">{" />"}</span>
+<span class="c-tag">{"</RadioGroup>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Props — Radio</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">value</code></td><td><code class="token">string</code></td><td>—</td><td>Required. Unique value within the group.</td></tr>
+      <tr><td><code class="token">label</code></td><td><code class="token">string</code></td><td>—</td><td>Required. Primary label text.</td></tr>
+      <tr><td><code class="token">hint</code></td><td><code class="token">string</code></td><td>—</td><td>Optional secondary text below the label.</td></tr>
+      <tr><td><code class="token">disabled</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>40% opacity, prevents selection.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Radio vs Checkbox</div>
+  <div class="grid-2" style="gap:16px;margin-bottom:40px">
+    <div class="card card-sm" style="border-radius:16px;border-left:4px solid var(--alert-success)">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Use Radio when</p>
+      <ul style="font-size:12px;color:var(--content-body-secondary);line-height:1.8;margin:0;padding-left:16px">
+        <li>Exactly one option must be chosen</li>
+        <li>Options are mutually exclusive</li>
+        <li>You have 2–5 visible choices</li>
+        <li>The selection has immediate impact (ride type, payment method)</li>
+      </ul>
+    </div>
+    <div class="card card-sm" style="border-radius:16px;border-left:4px solid var(--supporting-sea)">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Use Checkbox when</p>
+      <ul style="font-size:12px;color:var(--content-body-secondary);line-height:1.8;margin:0;padding-left:16px">
+        <li>Multiple options can be selected</li>
+        <li>Toggle a single boolean value</li>
+        <li>Confirming terms or consent</li>
+        <li>Options are independent of each other</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Spec</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Size</span><code class="token">20 × 20px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border radius</span><code class="token">50% (fully circular)</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Default border</span><code class="token">1.5px · fill.neutral.medium</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Selected dot</span><code class="token">10px · fill.neutral.hard (Tire)</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Focus ring</span><code class="token">3px INFO blue · offset 2px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Label</span><code class="token">14px / 400 · body-primary</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">React component</span><code class="token">&lt;Radio /&gt; — extends InputHTMLAttributes</code></div>
+    </div>
+  </div>
+</BaseLayout>

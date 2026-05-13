@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Dos & Don'ts">
+  <div class="s-overline">03 — Patterns</div>
+  <h1 class="s-title">Dos &amp; don'ts</h1>
+  <p class="s-desc">Side-by-side checks before you ship. If a colour jumps out other than a single accent, it's too much. These are non-negotiable.</p>
+  <hr class="s-rule" />
+
+  <!-- ── COLOUR ── -->
+  <div class="sub-label">Colour usage</div>
+  <div class="dd-compare">
+    <div class="dd-card dd-card-do">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Do
+      </div>
+      <div class="dd-card-stage" style="gap:12px;flex-direction:column;align-items:stretch">
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:10px">Primary CTA → Tire</div>
+          <button class="btn btn-contrast btn-lg" style="width:100%">Start ride</button>
+        </div>
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:10px">Coral → brand moment only</div>
+          <button class="btn btn-accent btn-md">Get Voi+</button>
+        </div>
+      </div>
+      <div class="dd-card-caption">Tire for all primary actions. Coral accent reserved for one brand moment per screen.</div>
+    </div>
+    <div class="dd-card dd-card-dont">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="dd-card-stage" style="gap:12px;flex-direction:column;align-items:stretch">
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--alert-error-dark);margin-bottom:10px">Coral as primary CTA ✗</div>
+          <button style="background:var(--core-coral);color:#fff;border:none;height:64px;border-radius:40px;font-family:Sora,sans-serif;font-weight:600;font-size:16px;padding:0 32px;cursor:pointer;width:100%">START RIDE</button>
+        </div>
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--alert-error-dark);margin-bottom:10px">Two coral buttons ✗</div>
+          <div style="display:flex;gap:8px">
+            <button style="background:var(--core-coral);color:#fff;border:none;height:48px;border-radius:32px;font-family:Sora,sans-serif;font-weight:600;font-size:13px;padding:0 18px;cursor:pointer;flex:1">Sign up</button>
+            <button style="background:var(--core-coral);color:#fff;border:none;height:48px;border-radius:32px;font-family:Sora,sans-serif;font-weight:600;font-size:13px;padding:0 18px;cursor:pointer;flex:1">Log in</button>
+          </div>
+        </div>
+      </div>
+      <div class="dd-card-caption">Coral as a CTA fails WCAG AA at small sizes and signals brand, not action.</div>
+    </div>
+  </div>
+
+  <!-- ── TYPOGRAPHY ── -->
+  <div class="sub-label">Typography</div>
+  <div class="dd-compare">
+    <div class="dd-card dd-card-do">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Do
+      </div>
+      <div class="dd-card-stage" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:-.03em;color:var(--content-heading-primary);line-height:1.1">Scan to ride</div>
+        <div style="font-size:14px;font-weight:400;color:var(--content-body-secondary)">Sentence case. Sora 600 heading, 400 body.</div>
+        <button class="btn btn-contrast btn-md">Start ride</button>
+      </div>
+      <div class="dd-card-caption">Sentence case everywhere. Large confident heading. Body at 400. Buttons are verbs.</div>
+    </div>
+    <div class="dd-card dd-card-dont">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="dd-card-stage" style="flex-direction:column;align-items:flex-start;gap:10px">
+        <div style="font-size:28px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--core-coral);line-height:1.1">SCAN TO RIDE!</div>
+        <div style="font-size:14px;font-weight:300;color:var(--content-body-secondary);font-family:Georgia,serif">Please initiate your journey now.</div>
+        <button style="background:var(--core-coral);color:#fff;border:none;height:48px;border-radius:4px;font-weight:700;font-size:13px;padding:0 18px;cursor:pointer;text-transform:uppercase;letter-spacing:.08em">SUBMIT →</button>
+      </div>
+      <div class="dd-card-caption">All-caps, positive letter-spacing on headings, serif body, passive-voice copy, square-corner button.</div>
+    </div>
+  </div>
+
+  <!-- ── COMPONENTS ── -->
+  <div class="sub-label">Components</div>
+  <div class="dd-compare">
+    <div class="dd-card dd-card-do">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Do
+      </div>
+      <div class="dd-card-stage" style="flex-direction:column;align-items:stretch;gap:12px">
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:10px">Input — focus state, info blue border only</div>
+          <div style="position:relative">
+            <input style="height:56px;width:100%;border-radius:12px;border:1px solid var(--alert-info);background:#fff;font-family:Sora,sans-serif;font-size:16px;padding:0 16px;outline:none;color:var(--content-body-primary)" value="name@example.com" />
+          </div>
+          <div style="font-size:12px;color:var(--content-body-secondary);margin-top:6px">No box-shadow on focus — border colour change only.</div>
+        </div>
+      </div>
+      <div class="dd-card-caption">12px input radius. Focus border only (no shadow). Error messages explain the problem and offer a fix.</div>
+    </div>
+    <div class="dd-card dd-card-dont">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="dd-card-stage" style="flex-direction:column;align-items:stretch;gap:12px">
+        <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 16px rgba(0,0,0,.06)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--alert-error-dark);margin-bottom:10px">Wrong focus — coral border + box-shadow ✗</div>
+          <div style="position:relative">
+            <input style="height:56px;width:100%;border-radius:4px;border:2px solid var(--core-coral);background:#fff;font-family:Sora,sans-serif;font-size:16px;padding:0 16px;outline:none;color:var(--content-body-primary);box-shadow:0 0 0 4px rgba(242,105,97,.25)" value="name@example.com" />
+          </div>
+          <div style="font-size:12px;color:var(--alert-error);margin-top:6px">Invalid input.</div>
+        </div>
+      </div>
+      <div class="dd-card-caption">Coral border on input, box-shadow on focus, square corners, vague error message with no fix.</div>
+    </div>
+  </div>
+
+  <!-- ── LAYOUT ── -->
+  <div class="sub-label">Layout &amp; spacing</div>
+  <div class="dd-compare">
+    <div class="dd-card dd-card-do">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Do
+      </div>
+      <div class="dd-card-stage" style="justify-content:center">
+        <div style="background:#fff;border-radius:32px;padding:28px;box-shadow:0 0 16px rgba(0,0,0,.08);width:100%;max-width:320px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--content-body-tertiary);margin-bottom:8px">Total</div>
+          <div style="font-size:32px;font-weight:600;letter-spacing:-.03em;line-height:1;margin-bottom:4px">€3.90</div>
+          <div style="font-size:13px;color:var(--content-body-tertiary);margin-bottom:20px">12 min · 2.4 km · Malmö</div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-contrast btn-md" style="flex:1">Done</button>
+            <button class="btn btn-outlined btn-md">Receipt</button>
+          </div>
+        </div>
+      </div>
+      <div class="dd-card-caption">White card on Pearl. 32px radius. Generous padding. One primary action, one secondary. 4pt spacing grid.</div>
+    </div>
+    <div class="dd-card dd-card-dont">
+      <div class="dd-card-label">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="dd-card-stage" style="justify-content:center;background:var(--core-coral)">
+        <div style="background:var(--core-coral);border-radius:8px;padding:12px;width:100%;max-width:320px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px">TOTAL COST</div>
+          <div style="font-size:28px;font-weight:800;letter-spacing:.02em;line-height:1;color:#fff;margin-bottom:4px">€3.90</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:10px">Duration: 12 mins, Distance: 2.4 km</div>
+          <div style="display:flex;gap:6px">
+            <button style="background:#fff;color:var(--core-coral);border:none;height:40px;border-radius:6px;font-weight:700;font-size:12px;padding:0 14px;cursor:pointer;flex:1">CONFIRM</button>
+            <button style="background:rgba(255,255,255,.2);color:#fff;border:none;height:40px;border-radius:6px;font-weight:700;font-size:12px;padding:0 14px;cursor:pointer;flex:1">CANCEL</button>
+          </div>
+        </div>
+      </div>
+      <div class="dd-card-caption">Flat coral background, all-caps labels, tight spacing, square corners, two heavy CTAs competing for attention.</div>
+    </div>
+  </div>
+
+  <!-- ── PITFALLS GRID ── -->
+  <div class="sub-label" style="margin-top:48px">Common pitfalls</div>
+  <div class="pitfall-grid">
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Coral as a CTA fill</div>
+      <div class="pitfall-body">Coral signals brand. Primary actions are always Tire (#282425).</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Flat coloured backgrounds</div>
+      <div class="pitfall-body">Use white, Pearl, or the mesh gradient. Voi+ card (Chestnut) is the only exception.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Pure #000 text</div>
+      <div class="pitfall-body">Body text is Tire (#282425) — a warm near-black, never pure black.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Title Case or UPPERCASE</div>
+      <div class="pitfall-body">Sentence case across the board. Micro labels (10–11px) are the only uppercase exception.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Emoji in product UI</div>
+      <div class="pitfall-body">Use the Reef icon set. Emoji belong only to user-generated content.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Two contrast buttons side by side</div>
+      <div class="pitfall-body">One primary action per screen. Secondary uses outlined or transparent.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Vague error messages</div>
+      <div class="pitfall-body">"Invalid input" tells the user nothing. Always explain the problem and offer a next step.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Square or pill inputs</div>
+      <div class="pitfall-body">Inputs are 12px radius. Not 0px (square), not 999px (pill). Only buttons are rounded rectangles.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Small Coral text on white</div>
+      <div class="pitfall-body">Coral (#F26961) fails WCAG AA below 24px on white. Use Brick (#D04740) for text links and small labels.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Mixed accent families</div>
+      <div class="pitfall-body">Coral and Sky on the same screen. Pick one accent family. Sky for functional states; Coral for brand moments.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Alert colours as decoration</div>
+      <div class="pitfall-body">Error red, Warning yellow, Info blue carry semantic meaning. Never use them for decorative purposes.</div>
+    </div>
+    <div class="pitfall-card">
+      <div class="pitfall-badge">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Don't
+      </div>
+      <div class="pitfall-title">Box-shadow on focused inputs</div>
+      <div class="pitfall-body">Input focus state changes border colour to Info blue only. No glow, no box-shadow.</div>
+    </div>
+  </div>
+
+  <!-- ── GOOD PATTERNS SUMMARY ── -->
+  <div class="sub-label" style="margin-top:48px">Positive rules</div>
+  <div class="spec">
+    <div class="spec__head">
+      <div>
+        <h3>The short list — things that are always right</h3>
+        <p>When in doubt, these rules hold on every surface and in every context.</p>
+      </div>
+    </div>
+    <div class="spec__notes" style="grid-template-columns:1fr 1fr">
+      <div>
+        <h4 class="do-head">Colour</h4>
+        <ul class="do-list">
+          <li>Tire (#282425) for all primary CTAs</li>
+          <li>Coral for brand moments only — one per screen maximum</li>
+          <li>Brick (#D04740) for Coral text below 24px on white</li>
+          <li>Pearl or white for page backgrounds; mesh gradient for hero/marketing</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="do-head">Typography</h4>
+        <ul class="do-list">
+          <li>Sora throughout — no other typeface</li>
+          <li>Sentence case everywhere, including buttons and labels</li>
+          <li>600 SemiBold for headings, 400 for body</li>
+          <li>Negative letter-spacing on headings (-0.01em to -0.03em)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="do-head">Components</h4>
+        <ul class="do-list">
+          <li>Buttons: 32px radius (S/M), 40px (L/XL) — never pills</li>
+          <li>Inputs: 12px radius, 56px height</li>
+          <li>One primary action per screen</li>
+          <li>Error messages: explain the problem + offer a fix</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="do-head">Layout</h4>
+        <ul class="do-list">
+          <li>4pt spacing grid — all values are multiples of 4px</li>
+          <li>Cards on Pearl background with shadow-card elevation</li>
+          <li>44px minimum touch target on mobile</li>
+          <li>Generous whitespace — remove content before tightening space</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

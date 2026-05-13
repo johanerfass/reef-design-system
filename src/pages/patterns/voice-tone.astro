@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Voice & Tone">
+  <div class="s-overline">03 — Patterns</div>
+  <h1 class="s-title">Voice & tone</h1>
+  <p class="s-desc">Voi speaks like a person — direct, warm, never corporate. Voice is constant. Tone shifts with context: encouraging during onboarding, calm during errors, energetic at ride start.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Four voice principles</div>
+  <div class="grid-2" style="gap:16px;margin-bottom:40px">
+    <div class="card card-sm" style="border-radius:20px;border-left:4px solid var(--fill-neutral-hard-enabled)">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Direct</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Get to the point. No preamble. "Your ride is ready" not "We're happy to let you know that your scooter is now available." Cut every word that doesn't carry meaning.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:20px;border-left:4px solid var(--supporting-sea)">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Human</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Write like a person. Use contractions ("you'll", "it's"). Avoid passive voice. "Park it close to a wall" beats "The vehicle should be parked in a responsible manner."</p>
+    </div>
+    <div class="card card-sm" style="border-radius:20px;border-left:4px solid var(--alert-success)">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Helpful</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Tell people what to do next. "No signal here. Try walking a few metres." not "Signal error." Every error message needs a fix, not just a description of the problem.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:20px;border-left:4px solid var(--alert-warning)">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Energetic (not loud)</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Urban energy without exclamation marks. "Cities move." not "Cities move!!" Enthusiasm lives in the words, not the punctuation. Never more than one ! in any screen.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Tone by context</div>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px">
+    {[
+      {
+        context: 'Onboarding',
+        tone: 'Warm, encouraging',
+        example: 'You\'re almost ready. Add a payment method to start your first ride.',
+        bg: 'rgba(242,105,97,.06)',
+        border: 'rgba(242,105,97,.2)'
+      },
+      {
+        context: 'Ride start',
+        tone: 'Energetic, brief',
+        example: 'Helmet on. Let\'s go.',
+        bg: 'rgba(0,133,69,.05)',
+        border: 'rgba(0,133,69,.15)'
+      },
+      {
+        context: 'In-ride warning',
+        tone: 'Calm, factual, actionable',
+        example: 'Speed zone ahead. Max 15 km/h in the pedestrian area.',
+        bg: 'rgba(255,177,0,.06)',
+        border: 'rgba(255,177,0,.2)'
+      },
+      {
+        context: 'Error state',
+        tone: 'Direct, helpful — never alarmist',
+        example: 'No signal here. Try walking a few metres to end your ride.',
+        bg: 'rgba(237,10,2,.05)',
+        border: 'rgba(237,10,2,.15)'
+      },
+      {
+        context: 'Ride end',
+        tone: 'Positive, brief',
+        example: 'Ride ended. Parked correctly — €0.50 credit added.',
+        bg: 'rgba(0,133,69,.05)',
+        border: 'rgba(0,133,69,.15)'
+      },
+      {
+        context: 'Empty states',
+        tone: 'Helpful, forward-looking',
+        example: 'No scooters close by. Zooming out might help.',
+        bg: 'rgba(0,117,219,.05)',
+        border: 'rgba(0,117,219,.15)'
+      },
+    ].map(row => (
+      <div style={`border-radius:16px;border:1.5px solid ${row.border};background:${row.bg};padding:16px 20px`}>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:600;color:var(--content-body-primary)">{row.context}</span>
+          <span style="font-size:11px;color:var(--content-body-tertiary)">{row.tone}</span>
+        </div>
+        <p style="font-size:14px;color:var(--content-body-secondary);line-height:1.5;font-style:italic">"{row.example}"</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="sub-label">Rewrites — before & after</div>
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+    {[
+      {
+        before: 'An error has occurred. Please contact support.',
+        after: 'Something went wrong. Try again or reach us in the app.',
+      },
+      {
+        before: 'Your ride session has been successfully terminated.',
+        after: 'Ride ended.',
+      },
+      {
+        before: 'Please ensure your vehicle is parked in a designated area.',
+        after: 'Park it in a bay or close to a wall — not on a pavement.',
+      },
+      {
+        before: 'Insufficient funds detected. Please add payment method.',
+        after: 'Card declined. Add a new payment method to continue.',
+      },
+      {
+        before: 'Welcome to Voi! We\'re glad you\'re here! Let\'s get started!',
+        after: 'Good to have you. Set up takes 2 minutes.',
+      },
+    ].map(row => (
+      <div class="grid-2" style="gap:12px">
+        <div style="border-radius:14px;border:1.5px solid rgba(237,10,2,.2);background:rgba(237,10,2,.04);padding:16px">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--alert-error-dark);display:block;margin-bottom:8px">Before</span>
+          <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">{row.before}</p>
+        </div>
+        <div style="border-radius:14px;border:1.5px solid rgba(0,133,69,.2);background:rgba(0,133,69,.04);padding:16px">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.01em;color:var(--alert-success-dark);display:block;margin-bottom:8px">After</span>
+          <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">{row.after}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="sub-label">Writing rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Sentence case only</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">All UI copy uses sentence case. No Title Case in buttons, labels, or headings. Product names (Voi, Reef) are always capitalised.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">No corporate passive</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Active voice throughout. "Park the scooter here" not "The scooter should be parked here." You are addressing the rider directly.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">One exclamation mark maximum</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Per screen. Energy comes from word choice, not punctuation. If you need more than one ! to convey excitement, rewrite the copy.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Button labels: verb + noun</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">"Start ride", "Reserve now", "See benefits". Not just "OK", "Yes", "Continue". The label should tell the rider exactly what happens next.</p>
+    </div>
+  </div>
+</BaseLayout>

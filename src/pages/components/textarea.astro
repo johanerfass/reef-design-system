@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Textarea">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Textarea</h1>
+  <p class="s-desc">Multi-line text input for freeform content. Same visual treatment as the single-line input. Vertically resizable. Always show a character limit counter when a max length applies.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">States</div>
+  <div class="demo">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:480px">
+      <div class="form-field">
+        <label class="form-label">Ride feedback</label>
+        <textarea class="form-textarea" placeholder="How was your ride?" rows="4" id="ta-default"></textarea>
+        <span class="form-hint">Optional — we read every response.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Report a problem <span style="color:var(--alert-error)">*</span></label>
+        <textarea class="form-textarea" placeholder="Describe the issue…" rows="3" id="ta-count" maxlength="240"></textarea>
+        <div class="form-char-count" id="char-count">0 / 240</div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea form-textarea--error" rows="3">Broken brake lever on handlebars</textarea>
+        <span class="form-hint form-hint--error">Keep this under 240 characters.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label" style="color:var(--content-disabled)">Notes (locked)</label>
+        <textarea class="form-textarea" rows="2" disabled>No notes from previous ride.</textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default */</span>
+<span class="c-tag">&lt;textarea</span> <span class="c-attr">class</span>=<span class="c-str">"form-textarea"</span> <span class="c-attr">rows</span>=<span class="c-str">"4"</span> <span class="c-attr">placeholder</span>=<span class="c-str">"Describe…"</span><span class="c-tag">&gt;&lt;/textarea&gt;</span>
+
+<span class="c-comment">/* With character count */</span>
+<span class="c-tag">&lt;textarea</span> <span class="c-attr">class</span>=<span class="c-str">"form-textarea"</span> <span class="c-attr">maxlength</span>=<span class="c-str">"240"</span><span class="c-tag">&gt;&lt;/textarea&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"form-char-count"</span><span class="c-tag">&gt;</span>0 / 240<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Error */</span>
+<span class="c-tag">&lt;textarea</span> <span class="c-attr">class</span>=<span class="c-str">"form-textarea form-textarea--error"</span><span class="c-tag">&gt;&lt;/textarea&gt;</span>
+<span class="c-tag">&lt;span</span> <span class="c-attr">class</span>=<span class="c-str">"form-error"</span><span class="c-tag">&gt;</span>Error message<span class="c-tag">&lt;/span&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Border radius</code></td><td><code>12px</code></td><td>Matches text input — consistent form language</td></tr>
+      <tr><td><code>Min height</code></td><td><code>120px</code></td><td>Override with <code>rows</code> attribute as needed</td></tr>
+      <tr><td><code>Resize</code></td><td><code>vertical</code></td><td>User can expand downward; no horizontal resize</td></tr>
+      <tr><td><code>Focus ring</code></td><td><code>--alert-info border</code></td><td>Same as text input focus</td></tr>
+      <tr><td><code>Char count</code></td><td><code>11px, tertiary colour</code></td><td>Turns error red + 600 weight when over limit</td></tr>
+      <tr><td><code>Line height</code></td><td><code>1.5</code></td><td>Comfortable reading for multi-line content</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  const ta = document.getElementById('ta-count') as HTMLTextAreaElement;
+  const counter = document.getElementById('char-count');
+  ta?.addEventListener('input', () => {
+    const len = ta.value.length;
+    const max = parseInt(ta.getAttribute('maxlength') || '240');
+    if (counter) {
+      counter.textContent = `${len} / ${max}`;
+      counter.classList.toggle('over', len >= max);
+    }
+  });
+</script>

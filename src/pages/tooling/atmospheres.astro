@@ -1,0 +1,536 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Atmospheres">
+  <div class="s-overline">04 — Tooling</div>
+  <h1 class="s-title">Atmospheres</h1>
+  <p class="s-desc">Tune the animated orb background and copy a self-contained snippet — no dependencies, no build step. Drop it into any HTML page or web app. Adjust the sliders to see changes live on this page's background.</p>
+  <hr class="s-rule" />
+
+  <!-- ── FLOATING TUNE PANEL ── -->
+  <div class="atm-panel" id="atm-panel">
+    <div class="atm-panel-head">
+      <div class="atm-wordmark">
+        <div class="atm-wordmark-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <span class="atm-wordmark-name">Tune</span>
+      </div>
+    </div>
+
+    <div class="atm-panel-body">
+
+      <div class="atm-ctrl-section">
+        <div class="atm-ctrl-label">Colour</div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-coral">Coral</label>
+            <span class="atm-val" id="atm-v-coral">5%</span>
+          </div>
+          <input id="atm-s-coral" type="range" class="atm-range atm-track-coral" min="0" max="70" value="5"
+            oninput="atmSetVar('--orb-coral-opacity',this.value/100);atmSetV('atm-v-coral',this.value+'%');atmSyncExport()">
+        </div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-sky">Sky</label>
+            <span class="atm-val" id="atm-v-sky">7%</span>
+          </div>
+          <input id="atm-s-sky" type="range" class="atm-range atm-track-sky" min="0" max="70" value="7"
+            oninput="atmSetVar('--orb-sky-opacity',this.value/100);atmSetV('atm-v-sky',this.value+'%');atmSyncExport()">
+        </div>
+      </div>
+
+      <div class="atm-divider"></div>
+
+      <div class="atm-ctrl-section">
+        <div class="atm-ctrl-label">Shape</div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-blur">Blur</label>
+            <span class="atm-val" id="atm-v-blur">85px</span>
+          </div>
+          <input id="atm-s-blur" type="range" class="atm-range" min="10" max="180" value="85"
+            oninput="atmSetVar('--orb-blur',this.value+'px');atmSetV('atm-v-blur',this.value+'px');atmSyncExport()">
+        </div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-orbs">Orbs (export)</label>
+            <span class="atm-val" id="atm-v-orbs">9</span>
+          </div>
+          <input id="atm-s-orbs" type="range" class="atm-range" min="2" max="9" value="9" step="1"
+            oninput="atmSetV('atm-v-orbs',this.value);atmSyncExport()">
+        </div>
+      </div>
+
+      <div class="atm-divider"></div>
+
+      <div class="atm-ctrl-section">
+        <div class="atm-ctrl-label">Motion (export)</div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-speed">Speed</label>
+            <span class="atm-val" id="atm-v-speed">1.0×</span>
+          </div>
+          <input id="atm-s-speed" type="range" class="atm-range" min="10" max="400" value="100"
+            oninput="atmSetSpeed(+this.value);atmSyncExport()">
+        </div>
+        <div class="atm-ctrl">
+          <div class="atm-ctrl-top">
+            <label for="atm-s-react">Reactivity (export)</label>
+            <span class="atm-val" id="atm-v-react">2.1×</span>
+          </div>
+          <input id="atm-s-react" type="range" class="atm-range" min="0" max="300" value="210"
+            oninput="atmReactScale=this.value/100;atmSetV('atm-v-react',atmReactScale.toFixed(1)+'×')">
+        </div>
+      </div>
+
+      <div class="atm-divider"></div>
+
+      <div class="atm-ctrl-section">
+        <div class="atm-toggle-row">
+          <span>Pointer reactivity (export)</span>
+          <label class="toggle"><input type="checkbox" id="atm-t-react" checked onchange="atmReactOn=this.checked"><div class="toggle-track"></div></label>
+        </div>
+      </div>
+
+      <button class="atm-btn atm-btn-secondary" onclick="atmResetAll()">Reset</button>
+
+    </div>
+  </div>
+
+  <!-- ── EXPORT ── -->
+  <div class="sub-label">Export</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6;margin-bottom:20px">
+    Paste just inside your <code class="token">&lt;body&gt;</code> — the snippet positions itself fixed behind everything.
+  </p>
+
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+    <div class="atm-toggle-row" style="background:var(--surface-raised-enabled);border-radius:12px;padding:12px 16px;border:1.5px solid var(--fill-neutral-soft-enabled)">
+      <span style="font-size:13px;font-weight:600;color:var(--content-body-secondary)">Include pointer reactivity JS</span>
+      <label class="toggle"><input type="checkbox" id="atm-t-inc-js" checked onchange="atmSyncExport()"><div class="toggle-track"></div></label>
+    </div>
+    <div class="atm-toggle-row" style="background:var(--surface-raised-enabled);border-radius:12px;padding:12px 16px;border:1.5px solid var(--fill-neutral-soft-enabled)">
+      <span style="font-size:13px;font-weight:600;color:var(--content-body-secondary)">Include reduced-motion guard</span>
+      <label class="toggle"><input type="checkbox" id="atm-t-inc-motion" checked onchange="atmSyncExport()"><div class="toggle-track"></div></label>
+    </div>
+  </div>
+
+  <div class="code-block" style="margin-bottom:12px;max-height:160px;overflow-y:auto">
+    <pre id="atm-code-preview" style="white-space:pre;overflow-x:auto"></pre>
+  </div>
+
+  <button class="btn btn-contrast btn-md" id="atm-copy-btn" onclick="atmCopyCode()" style="margin-bottom:40px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    Copy snippet
+  </button>
+
+  <!-- ── HOW IT WORKS ── -->
+  <div class="sub-label">How it works</div>
+  <div class="grid-auto" style="margin-bottom:40px">
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--content-heading-primary);margin-bottom:12px;line-height:1">1</div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Tune</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Adjust the sliders — coral intensity, sky intensity, and blur radius affect this page's background live. Speed, orb count, and reactivity apply to the exported snippet.</div>
+    </div>
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--content-heading-primary);margin-bottom:12px;line-height:1">2</div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Copy</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Toggle whether to include pointer reactivity JS and the reduced-motion guard. Hit Copy snippet — it's on your clipboard.</div>
+    </div>
+
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--content-heading-primary);margin-bottom:12px;line-height:1">3</div>
+      <div style="font-size:15px;font-weight:600;color:var(--content-heading-primary);margin-bottom:6px">Drop it anywhere</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Paste the snippet just inside your <code class="token">&lt;body&gt;</code> tag. It positions itself with <code class="token">position: fixed</code> behind everything — no extra CSS needed.</div>
+    </div>
+
+  </div>
+
+  <!-- ── ORBS SPEC ── -->
+  <div class="sub-label">The system</div>
+  <div class="grid-2" style="gap:24px;margin-bottom:40px">
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:14px">Default calibration</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Orb count</span><code class="token">9 (5 coral + 4 sky)</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Blur</span><code class="token">85px — uniform per cluster</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Coral opacity</span><code class="token">0.14 (stacks across 5 orbs)</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Sky opacity</span><code class="token">0.20 (cooler, needs more weight)</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Duration range</span><code class="token">16–44 s — no two match</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Scale range</span><code class="token">0.74–1.32 (absorbed by blur)</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Translate range</span><code class="token">15–30% — genuine wander</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Animation property</span><code class="token">transform only — GPU composited</code></div>
+      </div>
+    </div>
+    <div class="card card-sm" style="border-radius:20px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:14px">Pointer reactivity</div>
+      <div style="font-size:13px;color:var(--content-body-secondary);line-height:1.6;margin-bottom:12px">JS drives a per-orb <code class="token">translate</code> property independently of the CSS animation — no interruption. Each orb has a different reactivity factor so the cluster diverges.</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Reactivity factors</span><code class="token">0.06–0.15 (mixed signs)</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Dark mode</span><code class="token">controlled by site theme toggle</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Reduced motion</span><code class="token">script exits immediately</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CODE STRUCTURE ── -->
+  <div class="sub-label">Snippet structure</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"<!-- Paste just inside <body> — sits behind everything -->"}</span>
+
+<span class="c-tag">{"<div"}</span> <span class="c-attr">{"id="}</span><span class="c-string">{'"voi-bg"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<div"}</span> <span class="c-attr">{"class="}</span><span class="c-string">{'"voi-orb oc-a"'}</span> <span class="c-attr">{"data-f="}</span><span class="c-string">{'"0.1"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"</div>"}</span>
+  <span class="c-comment">{"<!-- … 8 more orb divs … -->"}</span>
+<span class="c-tag">{"</div>"}</span>
+
+<span class="c-tag">{"<style>"}</span>
+<span class="c-comment">{"/* Background, orb base, per-orb sizes/positions/colours/animations */"}</span>
+<span class="c-value">{"#voi-bg { position: fixed; inset: 0; overflow: hidden; z-index: -1; }"}</span>
+<span class="c-tag">{"</style>"}</span>
+
+<span class="c-comment">{"// Optional — pointer reactivity"}</span>
+<span class="c-tag">{"<script>"}</span>
+<span class="c-comment">{"/* Lerps cursor offset into --rx / --ry per orb */"}</span>
+<span class="c-tag">{"</script>"}</span></pre>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ── Floating panel ── */
+  .atm-panel {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 240px;
+    max-height: calc(100vh - 80px);
+    background: var(--surface-raised-enabled);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    border-radius: 20px;
+    box-shadow: var(--shadow-deep);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 110;
+  }
+
+  .atm-panel-head {
+    flex-shrink: 0;
+    padding: 16px 18px 0;
+  }
+  .atm-wordmark { display: flex; align-items: center; gap: 8px; }
+  .atm-wordmark-icon {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--core-tire);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .atm-wordmark-name { font-size: 13px; font-weight: 600; color: var(--content-heading-primary); }
+
+  /* Panel body — scrollable controls */
+  .atm-panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .atm-panel-body::-webkit-scrollbar { width: 3px; }
+  .atm-panel-body::-webkit-scrollbar-track { background: transparent; }
+  .atm-panel-body::-webkit-scrollbar-thumb { background: var(--fill-neutral-medium-enabled); border-radius: 2px; }
+
+  /* Controls */
+  .atm-ctrl-section { display: flex; flex-direction: column; gap: 12px; }
+  .atm-ctrl-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .01em;
+    color: var(--content-body-tertiary);
+  }
+  .atm-ctrl { display: flex; flex-direction: column; gap: 6px; }
+  .atm-ctrl-top { display: flex; justify-content: space-between; align-items: center; }
+  .atm-ctrl-top label { font-size: 11px; font-weight: 600; color: var(--content-body-secondary); }
+  .atm-val {
+    font-size: 9px; font-weight: 600;
+    color: var(--content-body-tertiary);
+    background: var(--fill-neutral-soft-enabled);
+    border-radius: 999px; padding: 2px 6px; min-width: 36px;
+    text-align: center; font-variant-numeric: tabular-nums;
+  }
+
+  input[type="range"].atm-range {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 3px; border-radius: 3px;
+    background: var(--fill-neutral-soft-enabled);
+    outline: none; cursor: pointer;
+  }
+  input[type="range"].atm-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--core-tire); cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,.22);
+    transition: transform .15s cubic-bezier(.34,1.56,.64,1);
+  }
+  :global([data-theme="dark"]) input[type="range"].atm-range::-webkit-slider-thumb { background: #fff; }
+  input[type="range"].atm-range::-webkit-slider-thumb:hover { transform: scale(1.25); }
+  input.atm-track-coral { background: linear-gradient(to right,rgba(242,105,97,.2),rgba(242,105,97,.7)); }
+  input.atm-track-coral::-webkit-slider-thumb { background: var(--core-coral); }
+  input.atm-track-sky { background: linear-gradient(to right,rgba(171,209,234,.25),rgba(171,209,234,.9)); }
+  input.atm-track-sky::-webkit-slider-thumb { background: #abd1ea; }
+
+  .atm-divider { height: 1px; background: var(--fill-neutral-soft-enabled); flex-shrink: 0; }
+
+  .atm-toggle-row { display: flex; align-items: center; justify-content: space-between; }
+  .atm-toggle-row span { font-size: 11px; font-weight: 600; color: var(--content-body-secondary); }
+
+  .atm-btn {
+    width: 100%; height: 36px;
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    border: none; border-radius: 12px; cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, transform .1s;
+  }
+  .atm-btn-secondary { background: var(--fill-neutral-soft-enabled); color: var(--content-body-primary); }
+  .atm-btn-secondary:hover { background: var(--fill-neutral-medium-enabled); }
+  .atm-btn-secondary:active { background: var(--fill-neutral-medium-enabled); transform: scale(.97); }
+
+  /* ── Mobile: panel flows inline ── */
+  @media (max-width: 600px) {
+    .atm-panel {
+      position: static;
+      width: 100%;
+      max-height: none;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-card);
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const root   = document.documentElement;
+  const atmGet = (id: string) => document.getElementById(id);
+  const atmSetV = (id: string, v: string) => { const el = atmGet(id); if (el) el.textContent = v; };
+
+  /* Set CSS var on root + persist to localStorage */
+  const LS_KEYS: Record<string, string> = {
+    '--orb-coral-opacity': 'reef-orb-coral',
+    '--orb-sky-opacity':   'reef-orb-sky',
+    '--orb-blur':          'reef-orb-blur',
+  };
+  function atmSetVar(p: string, v: string | number) {
+    const val = typeof v === 'number' ? String(v) : v;
+    root.style.setProperty(p, val);
+    const key = LS_KEYS[p];
+    if (key) localStorage.setItem(key, val);
+  }
+  window.atmSetVar = atmSetVar;
+  window.atmSetV   = atmSetV;
+
+  /* ── Init sliders from localStorage ── */
+  const savedCoral = localStorage.getItem('reef-orb-coral');
+  const savedSky   = localStorage.getItem('reef-orb-sky');
+  const savedBlur  = localStorage.getItem('reef-orb-blur');
+  if (savedCoral) {
+    const pct = Math.round(parseFloat(savedCoral) * 100);
+    const s = atmGet('atm-s-coral') as HTMLInputElement;
+    if (s) { s.value = String(pct); atmSetV('atm-v-coral', pct + '%'); }
+  }
+  if (savedSky) {
+    const pct = Math.round(parseFloat(savedSky) * 100);
+    const s = atmGet('atm-s-sky') as HTMLInputElement;
+    if (s) { s.value = String(pct); atmSetV('atm-v-sky', pct + '%'); }
+  }
+  if (savedBlur) {
+    const px = parseInt(savedBlur);
+    const s = atmGet('atm-s-blur') as HTMLInputElement;
+    if (s) { s.value = String(px); atmSetV('atm-v-blur', savedBlur); }
+  }
+
+  /* ── Export: speed + orbs (don't affect global layer) ── */
+  const ATM_DURS: Record<string, number> = { 'oc-a':44,'oc-b':29,'oc-c':18,'oc-d':37,'oc-e':22,'os-a':40,'os-b':25,'os-c':16,'os-d':33 };
+
+  window.atmSetSpeed = function (v: number) {
+    const mult = v / 100;
+    atmSetV('atm-v-speed', mult.toFixed(1) + '×');
+  };
+
+  /* ── Reactivity settings (export only) ── */
+  window.atmReactOn    = true;
+  window.atmReactScale = 2.1;
+
+  /* ── Reset ── */
+  window.atmResetAll = function () {
+    const coralEl = atmGet('atm-s-coral') as HTMLInputElement;
+    const skyEl   = atmGet('atm-s-sky')   as HTMLInputElement;
+    const blurEl  = atmGet('atm-s-blur')  as HTMLInputElement;
+    if (coralEl) coralEl.value = '5';
+    if (skyEl)   skyEl.value   = '7';
+    if (blurEl)  blurEl.value  = '85';
+    atmSetVar('--orb-coral-opacity', 0.05); atmSetV('atm-v-coral', '5%');
+    atmSetVar('--orb-sky-opacity',   0.07); atmSetV('atm-v-sky',   '7%');
+    atmSetVar('--orb-blur',       '85px');  atmSetV('atm-v-blur',  '85px');
+    localStorage.removeItem('reef-orb-coral');
+    localStorage.removeItem('reef-orb-sky');
+    localStorage.removeItem('reef-orb-blur');
+    const speedEl = atmGet('atm-s-speed') as HTMLInputElement;
+    const reactEl = atmGet('atm-s-react') as HTMLInputElement;
+    const orbsEl  = atmGet('atm-s-orbs')  as HTMLInputElement;
+    if (speedEl) speedEl.value = '100'; window.atmSetSpeed(100);
+    if (reactEl) reactEl.value = '210'; window.atmReactScale = 2.1; atmSetV('atm-v-react', '2.1×');
+    if (orbsEl)  orbsEl.value  = '9';   atmSetV('atm-v-orbs', '9');
+    const reactToggle = atmGet('atm-t-react') as HTMLInputElement;
+    if (reactToggle) reactToggle.checked = true;
+    window.atmReactOn = true;
+    atmSyncExport();
+  };
+
+  /* ── Code generation ── */
+  const ORB_SPECS = [
+    { cls:'oc-a', w:'62%', pos:'bottom:-15%;left:-12%',   coral:true,  opMult:1.0,  blurMult:1.0,  anim:'coral-a', baseDur:44, df: 0.10 },
+    { cls:'oc-b', w:'42%', pos:'bottom:2%;left:4%',       coral:true,  opMult:.85,  blurMult:.8,   anim:'coral-b', baseDur:29, df:-0.07 },
+    { cls:'oc-c', w:'28%', pos:'bottom:12%;left:16%',     coral:true,  opMult:1.1,  blurMult:.65,  anim:'coral-c', baseDur:18, df: 0.15 },
+    { cls:'oc-d', w:'35%', pos:'bottom:-5%;left:20%',     coral:true,  opMult:.9,   blurMult:.85,  anim:'coral-d', baseDur:37, df:-0.09 },
+    { cls:'oc-e', w:'20%', pos:'bottom:20%;left:8%',      coral:true,  opMult:1.0,  blurMult:.6,   anim:'coral-e', baseDur:22, df: 0.12 },
+    { cls:'os-a', w:'52%', pos:'top:-14%;right:-8%',      coral:false, opMult:1.0,  blurMult:1.0,  anim:'sky-a',   baseDur:40, df:-0.06 },
+    { cls:'os-b', w:'32%', pos:'top:4%;right:4%',         coral:false, opMult:.85,  blurMult:.8,   anim:'sky-b',   baseDur:25, df: 0.13 },
+    { cls:'os-c', w:'22%', pos:'top:16%;right:14%',       coral:false, opMult:1.1,  blurMult:.65,  anim:'sky-c',   baseDur:16, df:-0.10 },
+    { cls:'os-d', w:'38%', pos:'top:-2%;right:20%',       coral:false, opMult:.75,  blurMult:.9,   anim:'sky-d',   baseDur:33, df: 0.08 },
+  ];
+
+  const KFS: Record<string, string> = {
+    'coral-a': `@keyframes coral-a{0%{transform:translate(0,0) scale(1)}20%{transform:translate(18%,-22%) scale(1.18)}45%{transform:translate(-5%,-30%) scale(.8)}65%{transform:translate(28%,-15%) scale(1.22)}85%{transform:translate(10%,-8%) scale(.92)}100%{transform:translate(0,0) scale(1)}}`,
+    'coral-b': `@keyframes coral-b{0%{transform:translate(0,0) scale(1)}25%{transform:translate(-20%,-18%) scale(.78)}50%{transform:translate(25%,-25%) scale(1.25)}75%{transform:translate(5%,-10%) scale(.85)}100%{transform:translate(0,0) scale(1)}}`,
+    'coral-c': `@keyframes coral-c{0%{transform:translate(0,0) scale(1)}33%{transform:translate(15%,20%) scale(1.3)}66%{transform:translate(-12%,15%) scale(.75)}100%{transform:translate(0,0) scale(1)}}`,
+    'coral-d': `@keyframes coral-d{0%{transform:translate(0,0) scale(1)}30%{transform:translate(-22%,12%) scale(1.15)}55%{transform:translate(18%,22%) scale(.82)}80%{transform:translate(-10%,-8%) scale(1.1)}100%{transform:translate(0,0) scale(1)}}`,
+    'coral-e': `@keyframes coral-e{0%{transform:translate(0,0) scale(1)}40%{transform:translate(20%,-20%) scale(.76)}75%{transform:translate(-15%,18%) scale(1.28)}100%{transform:translate(0,0) scale(1)}}`,
+    'sky-a':   `@keyframes sky-a{0%{transform:translate(0,0) scale(1)}30%{transform:translate(-20%,18%) scale(1.2)}60%{transform:translate(12%,25%) scale(.78)}80%{transform:translate(-8%,10%) scale(1.15)}100%{transform:translate(0,0) scale(1)}}`,
+    'sky-b':   `@keyframes sky-b{0%{transform:translate(0,0) scale(1)}40%{transform:translate(22%,-15%) scale(.8)}70%{transform:translate(-18%,20%) scale(1.28)}100%{transform:translate(0,0) scale(1)}}`,
+    'sky-c':   `@keyframes sky-c{0%{transform:translate(0,0) scale(1)}35%{transform:translate(-25%,-20%) scale(1.32)}70%{transform:translate(15%,-25%) scale(.74)}100%{transform:translate(0,0) scale(1)}}`,
+    'sky-d':   `@keyframes sky-d{0%{transform:translate(0,0) scale(1)}28%{transform:translate(20%,22%) scale(.82)}58%{transform:translate(-18%,8%) scale(1.18)}82%{transform:translate(10%,-15%) scale(.88)}100%{transform:translate(0,0) scale(1)}}`,
+  };
+
+  const JS_TEMPLATE = `(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const bg=document.getElementById('voi-bg');
+  const orbs=[...bg.querySelectorAll('.voi-orb')];
+  const factors=orbs.map(o=>parseFloat(o.dataset.f||.08));
+  let tx=0,ty=0,cx=0,cy=0,active=false;
+  function onMove(e){
+    const r=bg.getBoundingClientRect();
+    tx=(e.touches?e.touches[0].clientX:e.clientX)-(r.left+r.width/2);
+    ty=(e.touches?e.touches[0].clientY:e.clientY)-(r.top+r.height/2);
+    active=true;
+  }
+  bg.addEventListener('mousemove',onMove,{passive:true});
+  bg.addEventListener('touchmove',onMove,{passive:true});
+  bg.addEventListener('mouseleave',()=>{tx=0;ty=0;active=false});
+  bg.addEventListener('touchend',  ()=>{tx=0;ty=0;active=false});
+  (function tick(){
+    const spd=active?.04:.025;
+    cx+=(tx-cx)*spd;cy+=(ty-cy)*spd;
+    orbs.forEach((o,i)=>{
+      o.style.setProperty('--rx',(cx*factors[i]).toFixed(2)+'px');
+      o.style.setProperty('--ry',(cy*factors[i]).toFixed(2)+'px');
+    });
+    requestAnimationFrame(tick);
+  })();
+})();`;
+
+  const MOTION_GUARD = `(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    document.querySelectorAll('#voi-bg .voi-orb').forEach(o=>{
+      o.style.animationPlayState='paused';
+    });
+  }
+})();`;
+
+  function atmGenerateCode() {
+    const coralOp   = parseFloat((atmGet('atm-s-coral') as HTMLInputElement).value) / 100;
+    const skyOp     = parseFloat((atmGet('atm-s-sky')   as HTMLInputElement).value) / 100;
+    const blur      = parseInt((atmGet('atm-s-blur')  as HTMLInputElement).value);
+    const speedMult = parseInt((atmGet('atm-s-speed') as HTMLInputElement).value) / 100;
+    const orbCount  = parseInt((atmGet('atm-s-orbs')  as HTMLInputElement).value);
+    const dark      = root.dataset.theme === 'dark';
+    const incJS     = (atmGet('atm-t-inc-js')     as HTMLInputElement).checked;
+    const incMotion = (atmGet('atm-t-inc-motion') as HTMLInputElement).checked;
+
+    const activeSpecs = ORB_SPECS.slice(0, orbCount);
+    const usedAnims   = [...new Set(activeSpecs.map(s => s.anim))];
+
+    const htmlLines = activeSpecs.map(s =>
+      `  <div class="voi-orb ${s.cls}" data-f="${s.df}"></div>`
+    ).join('\n');
+
+    const orbCss = activeSpecs.map(s => {
+      const bgColor = s.coral
+        ? `rgba(242,105,97,${(coralOp * s.opMult * (dark ? 2 : 1)).toFixed(3)})`
+        : `rgba(171,209,234,${(skyOp   * s.opMult * (dark ? .75 : 1)).toFixed(3)})`;
+      const blurVal = `${(blur * s.blurMult).toFixed(0)}px`;
+      const dur     = `${(s.baseDur / speedMult).toFixed(1)}s`;
+      return `.${s.cls}{width:${s.w};aspect-ratio:1;${s.pos};background:${bgColor};filter:blur(${blurVal});animation:${s.anim} ${dur} ease-in-out infinite;}`;
+    }).join('\n');
+
+    const bgColor = dark ? '#161314' : '#faf4ec';
+    const css = `#voi-bg{position:fixed;inset:0;overflow:hidden;background:${bgColor};z-index:-1;}
+.voi-orb{position:absolute;border-radius:50%;will-change:transform;pointer-events:none;translate:var(--rx,0px) var(--ry,0px);}
+${orbCss}
+${usedAnims.map(a => KFS[a]).join('\n')}`;
+
+    let out = `<!-- Atmospheres · Reef design system -->\n\n`;
+    out += `<div id="voi-bg">\n${htmlLines}\n</div>\n\n`;
+    out += `<style>\n${css}\n</style>`;
+    if (incJS) {
+      out += `\n\n<script>\n${JS_TEMPLATE}${incMotion ? '\n' + MOTION_GUARD : ''}\n<\/script>`;
+    }
+    return out;
+  }
+
+  function atmSyntaxHL(src: string) {
+    const esc = src.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const KWS = new Set(['function','var','let','const','return','if','new','forEach','document','window','parseFloat','parseInt','requestAnimationFrame']);
+    return esc.replace(
+      /\/\*[\s\S]*?\*\/|\/\/[^\n]*|&lt;\/?[\w-]+|'[^']*'|"[^"]*"|\b(function|var|let|const|return|if|new|forEach|document|window|parseFloat|parseInt|requestAnimationFrame)\b|-?\d+\.?\d*(?:px|s|%)?(?=[,;)\s\n])|#[0-9a-fA-F]{3,8}(?=[,;)\s\n])/g,
+      (m: string) => {
+        if (m.startsWith('/*') || m.startsWith('//')) return `<span style="color:#6b6668">${m}</span>`;
+        if (m.startsWith('&lt;'))                      return `<span style="color:#f28fad">${m}</span>`;
+        if (m[0] === '"' || m[0] === "'")              return `<span style="color:#b5e8c8">${m}</span>`;
+        if (KWS.has(m))                                return `<span style="color:#d4b8e0">${m}</span>`;
+        return `<span style="color:#f0c984">${m}</span>`;
+      }
+    );
+  }
+
+  let atmLastCode = '';
+
+  function atmSyncExport() {
+    atmLastCode = atmGenerateCode();
+    const pre = atmGet('atm-code-preview');
+    if (pre) pre.innerHTML = atmSyntaxHL(atmLastCode);
+  }
+  window.atmSyncExport = atmSyncExport;
+
+  window.atmCopyCode = function () {
+    navigator.clipboard.writeText(atmLastCode).then(() => {
+      const btn = atmGet('atm-copy-btn');
+      if (!btn) return;
+      btn.classList.add('copied');
+      const prev = btn.innerHTML;
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:6px"><polyline points="20 6 9 17 4 12"/></svg>Copied!`;
+      setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = prev; }, 2200);
+    });
+  };
+
+  /* Sync export when site theme changes */
+  new MutationObserver(() => atmSyncExport()).observe(root, {
+    attributes: true, attributeFilter: ['data-theme'],
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    window.atmSetSpeed(100);
+    atmSyncExport();
+  });
+})();
+</script>

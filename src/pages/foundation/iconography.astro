@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const CDN = 'https://media.ffycdn.net/eu/voi-technologies';
+const Q = '?cid=frontify-mcp';
+const u = (hash: string) => `${CDN}/${hash}.svg${Q}`;
+
+const mapIcons = [
+  { name: 'map', hash: '45JctX59SZ5vxR9344pR' },
+  { name: 'map-big', hash: 'eDUBWzDoRVmreMwiWXSh' },
+  { name: 'map-marker', hash: 'ixx3oa1xS1YtPkEyqqM8' },
+  { name: 'map-pin', hash: 'p4NgmxHo4Hqmz7WfHwEv' },
+  { name: 'map-gps', hash: 'Y9eanQP5KfVSRGdZuz6N' },
+  { name: 'map-compass', hash: 'gwvdzexAN9hUDXfLiaAN' },
+  { name: 'marker', hash: 'ns7vc6a8vWMNHYi2XYUg' },
+  { name: 'marker-2', hash: 'Z7Lw1crXkcTBH4WmvpP8' },
+  { name: 'marker-3', hash: 'bLAstA93KqbdJgKELA7h' },
+  { name: 'pins', hash: 'brWKVkJpgRVwJVXZxtQW' },
+  { name: 'position-marker', hash: 'DDp7jVxcW4Ktpo9c1aAo' },
+  { name: 'position-pin', hash: 'eGq9GX7qBh7zvwAibDUC' },
+  { name: 'world-marker', hash: 'ppatRywBjfiTi74W4bJX' },
+  { name: 'world-pin', hash: 'RVwVh1E13bbBgwVeTdEg' },
+  { name: 'roadmap', hash: 'ayZgg3p5AuMwzcpHj5e5' },
+  { name: 'pin-add', hash: 'UoVZ5imsGfRUdDn1WLr6' },
+  { name: 'pin-user', hash: 'X5ktQkRGw3eqhqPUEjBU' },
+  { name: 'pin-edit', hash: 'HTuwUUMS2E94xaj8oTCp' },
+  { name: 'pin-2', hash: '26V2pQiGGRjhDMHsAMgQ' },
+  { name: 'pin-3', hash: 'jcKbLREHnnLZpJQvbJQV' },
+  { name: 'pin-copy', hash: 'NnqXXxMXopzYUb9JKUBY' },
+  { name: 'square-marker', hash: 'NFxyV2eRjLBC3qa7EZBZ' },
+  { name: 'square-pin', hash: 'Jf63V9tzcBBMKqDe4nJA' },
+  { name: 'love-heart-pin', hash: 'P36HgsB3PY5XXKS2hp4S' },
+];
+
+const arrowIcons = [
+  { name: 'arrow-down', hash: 'ZYTAQvtKP14hYJYu1DMQ' },
+  { name: 'arrow-right', hash: '6mZY9JcNmirMubvupT3F' },
+  { name: 'arrow-left', hash: 'rrUDLCDcL5EwUz4cSp8y' },
+  { name: 'arrow-down-2', hash: 'Vs3VS2NYXQ3AikkNqmRt' },
+  { name: 'arrow-down-3', hash: 'sVjm8FUSdL7RrUeHzcMy' },
+  { name: 'arrow-left-2', hash: 'Ezhzj5USkodkNpvERcbr' },
+  { name: 'arrow-right-2', hash: 'sjJFrm7D8U3cb8ge6Z31' },
+  { name: 'arrow-right-3', hash: 'qABA5c1ZFU86QzrCTKZ5' },
+  { name: 'down-arrow', hash: 'thZj94DoM5ZcdSwZF8E7' },
+  { name: 'up-arrow', hash: 'e6n76TXmeQbWZETUQ519' },
+  { name: 'right-arrow', hash: 'EHR758caHxaZjTBBnHdR' },
+  { name: 'left-arrow', hash: 'Dfs1GCGzSRddVtZiHdEa' },
+  { name: 'reply-arrow', hash: 'yS5kYiVGMLVLRraZGr96' },
+  { name: 'respond-arrow', hash: 'yhsjWAxQXUN51f8Rydmx' },
+  { name: 'shape-arrow', hash: 'zJ7LC7Hx8cw5Ef6FMUGE' },
+  { name: 'r-down-left', hash: 'RWX1EmQRjHwti41nE8mQ' },
+  { name: 'r-down-right', hash: 'XtZpc5Mv4D1soebXfex3' },
+  { name: 'r-up-left', hash: 'xVdKUai4sLQo4D9xiKW3' },
+  { name: 'r-up-right', hash: 'vAApAnqJsCsxbTHi8pQF' },
+];
+
+const generalIcons = [
+  { name: 'profile', hash: 'bnaxXk7L44Cz8PQBV5Ye' },
+  { name: 'question-mark', hash: '92BzD8P3s5x6RiqrhkD4' },
+  { name: 'crown', hash: '8te4sSCohRgopL3Ko3r6' },
+  { name: 'camera', hash: 'QprrRYszfRRSdTvpujbN' },
+  { name: 'shield', hash: 'ad8RV9gN1ML7xzdv1Nmf' },
+  { name: 'speedometer', hash: 'iRLJzzAyu7fyVTGLSq25' },
+  { name: 'timer', hash: 'aMDwYk6jSPZ7uK1VPXs6' },
+  { name: 'transaction', hash: 'pfYTvYFvqHxnxp4cRaM8' },
+  { name: 'route-alert', hash: 'KM3J7WTnGF3uzPwvjJms' },
+  { name: 'direction-down', hash: 'AUYKhAZpa24di3PcptAs' },
+  { name: 'phone-charging-2', hash: 'jASL7KzKBxLUUyxH6gnj' },
+  { name: 'globe-2', hash: 'R3wxnY8moFLyc7z632pu' },
+  { name: 'contacts', hash: 'rdGCdnQMDDVdh3B6sMyD' },
+  { name: 'round-euro', hash: 'PDrmLKh9g4sCjPacv6AF' },
+  { name: 'o-warning', hash: 'BPWVaxQW7sm2ZjTsRJYx' },
+  { name: 'stop-sign', hash: '7iFmQ9RorjECNfJF8UYc' },
+];
+---
+
+<BaseLayout title="Iconography">
+  <div class="s-overline">01 — Foundation</div>
+  <h1 class="s-title">Iconography</h1>
+  <p class="s-desc">Web icons 24px — sourced from the Voi Frontify brand library. 958 icons across 5 collections. All icons are 24×24px SVG, monochrome, rendered at 1× on all surfaces.</p>
+  <hr class="s-rule" />
+
+  <!-- STATS + USAGE RULES -->
+  <div class="grid-2" style="gap:16px;margin-bottom:40px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:12px;font-weight:600;color:var(--content-body-tertiary);margin-bottom:12px;letter-spacing:.01em">Library stats</p>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Total icons</span><code class="token">958</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Collections</span><code class="token">5</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Size</span><code class="token">24 × 24 px</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Format</span><code class="token">SVG monochrome</code></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Source</span><code class="token">Frontify · Web icons 24px</code></div>
+      </div>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:12px;font-weight:600;color:var(--content-body-tertiary);margin-bottom:12px;letter-spacing:.01em">Collections</p>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+        {[
+          { name: 'User icons', count: '~200' },
+          { name: 'Arrows', count: '~80' },
+          { name: 'Animated loops', count: '~40' },
+          { name: 'Interactive icons', count: '~60' },
+          { name: 'Map icons', count: '~24' },
+        ].map(c => (
+          <div style="display:flex;justify-content:space-between">
+            <span style="color:var(--content-body-secondary)">{c.name}</span>
+            <code class="token">{c.count}</code>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE RULES -->
+  <div class="card" style="margin-bottom:40px;border-radius:20px;background:rgba(242,105,97,.05);box-shadow:none;border:1px solid rgba(242,105,97,.2)">
+    <p style="font-size:14px;font-weight:600;color:var(--supporting-brick);margin-bottom:12px">Usage rules</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;color:var(--content-body-secondary);line-height:1.6">
+      <div>
+        <strong style="color:var(--content-body-primary)">Always 24px</strong><br/>
+        Icons are designed at 24×24px. Do not scale to arbitrary sizes — use 16px or 32px variants if available.
+      </div>
+      <div>
+        <strong style="color:var(--content-body-primary)">Inherit colour</strong><br/>
+        Icons should inherit text colour via <code class="token">currentColor</code>. Never hardcode a colour on an icon directly.
+      </div>
+      <div>
+        <strong style="color:var(--content-body-primary)">Paired with label</strong><br/>
+        Icons alone are not accessible. Always pair with a visible label or <code class="token">aria-label</code> on the parent.
+      </div>
+      <div>
+        <strong style="color:var(--content-body-primary)">No coral icons</strong><br/>
+        Do not use Coral (#F26961) on icons except for brand moments. Use Tire or semantic status colours.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="icon-search-wrap" style="margin-bottom:32px">
+    <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--content-icon-primary);pointer-events:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="icon-search-input" id="icon-search" type="search" placeholder="Search 59 shown icons by name…" autocomplete="off" />
+  </div>
+
+  <!-- MAP COLLECTION -->
+  <div class="sub-label" id="section-map">Map icons <span style="font-size:11px;font-weight:400;color:var(--content-body-tertiary);margin-left:8px">{mapIcons.length} shown</span></div>
+  <div class="icon-grid" id="grid-map">
+    {mapIcons.map(icon => (
+      <div class="icon-cell" data-name={icon.name}>
+        <img src={u(icon.hash)} alt={icon.name} width="24" height="24" loading="lazy" />
+        <span class="icon-cell-name">{icon.name}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- ARROWS COLLECTION -->
+  <div class="sub-label" id="section-arrows">Arrow icons <span style="font-size:11px;font-weight:400;color:var(--content-body-tertiary);margin-left:8px">{arrowIcons.length} shown</span></div>
+  <div class="icon-grid" id="grid-arrows">
+    {arrowIcons.map(icon => (
+      <div class="icon-cell" data-name={icon.name}>
+        <img src={u(icon.hash)} alt={icon.name} width="24" height="24" loading="lazy" />
+        <span class="icon-cell-name">{icon.name}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- GENERAL -->
+  <div class="sub-label" id="section-general">General <span style="font-size:11px;font-weight:400;color:var(--content-body-tertiary);margin-left:8px">{generalIcons.length} shown</span></div>
+  <div class="icon-grid" id="grid-general">
+    {generalIcons.map(icon => (
+      <div class="icon-cell" data-name={icon.name}>
+        <img src={u(icon.hash)} alt={icon.name} width="24" height="24" loading="lazy" />
+        <span class="icon-cell-name">{icon.name}</span>
+      </div>
+    ))}
+  </div>
+
+  <p style="font-size:12px;color:var(--content-body-tertiary);margin-top:8px">
+    Showing 59 of 958 icons. Full library at
+    <a href="https://brand.voi.com/hub/3" target="_blank" rel="noopener" style="color:var(--supporting-brick)">brand.voi.com</a> → Web icons 24px.
+  </p>
+</BaseLayout>
+
+<script>
+const input = document.getElementById('icon-search') as HTMLInputElement;
+const allCells = document.querySelectorAll<HTMLElement>('.icon-cell');
+
+input?.addEventListener('input', () => {
+  const q = input.value.toLowerCase().trim();
+  allCells.forEach(cell => {
+    const name = cell.dataset.name ?? '';
+    cell.style.display = (!q || name.includes(q)) ? '' : 'none';
+  });
+});
+</script>

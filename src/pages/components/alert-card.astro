@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Alert Card">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Alert card</h1>
+  <p class="s-desc">Inline contextual feedback tied to a specific piece of content or action. Five semantic types: success, warning, error, info, and neutral. Always include icon + title + body — never body-only or icon-only.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">All 5 types</div>
+  <div class="demo" style="margin-bottom:0">
+    <!-- Success -->
+    <div class="alert-card alert-card-success">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--alert-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div class="alert-card-content"><div class="title">Ride ended</div><div class="body">Parked correctly. €0.50 discount applied.</div></div>
+    </div>
+    <!-- Warning -->
+    <div class="alert-card alert-card-warning">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--alert-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="alert-card-content"><div class="title">Battery at 12%</div><div class="body">This scooter may not reach your destination. Check alternatives nearby.</div></div>
+    </div>
+    <!-- Error -->
+    <div class="alert-card alert-card-error">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--alert-error)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <div class="alert-card-content"><div class="title">No signal here</div><div class="body">Try walking a few metres to end your ride.</div></div>
+    </div>
+    <!-- Info -->
+    <div class="alert-card alert-card-info">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--alert-info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="alert-card-content"><div class="title">New speed zone</div><div class="body">Max 15 km/h in the pedestrian area ahead.</div></div>
+    </div>
+    <!-- Mandatory -->
+    <div class="alert-card alert-card-mandatory">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--alert-mandatory)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div class="alert-card-content"><div class="title">Verification required</div><div class="body">Please verify your identity to ride in this city.</div></div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Solid variant — high-emphasis, no transparency</div>
+  <div class="demo" style="margin-bottom:0">
+    <div class="alert-card" style="border-radius:16px;border:none;background:var(--alert-success);padding:14px 16px;gap:12px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div class="alert-card-content" style="flex:1"><div class="title" style="color:#fff">Ride ended</div><div class="body" style="color:rgba(255,255,255,.8)">Parked correctly. €0.50 credit added to your account.</div></div>
+      <button aria-label="Dismiss" class="alert-dismiss-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="alert-card" style="border-radius:16px;border:none;background:var(--alert-error);padding:14px 16px;gap:12px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <div class="alert-card-content" style="flex:1"><div class="title" style="color:#fff">No signal</div><div class="body" style="color:rgba(255,255,255,.8)">Walk a few metres and try ending your ride again.</div></div>
+      <button aria-label="Dismiss" class="alert-dismiss-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <p style="font-size:12px;color:var(--content-body-tertiary);margin-top:8px">React prop: <code class="token">solid</code> — uses solid colour fill, white text. Also shows the optional <code class="token">onClose</code> dismiss button.</p>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Default (tinted) variant"}</span>
+<span class="c-tag">{"<AlertCard"}</span>
+  <span class="c-attr">{"type="}</span><span class="c-string">{'"success"'}</span>
+  <span class="c-attr">{"title="}</span><span class="c-string">{'"Ride ended"'}</span>
+  <span class="c-attr">{"body="}</span><span class="c-string">{'"Parked correctly. €0.50 discount applied."'}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Solid (high-emphasis) variant with dismiss"}</span>
+<span class="c-tag">{"<AlertCard"}</span>
+  <span class="c-attr">{"type="}</span><span class="c-string">{'"error"'}</span>
+  <span class="c-attr">{"solid"}</span>
+  <span class="c-attr">{"title="}</span><span class="c-string">{'"No signal"'}</span>
+  <span class="c-attr">{"body="}</span><span class="c-string">{'"Walk a few metres and try again."'}</span>
+  <span class="c-attr">{"onClose="}</span><span class="c-value">{"() => dismiss()"}</span>
+<span class="c-tag">{"/>"}</span></pre>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">type</code></td><td><code class="token">'success' | 'warning' | 'error' | 'info' | 'mandatory'</code></td><td>—</td><td>Required. Sets colour, icon, and ARIA role.</td></tr>
+      <tr><td><code class="token">title</code></td><td><code class="token">string</code></td><td>—</td><td>Required. Short label, sentence case.</td></tr>
+      <tr><td><code class="token">body</code></td><td><code class="token">string | ReactNode</code></td><td>—</td><td>Required. Explains the situation and/or next step.</td></tr>
+      <tr><td><code class="token">solid</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Solid fill + white text. Use for high-emphasis, ephemeral alerts.</td></tr>
+      <tr><td><code class="token">onClose</code></td><td><code class="token">() =&gt; void</code></td><td>—</td><td>Renders dismiss button when provided.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border radius</span><code class="token">16px (--radius-lg)</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border width</span><code class="token">1.5px solid</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Background</span><code class="token">10% tint of status colour</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Padding</span><code class="token">12px 16px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Title</span><code class="token">14px / 600 · status-dark colour</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Body</span><code class="token">12px / 400 · 85% opacity</code></div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Colour tokens per type</div>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    {[
+      { type: 'success', bg: 'rgba(0,133,69,.08)', border: '--alert-success', text: '--alert-success-dark' },
+      { type: 'warning', bg: 'rgba(255,177,0,.10)', border: '--alert-warning', text: '--alert-warning-dark' },
+      { type: 'error', bg: 'rgba(237,10,2,.08)', border: '--alert-error', text: '--alert-error-dark' },
+      { type: 'info', bg: 'rgba(0,117,219,.08)', border: '--alert-info', text: '--alert-info-dark' },
+      { type: 'mandatory', bg: 'rgba(200,2,233,.08)', border: '--alert-mandatory', text: '--alert-mandatory-dark' },
+    ].map(row => (
+      <div class="card card-sm" style="border-radius:12px;display:flex;align-items:center;gap:16px;padding:12px 16px">
+        <code style="font-size:11px;font-weight:600;color:var(--supporting-brick);min-width:72px">{row.type}</code>
+        <span style="font-size:11px;color:var(--content-body-secondary)">bg: {row.bg}</span>
+        <span style="font-size:11px;color:var(--content-body-secondary)">border: <code class="token">{row.border}</code></span>
+        <span style="font-size:11px;color:var(--content-body-secondary)">text: <code class="token">{row.text}</code></span>
+      </div>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .alert-dismiss-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background .12s, color .12s, transform .1s;
+    flex-shrink: 0;
+  }
+  .alert-dismiss-btn:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .alert-dismiss-btn:active { background: rgba(255,255,255,.25); transform: scale(.92); }
+</style>

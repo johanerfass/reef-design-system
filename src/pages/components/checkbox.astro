@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Checkbox">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Checkbox</h1>
+  <p class="s-desc">Binary selector for settings and multi-item lists. Checked state fills with Tire. Always show a visible label — never a standalone checkbox without text. Group related options under a shared heading.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">States</div>
+  <div class="demo">
+    <div class="col" style="max-width:400px">
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input" />
+        <span class="checkbox-label">Default — unchecked</span>
+      </label>
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input" checked />
+        <span class="checkbox-label">Checked</span>
+      </label>
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input" disabled />
+        <span class="checkbox-label" style="opacity:.4">Disabled — unchecked</span>
+      </label>
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input" disabled checked />
+        <span class="checkbox-label" style="opacity:.4">Disabled — checked</span>
+      </label>
+      <label class="checkbox-wrapper">
+        <input type="checkbox" class="checkbox-input checkbox-input--error" />
+        <div>
+          <span class="checkbox-label">Error state</span>
+          <div style="font-size:12px;color:var(--alert-error);margin-top:4px">You must accept the terms to continue.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="sub-label">In a form context</div>
+  <div class="demo">
+    <div class="card card-sm" style="border-radius:24px;max-width:440px">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:20px">Create account</p>
+      <div class="col">
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox-input" id="terms" checked />
+          <span class="checkbox-label">I agree to the <a href="#" style="color:var(--content-inline-link-enabled);font-weight:600;text-decoration:underline;text-underline-offset:3px">Terms of Service</a> and <a href="#" style="color:var(--content-inline-link-enabled);font-weight:600;text-decoration:underline;text-underline-offset:3px">Privacy Policy</a></span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox-input" id="marketing" />
+          <span class="checkbox-label">Send me ride credits and offers by email (optional)</span>
+        </label>
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="checkbox-input" id="updates" />
+          <span class="checkbox-label">Notify me about new cities and features</span>
+        </label>
+      </div>
+      <button class="btn btn-contrast btn-md" style="margin-top:24px;width:100%">Create account</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Basic checkbox"}</span>
+<span class="c-tag">{"<Checkbox"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"I agree to the Terms of Service"'}</span>
+  <span class="c-attr">{"checked="}</span><span class="c-value">{"{isChecked}"}</span>
+  <span class="c-attr">{"onChange="}</span><span class="c-value">{"setIsChecked"}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Error state"}</span>
+<span class="c-tag">{"<Checkbox"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"Accept terms"'}</span>
+  <span class="c-attr">{"error="}</span><span class="c-string">{'"You must accept the terms to continue."'}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Disabled"}</span>
+<span class="c-tag">{"<Checkbox"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"Auto-renew subscription"'}</span>
+  <span class="c-attr">{"disabled"}</span>
+<span class="c-tag">{"/>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">label</code></td><td><code class="token">string | ReactNode</code></td><td>—</td><td>Required. Inline label to the right of the control.</td></tr>
+      <tr><td><code class="token">checked</code></td><td><code class="token">boolean</code></td><td>—</td><td>Controlled checked state.</td></tr>
+      <tr><td><code class="token">onChange</code></td><td><code class="token">(val: boolean) =&gt; void</code></td><td>—</td><td>Called when value changes.</td></tr>
+      <tr><td><code class="token">error</code></td><td><code class="token">string</code></td><td>—</td><td>Error message shown below. Switches border to error red.</td></tr>
+      <tr><td><code class="token">disabled</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>40% opacity, prevents interaction.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Spec</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Size</span><code class="token">20 × 20px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border radius</span><code class="token">6px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Default border</span><code class="token">1.5px · fill.neutral.medium</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Checked fill</span><code class="token">fill.neutral.hard (Tire)</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Focus ring</span><code class="token">3px INFO blue · offset 2px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Error border</span><code class="token">--alert-error</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Label</span><code class="token">14px / 400 · body-primary</code></div>
+    </div>
+  </div>
+</BaseLayout>

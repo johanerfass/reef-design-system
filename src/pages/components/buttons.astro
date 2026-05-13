@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Buttons">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Rounded rectangles</h1>
+  <p class="s-desc">The primary trigger for all user actions. Contrast (Tire) for primary CTAs, Outlined for secondary, Transparent for tertiary. Never use Coral as a CTA — it signals brand, not action.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Variants — all at large (64px)</div>
+  <div class="demo">
+    <div class="row" style="margin-bottom:24px">
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-lg">Start ride</button>
+        <span class="ann">contrast · Tire fill</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-accent btn-lg">Voi+ offer</button>
+        <span class="ann">accent · Coral fill</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-filled btn-lg">Learn more</button>
+        <span class="ann">filled · Pearl fill</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-outlined btn-lg">See details</button>
+        <span class="ann">outlined · Granite border</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-transparent btn-lg">Skip</button>
+        <span class="ann">transparent</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-lg" disabled>Unavailable</button>
+        <span class="ann">disabled · Chalk fill</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Sizes — contrast variant</div>
+  <div class="demo">
+    <div class="row">
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-xl">Extra large</button>
+        <span class="ann">xl · 80px · r-40px</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-lg">Large</button>
+        <span class="ann">lg · 64px · r-40px</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-md">Medium</button>
+        <span class="ann">md · 48px · r-32px</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-contrast btn-sm">Small</button>
+        <span class="ann">sm · 40px · r-32px</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Accent (Coral) at small size → Brick automatically</div>
+  <div class="demo">
+    <div class="row">
+      <div style="text-align:center">
+        <button class="btn btn-accent btn-xl">Voi+ — XL</button>
+        <span class="ann">Coral #F26961</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-accent btn-lg">Voi+ — L</button>
+        <span class="ann">Coral #F26961</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-accent btn-md">Voi+ — M</button>
+        <span class="ann">Coral #F26961</span>
+      </div>
+      <div style="text-align:center">
+        <button class="btn btn-accent btn-sm">Voi+ — S</button>
+        <span class="ann">→ Brick #D04740 (WCAG)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-slab" data-theme="dark">
+    <div class="dark-slab-title">On dark / brand surface</div>
+    <div class="dark-slab-desc">Voi+ card, dark hero, or the dark mode base</div>
+    <div class="row">
+      <button class="btn btn-filled btn-lg">Get Voi+</button>
+      <button class="btn btn-accent btn-lg">See benefits</button>
+      <button class="btn btn-outlined btn-lg">Dismiss</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Frosted / liquid glass</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:16px">Works on any background — light, dark, or map. The shadow helps it pop. On iOS, use the native liquid glass material instead of this CSS implementation.</p>
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div class="frosted-demo frosted-demo--map">
+      <div style="font-size:10px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.7);margin-bottom:12px">Over map</div>
+      <div class="row" style="gap:12px;flex-wrap:wrap">
+        <button class="btn btn-frosted btn-lg">Large</button>
+        <button class="btn btn-frosted btn-md">Medium</button>
+        <button class="btn btn-frosted btn-sm">Small</button>
+      </div>
+    </div>
+    <div class="frosted-demo frosted-demo--light">
+      <div style="font-size:10px;font-weight:600;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:12px">Over light</div>
+      <div class="row" style="gap:12px;flex-wrap:wrap">
+        <button class="btn btn-frosted btn-lg">Large</button>
+        <button class="btn btn-frosted btn-md">Medium</button>
+        <button class="btn btn-frosted btn-sm">Small</button>
+      </div>
+    </div>
+    <div class="frosted-demo frosted-demo--dark" data-theme="dark">
+      <div style="font-size:10px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.4);margin-bottom:12px">Over dark</div>
+      <div class="row" style="gap:12px;flex-wrap:wrap">
+        <button class="btn btn-frosted btn-lg">Large</button>
+        <button class="btn btn-frosted btn-md">Medium</button>
+        <button class="btn btn-frosted btn-sm">Small</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Primary CTA — contrast (Tire)"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"contrast"'}</span> <span class="c-attr">{"size="}</span><span class="c-string">{'"lg"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Start ride"}</span><span class="c-tag">{"</Button>"}</span>
+
+<span class="c-comment">{"// Brand moment — accent (Coral)"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"accent"'}</span> <span class="c-attr">{"size="}</span><span class="c-string">{'"lg"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Voi+ offer"}</span><span class="c-tag">{"</Button>"}</span>
+
+<span class="c-comment">{"// Secondary actions"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"outlined"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"See details"}</span><span class="c-tag">{"</Button>"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"transparent"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Skip"}</span><span class="c-tag">{"</Button>"}</span>
+
+<span class="c-comment">{"// With icon"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"contrast"'}</span> <span class="c-attr">{"icon="}</span><span class="c-string">{'"<ArrowRight />"'}</span> <span class="c-attr">{"iconPosition="}</span><span class="c-string">{'"right"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Start ride"}</span><span class="c-tag">{"</Button>"}</span>
+
+<span class="c-comment">{"// Frosted — any background (iOS: use native liquid glass)"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"frosted"'}</span> <span class="c-attr">{"size="}</span><span class="c-string">{'"lg"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Get Voi+"}</span><span class="c-tag">{"</Button>"}</span>
+
+<span class="c-comment">{"// Disabled"}</span>
+<span class="c-tag">{"<Button"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"contrast"'}</span> <span class="c-attr">{"disabled"}</span><span class="c-tag">{">"}</span><span class="c-value">{"Unavailable"}</span><span class="c-tag">{"</Button>"}</span></pre>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">variant</code></td><td><code class="token">'contrast' | 'accent' | 'filled' | 'outlined' | 'transparent' | 'frosted'</code></td><td><code class="token">'contrast'</code></td><td>Visual style. Use <code class="token">contrast</code> for primary CTAs. <code class="token">frosted</code> works on any background. On iOS use native liquid glass.</td></tr>
+      <tr><td><code class="token">size</code></td><td><code class="token">'sm' | 'md' | 'lg' | 'xl'</code></td><td><code class="token">'md'</code></td><td>sm=40px, md=48px, lg=64px, xl=80px height.</td></tr>
+      <tr><td><code class="token">icon</code></td><td><code class="token">ReactNode</code></td><td>—</td><td>SVG icon element. 20×20 on md/lg, 24×24 on xl.</td></tr>
+      <tr><td><code class="token">iconPosition</code></td><td><code class="token">'left' | 'right'</code></td><td><code class="token">'left'</code></td><td>Side the icon sits on relative to label.</td></tr>
+      <tr><td><code class="token">fullWidth</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Stretches to 100% of parent width.</td></tr>
+      <tr><td><code class="token">loading</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Replaces label with spinner, disables interaction.</td></tr>
+      <tr><td><code class="token">disabled</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Chalk fill + Granite text. Sets <code class="token">aria-disabled</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:40px">Usage rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">One primary CTA per screen</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Contrast (Tire) is the primary action. Never use two contrast buttons side by side. Secondary action uses outlined or transparent.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Accent is brand, not primary</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Coral accent buttons appear in brand moments: Voi+ upsell, onboarding, marketing screens. Maximum one per screen.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Radius: never use pills</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Reef buttons are rounded rectangles. S/M = 32px radius. L/XL = 40px radius. Pills (999px) are not part of the system.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Disabled state</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">All variants use Chalk fill + Granite text when disabled. Apply <code class="token">disabled</code> attr or <code class="token">aria-disabled="true"</code>.</td></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .frosted-demo {
+    flex: 1;
+    min-width: 240px;
+    border-radius: 24px;
+    padding: 24px;
+    overflow: hidden;
+  }
+  .frosted-demo--map {
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,.6) 48px, rgba(255,255,255,.6) 52px),
+      repeating-linear-gradient(90deg, transparent, transparent 64px, rgba(255,255,255,.6) 64px, rgba(255,255,255,.6) 68px),
+      #d4e9d0;
+    background-size: 52px 52px, 68px 68px, 100%;
+  }
+  .frosted-demo--light {
+    background: var(--surface-base-enabled, #f2f2f6);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+  }
+  .frosted-demo--dark {
+    background: #161314;
+  }
+</style>

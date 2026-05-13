@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Search">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Search</h1>
+  <p class="s-desc">Inline text field for filtering or finding content on the current screen. Shows a clear (×) button when non-empty. Distinct from the search bar in top navigation — this is an embedded, content-scoped input.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">States</div>
+  <div class="demo">
+    <div class="col" style="gap:20px;max-width:400px">
+
+      <div>
+        <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:8px">Empty (default)</p>
+        <div class="search-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input class="search-input" type="search" placeholder="Search scooters, cities…" id="s-empty" />
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:8px">With value + clear button</p>
+        <div class="search-container" style="position:relative">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input class="search-input" type="search" value="Stockholm" id="s-value" style="padding-right:52px" />
+          <button id="s-clear" class="search-clear-btn" aria-label="Clear">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:8px">Focus — INFO blue border only</p>
+        <div class="search-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input class="search-input" type="search" placeholder="Focus me…" id="s-focus" style="border-color:var(--alert-info)" />
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:8px">Disabled</p>
+        <div class="search-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.4">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input class="search-input" type="search" placeholder="Search unavailable" disabled />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="sub-label">In context — city / scooter search</div>
+  <div class="demo">
+    <div class="card card-sm" style="border-radius:24px;max-width:440px">
+      <p style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:16px">Find a scooter</p>
+      <div class="search-container" style="max-width:100%">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input class="search-input" type="search" placeholder="Search by address or city" style="max-width:100%;width:100%" />
+      </div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:0">
+        {['Stureplan, Stockholm', 'Sergels Torg, Stockholm', 'Södermalm, Stockholm'].map(loc => (
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;opacity:.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            {loc}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Basic search"}</span>
+<span class="c-tag">{"<Search"}</span>
+  <span class="c-attr">{"placeholder="}</span><span class="c-string">{'"Search scooters, cities…"'}</span>
+  <span class="c-attr">{"onSearch="}</span><span class="c-value">{"handleSearch"}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Controlled with clear"}</span>
+<span class="c-tag">{"<Search"}</span>
+  <span class="c-attr">{"value="}</span><span class="c-value">{"{query}"}</span>
+  <span class="c-attr">{"onChange="}</span><span class="c-value">{"setQuery"}</span>
+  <span class="c-attr">{"onClear="}</span><span class="c-value">{"() => setQuery('')"}</span>
+  <span class="c-attr">{"onSearch="}</span><span class="c-value">{"handleSearch"}</span>
+<span class="c-tag">{"/>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">value</code></td><td><code class="token">string</code></td><td>—</td><td>Controlled value.</td></tr>
+      <tr><td><code class="token">onChange</code></td><td><code class="token">(val: string) =&gt; void</code></td><td>—</td><td>Called on every keystroke.</td></tr>
+      <tr><td><code class="token">onSearch</code></td><td><code class="token">(val: string) =&gt; void</code></td><td>—</td><td>Called on Enter or submit.</td></tr>
+      <tr><td><code class="token">onClear</code></td><td><code class="token">() =&gt; void</code></td><td>—</td><td>Shows clear (×) button when value is non-empty.</td></tr>
+      <tr><td><code class="token">placeholder</code></td><td><code class="token">string</code></td><td>—</td><td>Placeholder text.</td></tr>
+      <tr><td><code class="token">disabled</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Prevents interaction.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Spec</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Height</span><code class="token">56px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border radius</span><code class="token">12px — same as Input</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Default border</span><code class="token">1.5px · fill.neutral.medium</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Focus border</span><code class="token">INFO #0075DB — border only</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Left icon</span><code class="token">20px magnifier · left: 16px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Clear button</span><code class="token">32px circle · appears when value non-empty</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">React component</span><code class="token">&lt;Search isValid onSearch /&gt;</code></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .search-suggestion-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--fill-neutral-soft-enabled);
+    font-size: 14px;
+    color: var(--content-body-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 -4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 8px;
+    transition: background .1s, color .1s;
+  }
+  .search-suggestion-item:hover { background: var(--fill-neutral-soft-enabled); color: var(--content-body-primary); }
+  .search-suggestion-item:active { background: var(--fill-neutral-medium-enabled); transform: scale(.99); }
+
+  .search-clear-btn {
+    position: absolute;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--fill-neutral-soft-enabled);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--content-icon-primary);
+    transition: background .12s, transform .1s;
+    flex-shrink: 0;
+  }
+  .search-clear-btn:hover { background: var(--fill-neutral-medium-enabled); }
+  .search-clear-btn:active { background: var(--fill-neutral-hard-enabled); transform: scale(.92); }
+</style>
+
+<script>
+const clearBtn = document.getElementById('s-clear');
+const valueInput = document.getElementById('s-value') as HTMLInputElement;
+if (clearBtn && valueInput) {
+  clearBtn.addEventListener('click', () => {
+    valueInput.value = '';
+    clearBtn.style.display = 'none';
+  });
+}
+</script>

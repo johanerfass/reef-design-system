@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Select">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Select</h1>
+  <p class="s-desc">Dropdown for choosing a single option from a longer list. Falls back to the native system picker on mobile for accessibility and familiarity. Use chips or a segmented control for 4 or fewer short options.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">States</div>
+  <div class="demo">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:360px">
+      <div class="form-field">
+        <label class="form-label">City</label>
+        <div class="select-wrap">
+          <select class="form-select">
+            <option value="">Choose a city</option>
+            <option>Stockholm</option>
+            <option>Oslo</option>
+            <option>Helsinki</option>
+            <option>Copenhagen</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Vehicle type <span style="color:var(--alert-error)">*</span></label>
+        <div class="select-wrap">
+          <select class="form-select">
+            <option>E-scooter</option>
+            <option>E-bike</option>
+            <option>Cargo bike</option>
+          </select>
+        </div>
+        <span class="form-hint">Select the type of vehicle for this zone.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label" style="color:var(--content-disabled)">Region (locked)</label>
+        <div class="select-wrap">
+          <select class="form-select" disabled>
+            <option>Northern Europe</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Ride duration</label>
+        <div class="select-wrap">
+          <select class="form-select form-select--error">
+            <option value="">Select duration</option>
+          </select>
+        </div>
+        <span class="form-hint form-hint--error">Please select a ride duration.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"select-wrap"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;select</span> <span class="c-attr">class</span>=<span class="c-str">"form-select"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;option</span> <span class="c-attr">value</span>=<span class="c-str">""</span><span class="c-tag">&gt;</span>Choose…<span class="c-tag">&lt;/option&gt;</span>
+    <span class="c-tag">&lt;option</span><span class="c-tag">&gt;</span>Stockholm<span class="c-tag">&lt;/option&gt;</span>
+  <span class="c-tag">&lt;/select&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Error state */</span>
+<span class="c-tag">&lt;select</span> <span class="c-attr">class</span>=<span class="c-str">"form-select form-select--error"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/select&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Height</code></td><td><code>52px</code></td><td>Same as text input — consistent row height</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>12px</code></td><td>Matches input, not button (32px)</td></tr>
+      <tr><td><code>Chevron</code></td><td><code>SVG via background-image</code></td><td>Positioned 16px from right edge</td></tr>
+      <tr><td><code>Padding right</code></td><td><code>44px</code></td><td>Clearance for chevron</td></tr>
+      <tr><td><code>Disabled opacity</code></td><td><code>0.4</code></td><td>Matches global disabled pattern</td></tr>
+      <tr><td><code>Error border</code></td><td><code>--alert-error</code></td><td>Same as input error state</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

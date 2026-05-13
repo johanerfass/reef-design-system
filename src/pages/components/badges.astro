@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Badges">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Badges</h1>
+  <p class="s-desc">Compact status labels for counts, states, and categories. Seven semantic colours map to system states — never pick a colour for aesthetic reasons. Pair with a content label that makes the state readable without colour alone.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">All variants</div>
+  <div class="demo">
+    <div class="row">
+      <div style="text-align:center"><span class="badge badge-accent">accent</span><span class="ann">Brick #D04740</span></div>
+      <div style="text-align:center"><span class="badge badge-information">information</span><span class="ann">INFO blue</span></div>
+      <div style="text-align:center"><span class="badge badge-success">success</span><span class="ann">SUCCESS green</span></div>
+      <div style="text-align:center"><span class="badge badge-contrast">contrast</span><span class="ann">Tire</span></div>
+      <div style="text-align:center"><span class="badge badge-neutral">neutral</span><span class="ann">Pearl bg</span></div>
+      <div style="text-align:center"><span class="badge badge-warning">warning</span><span class="ann">black text for contrast</span></div>
+      <div style="text-align:center"><span class="badge badge-disabled">disabled</span><span class="ann">Chalk bg</span></div>
+    </div>
+  </div>
+
+  <div class="sub-label">In context</div>
+  <div class="demo">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:14px;font-weight:600;color:var(--content-heading-primary)">Voi+ membership</span>
+        <span class="badge badge-accent">Premium</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:14px;color:var(--content-body-primary)">Scooter #VN-2847</span>
+        <span class="badge badge-success">Available</span>
+        <span class="badge badge-information">82% battery</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:14px;color:var(--content-body-primary)">Speed zone ahead</span>
+        <span class="badge badge-warning">15 km/h</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:14px;color:var(--content-body-primary)">Scooter #VN-1103</span>
+        <span class="badge badge-disabled">Unavailable</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:14px;color:var(--content-body-primary)">Notification count</span>
+        <span class="badge badge-contrast">3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"accent"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Premium"}</span><span class="c-tag">{"</Badge>"}</span>
+<span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"success"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Available"}</span><span class="c-tag">{"</Badge>"}</span>
+<span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"information"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"82% battery"}</span><span class="c-tag">{"</Badge>"}</span>
+<span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"warning"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"15 km/h"}</span><span class="c-tag">{"</Badge>"}</span>
+<span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"disabled"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Unavailable"}</span><span class="c-tag">{"</Badge>"}</span>
+<span class="c-tag">{"<Badge"}</span> <span class="c-attr">{"variant="}</span><span class="c-string">{'"contrast"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"3"}</span><span class="c-tag">{"</Badge>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">variant</code></td><td><code class="token">'accent' | 'information' | 'success' | 'contrast' | 'neutral' | 'warning' | 'disabled'</code></td><td>—</td><td>Required. Sets colour and text contrast.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Spec</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Height</span><code class="token">24px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Border radius</span><code class="token">8px (--radius-sm)</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Font size</span><code class="token">12px / 600</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Padding</span><code class="token">0 8px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Warning text</span><code class="token">color: #000 (not white)</code></div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,952 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Floating controls">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Floating controls</h1>
+  <p class="s-desc">A rounded pill that groups icon controls and floats above content. Three forms — bare icon circle, icon + badge pill, multi-button strip — all share the same container shape and sizing. The <strong>material</strong> is the only thing that changes: frosted glass over map or photo, solid white over a neutral UI surface.</p>
+  <hr class="s-rule" />
+
+  <!-- PLATFORM MATERIAL NOTE -->
+  <div class="platform-note">
+    <div class="platform-note-row">
+      <span class="platform-tag">iOS</span>
+      <span>Native liquid glass — <code>UIBlurEffect</code> / <code>.glassBackgroundEffect()</code>. The OS material adapts to any content behind it automatically.</span>
+    </div>
+    <div class="platform-note-row">
+      <span class="platform-tag">Android &amp; web</span>
+      <span>Reef frosted glass — <code>material-frost-medium</code>. Works on any background; the shadow provides elevation on light surfaces.</span>
+    </div>
+  </div>
+
+  <!-- BASE STATE -->
+  <div class="sub-label" style="margin-top:40px">Base — icon island</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Frosted circles, 48px, bare icon with no backplate. Each island represents one contextual entry point.</p>
+  <div class="map-stage">
+    <div class="map-bg" id="isl-map-1"></div>
+    <div class="island-row">
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Ticket">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </button>
+        <div class="island-ann">Ticket</div>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Profile">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <div class="island-ann">Profile</div>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-md material-frost-medium" style="background:rgba(255,255,255,0.85);color:var(--alert-error)" aria-label="Alert">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </button>
+        <div class="island-ann">Alert</div>
+      </div>
+      <div style="text-align:center">
+        <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Group">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </button>
+        <div class="island-ann">Group</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL PILL — MATERIAL VARIANTS -->
+  <div class="sub-label" style="margin-top:40px">Horizontal pill — material variants</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">The pill is always icon-left, badge-right. The background is the only thing that changes based on what it sits on top of.</p>
+
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px">
+
+    <!-- Frosted — over map -->
+    <div class="material-demo material-demo--map">
+      <div class="material-demo-label">Frosted — over map or photo</div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <div class="island-pill island-pill--frosted">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-accent badge-island">Deal!</span>
+        </div>
+        <div class="island-pill island-pill--frosted">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-brand-hard badge-island">Voi+</span>
+        </div>
+        <div class="island-pill island-pill--frosted">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="badge badge-space badge-island">Business</span>
+        </div>
+        <div class="island-pill island-pill--frosted">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-neutral badge-island">123 min left</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solid — over neutral UI -->
+    <div class="material-demo material-demo--light">
+      <div class="material-demo-label">Solid — over neutral UI surface</div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <div class="island-pill island-pill--solid">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-accent badge-island">Deal!</span>
+        </div>
+        <div class="island-pill island-pill--solid">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-brand-hard badge-island">Voi+</span>
+        </div>
+        <div class="island-pill island-pill--solid">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="badge badge-space badge-island">Business</span>
+        </div>
+        <div class="island-pill island-pill--solid">
+          <div class="island-pill-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <span class="badge badge-neutral badge-island">123 min left</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MULTI-BUTTON STRIP -->
+  <div class="sub-label" style="margin-top:40px">Multi-button strip</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Groups two or more icon buttons inside the same pill. Always solid white — frosted doesn't read well with multiple active states. Vertical or horizontal; dividers separate logical groups.</p>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;margin-bottom:8px">
+
+    <div style="text-align:center">
+      <div class="demo-sub-label">Vertical · small</div>
+      <div class="toolbar toolbar--sm">
+        <button class="toolbar-btn" aria-label="Layers">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </button>
+        <button class="toolbar-btn toolbar-btn--active" aria-label="Map">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        </button>
+        <div class="toolbar-divider"></div>
+        <button class="toolbar-btn" aria-label="Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div class="demo-sub-label">Vertical · medium</div>
+      <div class="toolbar toolbar--md">
+        <button class="toolbar-btn" aria-label="Zoom in">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Zoom out">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </button>
+        <div class="toolbar-divider"></div>
+        <button class="toolbar-btn" aria-label="My location">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div class="demo-sub-label">Horizontal · medium</div>
+      <div class="toolbar toolbar--md toolbar--horizontal">
+        <button class="toolbar-btn" aria-label="Back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="toolbar-btn toolbar-btn--active" aria-label="Map">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        </button>
+        <div class="toolbar-divider-h"></div>
+        <button class="toolbar-btn" aria-label="Forward">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div class="demo-sub-label">Vertical · large</div>
+      <div class="toolbar toolbar--lg">
+        <button class="toolbar-btn" aria-label="History">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        </button>
+        <button class="toolbar-btn" aria-label="Add">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DROP CARDS -->
+  <div class="sub-label" style="margin-top:40px">Drop cards — information from island</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">A card emerges below the island. Two variants: white for service state, dark chestnut for CRM/deal content.</p>
+  <div style="display:flex;gap:24px;flex-wrap:wrap">
+
+    <!-- White / service state -->
+    <div style="flex:1;min-width:280px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:12px">Service state</div>
+      <div class="drop-card-demo">
+        <div class="map-stage map-stage--sm">
+          <div class="map-bg" id="isl-map-3"></div>
+          <div class="drop-card-scene">
+            <button class="icon-btn icon-btn-md material-frost-medium" style="background:rgba(255,255,255,0.85);color:var(--alert-error)" aria-label="Alert"></button>
+            <div class="drop-caret"></div>
+            <div class="drop-card drop-card--white">
+              <div class="drop-card-title">Sorry, we're closed</div>
+              <div class="drop-card-body">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--core-coral,#F26961)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Due to current weather conditions, local operating hours or other circumstances, vehicles aren't available right now.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark / CRM deal -->
+    <div style="flex:1;min-width:280px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.01em;color:var(--content-body-tertiary);margin-bottom:12px">CRM deal</div>
+      <div class="drop-card-demo">
+        <div class="map-stage map-stage--sm">
+          <div class="map-bg" id="isl-map-4"></div>
+          <div class="drop-card-scene">
+            <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Ticket">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </button>
+            <div class="drop-caret drop-caret--dark"></div>
+            <div class="drop-card drop-card--dark">
+              <div class="drop-card-dark-inner">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--core-coral,#F26961)" aria-hidden="true"><path d="M9 14.25l1.234 1.766a1 1 0 001.546.098L15 12m-2.292-8.33C12.418 3.268 12 4.003 12 4.75v.018a.75.75 0 01-.387.657 4.477 4.477 0 01-2.11.528c-.77 0-1.5-.2-2.113-.528a.75.75 0 01-.388-.66l-.003-.017c0-.745-.418-1.48-1.208-2.081A1.5 1.5 0 004.5 4.75c0 1.61.826 2.848 1.726 3.74a.75.75 0 01.074.998C5.6 10.35 5.25 11.6 5.25 12.75a6.75 6.75 0 1013.5 0c0-1.15-.35-2.4-1.05-3.262a.75.75 0 01.074-.998C18.674 7.598 19.5 6.36 19.5 4.75a1.5 1.5 0 00-1.292-1.483c-.79.6-1.208 1.336-1.208 2.081v.018a.75.75 0 01-.388.659 4.478 4.478 0 01-2.112.528c-.77 0-1.5-.2-2.112-.528a.75.75 0 01-.388-.66z"/></svg>
+                <div>
+                  <div class="drop-card-dark-title">30 minutes</div>
+                  <div class="drop-card-dark-sub">Save unlock fee every time</div>
+                </div>
+                <div style="margin-left:auto;text-align:right">
+                  <div class="drop-card-dark-price-old">39 kr</div>
+                  <div class="drop-card-dark-price">29 kr</div>
+                </div>
+                <div class="drop-card-close">✕</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ZONE HELPERS -->
+  <div class="sub-label" style="margin-top:40px">Zone helpers — vertical stack</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Complex zone information stacks vertically like physical parking signs. Signal badge on top, map icon below. Color encodes zone type.</p>
+  <div class="map-stage">
+    <div class="map-bg" id="isl-map-5"></div>
+    <div class="zone-group">
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div class="zone-stack zone-stack--amber">
+          <div class="zone-signal zone-signal--speed">
+            <span class="zone-speed-num">10</span>
+          </div>
+          <div class="zone-map-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+        </div>
+        <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Group">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </button>
+        <div class="island-ann">Slow zone</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div class="zone-stack zone-stack--red">
+          <div class="zone-signal zone-signal--nogo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div class="zone-map-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+        </div>
+        <button class="icon-btn icon-btn-md material-frost-medium" style="background:rgba(200,196,194,0.6);color:var(--content-body-tertiary)" aria-label="Group">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </button>
+        <div class="island-ann">No-go zone</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PLAYGROUND -->
+  <div class="sub-label" style="margin-top:40px">Playground — interactive states</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Toggle badge expansion and drop cards on all four islands simultaneously. Staggered entrance reveals the animation timing.</p>
+
+  <div class="map-stage pg-stage">
+    <div class="map-bg" id="isl-map-6"></div>
+
+    <div class="pg-row">
+
+      <!-- Island 1: Ticket + Deal badge + white card -->
+      <div class="pg-island-wrap">
+        <div class="pg-pill" id="pg-pill-0">
+          <span class="pg-pill-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </span>
+          <span class="badge badge-accent badge-island pg-pill-badge">Deal!</span>
+        </div>
+        <div class="pg-card-wrap" id="pg-card-0">
+          <div class="drop-caret"></div>
+          <div class="drop-card drop-card--white">
+            <div class="drop-card-title" style="font-size:15px;color:var(--core-tire)">Special offer</div>
+            <div class="drop-card-body">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--core-coral,#F26961)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span style="font-size:12px;color:var(--content-body-tertiary)">Unlock free for the next 30 min. Tap to activate.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island 2: Profile + Voi+ badge + dark card -->
+      <div class="pg-island-wrap">
+        <div class="pg-pill" id="pg-pill-1">
+          <span class="pg-pill-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="badge badge-brand-hard badge-island pg-pill-badge">Voi+</span>
+        </div>
+        <div class="pg-card-wrap" id="pg-card-1">
+          <div class="drop-caret drop-caret--dark"></div>
+          <div class="drop-card drop-card--dark">
+            <div class="drop-card-dark-inner">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="var(--core-coral,#F26961)" aria-hidden="true"><path d="M9 14.25l1.234 1.766a1 1 0 001.546.098L15 12m-2.292-8.33C12.418 3.268 12 4.003 12 4.75v.018a.75.75 0 01-.387.657 4.477 4.477 0 01-2.11.528c-.77 0-1.5-.2-2.113-.528a.75.75 0 01-.388-.66l-.003-.017c0-.745-.418-1.48-1.208-2.081A1.5 1.5 0 004.5 4.75c0 1.61.826 2.848 1.726 3.74a.75.75 0 01.074.998C5.6 10.35 5.25 11.6 5.25 12.75a6.75 6.75 0 1013.5 0c0-1.15-.35-2.4-1.05-3.262a.75.75 0 01.074-.998C18.674 7.598 19.5 6.36 19.5 4.75a1.5 1.5 0 00-1.292-1.483c-.79.6-1.208 1.336-1.208 2.081v.018a.75.75 0 01-.388.659 4.478 4.478 0 01-2.112.528c-.77 0-1.5-.2-2.112-.528a.75.75 0 01-.388-.66z"/></svg>
+              <div>
+                <div class="drop-card-dark-title">30 minutes</div>
+                <div class="drop-card-dark-sub">Save unlock fee</div>
+              </div>
+              <div style="margin-left:auto;text-align:right">
+                <div class="drop-card-dark-price-old">39 kr</div>
+                <div class="drop-card-dark-price">29 kr</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island 3: Alert + warning badge + white card -->
+      <div class="pg-island-wrap">
+        <div class="pg-pill pg-pill--alert" id="pg-pill-2">
+          <span class="pg-pill-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </span>
+          <span class="badge badge-contrast badge-island pg-pill-badge">Zone</span>
+        </div>
+        <div class="pg-card-wrap" id="pg-card-2">
+          <div class="drop-caret"></div>
+          <div class="drop-card drop-card--white">
+            <div class="drop-card-title" style="font-size:15px;color:var(--core-tire)">No-go zone ahead</div>
+            <div class="drop-card-body">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d9312b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              <span style="font-size:12px;color:var(--content-body-tertiary)">Riding is not allowed in this area. Please walk your vehicle.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island 4: Group + neutral badge + white card -->
+      <div class="pg-island-wrap">
+        <div class="pg-pill" id="pg-pill-3">
+          <span class="pg-pill-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span class="badge badge-neutral badge-island pg-pill-badge">3 nearby</span>
+        </div>
+        <div class="pg-card-wrap" id="pg-card-3">
+          <div class="drop-caret"></div>
+          <div class="drop-card drop-card--white">
+            <div class="drop-card-title" style="font-size:15px;color:var(--core-tire)">Ride together</div>
+            <div class="drop-card-body" style="font-size:12px;color:var(--content-body-tertiary)">3 friends are riding nearby. Share your location to group up.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pg-controls">
+      <button class="btn btn-outlined btn-md" id="pg-btn-badge">Show badges</button>
+      <button class="btn btn-outlined btn-md" id="pg-btn-card">Show cards</button>
+    </div>
+  </div>
+
+  <!-- PLATFORM GUIDANCE -->
+  <div class="sub-label" style="margin-top:40px">Material by context</div>
+  <table class="prop-table">
+    <thead><tr><th>Context</th><th>Material</th><th>Implementation</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Over map / photo (iOS)</td>
+        <td>Native liquid glass</td>
+        <td><code>.glassBackgroundEffect()</code> / <code>UIBlurEffect</code></td>
+        <td>OS adapts automatically. Per Apple HIG 26 — use for nav chrome floating over content.</td>
+      </tr>
+      <tr>
+        <td>Over map / photo (Android + web)</td>
+        <td>Reef frosted glass</td>
+        <td><code>material-frost-medium</code></td>
+        <td><code>backdrop-filter: blur(32px)</code> + semi-transparent white. Shadow provides lift.</td>
+      </tr>
+      <tr>
+        <td>Over neutral UI surface</td>
+        <td>Solid white</td>
+        <td><code>surface-raised-enabled</code> + <code>shadow-card</code></td>
+        <td>Same shape and padding. Use when there is no complex background to blur through.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- CODE -->
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">{"/* 1 — Bare icon circle (frosted, over map) */"}</span>
+<span class="c-tag">{"<button"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"icon-btn icon-btn-md material-frost-medium"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<TicketIcon />"}</span>
+<span class="c-tag">{"</button>"}</span>
+
+<span class="c-comment">{"/* 2 — Icon + badge pill (frosted over map, solid over UI) */"}</span>
+<span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"island-pill island-pill--frosted"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"island-pill-icon"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"<TicketIcon />"}</span><span class="c-tag">{"</div>"}</span>
+  <span class="c-tag">{"<span"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"badge badge-accent badge-island"'}</span><span class="c-tag">{">"}</span>Deal!<span class="c-tag">{"</span>"}</span>
+<span class="c-tag">{"</div>"}</span>
+<span class="c-comment">{"/* Solid variant — swap class only */"}</span>
+<span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"island-pill island-pill--solid"'}</span><span class="c-tag">{">"}</span>...<span class="c-tag">{"</div>"}</span>
+
+<span class="c-comment">{"/* 3 — Multi-button strip (always solid white) */"}</span>
+<span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar toolbar--md"'}</span><span class="c-tag">{">"}</span>
+  <span class="c-tag">{"<button"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar-btn"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"<ZoomInIcon />"}</span><span class="c-tag">{"</button>"}</span>
+  <span class="c-tag">{"<button"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar-btn"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"<ZoomOutIcon />"}</span><span class="c-tag">{"</button>"}</span>
+  <span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar-divider"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"</div>"}</span>
+  <span class="c-tag">{"<button"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar-btn toolbar-btn--active"'}</span><span class="c-tag">{">"}</span><span class="c-tag">{"<MapIcon />"}</span><span class="c-tag">{"</button>"}</span>
+<span class="c-tag">{"</div>"}</span>
+<span class="c-comment">{"/* Horizontal strip */"}</span>
+<span class="c-tag">{"<div"}</span> <span class="c-attr">{"class"}</span>=<span class="c-str">{'"toolbar toolbar--md toolbar--horizontal"'}</span><span class="c-tag">{">"}</span>...<span class="c-tag">{"</div>"}</span>
+
+<span class="c-comment">{"/* iOS — native liquid glass */"}</span>
+<span class="c-tag">{"Image"}</span>(systemName: <span class="c-str">{'"ticket"'}</span>)
+  .frame(width: <span class="c-value">{"48"}</span>, height: <span class="c-value">{"48"}</span>)
+  .glassBackgroundEffect()</pre></div>
+
+  <!-- USAGE RULES -->
+  <div class="sub-label" style="margin-top:40px">Usage rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <div style="font-size:12px;font-weight:600;color:var(--alert-success);margin-bottom:8px">✓ Do</div>
+      <ul style="font-size:13px;color:var(--content-body-secondary);display:flex;flex-direction:column;gap:6px;padding-left:16px">
+        <li>Keep islands near the thumb zone — bottom corners on mobile</li>
+        <li>Use bare icons with no backplate inside islands</li>
+        <li>Badge color must match Reef semantic tokens (brick, chestnut, space, neutral)</li>
+        <li>On iOS, use native <code class="token">liquid glass</code> — never replicate it in CSS</li>
+        <li>The frosted shadow makes it readable on any background — light, dark, or map</li>
+      </ul>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <div style="font-size:12px;font-weight:600;color:var(--alert-error);margin-bottom:8px">✗ Don't</div>
+      <ul style="font-size:13px;color:var(--content-body-secondary);display:flex;flex-direction:column;gap:6px;padding-left:16px">
+        <li>Don't use Coral for badges — it's a brand-only colour, not a status signal</li>
+        <li>Don't wrap icons in backplates or coloured containers inside the island</li>
+        <li>Don't stack more than two zone signals vertically — it becomes unreadable</li>
+        <li>Don't place islands over flat colour backgrounds — backdrop-filter needs real content</li>
+        <li>Don't use the frosted CSS on iOS — the native material renders better</li>
+      </ul>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css';
+  document.head.appendChild(css);
+
+  const js = document.createElement('script');
+  js.src = 'https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js';
+  js.onload = function () {
+    mapboxgl.accessToken = 'MAPBOX_TOKEN';
+    const STYLE = 'mapbox://styles/johanerfass/cmevazjhe006a01scckk0envo';
+    [
+      { id: 'isl-map-1', center: [18.0686, 59.3293], zoom: 14 },
+      { id: 'isl-map-2', center: [18.0700, 59.3280], zoom: 14.5 },
+      { id: 'isl-map-3', center: [18.0720, 59.3305], zoom: 15 },
+      { id: 'isl-map-4', center: [18.0665, 59.3310], zoom: 15 },
+      { id: 'isl-map-5', center: [18.0690, 59.3265], zoom: 14 },
+      { id: 'isl-map-6', center: [18.0680, 59.3288], zoom: 14.5 },
+    ].forEach(function ({ id, center, zoom }) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      new mapboxgl.Map({ container: id, style: STYLE, center: center, zoom: zoom, interactive: false, attributionControl: false });
+    });
+  };
+  document.head.appendChild(js);
+})();
+</script>
+
+<style>
+  /* Platform note */
+  .platform-note {
+    background: var(--surface-raised-enabled);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .platform-note-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--content-body-secondary);
+    line-height: 1.5;
+  }
+  .platform-note-row + .platform-note-row {
+    border-top: 1px solid var(--fill-neutral-soft-enabled);
+  }
+  .platform-tag {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--content-body-primary);
+    background: var(--fill-neutral-soft-enabled);
+    border-radius: 6px;
+    padding: 2px 8px;
+    letter-spacing: .02em;
+  }
+
+  /* Map stage */
+  .map-stage {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .map-stage--sm { min-height: 160px; padding: 24px; }
+
+  .map-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .island-ann {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--core-tire);
+    margin-top: 8px;
+    text-align: center;
+  }
+  .island-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  /* Material demo containers */
+  .material-demo {
+    flex: 1;
+    min-width: 220px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .material-demo-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    margin-bottom: 16px;
+  }
+  .material-demo--map {
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,.5) 48px, rgba(255,255,255,.5) 50px),
+      repeating-linear-gradient(90deg, transparent, transparent 64px, rgba(255,255,255,.5) 64px, rgba(255,255,255,.5) 66px),
+      #d4e9d0;
+  }
+  .material-demo--map .material-demo-label { color: rgba(255,255,255,.75); }
+  .material-demo--light {
+    background: var(--surface-base-enabled, #f2f2f6);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+  }
+  .material-demo--light .material-demo-label { color: var(--content-body-tertiary); }
+
+  /* Pill — base shape */
+  .island-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 8px 8px 8px 12px;
+  }
+  /* Frosted variant */
+  .island-pill--frosted {
+    background: var(--fill-frost-medium-enabled);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    box-shadow: var(--shadow-shallow);
+    border: 1px solid var(--fill-frost-stroke);
+  }
+  /* Solid variant */
+  .island-pill--solid {
+    background: var(--surface-raised-enabled, #fff);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+  }
+  .island-pill-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--core-tire);
+    flex-shrink: 0;
+  }
+  /* Island-context badge override — fully rounded only */
+  .badge-island {
+    border-radius: 999px !important;
+  }
+  .badge-island.badge-neutral { box-shadow: var(--shadow-card); }
+
+  /* Drop card */
+  .drop-card-scene {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+  }
+  .drop-caret {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    filter: drop-shadow(0 -2px 4px rgba(0,0,0,.06));
+  }
+  .drop-caret--dark { border-bottom-color: var(--supporting-chestnut, #5C1F1A); }
+  .drop-card {
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+  }
+  .drop-card--white {
+    background: #fff;
+    box-shadow: var(--shadow-deep);
+  }
+  .drop-card--dark {
+    background: var(--supporting-chestnut, #5C1F1A);
+    box-shadow: var(--shadow-deep);
+  }
+  .drop-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--content-body-primary);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .drop-card-body {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--content-body-secondary);
+    line-height: 1.5;
+  }
+  .drop-card-dark-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .drop-card-dark-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .drop-card-dark-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,.65);
+    margin-top: 2px;
+  }
+  .drop-card-dark-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .drop-card-dark-price-old {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+    text-decoration: line-through;
+  }
+  .drop-card-close {
+    margin-left: 4px;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    flex-shrink: 0;
+  }
+
+  /* Zone stack */
+  .zone-group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 48px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .zone-stack {
+    width: 64px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 10px;
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    box-shadow: var(--shadow-shallow);
+  }
+  .zone-stack--amber {
+    background: rgba(255,200,60,0.82);
+    border: 2px solid rgba(230,160,0,.6);
+  }
+  .zone-stack--red {
+    background: rgba(90,30,20,0.80);
+    border: 2px solid #d9312b;
+    color: rgba(255,255,255,.6);
+  }
+  .zone-signal {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .zone-signal--speed {
+    background: #fff;
+    border: 3px solid #e03030;
+  }
+  .zone-signal--nogo {
+    background: #e03030;
+  }
+  .zone-speed-num {
+    font-size: 16px;
+    font-weight: 800;
+    color: #161314;
+    letter-spacing: -.02em;
+  }
+  .zone-map-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .zone-stack--amber .zone-map-icon { color: rgba(80,50,0,.7); }
+  .zone-stack--red   .zone-map-icon { color: rgba(255,255,255,.55); }
+
+  /* ── MULTI-BUTTON STRIP (toolbar) ──────────────────────────────────────── */
+  .demo-sub-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--content-body-tertiary);
+    margin-bottom: 12px;
+  }
+  .toolbar {
+    display: inline-flex;
+    flex-direction: column;
+    background: var(--surface-raised-enabled);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    border-radius: 32px;
+    gap: 4px;
+  }
+  .toolbar--sm { padding: 4px; gap: 4px; border-radius: 32px; }
+  .toolbar--md { padding: 8px; gap: 8px; border-radius: 32px; }
+  .toolbar--lg { padding: 12px; gap: 12px; border-radius: 48px; }
+  .toolbar--horizontal { flex-direction: row; }
+
+  .toolbar-btn {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border: none; background: transparent; border-radius: 20px;
+    cursor: pointer; color: var(--content-body-secondary);
+    transition: background .15s, color .15s; flex-shrink: 0;
+  }
+  .toolbar-btn:hover { background: var(--fill-neutral-soft-enabled); color: var(--content-body-primary); }
+  .toolbar-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.92); }
+  .toolbar-btn--active { background: var(--fill-neutral-soft-enabled); color: var(--content-body-primary); }
+
+  .toolbar-divider { height: 1px; background: var(--fill-neutral-soft-enabled); margin: 2px 4px; flex-shrink: 0; }
+  .toolbar-divider-h { width: 1px; background: var(--fill-neutral-soft-enabled); margin: 4px 2px; flex-shrink: 0; }
+
+  /* ── PLAYGROUND ────────────────────────────────────────────────────────── */
+  .pg-stage {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 32px 32px 24px;
+    gap: 24px;
+  }
+
+  .pg-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .pg-island-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Morphing pill — starts as a circle, expands to pill on .badge-active */
+  .pg-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 12px;
+    border-radius: 999px;
+    gap: 0;
+    background: var(--fill-frost-medium-enabled);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--fill-frost-stroke);
+    box-shadow: var(--shadow-shallow);
+    color: var(--core-tire);
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      padding 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      gap 0.35s ease;
+  }
+  .pg-pill--alert {
+    background: rgba(255,255,255,0.85);
+    color: var(--alert-error, #d9312b);
+  }
+  .pg-pill.badge-active {
+    padding: 8px 8px 8px 12px;
+    border-radius: 999px;
+    gap: 8px;
+  }
+  .pg-pill-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pg-pill-badge {
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition:
+      max-width 0.3s ease 0.15s,
+      opacity 0.2s ease 0.2s;
+  }
+  .pg-pill.badge-active .pg-pill-badge {
+    max-width: 120px;
+    opacity: 1;
+  }
+
+  /* Drop card wrapper — hidden, drops in on .card-active */
+  .pg-card-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateY(-14px) scale(0.96);
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 220px;
+  }
+  .pg-card-wrap.card-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .pg-card-wrap .drop-card { width: 100%; }
+
+  /* Control row */
+  .pg-controls {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var badgesOn = false;
+  var cardsOn = false;
+
+  var badgeBtn = document.getElementById('pg-btn-badge');
+  var cardBtn  = document.getElementById('pg-btn-card');
+  if (!badgeBtn || !cardBtn) return;
+
+  badgeBtn.addEventListener('click', function () {
+    badgesOn = !badgesOn;
+    badgeBtn.textContent = badgesOn ? 'Hide badges' : 'Show badges';
+    document.querySelectorAll('.pg-pill').forEach(function (pill, i) {
+      setTimeout(function () {
+        pill.classList.toggle('badge-active', badgesOn);
+      }, i * 80);
+    });
+  });
+
+  cardBtn.addEventListener('click', function () {
+    cardsOn = !cardsOn;
+    cardBtn.textContent = cardsOn ? 'Hide cards' : 'Show cards';
+    document.querySelectorAll('.pg-card-wrap').forEach(function (card, i) {
+      setTimeout(function () {
+        card.classList.toggle('card-active', cardsOn);
+      }, i * 80);
+    });
+  });
+})();
+</script>

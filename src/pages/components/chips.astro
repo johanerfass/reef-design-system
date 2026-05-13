@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Chips">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Four chip types</h1>
+  <p class="s-desc">Compact interactive labels for filtering, selection, and status. Four distinct types: filter (toggle on/off), assistive (suggestion), accordion (expandable), and alert (inline feedback). Use one type consistently within a surface.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">assistiveChip — tags and labels. Three colour props (names are props, not literal colours).</div>
+  <div class="demo">
+    <div style="margin-bottom:20px">
+      <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:12px">Small (32px · 12px radius · 600 weight)</p>
+      <div class="row">
+        <div style="text-align:center"><button class="chip chip-sm chip-light-grey">light-grey</button><span class="ann">Pearl bg</span></div>
+        <div style="text-align:center"><button class="chip chip-sm chip-coral-pastel">coral</button><span class="ann">Pink bg #FFDCD9 — not Coral</span></div>
+        <div style="text-align:center"><button class="chip chip-sm chip-thunder-pastel">thunder</button><span class="ann">Sky bg #ABD1EA — not Thunder</span></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:12px;color:var(--content-body-tertiary);margin-bottom:12px">Large (40px · 16px radius · 400 weight)</p>
+      <div class="row">
+        <button class="chip chip-lg chip-light-grey">light-grey</button>
+        <button class="chip chip-lg chip-coral-pastel">coral</button>
+        <button class="chip chip-lg chip-thunder-pastel">thunder</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">filterChip — toggle selection. Active state uses Sea (#455F85), not Tire.</div>
+  <div class="demo">
+    <div class="row" id="filter-chips">
+      <button class="chip chip-sm chip-filter-active" data-filter>All</button>
+      <button class="chip chip-sm chip-filter-inactive" data-filter>Scooters</button>
+      <button class="chip chip-sm chip-filter-inactive" data-filter>E-bikes</button>
+      <button class="chip chip-sm chip-filter-inactive" data-filter>Nearby</button>
+      <button class="chip chip-sm chip-filter-inactive" data-filter>Fast charge</button>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="chip chip-sm chip-filter-active-neg">negative variant</button>
+      <span style="font-size:12px;color:var(--content-body-tertiary)">active-negative uses Tire, not Sea</span>
+    </div>
+  </div>
+
+  <div class="sub-label">accordionChip — expandable. Outline style, chevron rotates.</div>
+  <div class="demo">
+    <div class="row">
+      <button class="chip chip-sm chip-accordion" data-accordion>
+        Sort by <span class="chevron">›</span>
+      </button>
+      <button class="chip chip-lg chip-accordion" data-accordion>
+        Filter options <span class="chevron">›</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-label">alertChip — status indicator. 10% tint bg + coloured border. 5 types.</div>
+  <div class="demo">
+    <div class="row">
+      <button class="chip chip-sm chip-alert chip-alert-success">Active</button>
+      <button class="chip chip-sm chip-alert chip-alert-warning">Low battery</button>
+      <button class="chip chip-sm chip-alert chip-alert-error">Unavailable</button>
+      <button class="chip chip-sm chip-alert chip-alert-info">Maintenance zone</button>
+      <button class="chip chip-sm chip-alert chip-alert-mandatory">Required</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Assistive chip"}</span>
+<span class="c-tag">{"<AssistiveChip"}</span> <span class="c-attr">{"colour="}</span><span class="c-string">{'"light-grey"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Label"}</span><span class="c-tag">{"</AssistiveChip>"}</span>
+<span class="c-tag">{"<AssistiveChip"}</span> <span class="c-attr">{"colour="}</span><span class="c-string">{'"coral"'}</span> <span class="c-attr">{"size="}</span><span class="c-string">{'"lg"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Voi+"}</span><span class="c-tag">{"</AssistiveChip>"}</span>
+
+<span class="c-comment">{"// Filter chip"}</span>
+<span class="c-tag">{"<FilterChip"}</span> <span class="c-attr">{"active"}</span><span class="c-tag">{">"}</span><span class="c-value">{"All"}</span><span class="c-tag">{"</FilterChip>"}</span>
+<span class="c-tag">{"<FilterChip"}</span><span class="c-tag">{">"}</span><span class="c-value">{"Scooters"}</span><span class="c-tag">{"</FilterChip>"}</span>
+
+<span class="c-comment">{"// Accordion chip"}</span>
+<span class="c-tag">{"<AccordionChip"}</span> <span class="c-attr">{"label="}</span><span class="c-string">{'"Sort by"'}</span> <span class="c-attr">{"onToggle="}</span><span class="c-value">{"() => {}"}</span> <span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Alert chip"}</span>
+<span class="c-tag">{"<AlertChip"}</span> <span class="c-attr">{"type="}</span><span class="c-string">{'"success"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Active"}</span><span class="c-tag">{"</AlertChip>"}</span>
+<span class="c-tag">{"<AlertChip"}</span> <span class="c-attr">{"type="}</span><span class="c-string">{'"error"'}</span><span class="c-tag">{">"}</span><span class="c-value">{"Unavailable"}</span><span class="c-tag">{"</AlertChip>"}</span></pre>
+  </div>
+
+  <div class="sub-label">Radius reference</div>
+  <div class="card card-sm" style="border-radius:16px">
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:12px">
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Small chip (32px height)</span><code class="token">border-radius: 12px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Large chip (40px height)</span><code class="token">border-radius: 16px</code></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--content-body-secondary)">Pills</span><span style="color:var(--alert-error);font-weight:600">Never used in Reef</span></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+document.querySelectorAll('[data-filter]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const group = (e.currentTarget as HTMLElement).closest('#filter-chips');
+    if (!group) return;
+    group.querySelectorAll('[data-filter]').forEach(c => {
+      c.className = 'chip chip-sm chip-filter-inactive';
+      (c as HTMLElement).dataset.filter = '';
+    });
+    (e.currentTarget as HTMLElement).className = 'chip chip-sm chip-filter-active';
+  });
+});
+
+document.querySelectorAll('[data-accordion]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const el = e.currentTarget as HTMLElement;
+    el.classList.toggle('open');
+    const ch = el.querySelector('.chevron') as HTMLElement;
+    if (ch) ch.style.transform = el.classList.contains('open') ? 'rotate(90deg)' : '';
+  });
+});
+</script>

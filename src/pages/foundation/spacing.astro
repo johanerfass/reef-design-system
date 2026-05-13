@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Spacing">
+  <div class="s-overline">01 — Foundation</div>
+  <h1 class="s-title">Spacing</h1>
+  <p class="s-desc">A strict 4pt grid. All spacing values are multiples of 4px. --space-4 (16px) is the baseline unit — the most frequently used value in the entire system.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Space scale</div>
+  <div class="card" style="border-radius:24px">
+    <div class="space-row"><div class="space-block" style="width:4px;height:4px"></div><div class="space-meta"><code>--space-1</code> · 4px · tight gaps, icon padding</div></div>
+    <div class="space-row"><div class="space-block" style="width:8px;height:8px"></div><div class="space-meta"><code>--space-2</code> · 8px · form element gaps, inline spacing</div></div>
+    <div class="space-row"><div class="space-block" style="width:12px;height:12px"></div><div class="space-meta"><code>--space-3</code> · 12px · chip padding, small gaps</div></div>
+    <div class="space-row"><div class="space-block" style="width:16px;height:16px"></div><div class="space-meta"><code>--space-4</code> · 16px · <strong>most common</strong> · component padding, form fields</div></div>
+    <div class="space-row"><div class="space-block" style="width:24px;height:24px"></div><div class="space-meta"><code>--space-6</code> · 24px · inner section gaps, card sub-sections</div></div>
+    <div class="space-row"><div class="space-block" style="width:32px;height:32px"></div><div class="space-meta"><code>--space-8</code> · 32px · card padding, outer container margin</div></div>
+    <div class="space-row" style="margin-bottom:0"><div class="space-block" style="width:48px;height:48px"></div><div class="space-meta"><code>--space-12</code> · 48px · section-level gaps, page top padding</div></div>
+  </div>
+
+  <div class="sub-label">Visual scale comparison</div>
+  <div class="demo">
+    <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap">
+      {[
+        {size: 4, label: '--space-1'},
+        {size: 8, label: '--space-2'},
+        {size: 12, label: '--space-3'},
+        {size: 16, label: '--space-4'},
+        {size: 24, label: '--space-6'},
+        {size: 32, label: '--space-8'},
+        {size: 48, label: '--space-12'},
+      ].map(s => (
+        <div style="text-align:center">
+          <div style={`width:${s.size}px;height:${s.size}px;background:var(--alert-info);opacity:.7;border-radius:3px;margin:0 auto`}></div>
+          <div style="font-size:10px;font-family:monospace;color:var(--content-body-tertiary);margin-top:6px;white-space:nowrap">{s.size}px</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="sub-label">Application rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Component internals</p>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--content-body-secondary)">
+        <div>Button padding: <code class="token">space-4 (16px)</code> to <code class="token">space-8 (32px)</code></div>
+        <div>Card padding: <code class="token">space-8 (32px)</code></div>
+        <div>Input height: 56px · padding: <code class="token">space-4 (16px)</code></div>
+        <div>Chip padding: <code class="token">space-3 (12px)</code> to <code class="token">space-4 (16px)</code></div>
+      </div>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:8px">Layout rhythm</p>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--content-body-secondary)">
+        <div>Section gap: <code class="token">space-12 (48px)</code></div>
+        <div>Between cards: <code class="token">space-6 (24px)</code></div>
+        <div>Within card sections: <code class="token">space-4 (16px)</code></div>
+        <div>Icon to label: <code class="token">space-2 (8px)</code></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

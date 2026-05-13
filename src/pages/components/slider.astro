@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Slider">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Slider</h1>
+  <p class="s-desc">Horizontal range control for selecting a numeric value along a continuum. Use for settings with a natural range like volume, distance, or opacity. Always show the current value and the range endpoints.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Default — contrast thumb</div>
+  <div class="demo" style="max-width:400px">
+    <div class="form-field">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+        <label class="form-label" style="font-size:14px">Volume</label>
+        <span class="slider-value" id="val1">60</span>
+      </div>
+      <div class="slider-wrap">
+        <input type="range" class="slider" min="0" max="100" value="60" id="sl1" />
+      </div>
+      <div class="slider-labels"><span>0</span><span>100</span></div>
+    </div>
+  </div>
+
+  <div class="sub-label">Accent (Coral) thumb</div>
+  <div class="demo" style="max-width:400px">
+    <div class="form-field">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+        <label class="form-label" style="font-size:14px">Price range</label>
+        <span class="slider-value" id="val2">€25</span>
+      </div>
+      <div class="slider-wrap">
+        <input type="range" class="slider slider--accent" min="0" max="100" value="25" id="sl2" />
+      </div>
+      <div class="slider-labels"><span>€0</span><span>€100</span></div>
+    </div>
+  </div>
+
+  <div class="sub-label">Disabled</div>
+  <div class="demo" style="max-width:400px">
+    <div class="form-field">
+      <label class="form-label" style="font-size:14px;color:var(--content-disabled)">Speed limit (locked)</label>
+      <div class="slider-wrap">
+        <input type="range" class="slider" min="0" max="100" value="45" disabled />
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default slider */</span>
+<span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"range"</span> <span class="c-attr">class</span>=<span class="c-str">"slider"</span> <span class="c-attr">min</span>=<span class="c-str">"0"</span> <span class="c-attr">max</span>=<span class="c-str">"100"</span> <span class="c-attr">value</span>=<span class="c-str">"60"</span> <span class="c-tag">/&gt;</span>
+
+<span class="c-comment">/* Accent (Coral) thumb */</span>
+<span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"range"</span> <span class="c-attr">class</span>=<span class="c-str">"slider slider--accent"</span> <span class="c-tag">/&gt;</span>
+
+<span class="c-comment">/* Disabled */</span>
+<span class="c-tag">&lt;input</span> <span class="c-attr">type</span>=<span class="c-str">"range"</span> <span class="c-attr">class</span>=<span class="c-str">"slider"</span> <span class="c-attr">disabled</span> <span class="c-tag">/&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Track height</code></td><td><code>4px</code></td><td>Full-width, neutral soft background</td></tr>
+      <tr><td><code>Thumb size</code></td><td><code>24×24px, 50% radius</code></td><td>Tire fill; accent variant uses Coral</td></tr>
+      <tr><td><code>Thumb shadow</code></td><td><code>0 1px 4px rgba(0,0,0,.22)</code></td><td>Elevation above track</td></tr>
+      <tr><td><code>Touch target</code></td><td><code>44px height via padding</code></td><td>HIG minimum touch target</td></tr>
+      <tr><td><code>Disabled opacity</code></td><td><code>0.4</code></td><td>Matches global disabled pattern</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:40px">Platform notes</div>
+  <div class="grid-2" style="gap:12px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">iOS (HIG)</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Use <code class="token">UISlider</code>. Apply Tire as <code class="token">minimumTrackTintColor</code>. Thumb auto-sizes to 23px.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">Android (Material)</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Use Material <code class="token">Slider</code>. Map Tire to <code class="token">trackColor</code> and <code class="token">thumbColor</code>.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.getElementById('sl1')?.addEventListener('input', (e) => {
+    const el = document.getElementById('val1');
+    if (el) el.textContent = (e.target as HTMLInputElement).value;
+  });
+  document.getElementById('sl2')?.addEventListener('input', (e) => {
+    const el = document.getElementById('val2');
+    if (el) el.textContent = '€' + (e.target as HTMLInputElement).value;
+  });
+</script>

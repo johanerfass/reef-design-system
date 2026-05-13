@@ -1,0 +1,727 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Overview">
+
+  <!-- ─── HERO ────────────────────────────────────────────────────────── -->
+  <div class="voi-hero-bg hero" id="hero-bg">
+    <div class="voi-orb voi-orb--coral-a"></div>
+    <div class="voi-orb voi-orb--coral-b"></div>
+    <div class="voi-orb voi-orb--coral-c"></div>
+    <div class="voi-orb voi-orb--coral-d"></div>
+    <div class="voi-orb voi-orb--coral-e"></div>
+    <div class="voi-orb voi-orb--sky-a"></div>
+    <div class="voi-orb voi-orb--sky-b"></div>
+    <div class="voi-orb voi-orb--sky-c"></div>
+    <div class="voi-orb voi-orb--sky-d"></div>
+    <div class="hero-content">
+      <div class="hero-kicker">Reef design system · v1.3.2</div>
+      <h1>Design<br>in <em>Voi's</em><br>language.</h1>
+      <p class="hero-sub">Tokens, rules, and 35 components — every pattern your product team needs. The complete language for Voi's digital products.</p>
+      <div class="hero-btns">
+        <a href="/foundation/colours" class="btn btn-contrast btn-lg">Explore tokens</a>
+        <a href="/components/buttons" class="btn btn-outlined btn-lg">View components</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="https://media.ffycdn.net/eu/voi-technologies/eyJwYXRoIjoidm9pLXRlY2hub2xvZ2llc1wvYWNjb3VudHNcL2YxXC80MDAxMTMzXC9wcm9qZWN0c1wvMjFcL2Fzc2V0c1wvYTdcLzE1MzAyXC9lZDZhMWYxNzExOGFkOGQzNjM5N2RhOTg4OGYxNzZjMy0xNjQyNzc1MTE4LmpwZyJ9:voi-technologies:NzCV0vYqN4HwSUE-_Evr_hWx9Xxl9FKWKw3zKEX-dx0?mod=v1/resize=2400" alt="Two riders with Voi e-scooters in Stockholm" loading="eager" />
+      </div>
+      <div class="hero-badge">
+        <img class="hero-badge-app-icon" src="/voi-app-icon.png" alt="Voi app icon" width="48" height="48" />
+        <div>
+          <div class="hero-badge-title">Voi rider app</div>
+          <div class="hero-badge-sub">★ 4.8 · Free · iOS &amp; Android</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STATS STRIP ─────────────────────────────────────────────────── -->
+  <div class="stats-strip anim">
+    <div class="stat-item">
+      <span class="stat-number" data-count="35">35</span>
+      <span class="stat-label">Components</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="80" data-suffix="+">80+</span>
+      <span class="stat-label">Design tokens</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="3">3</span>
+      <span class="stat-label">Platforms</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="1">1</span>
+      <span class="stat-label">Golden rule</span>
+    </div>
+  </div>
+
+  <!-- ─── SPOTLIGHT 1: COMPONENTS ─────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="feat">
+      <div class="feat-copy">
+        <div class="s-overline">Components</div>
+        <h2 class="feat-heading">35 components.<br>Production-ready.</h2>
+        <p class="feat-body">Every component is interactive, token-driven, and dark-mode aware. What you see here is exactly what ships — no extra translation needed.</p>
+        <a href="/components/buttons" class="feat-link">Browse all components →</a>
+      </div>
+      <div class="feat-visual">
+        <div class="feat-frame">
+
+          <div>
+            <div class="feat-tag">Buttons · 6 variants</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+              <button class="btn btn-contrast btn-sm">Start ride</button>
+              <button class="btn btn-outlined btn-sm">End ride</button>
+              <button class="btn btn-transparent btn-sm">Learn more</button>
+              <button class="btn btn-accent btn-sm">Voi+</button>
+            </div>
+          </div>
+
+          <div class="feat-sep"></div>
+
+          <div>
+            <div class="feat-tag">Alert card · 5 types</div>
+            <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+              <div class="alert-card alert-card-success">
+                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <div class="alert-card-content"><div class="title">Ride ended</div><div class="body">Parked correctly. €0.50 discount applied.</div></div>
+              </div>
+              <div class="alert-card alert-card-warning">
+                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <div class="alert-card-content"><div class="title">Battery at 12%</div><div class="body">This scooter may not reach your destination.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-sep"></div>
+
+          <div>
+            <div class="feat-tag">Chips & Badges</div>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <button class="chip chip-filter-inactive">E-scooter</button>
+              <button class="chip chip-filter-active">E-bike</button>
+              <button class="chip chip-filter-inactive">Cargo</button>
+            </div>
+            <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+              <span class="badge badge-success">Available</span>
+              <span class="badge badge-warning">Low battery</span>
+              <span class="badge badge-contrast">Out of zone</span>
+              <span class="badge badge-information">Charging</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SPOTLIGHT 2: FOUNDATION ──────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="feat feat--rev">
+      <div class="feat-visual">
+        <div class="feat-frame">
+
+          <div>
+            <div class="feat-tag">Colour system · 5 families</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+              <div class="feat-swatch" style="background:#F26961"><span class="feat-swatch-name">Coral</span><span class="feat-swatch-hex">#F26961</span></div>
+              <div class="feat-swatch" style="background:#282425;color:#fff"><span class="feat-swatch-name">Tire</span><span class="feat-swatch-hex">#282425</span></div>
+              <div class="feat-swatch" style="background:#ABD1EA"><span class="feat-swatch-name">Sky</span><span class="feat-swatch-hex">#ABD1EA</span></div>
+              <div class="feat-swatch" style="background:#243860;color:#fff"><span class="feat-swatch-name">Space</span><span class="feat-swatch-hex">#243860</span></div>
+              <div class="feat-swatch" style="background:#F2F2F6;border:1px solid rgba(0,0,0,.08)"><span class="feat-swatch-name">Pearl</span><span class="feat-swatch-hex">#F2F2F6</span></div>
+            </div>
+          </div>
+
+          <div class="feat-sep"></div>
+
+          <div>
+            <div class="feat-tag">Sora · one typeface, four weights</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+              <div style="font-size:32px;font-weight:700;line-height:1;letter-spacing:-.025em;color:var(--content-heading-primary)">Unlock it.</div>
+              <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--content-heading-primary)">Start your ride</div>
+              <div style="font-size:14px;font-weight:400;color:var(--content-body-secondary)">Park in marked zones. Avoid blocking paths.</div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary)">Status · Active</div>
+            </div>
+          </div>
+
+          <div class="feat-sep"></div>
+
+          <div>
+            <div class="feat-tag">Shadows & Radius</div>
+            <div style="display:flex;gap:12px;align-items:flex-end;margin-top:12px">
+              <div style="width:44px;height:44px;border-radius:8px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-xs);border:1px solid var(--fill-neutral-soft-enabled)"></div>
+              <div style="width:44px;height:44px;border-radius:12px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-card)"></div>
+              <div style="width:44px;height:44px;border-radius:20px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-overlay)"></div>
+              <div style="width:44px;height:44px;border-radius:32px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-sticky)"></div>
+              <span style="font-size:11px;color:var(--content-body-tertiary);margin-left:4px">xs → sticky</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="feat-copy">
+        <div class="s-overline">Foundation</div>
+        <h2 class="feat-heading">Tokens,<br>not guesses.</h2>
+        <p class="feat-body">80+ CSS custom properties covering colour, typography, spacing, shadows and radius. Light and dark mode — both perfect, right out of the box.</p>
+        <a href="/foundation/colours" class="feat-link">Explore tokens →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── GOLDEN RULE STATEMENT ────────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="golden-statement">
+      <div class="golden-statement-kicker">The golden rule</div>
+      <h2 class="golden-statement-heading">Coral is a brand colour,<br>not a CTA.</h2>
+      <p class="golden-statement-body">Primary actions always use Tire. Coral is reserved for brand moments only — one per screen maximum. This single rule keeps every surface calm and premium.</p>
+      <div class="golden-statement-demo">
+        <div class="golden-demo-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--alert-success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <button class="btn btn-contrast btn-sm">Start ride</button>
+          <span class="golden-demo-label">Tire CTA</span>
+        </div>
+        <div class="golden-demo-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--alert-error)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <button class="btn btn-sm" style="background:#F26961;color:#fff;border:none;cursor:default">Start ride</button>
+          <span class="golden-demo-label">Coral CTA ✗</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── QUICK NAV ────────────────────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="s-overline">Explore</div>
+    <h2 class="showcase-heading">Where do you want to go?</h2>
+    <div class="grid-auto" style="margin-top:32px">
+      <a href="/foundation/colours" class="nav-card">
+        <div class="nav-card-thumb nav-card-thumb--foundation" style="background:linear-gradient(135deg,#F2F2F6 0%,#e8e4df 100%)">
+          <div style="display:flex;gap:6px">
+            <div style="width:20px;height:20px;border-radius:50%;background:#F26961"></div>
+            <div style="width:20px;height:20px;border-radius:50%;background:#282425"></div>
+            <div style="width:20px;height:20px;border-radius:50%;background:#ABD1EA"></div>
+          </div>
+        </div>
+        <div class="nav-card-body">
+          <div class="nav-card-title">Foundation</div>
+          <div class="nav-card-desc">Colours, type, spacing, shadows & radius</div>
+        </div>
+        <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/components/buttons" class="nav-card">
+        <div class="nav-card-thumb" style="background:linear-gradient(135deg,#282425 0%,#585455 100%)">
+          <div style="display:flex;gap:6px">
+            <div style="padding:4px 10px;border-radius:6px;background:#fff;font-size:9px;font-weight:700;color:#282425;font-family:'Sora',sans-serif">Btn</div>
+            <div style="padding:4px 10px;border-radius:6px;border:1.5px solid rgba(255,255,255,.5);font-size:9px;font-weight:700;color:#fff;font-family:'Sora',sans-serif">Btn</div>
+          </div>
+        </div>
+        <div class="nav-card-body">
+          <div class="nav-card-title">Components</div>
+          <div class="nav-card-desc">35 components across all platforms</div>
+        </div>
+        <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/patterns/dos-donts" class="nav-card">
+        <div class="nav-card-thumb" style="background:linear-gradient(135deg,#ABD1EA 0%,#243860 100%)">
+          <div style="display:flex;gap:8px">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="nav-card-body">
+          <div class="nav-card-title">Patterns</div>
+          <div class="nav-card-desc">Dos & don'ts, voice & tone</div>
+        </div>
+        <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/tooling/atmospheres" class="nav-card">
+        <div class="nav-card-thumb" style="background:radial-gradient(ellipse at 20% 80%,rgba(242,105,97,.35) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(171,209,234,.4) 0%,transparent 60%),#faf4ec">
+        </div>
+        <div class="nav-card-body">
+          <div class="nav-card-title">Tooling</div>
+          <div class="nav-card-desc">Atmospheres, Claude Code skill</div>
+        </div>
+        <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── RESOURCES ────────────────────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="s-overline">Resources</div>
+    <h2 class="showcase-heading">Authoritative sources.</h2>
+    <p class="s-desc" style="margin-bottom:32px;max-width:480px">Reef is a personal reference — these are the canonical Voi brand and design files.</p>
+    <div class="grid-2" style="gap:12px">
+      <a href="https://brand.voi.com/hub/3" target="_blank" rel="noopener" class="resource-link">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--core-tire);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="8" viewBox="0 0 184 76" fill="white"><path d="M58.7 23.8L37 75.2H21.6L0 23.8h15.4l14.2 35 14.8-35h14.3z"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:var(--content-heading-primary)">Voi Brand Portal</div>
+          <div style="font-size:12px;color:var(--content-body-tertiary);margin-top:2px">brand.voi.com · Identity, voice, assets</div>
+        </div>
+        <svg style="opacity:.3;flex-shrink:0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+      <a href="https://www.figma.com/design/M7HfjUuDwU3AtQdiijFtyR/Reef---Design-System--v.1.3.2-" target="_blank" rel="noopener" class="resource-link">
+        <div style="width:40px;height:40px;border-radius:12px;background:#0d99ff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="18" height="27" viewBox="0 0 38 57" fill="white"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:var(--content-heading-primary)">Reef in Figma</div>
+          <div style="font-size:12px;color:var(--content-body-tertiary);margin-top:2px">v1.3.2 · Component specs, design tokens</div>
+        </div>
+        <svg style="opacity:.3;flex-shrink:0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script>
+// ─── SCROLL ANIMATIONS + COUNT-UP ───────────────────────────────────────
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Intersection observer — reveal .anim elements
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('anim--visible');
+      // Trigger count-up for stat numbers inside this element
+      entry.target.querySelectorAll('[data-count]').forEach(el => {
+        if (el.dataset.counted) return;
+        el.dataset.counted = '1';
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        if (reduced) { el.textContent = target + suffix; return; }
+        const duration = 900;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.anim').forEach(el => {
+    if (reduced) { el.classList.add('anim--visible'); return; }
+    observer.observe(el);
+  });
+})();
+
+// ─── ORB REACTIVITY ─────────────────────────────────────────────────────
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const hero = document.getElementById('hero-bg');
+  if (!hero) return;
+  const orbs = [...hero.querySelectorAll('.voi-orb')] as HTMLElement[];
+  const factors = [0.10, -0.07, 0.15, -0.09, 0.12, -0.06, 0.13, -0.10, 0.08];
+  const scatter = orbs.map(() => ({ x: 0, y: 0 }));
+  let targetX = 0, targetY = 0, currentX = 0, currentY = 0, active = false;
+
+  function onPointer(e: MouseEvent | TouchEvent) {
+    const r = hero.getBoundingClientRect();
+    const clientX = 'touches' in e ? (e as TouchEvent).touches[0].clientX : (e as MouseEvent).clientX;
+    const clientY = 'touches' in e ? (e as TouchEvent).touches[0].clientY : (e as MouseEvent).clientY;
+    targetX = clientX - (r.left + r.width / 2);
+    targetY = clientY - (r.top + r.height / 2);
+    active = true;
+  }
+  function onLeave() { targetX = 0; targetY = 0; active = false; }
+  function onClick(e: MouseEvent) {
+    const r = hero.getBoundingClientRect();
+    const cx = e.clientX - (r.left + r.width / 2);
+    const cy = e.clientY - (r.top + r.height / 2);
+    orbs.forEach((_, i) => {
+      const angle = (i / orbs.length) * Math.PI * 2 + Math.random() * 0.4;
+      const radius = 120 + Math.random() * 80;
+      scatter[i].x = Math.cos(angle) * radius - cx * 0.15;
+      scatter[i].y = Math.sin(angle) * radius - cy * 0.15;
+    });
+  }
+  hero.addEventListener('mousemove', onPointer as EventListener, { passive: true });
+  hero.addEventListener('touchstart', onPointer as EventListener, { passive: true });
+  hero.addEventListener('touchmove', onPointer as EventListener, { passive: true });
+  hero.addEventListener('mouseleave', onLeave);
+  hero.addEventListener('touchend', onLeave);
+  hero.addEventListener('click', onClick as EventListener);
+
+  function tick() {
+    const speed = active ? 0.04 : 0.025;
+    currentX += (targetX - currentX) * speed;
+    currentY += (targetY - currentY) * speed;
+    orbs.forEach((orb, i) => {
+      scatter[i].x *= 0.92;
+      scatter[i].y *= 0.92;
+      const f = factors[i % factors.length];
+      orb.style.setProperty('--rx', `${(currentX * f + scatter[i].x).toFixed(2)}px`);
+      orb.style.setProperty('--ry', `${(currentY * f + scatter[i].y).toFixed(2)}px`);
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+</script>
+
+<style>
+/* ─── HERO ──────────────────────────────────────────────────────────── */
+.hero {
+  margin-left: -56px;
+  margin-right: -56px;
+  margin-top: -48px;
+  padding-left: 56px;
+  padding-right: 56px;
+  border-radius: 0;
+  gap: 80px;
+}
+.hero-photo-wrap {
+  flex: 0 0 480px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.hero-photo {
+  height: 560px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+.hero-badge {
+  position: absolute;
+  bottom: 24px;
+  left: -24px;
+  background: var(--surface-overlay-enabled);
+  border-radius: 20px;
+  box-shadow: var(--shadow-overlay);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: badge-in 0.6s cubic-bezier(0.22,1,0.36,1) 0.7s both;
+}
+.hero-badge-app-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  flex-shrink: 0;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(242,105,97,.4);
+  display: block;
+}
+.hero-badge-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--content-heading-primary);
+  line-height: 1.2;
+}
+.hero-badge-sub {
+  font-size: 12px;
+  color: var(--content-body-tertiary);
+  margin-top: 2px;
+}
+@keyframes badge-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+@media (max-width: 1200px) {
+  .hero-photo-wrap { flex-basis: 400px; }
+  .hero-photo { height: 480px; }
+}
+@media (max-width: 1100px) {
+  .hero-photo-wrap { flex-basis: 340px; }
+  .hero-photo { height: 420px; }
+  .hero-badge { left: -12px; }
+}
+@media (max-width: 1024px) {
+  .hero-photo-wrap { display: none; }
+}
+
+/* ─── SCROLL ANIMATIONS ─────────────────────────────────────────────── */
+.anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.anim.anim--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.anim-delay-1 { transition-delay: 0.08s; }
+.anim-delay-2 { transition-delay: 0.16s; }
+.anim-delay-3 { transition-delay: 0.24s; }
+.anim-delay-4 { transition-delay: 0.32s; }
+@media (max-width: 600px) {
+  .hero {
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-top: -72px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* When frosted atmosphere is active, let it show through — hide hero orbs and bg */
+:global([data-frost]) .hero { background: transparent; }
+:global([data-frost]) .hero .voi-orb { display: none; }
+
+/* ─── SECTION GAPS ──────────────────────────────────────────────────── */
+.section-gap { margin-top: 80px; }
+
+/* ─── STATS STRIP ───────────────────────────────────────────────────── */
+.stats-strip {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface-raised-enabled);
+  border-radius: 24px;
+  padding: 24px 32px;
+  margin-top: 40px;
+  box-shadow: var(--shadow-card);
+  flex-wrap: wrap;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 80px;
+}
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--content-heading-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--content-body-tertiary);
+  font-weight: 600;
+}
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--fill-neutral-soft-enabled);
+}
+@media (max-width: 480px) {
+  .stats-strip { gap: 16px; padding: 20px 24px; }
+  .stat-divider { display: none; }
+  .stat-item { min-width: calc(50% - 8px); }
+}
+
+/* ─── SHOWCASE HEADING (kept for quick nav) ─────────────────────────── */
+.showcase-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--content-heading-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 8px 0 12px;
+}
+
+/* ─── FEATURE SPOTLIGHTS ────────────────────────────────────────────── */
+.feat {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.feat--rev { flex-direction: row-reverse; }
+.feat-copy { flex: 0 0 360px; }
+.feat-heading {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--content-heading-primary);
+  margin: 8px 0 16px;
+}
+.feat-body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--content-body-secondary);
+  margin: 0 0 24px;
+  max-width: 360px;
+}
+.feat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--content-heading-primary);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--fill-neutral-medium-enabled);
+  padding-bottom: 2px;
+  transition: border-color .15s;
+}
+.feat-link:hover { border-color: var(--content-heading-primary); }
+.feat-visual { flex: 1; min-width: 0; }
+.feat-frame {
+  background: var(--surface-raised-enabled);
+  border-radius: 32px;
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--fill-neutral-soft-enabled);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.feat-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--content-body-tertiary);
+  margin-bottom: 12px;
+}
+.feat-sep {
+  height: 1px;
+  background: var(--fill-neutral-soft-enabled);
+}
+.feat-swatch {
+  border-radius: 14px;
+  padding: 10px 12px 8px;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.feat-swatch-name { font-size: 11px; font-weight: 700; }
+.feat-swatch-hex { font-size: 10px; opacity: .6; }
+
+@media (max-width: 900px) {
+  .feat, .feat--rev { flex-direction: column; gap: 32px; }
+  .feat-copy { flex: none; width: 100%; }
+  .feat-body { max-width: none; }
+  .feat-heading { font-size: 34px; }
+}
+@media (max-width: 480px) {
+  .feat-frame { padding: 24px; }
+  .feat-heading { font-size: 28px; }
+  .showcase-heading { font-size: 26px; }
+}
+
+/* ─── GOLDEN STATEMENT ──────────────────────────────────────────────── */
+.golden-statement {
+  text-align: center;
+  padding: 72px 40px;
+  background: rgba(242,105,97,.04);
+  border: 1px solid rgba(242,105,97,.15);
+  border-radius: 32px;
+}
+:global([data-theme="dark"]) .golden-statement {
+  background: rgba(242,105,97,.10);
+  border-color: rgba(242,105,97,.24);
+}
+.golden-statement-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #D04740;
+  margin-bottom: 16px;
+}
+:global([data-theme="dark"]) .golden-statement-kicker {
+  color: var(--core-coral);
+}
+.golden-statement-heading {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--content-heading-primary);
+  margin: 0 0 16px;
+}
+.golden-statement-body {
+  font-size: 16px;
+  color: var(--content-body-secondary);
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+.golden-statement-demo {
+  display: inline-flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.golden-demo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.golden-demo-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--content-body-tertiary);
+}
+@media (max-width: 480px) {
+  .golden-statement { padding: 48px 24px; }
+  .golden-statement-heading { font-size: 28px; }
+}
+
+/* ─── NAV CARDS ─────────────────────────────────────────────────────── */
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised-enabled);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+.nav-card:hover { box-shadow: var(--shadow-deep); }
+.nav-card:active { box-shadow: var(--shadow-card); transform: scale(.98); }
+.nav-card-thumb {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:global([data-theme="dark"]) .nav-card-thumb--foundation {
+  background: linear-gradient(135deg, var(--neutral-graphite) 0%, var(--neutral-basalt) 100%) !important;
+}
+.nav-card-body { padding: 16px 20px 12px; flex: 1; }
+.nav-card-title { font-size: 15px; font-weight: 700; color: var(--content-heading-primary); margin-bottom: 4px; }
+.nav-card-desc { font-size: 12px; color: var(--content-body-tertiary); }
+.nav-card-arrow { margin: 0 20px 20px auto; color: var(--content-body-tertiary); display: block; }
+
+/* ─── RESOURCE LINKS ────────────────────────────────────────────────── */
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--surface-raised-enabled);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+.resource-link:hover { box-shadow: var(--shadow-deep); }
+.resource-link:active { box-shadow: var(--shadow-card); transform: scale(.98); }
+
+</style>

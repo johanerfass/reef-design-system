@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Empty state">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Empty state</h1>
+  <p class="s-desc">Communicates when there is no content to show. Always provide a clear reason and a recovery action — never just 'No results.' Used for first-use setup, empty search, and empty history.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">No rides yet (first-use)</div>
+  <div class="demo">
+    <div class="card" style="border-radius:24px;padding:0;overflow:hidden">
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        </div>
+        <div>
+          <div class="empty-state-title">No rides yet</div>
+          <p class="empty-state-body">Scan a scooter QR code or tap Find nearby to start your first ride.</p>
+        </div>
+        <div class="empty-state-actions">
+          <button class="btn btn-contrast">Find nearby</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">No search results</div>
+  <div class="demo">
+    <div class="card" style="border-radius:24px;padding:0;overflow:hidden">
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div>
+          <div class="empty-state-title">No results for "Parkvej"</div>
+          <p class="empty-state-body">Try a different spelling or search for a nearby address or landmark.</p>
+        </div>
+        <div class="empty-state-actions">
+          <button class="btn btn-outlined btn-sm">Clear search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Error / offline</div>
+  <div class="demo">
+    <div class="card" style="border-radius:24px;padding:0;overflow:hidden">
+      <div class="empty-state">
+        <div class="empty-state-icon" style="color:var(--alert-error)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div>
+          <div class="empty-state-title">Something went wrong</div>
+          <p class="empty-state-body">We couldn't load your ride history. Check your connection and try again.</p>
+        </div>
+        <div class="empty-state-actions">
+          <button class="btn btn-contrast btn-sm">Try again</button>
+          <button class="btn btn-outlined btn-sm">Get help</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"empty-state"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"empty-state-icon"</span><span class="c-tag">&gt;</span><span class="c-comment">&lt;!-- 28px icon --&gt;</span><span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"empty-state-title"</span><span class="c-tag">&gt;</span>No rides yet<span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;p</span> <span class="c-attr">class</span>=<span class="c-str">"empty-state-body"</span><span class="c-tag">&gt;</span>Supporting copy.<span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"empty-state-actions"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"btn btn-contrast"</span><span class="c-tag">&gt;</span>Primary action<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Icon container</code></td><td><code>64px, 24px radius</code></td><td>Neutral-soft bg. Use error tint for error state.</td></tr>
+      <tr><td><code>Icon size</code></td><td><code>28px</code></td><td>Slightly larger than standard 24px for visual impact</td></tr>
+      <tr><td><code>Title</code></td><td><code>20px / 600</code></td><td>Centre-aligned, heading colour</td></tr>
+      <tr><td><code>Body</code></td><td><code>15px / 400</code></td><td>Max-width 320px, secondary colour</td></tr>
+      <tr><td><code>Padding</code></td><td><code>48px 24px</code></td><td>Generous breathing room</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

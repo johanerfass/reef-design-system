@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Accordion">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Accordion</h1>
+  <p class="s-desc">Collapsible sections for progressive disclosure of related content. Use for settings panels, FAQs, and any list where most users only need a subset of rows. Do not use as a primary navigation pattern.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Single open (FAQ style)</div>
+  <div class="demo" style="max-width:560px">
+    <div class="accordion" id="faq">
+      <div class="accordion-item open">
+        <button class="accordion-trigger" data-accordion="faq">
+          How does pricing work?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">You pay an unlock fee plus a per-minute rate. Rates vary by city. Check the app for current pricing in your area before starting a ride.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion="faq">
+          Where can I park?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">Park your scooter in designated parking zones marked in the app. Avoid blocking pedestrian paths, ramps, or doorways. Parking outside allowed zones may result in a fee.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion="faq">
+          Do I need a helmet?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">Helmet requirements vary by city and local law. We always recommend wearing a helmet — your safety matters. Some markets require helmets for all riders by law.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion="faq">
+          What happens if I get a flat tyre?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">End your ride immediately, report the issue in the app using "Report a problem", and you won't be charged for time after you stopped. Our ops team will collect and fix the scooter.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Multi-open (settings)</div>
+  <div class="demo" style="max-width:560px">
+    <div class="accordion" id="settings">
+      <div class="accordion-item open">
+        <button class="accordion-trigger" data-accordion="settings" data-multi="true">
+          Ride preferences
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body" style="display:flex;flex-direction:column;gap:12px">
+          <label style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--content-body-primary)">
+            <input type="checkbox" checked style="width:18px;height:18px;accent-color:var(--fill-neutral-hard-enabled)" />
+            Show speed on screen
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--content-body-primary)">
+            <input type="checkbox" style="width:18px;height:18px;accent-color:var(--fill-neutral-hard-enabled)" />
+            Haptic feedback on unlock
+          </label>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" data-accordion="settings" data-multi="true">
+          Notifications
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          Configure push notifications, email updates, and ride summaries from the notifications panel.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"accordion"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"accordion-item open"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"accordion-trigger"</span><span class="c-tag">&gt;</span>
+      Question text
+      <span class="c-comment">&lt;!-- chevron SVG --&gt;</span>
+    <span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"accordion-body"</span><span class="c-tag">&gt;</span>Answer content.<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Container</code></td><td><code>16px radius, 1px border</code></td><td>Neutral-soft border, raised surface bg</td></tr>
+      <tr><td><code>Trigger height</code></td><td><code>~52px</code></td><td>Padding 16px 20px; expands to fit long labels</td></tr>
+      <tr><td><code>Chevron rotation</code></td><td><code>0° → 180°</code></td><td>0.25s cubic-bezier ease</td></tr>
+      <tr><td><code>Body padding</code></td><td><code>0 20px 18px</code></td><td>No top padding — continues flush from trigger</td></tr>
+      <tr><td><code>Body text</code></td><td><code>14px / 400</code></td><td>Secondary colour, 1.6 line-height</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  // Single-open mode: clicking a trigger closes others in the same accordion
+  document.querySelectorAll('.accordion-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const trigger = e.currentTarget as HTMLElement;
+      const item = trigger.closest('.accordion-item') as HTMLElement;
+      const accordion = trigger.closest('.accordion') as HTMLElement;
+      const isMulti = trigger.dataset.multi === 'true';
+
+      if (!isMulti) {
+        accordion.querySelectorAll('.accordion-item.open').forEach(open => {
+          if (open !== item) open.classList.remove('open');
+        });
+      }
+      item.classList.toggle('open');
+    });
+  });
+</script>

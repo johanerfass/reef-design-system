@@ -1,0 +1,459 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Materials">
+  <div class="s-overline">01 — Foundation</div>
+  <h1 class="s-title">Materials</h1>
+  <p class="s-desc">A layered surface system — fill, blur, stroke, shadow — applied to buttons, icon buttons, cards, and any component that floats above content. Three frost levels for Android and web. On iOS, use the native liquid glass material instead.</p>
+  <hr class="s-rule" />
+
+  <!-- ANATOMY -->
+  <div class="sub-label">Anatomy — frost medium</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Every frosted surface is four stacked properties. The blur is the foundation; fill, stroke, and shadow tune prominence.</p>
+
+  <div class="anatomy-wrap">
+    <div class="anatomy-demo">
+      <div class="anatomy-surface material-frost-medium">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+    </div>
+    <div class="anatomy-layers">
+      <div class="anatomy-row">
+        <div class="anatomy-swatch" style="background:rgba(0,0,0,.12);border-radius:4px"></div>
+        <div>
+          <div class="anatomy-prop">box-shadow</div>
+          <div class="anatomy-val"><code>var(--shadow-shallow)</code></div>
+          <div class="anatomy-desc">Elevation — makes it readable on any background</div>
+        </div>
+      </div>
+      <div class="anatomy-row">
+        <div class="anatomy-swatch" style="background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.08);border-radius:4px"></div>
+        <div>
+          <div class="anatomy-prop">border</div>
+          <div class="anatomy-val"><code>1px solid rgba(255,255,255,0.90)</code></div>
+          <div class="anatomy-desc">Inner stroke — sharpens the edge against content</div>
+        </div>
+      </div>
+      <div class="anatomy-row">
+        <div class="anatomy-swatch" style="background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.08);border-radius:4px"></div>
+        <div>
+          <div class="anatomy-prop">background</div>
+          <div class="anatomy-val"><code>rgba(255,255,255,0.50)</code></div>
+          <div class="anatomy-desc">Fill — controls opacity/tint of the surface</div>
+        </div>
+      </div>
+      <div class="anatomy-row">
+        <div class="anatomy-swatch" style="background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(180,180,180,.3));border:1px solid rgba(0,0,0,.08);border-radius:4px"></div>
+        <div>
+          <div class="anatomy-prop">backdrop-filter</div>
+          <div class="anatomy-val"><code>blur(32px)</code></div>
+          <div class="anatomy-desc">Blur — the foundation; samples and blurs what's behind</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVELS -->
+  <div class="sub-label" style="margin-top:40px">Levels — frost soft / medium / hard / solid</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">More fill = less transparency, stronger presence. Choose based on how much the surface needs to stand out from content behind it.</p>
+  <div class="map-stage">
+    <div class="map-bg" id="mat-map-1"></div>
+    <div class="mat-demo-group">
+
+      <div class="mat-demo-item">
+        <div class="mat-chip material-frost-soft">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="mat-label">Soft</div>
+        <div class="mat-sub">10% · blur 8px</div>
+      </div>
+
+      <div class="mat-demo-item">
+        <div class="mat-chip material-frost-medium">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="mat-label">Medium</div>
+        <div class="mat-sub">50% · blur 32px</div>
+      </div>
+
+      <div class="mat-demo-item">
+        <div class="mat-chip material-frost-hard">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="mat-label">Hard</div>
+        <div class="mat-sub">70% · blur 80px</div>
+      </div>
+
+      <div class="mat-demo-item">
+        <div class="mat-chip material-solid">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="mat-label">Solid</div>
+        <div class="mat-sub">100% · no blur</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ICON BUTTONS -->
+  <div class="sub-label" style="margin-top:40px">Applied to icon buttons</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Icon buttons inherit the frosted material. Four sizes — sm (40px), md (48px), lg (64px), xl (72px) — combine with <code>material-frost-soft/medium/hard</code>.</p>
+  <div class="map-stage">
+    <div class="map-bg" id="mat-map-2"></div>
+    <div class="icon-btn-group">
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-sm material-frost-medium" aria-label="Add">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="mat-label">sm · 40px</div>
+        <div class="mat-sub">icon-btn-sm</div>
+      </div>
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-md material-frost-medium" aria-label="Map">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        </button>
+        <div class="mat-label">md · 48px</div>
+        <div class="mat-sub">icon-btn-md</div>
+      </div>
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-lg material-frost-medium" aria-label="Profile">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <div class="mat-label">lg · 64px</div>
+        <div class="mat-sub">icon-btn-lg</div>
+      </div>
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-xl material-frost-medium" aria-label="Ticket">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </button>
+        <div class="mat-label">xl · 72px</div>
+        <div class="mat-sub">icon-btn-xl</div>
+      </div>
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-lg material-frost-soft" aria-label="Search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div class="mat-label">Soft</div>
+        <div class="mat-sub">material-frost-soft</div>
+      </div>
+      <div class="icon-btn-col">
+        <button class="icon-btn icon-btn-lg material-frost-hard" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="mat-label">Hard</div>
+        <div class="mat-sub">material-frost-hard</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="sub-label" style="margin-top:40px">Applied to cards</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Frosted cards float above the map and carry full content. Use <code>frost-medium</code> for interactive cards, <code>frost-hard</code> for prominent overlays and sheets.</p>
+  <div class="map-stage map-stage--tall">
+    <div class="map-bg" id="mat-map-3"></div>
+    <div class="card-demo-group">
+
+      <!-- Medium card -->
+      <div class="card card-sm material-frost-medium mat-card">
+        <div class="mat-card-label">frost-medium</div>
+        <div class="mat-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        </div>
+        <div class="mat-card-title">Start ride</div>
+        <div class="mat-card-body">Scan the QR code on any scooter or e-bike to unlock.</div>
+        <button class="btn btn-contrast btn-sm" style="width:100%;margin-top:4px">Scan</button>
+      </div>
+
+      <!-- Hard card -->
+      <div class="card card-sm material-frost-hard mat-card">
+        <div class="mat-card-label">frost-hard</div>
+        <div class="mat-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="mat-card-title">Slow zone ahead</div>
+        <div class="mat-card-body">Speed limit 10 km/h applies from here. Ride carefully.</div>
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="btn btn-outlined btn-sm" style="flex:1">Dismiss</button>
+          <button class="btn btn-contrast btn-sm" style="flex:1">Got it</button>
+        </div>
+      </div>
+
+      <!-- Solid card -->
+      <div class="card card-sm material-solid mat-card">
+        <div class="mat-card-label">solid</div>
+        <div class="mat-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="mat-card-title">Ride summary</div>
+        <div class="mat-card-body">2.4 km · 13 min · Saved 28%</div>
+        <button class="btn btn-contrast btn-sm" style="width:100%;margin-top:4px">Done</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOKENS -->
+  <div class="sub-label" style="margin-top:40px">Tokens</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Blur</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td><code>--fill-frost-soft-enabled</code></td><td><code>rgba(255,255,255,0.10)</code></td><td><code>8px</code></td><td>Subtle overlays, secondary non-interactive surfaces</td></tr>
+      <tr><td><code>--fill-frost-medium-enabled</code></td><td><code>rgba(255,255,255,0.50)</code></td><td><code>32px</code></td><td>Icon buttons, interactive cards, navigation islands</td></tr>
+      <tr><td><code>--fill-frost-hard-enabled</code></td><td><code>rgba(255,255,255,0.70)</code></td><td><code>80px</code></td><td>Prominent cards, overlays, bottom sheets</td></tr>
+      <tr><td><code>--fill-frost-stroke</code></td><td><code>rgba(255,255,255,0.90)</code></td><td>—</td><td>Border on all frosted surfaces</td></tr>
+    </tbody>
+  </table>
+
+  <!-- CODE -->
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Apply to any element */</span>
+<span class="c-tag">.element</span> {"{"}
+  <span class="c-attr">background:</span> <span class="c-value">var(--fill-frost-medium-enabled)</span>;
+  <span class="c-attr">backdrop-filter:</span> <span class="c-value">blur(32px)</span>;
+  <span class="c-attr">-webkit-backdrop-filter:</span> <span class="c-value">blur(32px)</span>;
+  <span class="c-attr">border:</span> <span class="c-value">1px solid var(--fill-frost-stroke)</span>;
+  <span class="c-attr">box-shadow:</span> <span class="c-value">var(--shadow-shallow)</span>;
+{"}"}
+
+<span class="c-comment">/* Utility classes */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-frost-soft"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-frost-medium"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-frost-hard"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-solid"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* iOS — use native material instead */</span>
+<span class="c-comment">/* SwiftUI: .glassBackgroundEffect() */</span>
+<span class="c-comment">/* UIKit:   UIBlurEffect(style: .systemMaterial) */</span></pre></div>
+
+  <!-- RULES -->
+  <div class="sub-label" style="margin-top:40px">Usage rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <div style="font-size:12px;font-weight:600;color:var(--alert-success);margin-bottom:8px">✓ Do</div>
+      <ul style="font-size:13px;color:var(--content-body-secondary);display:flex;flex-direction:column;gap:6px;padding-left:16px">
+        <li>Apply to any surface that floats above real content — map, image, gradient</li>
+        <li>Use <code class="token">frost-medium</code> as the default for interactive components</li>
+        <li>Use <code class="token">frost-hard</code> for sheets, prominent overlays, and high-attention surfaces</li>
+        <li>Use <code class="token">frost-soft</code> for decorative or secondary non-interactive layers</li>
+        <li>On iOS, use native liquid glass — the OS handles adaptation automatically</li>
+      </ul>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <div style="font-size:12px;font-weight:600;color:var(--alert-error);margin-bottom:8px">✗ Don't</div>
+      <ul style="font-size:13px;color:var(--content-body-secondary);display:flex;flex-direction:column;gap:6px;padding-left:16px">
+        <li>Place frosted surfaces on flat colour backgrounds — there's nothing to blur</li>
+        <li>Nest frosted surfaces inside other frosted surfaces</li>
+        <li>Apply <code class="token">backdrop-filter</code> to full-screen backgrounds — severe performance hit</li>
+        <li>Use iOS liquid glass tokens on Android or web</li>
+        <li>Omit the <code class="token">-webkit-backdrop-filter</code> prefix — Safari requires it</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+(function () {
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css';
+  document.head.appendChild(css);
+
+  const js = document.createElement('script');
+  js.src = 'https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js';
+  js.onload = function () {
+    mapboxgl.accessToken = 'MAPBOX_TOKEN';
+    const STYLE = 'mapbox://styles/johanerfass/cmevazjhe006a01scckk0envo';
+    [
+      { id: 'mat-map-1', center: [18.0676, 59.3293], zoom: 14.5 },
+      { id: 'mat-map-2', center: [18.0710, 59.3315], zoom: 15 },
+      { id: 'mat-map-3', center: [18.0656, 59.3275], zoom: 14 },
+    ].forEach(function ({ id, center, zoom }) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      new mapboxgl.Map({ container: id, style: STYLE, center: center, zoom: zoom, interactive: false, attributionControl: false });
+    });
+  };
+  document.head.appendChild(js);
+})();
+</script>
+
+<style>
+  /* Anatomy */
+  .anatomy-wrap {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--surface-raised-enabled);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+  }
+  .anatomy-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(134,192,151,.18) 28px, rgba(134,192,151,.18) 30px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(134,192,151,.18) 28px, rgba(134,192,151,.18) 30px),
+      #e8f5e9;
+    background-size: 30px 30px, 30px 30px, 100%;
+    border-radius: 24px;
+  }
+  .anatomy-demo {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+  }
+  .anatomy-surface {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--core-tire);
+  }
+  .anatomy-layers {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .anatomy-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .anatomy-swatch {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .anatomy-prop {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--content-body-primary);
+    font-family: monospace;
+  }
+  .anatomy-val {
+    font-size: 11px;
+    color: var(--content-body-secondary);
+    margin: 2px 0;
+  }
+  .anatomy-desc {
+    font-size: 11px;
+    color: var(--content-body-tertiary);
+  }
+
+  /* Map stage */
+  .map-stage {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .map-stage--tall { min-height: 280px; align-items: flex-start; padding-top: 40px; }
+
+  .map-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Level comparison chips */
+  .mat-demo-group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .mat-demo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .mat-chip {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--core-tire);
+  }
+  .mat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--core-tire);
+  }
+  .mat-sub {
+    font-size: 11px;
+    color: var(--core-tire);
+    opacity: .6;
+  }
+
+  /* Icon buttons */
+  .icon-btn-group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .icon-btn-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Mapbox canvas fills the map-bg container */
+  .map-bg .mapboxgl-canvas { display: block; }
+
+  /* Cards */
+  .card-demo-group {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .mat-card {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mat-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .01em;
+    color: rgba(40,36,37,.4);
+    margin-bottom: 4px;
+  }
+  .mat-card-icon { color: #282425; margin-bottom: 4px; }
+  .mat-card-title { font-size: 15px; font-weight: 700; color: #282425; letter-spacing: -.01em; }
+  .mat-card-body { font-size: 12px; color: rgba(40,36,37,.55); line-height: 1.5; }
+</style>

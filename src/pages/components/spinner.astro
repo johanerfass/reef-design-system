@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Spinner">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Spinner</h1>
+  <p class="s-desc">Indeterminate loading indicator for operations of unknown duration. Use only for short operations (< 3 seconds) or where a skeleton layout cannot be determined. CSS-only, no JS required.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Sizes</div>
+  <div class="demo">
+    <div class="row" style="align-items:center;gap:24px">
+      <div style="text-align:center">
+        <div class="spinner spinner--sm"></div>
+        <span class="ann" style="display:block;margin-top:8px">sm · 20px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="spinner spinner--md"></div>
+        <span class="ann" style="display:block;margin-top:8px">md · 32px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="spinner spinner--lg"></div>
+        <span class="ann" style="display:block;margin-top:8px">lg · 48px</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Colour variants</div>
+  <div class="demo">
+    <div class="row" style="align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div class="spinner spinner--md"></div>
+        <span class="ann" style="display:block;margin-top:8px">default (tire)</span>
+      </div>
+      <div style="text-align:center">
+        <div class="spinner spinner--md spinner--accent"></div>
+        <span class="ann" style="display:block;margin-top:8px">accent</span>
+      </div>
+      <div style="text-align:center">
+        <div class="spinner spinner--md spinner--info"></div>
+        <span class="ann" style="display:block;margin-top:8px">info</span>
+      </div>
+      <div style="text-align:center;background:var(--fill-neutral-hard-enabled);padding:16px 24px;border-radius:16px">
+        <div class="spinner spinner--md spinner--white"></div>
+        <span class="ann" style="display:block;margin-top:8px;color:#fff">on dark</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">In button (loading state)</div>
+  <div class="demo">
+    <div class="row" style="gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-contrast" style="display:inline-flex;align-items:center;gap:10px" disabled>
+        <div class="spinner spinner--sm spinner--white"></div>
+        Unlocking…
+      </button>
+      <button class="btn btn-outlined" style="display:inline-flex;align-items:center;gap:10px" disabled>
+        <div class="spinner spinner--sm"></div>
+        Loading
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-label">Full-screen overlay (pattern)</div>
+  <div class="demo">
+    <div style="position:relative;height:140px;background:var(--surface-base-enabled);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+      <div class="spinner spinner--lg"></div>
+      <span style="font-size:13px;color:var(--content-body-secondary)">Loading map…</span>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Basic spinner */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"spinner spinner--md"</span> <span class="c-attr">role</span>=<span class="c-str">"status"</span> <span class="c-attr">aria-label</span>=<span class="c-str">"Loading"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+
+<span class="c-comment">/* Sizes: spinner--sm · spinner--md · spinner--lg */</span>
+<span class="c-comment">/* Colour: default (tire) · spinner--accent · spinner--info · spinner--white */</span>
+
+<span class="c-comment">/* In button */</span>
+<span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"btn btn-contrast"</span> <span class="c-attr">disabled</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"spinner spinner--sm spinner--white"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+  Unlocking…
+<span class="c-tag">&lt;/button&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Track</code></td><td><code>neutral-soft border (3 sides)</code></td><td>Visible ring at rest</td></tr>
+      <tr><td><code>Arc</code></td><td><code>border-top-color: Tire</code></td><td>The moving segment</td></tr>
+      <tr><td><code>Duration</code></td><td><code>0.75s linear</code></td><td>Fast enough to feel responsive</td></tr>
+      <tr><td><code>sm / md / lg</code></td><td><code>20 / 32 / 48px</code></td><td>Border width: 2 / 3 / 4px</td></tr>
+      <tr><td><code>Accessibility</code></td><td><code>role="status" aria-label="Loading"</code></td><td>Screen readers announce loading state</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:40px">When to use</div>
+  <div class="grid-2" style="gap:12px">
+    <div class="card card-sm" style="border-radius:16px;border-left:3px solid var(--alert-success)">
+      <p style="font-size:13px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">Use spinner</p>
+      <ul style="font-size:13px;color:var(--content-body-secondary);line-height:1.8;padding-left:16px;margin:0">
+        <li>Button loading states</li>
+        <li>Inline data fetching</li>
+        <li>Overlay on map tile loading</li>
+        <li>Operations under ~3 seconds</li>
+      </ul>
+    </div>
+    <div class="card card-sm" style="border-radius:16px;border-left:3px solid var(--alert-info)">
+      <p style="font-size:13px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">Use skeleton instead</p>
+      <ul style="font-size:13px;color:var(--content-body-secondary);line-height:1.8;padding-left:16px;margin:0">
+        <li>Full page / route loads</li>
+        <li>List content appearing</li>
+        <li>Card content loading</li>
+        <li>Operations with perceived structure</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

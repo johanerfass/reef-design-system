@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Dialog">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Dialog</h1>
+  <p class="s-desc">Blocking overlay for decisions that require immediate response. Use for destructive confirmations and short critical flows only. Never use for non-urgent information — use a toast or alert card instead.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">Variants</div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+
+    <!-- Illustration variant -->
+    <div class="dialog-demo">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:12px">Illustration</div>
+      <div class="dialog">
+        <div class="dialog-illustration">
+          <div class="illus-placeholder"></div>
+        </div>
+        <div class="dialog-title">Start your first ride</div>
+        <div class="dialog-body">Scan a scooter QR code or enter its ID to unlock. Your first 5 minutes are free in Stockholm.</div>
+        <div class="dialog-actions">
+          <button class="dialog-btn-secondary">Not now</button>
+          <button class="dialog-btn-primary">Find a scooter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand icon variant -->
+    <div class="dialog-demo">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:12px">Brand icon</div>
+      <div class="dialog">
+        <div class="dialog-icon" style="color:var(--core-coral,#F26961)">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M4.25 3C3.56 3 3 3.56 3 4.25v16c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25v-16c0-.69-.56-1.25-1.25-1.25zM1.5 4.25A2.75 2.75 0 0 1 4.25 1.5h16A2.75 2.75 0 0 1 23 4.25v16A2.75 2.75 0 0 1 20.25 23h-16a2.75 2.75 0 0 1-2.75-2.75z" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M10.25 6.5a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-1.5 0v-10a.75.75 0 0 1 .75-.75" clip-rule="evenodd"/><path fill="currentColor" fill-rule="evenodd" d="M9.5 7.25a.75.75 0 0 1 .75-.75h3a3.75 3.75 0 0 1 0 7.5h-3a.75.75 0 0 1 0-1.5h3a2.25 2.25 0 0 0 0-4.5h-3a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="dialog-title">End ride here?</div>
+        <div class="dialog-body">This location may not be in a parking zone. You could receive a fine of up to €20.</div>
+        <div class="dialog-actions">
+          <button class="dialog-btn-secondary">Go back</button>
+          <button class="dialog-btn-primary">End ride</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- None (text only) variant -->
+    <div class="dialog-demo">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:12px">None (text only)</div>
+      <div class="dialog">
+        <div class="dialog-title">Remove saved card?</div>
+        <div class="dialog-body">Visa ending in 4242 will be removed from your account. You can add it again at any time.</div>
+        <div class="dialog-actions">
+          <button class="dialog-btn-secondary">Cancel</button>
+          <button class="dialog-btn-primary">Remove</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Brand icon variant — bare SVG, coral colour, no container */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"dialog"</span><span class="c-tag">&gt;</span>
+  <span class="c-comment">&lt;!-- decoration: dialog-illustration | dialog-icon | omit --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-icon"</span> <span class="c-attr">style</span>=<span class="c-str">"color:var(--core-coral)"</span><span class="c-tag">&gt;&lt;svg</span> <span class="c-attr">width</span>=<span class="c-str">"40"</span> <span class="c-attr">height</span>=<span class="c-str">"40"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/svg&gt;&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-title"</span><span class="c-tag">&gt;</span>Title<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-body"</span><span class="c-tag">&gt;</span>Supporting text<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-actions"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-btn-secondary"</span><span class="c-tag">&gt;</span>Cancel<span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"dialog-btn-primary"</span><span class="c-tag">&gt;</span>Confirm<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Width</code></td><td><code>343px</code></td><td>Fixed on mobile</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>32px</code></td><td>Large card radius</td></tr>
+      <tr><td><code>Padding</code></td><td><code>24px all sides</code></td><td>Consistent internal spacing</td></tr>
+      <tr><td><code>Gap</code></td><td><code>24px between sections</code></td><td>Decoration → title → body → actions</td></tr>
+      <tr><td><code>Background</code></td><td><code>--surface-raised-enabled</code></td><td>White surface</td></tr>
+      <tr><td><code>Title</code></td><td><code>24px / 600 (H3)</code></td><td>Center-aligned</td></tr>
+      <tr><td><code>Body</code></td><td><code>16px / 400</code></td><td>Center-aligned</td></tr>
+      <tr><td><code>Primary button</code></td><td><code>64px height, 40px radius, #282425 bg</code></td><td>Full container width (295px), tire fill</td></tr>
+      <tr><td><code>Secondary button</code></td><td><code>64px height, 40px radius, transparent bg, 1.5px border</code></td><td>Side by side with primary in two-CTA layout</td></tr>
+      <tr><td><code>Illustration</code></td><td><code>Artwork area, pearl bg, dashed border</code></td><td>Placeholder for illustration art</td></tr>
+      <tr><td><code>Brand icon</code></td><td><code>40×40px, coral (#F26961), no container</code></td><td>Bare SVG — no backplate or container shape</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<style>
+  .dialog-demo {
+    background: var(--fill-neutral-soft-enabled);
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .dialog {
+    background: var(--surface-raised-enabled);
+    border-radius: 32px;
+    box-shadow: var(--shadow-overlay, 0 8px 32px rgba(0,0,0,.18));
+    padding: 24px;
+    width: 295px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+  .dialog-illustration {
+    width: 100%;
+  }
+  .illus-placeholder {
+    width: 100%;
+    height: 120px;
+    background: var(--fill-neutral-soft-enabled);
+    border: 1.5px dashed var(--fill-neutral-medium-enabled);
+    border-radius: 16px;
+  }
+  .dialog-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--content-body-secondary);
+    flex-shrink: 0;
+  }
+  .dialog-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+    line-height: 1.25;
+  }
+  .dialog-body {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--content-body-secondary);
+    line-height: 1.55;
+  }
+  .dialog-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .dialog-btn-primary {
+    flex: 1;
+    height: 64px;
+    background: var(--fill-neutral-hard-enabled);
+    color: var(--core-white);
+    border: none;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, transform .1s;
+  }
+  .dialog-btn-primary:hover { background: var(--fill-neutral-hard-hover); }
+  .dialog-btn-primary:active { background: var(--fill-neutral-hard-pressed); transform: scale(.98); }
+  .dialog-btn-secondary {
+    flex: 1;
+    height: 64px;
+    background: transparent;
+    color: var(--content-body-primary);
+    border: 1.5px solid var(--fill-neutral-medium-enabled);
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, transform .1s;
+  }
+  .dialog-btn-secondary:hover { background: var(--fill-neutral-soft-enabled); }
+  .dialog-btn-secondary:active { background: var(--fill-neutral-medium-enabled); transform: scale(.98); }
+  :global([data-theme="dark"]) .dialog-btn-primary { color: var(--core-tire); }
+</style>

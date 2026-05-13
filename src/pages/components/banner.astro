@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Banner">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Banner</h1>
+  <p class="s-desc">Persistent full-width notification for system-level messages. Use sparingly — one at a time, never stacked. Dismiss via the close action only; never auto-dismiss a banner.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">Example</div>
+  <div class="banner-frame">
+    <div class="banner">
+      <!-- Coral inbox icon -->
+      <svg class="banner-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--core-coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/>
+        <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/>
+      </svg>
+      <div class="banner-body">
+        <div class="banner-title">Helmet required in this area</div>
+        <div class="banner-desc">Local regulations require you to wear a helmet while riding in Stockholm.</div>
+      </div>
+      <button class="banner-btn">Learn more</button>
+    </div>
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Usage</div>
+  <p style="font-size:14px;color:var(--content-body-secondary);line-height:1.6;max-width:560px">
+    Use the banner for persistent, non-dismissible contextual information that applies to the current screen state — for example, a local regulation, a service interruption, or a required action. Because it takes significant vertical space and cannot be dismissed, use it only for information the user must be aware of.
+  </p>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"banner"</span><span class="c-tag">&gt;</span>
+  <span class="c-comment">&lt;!-- 24×24 coral icon --&gt;</span>
+  <span class="c-tag">&lt;svg</span> <span class="c-attr">class</span>=<span class="c-str">"banner-icon"</span> <span class="c-attr">width</span>=<span class="c-str">"24"</span> <span class="c-attr">height</span>=<span class="c-str">"24"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/svg&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"banner-body"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"banner-title"</span><span class="c-tag">&gt;</span>Title<span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"banner-desc"</span><span class="c-tag">&gt;</span>Supporting body text<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-comment">&lt;!-- optional small CTA button --&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"banner-btn"</span><span class="c-tag">&gt;</span>Action<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Width</code></td><td><code>375px (full width)</code></td><td>Spans full container — no max-width</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>0</code></td><td>Flat bar — no rounded corners</td></tr>
+      <tr><td><code>Shadow</code></td><td><code>none</code></td><td>Flat, not elevated</td></tr>
+      <tr><td><code>Background</code></td><td><code>white</code></td><td>Always white surface</td></tr>
+      <tr><td><code>Padding</code></td><td><code>16px right / bottom / left</code></td><td>No special top — omit the 48px status-bar offset in reference</td></tr>
+      <tr><td><code>Layout</code></td><td><code>flex, row, gap 8px, align flex-start</code></td><td>Icon | content | button</td></tr>
+      <tr><td><code>Icon</code></td><td><code>24×24px, coral #F26961</code></td><td>Flex-shrink 0, aligned to top</td></tr>
+      <tr><td><code>Title</code></td><td><code>16px / 600 / #282425</code></td><td>Bold, sentence case</td></tr>
+      <tr><td><code>Body</code></td><td><code>14px / 400 / #282425</code></td><td>Regular weight</td></tr>
+      <tr><td><code>CTA button</code></td><td><code>40px height, 32px radius, #e8e4e5 bg</code></td><td>Small neutral soft button — tire text</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<style>
+  .banner-frame {
+    max-width: 375px;
+    overflow: hidden;
+  }
+  .banner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px;
+    background: var(--surface-raised-enabled);
+    border-radius: 0;
+  }
+  .banner-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .banner-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .banner-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+    margin-bottom: 2px;
+  }
+  .banner-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--content-body-secondary);
+    line-height: 1.5;
+  }
+  .banner-btn {
+    flex-shrink: 0;
+    height: 40px;
+    padding: 0 16px;
+    background: var(--fill-neutral-soft-enabled);
+    color: var(--content-body-primary);
+    border: none;
+    border-radius: 32px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    align-self: center;
+    white-space: nowrap;
+    transition: background .15s, transform .1s;
+  }
+  .banner-btn:hover { background: var(--fill-neutral-medium-enabled); }
+  .banner-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.97); }
+</style>

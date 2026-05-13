@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Segmented control">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Segmented control</h1>
+  <p class="s-desc">Inline toggle for 2–4 mutually exclusive views or filter states. Used for switching between related views (map/list), sort orders, or content tabs. Do not exceed 4 segments — use a select or chips for more options.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Default (medium)</div>
+  <div class="demo">
+    <div class="segmented" id="seg-view" role="group" aria-label="View mode">
+      <button class="segmented-btn active" data-seg="view">Map</button>
+      <button class="segmented-btn" data-seg="view">List</button>
+      <button class="segmented-btn" data-seg="view">Saved</button>
+    </div>
+  </div>
+
+  <div class="sub-label">Large</div>
+  <div class="demo">
+    <div class="segmented segmented--lg" id="seg-mode" role="group" aria-label="Ride mode">
+      <button class="segmented-btn active" data-seg="mode">Standard</button>
+      <button class="segmented-btn" data-seg="mode">Eco</button>
+      <button class="segmented-btn" data-seg="mode">Sport</button>
+    </div>
+  </div>
+
+  <div class="sub-label">Two options</div>
+  <div class="demo">
+    <div class="segmented" id="seg-period" role="group" aria-label="Period">
+      <button class="segmented-btn active" data-seg="period">Week</button>
+      <button class="segmented-btn" data-seg="period">Month</button>
+    </div>
+  </div>
+
+  <div class="sub-label">Disabled</div>
+  <div class="demo">
+    <div class="segmented" style="opacity:.4;pointer-events:none" role="group" aria-label="Disabled example">
+      <button class="segmented-btn active">Option A</button>
+      <button class="segmented-btn">Option B</button>
+      <button class="segmented-btn">Option C</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented"</span> <span class="c-attr">role</span>=<span class="c-str">"group"</span> <span class="c-attr">aria-label</span>=<span class="c-str">"View mode"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn active"</span><span class="c-tag">&gt;</span>Map<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn"</span><span class="c-tag">&gt;</span>List<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Large */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented segmented--lg"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Container</code></td><td><code>neutral-soft bg, 12px radius, 3px padding</code></td><td>The pill tray</td></tr>
+      <tr><td><code>Button height</code></td><td><code>36px (md), 44px (lg)</code></td><td>lg meets HIG 44px touch minimum</td></tr>
+      <tr><td><code>Active state</code></td><td><code>white bg, 9px radius, shadow</code></td><td>Floating panel on top of tray</td></tr>
+      <tr><td><code>Active font</code></td><td><code>600 (SemiBold)</code></td><td>Regular weight when inactive</td></tr>
+      <tr><td><code>Max items</code></td><td><code>5</code></td><td>HIG recommends 2–5 segments</td></tr>
+      <tr><td><code>Colour</code></td><td><code>Tire active — never Coral</code></td><td>Coral is brand only</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label" style="margin-top:40px">Platform notes</div>
+  <div class="grid-2" style="gap:12px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">iOS (HIG)</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Maps to <code class="token">UISegmentedControl</code>. Use <code class="token">selectedSegmentTintColor</code> for active pill. Support <code class="token">UIAccessibility</code> via <code class="token">accessibilityLabel</code> per segment.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">Android (Material)</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Use Material <code class="token">ButtonGroup</code> (filled) or <code class="token">SingleChoiceSegmentedButtonRow</code> (M3). Map Tire to active container colour.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-seg]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const b = e.currentTarget as HTMLElement;
+      const group = b.dataset.seg!;
+      document.querySelectorAll(`[data-seg="${group}"]`).forEach(s => s.classList.remove('active'));
+      b.classList.add('active');
+    });
+  });
+</script>

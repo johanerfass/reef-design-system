@@ -1,0 +1,426 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  currentPath?: string;
+}
+const { title, currentPath = Astro.url.pathname } = Astro.props;
+
+const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906L29.63 58.7818L44.3476 23.8032H58.6932ZM92.6092 75.9789C87.1897 75.9789 82.337 74.8454 78.0333 72.5784C73.8713 70.4354 70.3646 67.1767 67.9559 63.1563C65.5296 59.136 64.3252 54.5844 64.3252 49.4837C64.3252 44.383 65.5296 39.8313 67.9559 35.811C70.3823 31.7907 73.8713 28.5319 78.0333 26.3889C82.337 24.122 87.1897 22.9885 92.6092 22.9885C98.0287 22.9885 102.864 24.122 107.132 26.3889C111.276 28.5496 114.748 31.8084 117.174 35.811C119.6 39.8313 120.805 44.383 120.805 49.4837C120.805 54.5844 119.6 59.136 117.174 63.1563C114.765 67.1589 111.294 70.4177 107.15 72.5784C102.881 74.8454 98.0287 75.9789 92.6092 75.9789ZM92.6092 63.7408C96.4347 63.7408 99.5695 62.4479 102.031 59.8621C104.475 57.2764 105.715 53.8228 105.715 49.4837C105.715 45.1446 104.493 41.691 102.031 39.1052C99.5695 36.5194 96.4347 35.2266 92.6092 35.2443C88.7837 35.2443 85.6312 36.5372 83.1517 39.1229C80.6722 41.7087 79.4325 45.1623 79.4325 49.5014C79.4325 53.8405 80.6722 57.2941 83.1517 59.8798C85.6312 62.4656 88.7837 63.7408 92.6092 63.7408ZM135.522 23.7855H150.435V75.2173H135.522V23.7855ZM142.978 16.6303C140.233 16.6303 138.002 15.8334 136.284 14.2394C134.601 12.734 133.663 10.5733 133.716 8.32403C133.68 6.07477 134.619 3.89635 136.301 2.39094C138.019 0.796981 140.251 0 142.978 0C145.724 0 147.955 0.76156 149.673 2.30239C151.356 3.73696 152.294 5.82682 152.259 8.04065C152.33 10.3785 151.391 12.61 149.673 14.204C147.955 15.8156 145.724 16.6303 142.978 16.6303ZM174.716 75.9789C172.236 76.032 169.863 75.0579 168.128 73.3046C166.357 71.5335 165.382 69.1248 165.453 66.6099C165.453 63.8648 166.339 61.6509 168.128 59.9684C171.882 56.5857 177.567 56.5857 181.322 59.9684C183.111 61.6509 183.996 63.8648 183.996 66.6099C184.067 69.1071 183.093 71.5335 181.322 73.3046C179.569 75.0579 177.178 76.032 174.716 75.9789Z";
+
+const navGraphics: Record<string, string> = {
+  Foundation: `<svg width="100%" height="100%" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <circle cx="32" cy="40" r="20" fill="#F26961"/>
+    <circle cx="74" cy="40" r="20" fill="currentColor"/>
+    <circle cx="116" cy="40" r="20" fill="#ABD1EA"/>
+    <circle cx="150" cy="40" r="14" fill="#F2F2F6" stroke="#c8c8d4" stroke-width="1.5"/>
+  </svg>`,
+  Components: `<svg width="100%" height="100%" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <rect x="10" y="8" width="140" height="64" rx="12" fill="rgba(255,255,255,0.55)" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <rect x="22" y="21" width="72" height="6" rx="3" fill="rgba(40,36,37,0.28)"/>
+    <rect x="22" y="32" width="48" height="4" rx="2" fill="rgba(40,36,37,0.14)"/>
+    <rect x="22" y="48" width="52" height="16" rx="8" fill="rgba(40,36,37,0.75)"/>
+    <rect x="82" y="51" width="36" height="10" rx="5" fill="rgba(242,105,97,0.30)"/>
+  </svg>`,
+  Patterns: `<svg width="100%" height="100%" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <circle cx="52" cy="40" r="26" fill="rgba(0,133,69,0.11)"/>
+    <circle cx="52" cy="40" r="26" stroke="rgba(0,133,69,0.28)" stroke-width="1.5" fill="none"/>
+    <path d="M41 40 L49 48 L65 32" stroke="#008545" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="108" cy="40" r="26" fill="rgba(237,10,2,0.09)"/>
+    <circle cx="108" cy="40" r="26" stroke="rgba(237,10,2,0.24)" stroke-width="1.5" fill="none"/>
+    <path d="M97 29 L119 51" stroke="#ed0a02" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M119 29 L97 51" stroke="#ed0a02" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  </svg>`,
+  Tooling: `<svg width="100%" height="100%" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <rect x="12" y="8" width="136" height="64" rx="12" fill="rgba(40,36,37,0.07)" stroke="rgba(40,36,37,0.08)" stroke-width="1"/>
+    <line x1="12" y1="32" x2="148" y2="32" stroke="rgba(40,36,37,0.10)" stroke-width="1"/>
+    <circle cx="30" cy="20" r="5" fill="#ed0a02" opacity=".50"/>
+    <circle cx="44" cy="20" r="5" fill="#ffb100" opacity=".50"/>
+    <circle cx="58" cy="20" r="5" fill="#008545" opacity=".50"/>
+    <rect x="24" y="42" width="22" height="4" rx="2" fill="#F26961" opacity=".75"/>
+    <rect x="50" y="42" width="44" height="4" rx="2" fill="rgba(40,36,37,.22)"/>
+    <rect x="24" y="52" width="15" height="4" rx="2" fill="#ABD1EA" opacity=".85"/>
+    <rect x="43" y="52" width="34" height="4" rx="2" fill="rgba(40,36,37,.18)"/>
+    <rect x="24" y="62" width="30" height="4" rx="2" fill="rgba(40,36,37,.16)"/>
+    <rect x="58" y="62" width="20" height="4" rx="2" fill="#F26961" opacity=".40"/>
+  </svg>`,
+};
+
+const navItems = [
+  {
+    group: "Foundation",
+    links: [
+      { href: "/foundation/colours", label: "Colours" },
+      { href: "/foundation/typography", label: "Typography" },
+      { href: "/foundation/spacing", label: "Spacing" },
+      { href: "/foundation/shadows-radius", label: "Shadows & Radius" },
+      { href: "/foundation/materials", label: "Materials" },
+      { href: "/foundation/iconography", label: "Iconography" },
+    ],
+  },
+  {
+    group: "Components",
+    links: [
+      { href: "/components/buttons", label: "Buttons" },
+      { href: "/components/inputs", label: "Inputs" },
+      { href: "/components/chips", label: "Chips" },
+      { href: "/components/badges", label: "Badges" },
+      { href: "/components/icon-buttons", label: "Icon Buttons" },
+      { href: "/components/cards", label: "Cards" },
+      { href: "/components/switch-card", label: "Switch Card" },
+      { href: "/components/alert-card", label: "Alert Card" },
+      { href: "/components/checkbox", label: "Checkbox" },
+      { href: "/components/toggle", label: "Toggle" },
+      { href: "/components/radio", label: "Radio" },
+      { href: "/components/search", label: "Search" },
+      { href: "/components/banner", label: "Banner" },
+      { href: "/components/backdrop", label: "Backdrop" },
+      { href: "/components/dialog", label: "Dialog" },
+      { href: "/components/sheets", label: "Sheets" },
+      { href: "/components/list", label: "List" },
+      { href: "/components/islands", label: "Floating controls" },
+      { href: "/components/navigation", label: "Navigation" },
+      { href: "/components/toolbar", label: "Toolbar" },
+      { href: "/components/progress-bar", label: "Progress bar" },
+      { href: "/components/avatar", label: "Avatar" },
+      { href: "/components/tabs", label: "Tabs" },
+      { href: "/components/bottom-navigation", label: "Bottom navigation" },
+      { href: "/components/toast", label: "Toast" },
+      { href: "/components/slider", label: "Slider" },
+      { href: "/components/select", label: "Select" },
+      { href: "/components/accordion", label: "Accordion" },
+      { href: "/components/segmented-control", label: "Segmented control" },
+      { href: "/components/fab", label: "FAB" },
+      { href: "/components/empty-state", label: "Empty state" },
+      { href: "/components/spinner", label: "Spinner" },
+      { href: "/components/textarea", label: "Textarea" },
+      { href: "/components/stepper", label: "Stepper" },
+      { href: "/components/skeleton", label: "Skeleton" },
+    ],
+  },
+  {
+    group: "Patterns",
+    links: [
+      { href: "/patterns/dos-donts", label: "Dos & Don'ts" },
+      { href: "/patterns/voice-tone", label: "Voice & Tone" },
+    ],
+  },
+  {
+    group: "Tooling",
+    links: [
+      { href: "/tooling/claude-skill", label: "Claude Code skill" },
+      { href: "/tooling/atmospheres", label: "Atmospheres" },
+    ],
+  },
+];
+
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+}
+
+let activeLabel = 'Overview';
+if (currentPath !== '/') {
+  for (const group of navItems) {
+    for (const link of group.links) {
+      if (isActive(link.href)) activeLabel = link.label;
+    }
+  }
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — Reef</title>
+  <link rel="stylesheet" href="/fonts/sora.css" />
+</head>
+<body>
+
+<!-- TOP: Nav bar — expands to contain the mega menu -->
+<div class="nav-bar" id="nav-bar">
+
+  <!-- Always-visible pill row -->
+  <div class="nav-bar__row">
+    <a href="/" class="nav-bar__logo">
+      <svg id="voi-logo" width="44" height="18" viewBox="0 0 184 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d={VOI_LOGO_PATH} fill="#F26961" />
+      </svg>
+      <span class="nav-logo-meta"><strong>Reef</strong> v1.3.2</span>
+    </a>
+    <div class="nav-bar__sep"></div>
+    <div class="nav-bar__toggles">
+      <div class="theme-row">
+        <span class="nav-theme-label">Dark mode</span>
+        <label class="toggle toggle-sm" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <input type="checkbox" id="themeToggle" />
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+    </div>
+    <div class="nav-bar__spacer"></div>
+    <span class="nav-active-label">{activeLabel}</span>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+        <line x1="2" y1="5" x2="16" y2="5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13" x2="16" y2="13"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mega menu — revealed when nav expands -->
+  <div class="nav-mega" id="nav-dropdown" aria-hidden="true">
+    <div class="nav-mega-inner">
+
+      <!-- Bento: Components (left) · Foundation + Patterns + Tools (right) -->
+      <div class="nav-bento">
+
+        <!-- LEFT: Components — full height -->
+        <div class="nav-bento-left">
+          <div class="nav-section-hd">
+            <div class="nav-bento-graphic nav-bento-graphic--components">
+              <Fragment set:html={navGraphics['Components'] ?? ''} />
+            </div>
+            <span class="nav-group-label">Components</span>
+          </div>
+          <div class="nav-bento-links-grid">
+            {navItems.find(g => g.group === 'Components')?.links.map((link) => (
+              <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- RIGHT: Foundation + Patterns + Tools stacked -->
+        <div class="nav-bento-right">
+
+          <div class="nav-section">
+            <div class="nav-section-hd">
+              <div class="nav-bento-graphic nav-bento-graphic--foundation">
+                <Fragment set:html={navGraphics['Foundation'] ?? ''} />
+              </div>
+              <span class="nav-group-label">Foundation</span>
+            </div>
+            <div class="nav-bento-links-list">
+              {navItems.find(g => g.group === 'Foundation')?.links.map((link) => (
+                <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="nav-section nav-section--sep">
+            <div class="nav-section-hd">
+              <div class="nav-bento-graphic nav-bento-graphic--patterns">
+                <Fragment set:html={navGraphics['Patterns'] ?? ''} />
+              </div>
+              <span class="nav-group-label">Patterns</span>
+            </div>
+            <div class="nav-bento-links-list">
+              {navItems.find(g => g.group === 'Patterns')?.links.map((link) => (
+                <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="nav-section nav-section--sep nav-section--tools">
+            <div class="nav-section-hd">
+              <span class="nav-group-label">Tools</span>
+            </div>
+            <div class="nav-bento-tools-row">
+              <label class="toggle toggle-sm">
+                <input type="checkbox" id="frostToggle" />
+                <span class="toggle-track"></span>
+              </label>
+              <label for="frostToggle" class="nav-resource-toggle__label">Frosted atmospheres</label>
+            </div>
+            <a href="/tooling/atmospheres" class="nav-bento-text-link">Explore atmospheres →</a>
+            <a href="/tooling/claude-skill" class="nav-bento-text-link">Claude Code skill →</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Overlay — closes nav on outside click -->
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- Frost background layer — animated gradient, activated by frost mode -->
+<div class="frost-bg-layer" aria-hidden="true">
+  <div class="voi-hero-bg">
+    <div class="voi-orb voi-orb--coral-a"></div>
+    <div class="voi-orb voi-orb--coral-b"></div>
+    <div class="voi-orb voi-orb--coral-c"></div>
+    <div class="voi-orb voi-orb--coral-d"></div>
+    <div class="voi-orb voi-orb--coral-e"></div>
+    <div class="voi-orb voi-orb--sky-a"></div>
+    <div class="voi-orb voi-orb--sky-b"></div>
+    <div class="voi-orb voi-orb--sky-c"></div>
+    <div class="voi-orb voi-orb--sky-d"></div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="shell">
+  <main class="main">
+    <slot />
+  </main>
+</div>
+
+<!-- Footer — full width, outside .shell -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+
+      <!-- Branding column -->
+      <div class="site-footer__brand">
+        <svg width="44" height="18" viewBox="0 0 184 76" fill="none" xmlns="http://www.w3.org/2000/svg" class="site-footer__logo" aria-label="Voi">
+          <path d={VOI_LOGO_PATH} fill="currentColor" />
+        </svg>
+        <div class="site-footer__reef-name">Reef</div>
+        <p class="site-footer__tagline">Token-driven design system for Voi's digital products</p>
+        <span class="site-footer__version">v1.3.2</span>
+      </div>
+
+      <!-- Foundation links -->
+      <div class="site-footer__col">
+        <div class="site-footer__col-heading">Foundation</div>
+        <a href="/foundation/colours" class="site-footer__link">Colours</a>
+        <a href="/foundation/typography" class="site-footer__link">Typography</a>
+        <a href="/foundation/spacing" class="site-footer__link">Spacing</a>
+        <a href="/foundation/shadows-radius" class="site-footer__link">Shadows &amp; Radius</a>
+        <a href="/foundation/materials" class="site-footer__link">Materials</a>
+        <a href="/foundation/iconography" class="site-footer__link">Iconography</a>
+      </div>
+
+      <!-- Components links -->
+      <div class="site-footer__col">
+        <div class="site-footer__col-heading">Components</div>
+        <a href="/components/buttons" class="site-footer__link">Buttons</a>
+        <a href="/components/inputs" class="site-footer__link">Inputs</a>
+        <a href="/components/chips" class="site-footer__link">Chips</a>
+        <a href="/components/badges" class="site-footer__link">Badges</a>
+        <a href="/components/cards" class="site-footer__link">Cards</a>
+        <a href="/components/alert-card" class="site-footer__link">Alert card</a>
+        <a href="/components/toggle" class="site-footer__link">Toggle</a>
+        <a href="/components/tabs" class="site-footer__link">Tabs</a>
+      </div>
+
+      <!-- Patterns & Tooling links -->
+      <div class="site-footer__col">
+        <div class="site-footer__col-heading">Patterns &amp; Tooling</div>
+        <a href="/patterns/dos-donts" class="site-footer__link">Dos &amp; Don'ts</a>
+        <a href="/patterns/voice-tone" class="site-footer__link">Voice &amp; Tone</a>
+        <a href="/tooling/atmospheres" class="site-footer__link">Atmospheres</a>
+        <a href="/tooling/claude-skill" class="site-footer__link">Claude Code skill</a>
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© Voi Technology AB · Reef v1.3.2 · Personal reference — not a public Voi asset</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── DARK MODE ─────────────────────────────────────────────────────────
+const toggle = document.getElementById('themeToggle') as HTMLInputElement;
+const logo = document.getElementById('voi-logo')!.querySelector('path')!;
+
+const saved = localStorage.getItem('reef-theme');
+let dark = saved === 'dark';
+
+function applyTheme(isDark: boolean) {
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
+  toggle.checked = isDark;
+  logo.setAttribute('fill', isDark ? '#ffffff' : '#F26961');
+}
+applyTheme(dark);
+
+toggle.addEventListener('change', () => {
+  dark = toggle.checked;
+  localStorage.setItem('reef-theme', dark ? 'dark' : 'light');
+  applyTheme(dark);
+});
+
+// ─── FROST MODE ────────────────────────────────────────────────────────
+const frostToggle = document.getElementById('frostToggle') as HTMLInputElement;
+let frosted = localStorage.getItem('reef-frost') !== 'false';
+
+function applyFrost(isFrosted: boolean) {
+  document.documentElement.setAttribute('data-frost', isFrosted ? 'true' : '');
+  frostToggle.checked = isFrosted;
+}
+applyFrost(frosted);
+
+frostToggle.addEventListener('change', () => {
+  frosted = frostToggle.checked;
+  localStorage.setItem('reef-frost', frosted ? 'true' : 'false');
+  applyFrost(frosted);
+});
+
+// ─── ATMOSPHERE SETTINGS ───────────────────────────────────────────────
+const savedAtmCoral = localStorage.getItem('reef-orb-coral');
+const savedAtmSky   = localStorage.getItem('reef-orb-sky');
+const savedAtmBlur  = localStorage.getItem('reef-orb-blur');
+if (savedAtmCoral) document.documentElement.style.setProperty('--orb-coral-opacity', savedAtmCoral);
+if (savedAtmSky)   document.documentElement.style.setProperty('--orb-sky-opacity', savedAtmSky);
+if (savedAtmBlur)  document.documentElement.style.setProperty('--orb-blur', savedAtmBlur);
+
+// ─── NAV DROPDOWN ──────────────────────────────────────────────────────
+const menuBtn = document.getElementById('nav-menu-btn')!;
+const navBar   = document.getElementById('nav-bar')!;
+const navDropdown = document.getElementById('nav-dropdown')!;
+const navOverlay = document.getElementById('nav-overlay')!;
+
+function openNav() {
+  navBar.classList.add('nav-open');
+  // Fit height to content, cap at viewport
+  const contentH = 56 + (navScrollEl.scrollHeight ?? 0);
+  navBar.style.height = Math.min(contentH, window.innerHeight - 32) + 'px';
+  navDropdown.classList.add('open');
+  navOverlay.classList.add('open');
+  menuBtn.classList.add('active');
+  menuBtn.setAttribute('aria-expanded', 'true');
+  navDropdown.setAttribute('aria-hidden', 'false');
+  navScrollEl.scrollTop = 0;
+}
+function closeNav() {
+  navBar.classList.remove('nav-open');
+  navBar.style.height = '';
+  navDropdown.classList.remove('open');
+  navOverlay.classList.remove('open');
+  menuBtn.classList.remove('active');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  navDropdown.setAttribute('aria-hidden', 'true');
+}
+
+menuBtn.addEventListener('click', () => {
+  navDropdown.classList.contains('open') ? closeNav() : openNav();
+});
+navOverlay.addEventListener('click', closeNav);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+navDropdown.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeNav);
+});
+
+// ─── NAV SCROLL REF ────────────────────────────────────────────────────
+const navScrollEl = (navDropdown.querySelector('.nav-mega-inner') as HTMLElement) ?? navDropdown;
+</script>
+
+</body>
+</html>

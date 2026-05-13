@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Stepper">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Stepper</h1>
+  <p class="s-desc">Horizontal progress indicator showing position in a multi-step flow. Steps are numbered and labelled. The active step is highlighted; completed steps show a check. Never skip or reorder steps programmatically.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Step 2 of 4 (default)</div>
+  <div class="demo" style="max-width:480px">
+    <div class="stepper">
+      <div class="step step--complete">
+        <div class="step-connector"></div>
+        <div class="step-circle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Account</span>
+      </div>
+      <div class="step step--active">
+        <div class="step-connector"></div>
+        <div class="step-circle">2</div>
+        <span class="step-label">Identity</span>
+      </div>
+      <div class="step step--upcoming">
+        <div class="step-connector"></div>
+        <div class="step-circle">3</div>
+        <span class="step-label">Payment</span>
+      </div>
+      <div class="step step--upcoming">
+        <div class="step-connector"></div>
+        <div class="step-circle">4</div>
+        <span class="step-label">Done</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Step 3 of 3 (final step)</div>
+  <div class="demo" style="max-width:360px">
+    <div class="stepper">
+      <div class="step step--complete">
+        <div class="step-connector"></div>
+        <div class="step-circle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Details</span>
+      </div>
+      <div class="step step--complete">
+        <div class="step-connector"></div>
+        <div class="step-circle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Review</span>
+      </div>
+      <div class="step step--active">
+        <div class="step-connector"></div>
+        <div class="step-circle">3</div>
+        <span class="step-label">Confirm</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Interactive demo</div>
+  <div class="demo" style="max-width:480px">
+    <div class="stepper" id="interactive-stepper">
+      <div class="step step--active" data-step="1">
+        <div class="step-connector"></div>
+        <div class="step-circle" data-circle="1">1</div>
+        <span class="step-label">Start</span>
+      </div>
+      <div class="step step--upcoming" data-step="2">
+        <div class="step-connector"></div>
+        <div class="step-circle" data-circle="2">2</div>
+        <span class="step-label">Details</span>
+      </div>
+      <div class="step step--upcoming" data-step="3">
+        <div class="step-connector"></div>
+        <div class="step-circle" data-circle="3">3</div>
+        <span class="step-label">Review</span>
+      </div>
+      <div class="step step--upcoming" data-step="4">
+        <div class="step-connector"></div>
+        <div class="step-circle" data-circle="4">4</div>
+        <span class="step-label">Done</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:24px">
+      <button class="btn btn-outlined btn-sm" id="step-back" disabled>Back</button>
+      <button class="btn btn-contrast btn-sm" id="step-next">Next</button>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"stepper"</span><span class="c-tag">&gt;</span>
+  <span class="c-comment">&lt;!-- Completed step --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"step step--complete"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"step-connector"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"step-circle"</span><span class="c-tag">&gt;</span><span class="c-comment">&lt;!-- check icon --&gt;</span><span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;span</span> <span class="c-attr">class</span>=<span class="c-str">"step-label"</span><span class="c-tag">&gt;</span>Account<span class="c-tag">&lt;/span&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-comment">&lt;!-- Active step --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"step step--active"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-comment">&lt;!-- Upcoming step --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"step step--upcoming"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Circle</code></td><td><code>32×32px, 50% radius</code></td><td>Tire fill when active/complete, outlined when upcoming</td></tr>
+      <tr><td><code>Connector</code></td><td><code>2px horizontal line</code></td><td>Tire colour when step is complete, neutral otherwise</td></tr>
+      <tr><td><code>Label</code></td><td><code>12px / 600</code></td><td>Active uses heading colour; others use tertiary</td></tr>
+      <tr><td><code>Complete icon</code></td><td><code>14px checkmark SVG</code></td><td>White stroke on Tire circle</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  const TOTAL = 4;
+  let current = 1;
+  const checkSVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+  function update() {
+    for (let i = 1; i <= TOTAL; i++) {
+      const step = document.querySelector(`[data-step="${i}"]`) as HTMLElement;
+      const circle = document.querySelector(`[data-circle="${i}"]`) as HTMLElement;
+      step.className = 'step ' + (i < current ? 'step--complete' : i === current ? 'step--active' : 'step--upcoming');
+      circle.innerHTML = i < current ? checkSVG : String(i);
+    }
+    (document.getElementById('step-back') as HTMLButtonElement).disabled = current === 1;
+    (document.getElementById('step-next') as HTMLButtonElement).disabled = current === TOTAL;
+  }
+
+  document.getElementById('step-next')?.addEventListener('click', () => { if (current < TOTAL) { current++; update(); } });
+  document.getElementById('step-back')?.addEventListener('click', () => { if (current > 1) { current--; update(); } });
+</script>

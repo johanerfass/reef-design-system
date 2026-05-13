@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Sheets">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Sheets</h1>
+  <p class="s-desc">Bottom sheet that slides up from the screen edge for contextual actions and lightweight flows. Draggable to expand or dismiss. Use for actions that are related to the current screen context, not for full-feature flows.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">Example</div>
+  <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start">
+
+    <!-- Standard sheet with title + 2 icon buttons -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:8px">Standard sheet</div>
+      <div class="sheet-frame">
+        <div class="sheet">
+          <div class="sheet-handle-area">
+            <div class="sheet-handle"></div>
+          </div>
+          <div class="sheet-title-row">
+            <div class="sheet-title">Ride summary</div>
+            <button class="sheet-icon-btn" aria-label="Share">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+            <button class="sheet-icon-btn" aria-label="Close">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <div class="sheet-content">
+            <div class="sheet-stats">
+              <div class="sheet-stat">
+                <div class="sheet-stat-value">5.2 km</div>
+                <div class="sheet-stat-label">Distance</div>
+              </div>
+              <div class="sheet-stat">
+                <div class="sheet-stat-value">18 min</div>
+                <div class="sheet-stat-label">Duration</div>
+              </div>
+              <div class="sheet-stat">
+                <div class="sheet-stat-value">€2.40</div>
+                <div class="sheet-stat-label">Cost</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal variant (with backdrop overlay) -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--content-body-tertiary);margin-bottom:8px">Modal variant</div>
+      <div class="sheet-frame sheet-frame--modal">
+        <div class="sheet sheet--modal">
+          <div class="sheet-handle-area">
+            <div class="sheet-handle"></div>
+          </div>
+          <div class="sheet-title-row">
+            <div class="sheet-title">End ride</div>
+            <button class="sheet-icon-btn" aria-label="More options">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+            <button class="sheet-icon-btn" aria-label="Close">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <div class="sheet-content">
+            <p style="font-size:14px;color:var(--content-body-secondary);line-height:1.5;margin:0 0 16px">
+              You're about to end your ride in Gothenburg. Make sure the scooter is parked in a valid zone.
+            </p>
+            <button class="btn btn-contrast btn-lg" style="width:100%">
+              End ride
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet"</span><span class="c-tag">&gt;</span>
+  <span class="c-comment">&lt;!-- drag handle area: 8px top padding + 4px handle --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-handle-area"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-handle"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-comment">&lt;!-- title row: 40px, flex, title + 2 icon buttons --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-title-row"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-title"</span><span class="c-tag">&gt;</span>Title<span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-icon-btn"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet-content"</span><span class="c-tag">&gt;</span>
+    <span class="c-comment">&lt;!-- content with 0 16px padding --&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Modal variant */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"sheet sheet--modal"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Width</code></td><td><code>375px</code></td><td>Full mobile width</td></tr>
+      <tr><td><code>Background</code></td><td><code>--surface-raised-enabled</code></td><td>White surface</td></tr>
+      <tr><td><code>Top radius</code></td><td><code>24px 24px 0 0</code></td><td>Rounded top corners only</td></tr>
+      <tr><td><code>Shadow</code></td><td><code>0 -16px 48px 0 rgba(0,0,0,0.12)</code></td><td>Upward shadow — not card shadow</td></tr>
+      <tr><td><code>Drag handle</code></td><td><code>32×4px, 2px radius</code></td><td>Centred, 8px top padding in handle area</td></tr>
+      <tr><td><code>Handle colour</code></td><td><code>--fill-neutral-medium-enabled</code></td><td>Adapts to dark mode</td></tr>
+      <tr><td><code>Header height</code></td><td><code>60px total</code></td><td>Handle area (4px handle + 8px top) + 40px title row + 4px bottom padding</td></tr>
+      <tr><td><code>Title</code></td><td><code>16px / 600 (H5)</code></td><td>Left-aligned, flex 1</td></tr>
+      <tr><td><code>Trailing icon buttons</code></td><td><code>2× 40×40px</code></td><td>Both trailing — share, close, etc.</td></tr>
+      <tr><td><code>Content padding</code></td><td><code>0 16px</code></td><td>Left and right only — no top</td></tr>
+      <tr><td><code>Modal overlay</code></td><td><code>box-shadow: 0 0 0 2000px rgba(0,0,0,0.4)</code></td><td>Simulates backdrop in DOM</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<style>
+  .sheet-frame {
+    width: 375px;
+    overflow: hidden;
+    background: var(--fill-neutral-soft-enabled);
+    border-radius: 16px;
+  }
+  .sheet-frame--modal {
+    background: rgba(0,0,0,0.4);
+    border-radius: 16px;
+  }
+  .sheet {
+    background: var(--surface-raised-enabled);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -16px 48px 0 rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet--modal {
+    box-shadow: 0 -16px 48px 0 rgba(0,0,0,0.12), 0 0 0 2000px rgba(0,0,0,0.4);
+  }
+  .sheet-handle-area {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    padding-bottom: 0;
+  }
+  .sheet-handle {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--fill-neutral-medium-enabled);
+  }
+  .sheet-title-row {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 4px;
+  }
+  .sheet-title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+  }
+  .sheet-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--content-body-secondary);
+    flex-shrink: 0;
+    transition: background .12s;
+  }
+  .sheet-icon-btn:hover { background: var(--fill-neutral-soft-enabled); }
+  .sheet-icon-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.92); }
+  .sheet-content {
+    padding: 0 16px 20px;
+  }
+  .sheet-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0;
+  }
+  .sheet-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .sheet-stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--content-heading-primary);
+  }
+  .sheet-stat-label {
+    font-size: 12px;
+    color: var(--content-body-tertiary);
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+</style>

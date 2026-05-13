@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="List">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">List</h1>
+  <p class="s-desc">Standalone row cards for settings menus, data lists, and navigation items. Each row is self-contained with leading icon, title, optional body, and trailing action. Use dividers or spacing — never borders between rows.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">Default rows (white background)</div>
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:375px">
+
+    <div class="list-row">
+      <div class="list-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="list-text">
+        <div class="list-title">Account</div>
+        <div class="list-desc">Manage your profile and details</div>
+      </div>
+      <div class="list-value">johan.e@voi.com</div>
+      <svg class="list-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+    <div class="list-row">
+      <div class="list-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <div class="list-text">
+        <div class="list-title">Payment method</div>
+        <div class="list-desc">Add or remove cards</div>
+      </div>
+      <div class="list-value">Visa ···· 4242</div>
+      <svg class="list-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+    <div class="list-row">
+      <div class="list-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="list-text">
+        <div class="list-title">Home area</div>
+        <div class="list-desc">Your preferred riding city</div>
+      </div>
+      <div class="list-value">Stockholm</div>
+      <svg class="list-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+    <div class="list-row">
+      <div class="list-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <div class="list-text">
+        <div class="list-title">Wallet balance</div>
+        <div class="list-desc">Top up or view transactions</div>
+      </div>
+      <div class="list-value">€12.50</div>
+      <svg class="list-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+  </div>
+
+  <div class="s-overline" style="margin-top:32px">Grey variant (<code style="font-size:11px">#f2f2f6</code> background)</div>
+  <div style="max-width:375px">
+    <div class="list-row list-row--grey">
+      <div class="list-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      </div>
+      <div class="list-text">
+        <div class="list-title">Preferences</div>
+        <div class="list-desc">Notifications, language, accessibility</div>
+      </div>
+      <svg class="list-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default white row */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-row"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-icon"</span><span class="c-tag">&gt;&lt;svg&gt;</span>...<span class="c-tag">&lt;/svg&gt;&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-text"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-title"</span><span class="c-tag">&gt;</span>Label<span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-desc"</span><span class="c-tag">&gt;</span>Description<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-comment">&lt;!-- optional value --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-value"</span><span class="c-tag">&gt;</span>Value<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;svg</span> <span class="c-attr">class</span>=<span class="c-str">"list-chevron"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/svg&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Grey variant */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"list-row list-row--grey"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Row size</code></td><td><code>350×67px</code></td><td>Fixed height — do not reduce</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>12px</code></td><td>Applied per row — rows are standalone cards</td></tr>
+      <tr><td><code>Background (default)</code></td><td><code>white</code></td><td>--surface-raised-enabled</td></tr>
+      <tr><td><code>Background (grey)</code></td><td><code>#f2f2f6</code></td><td>Light system grey variant</td></tr>
+      <tr><td><code>Padding</code></td><td><code>12px top/bottom, 16px left/right</code></td><td>Gap 12px between 4 columns</td></tr>
+      <tr><td><code>Icon</code></td><td><code>24×24px</code></td><td>No container shape</td></tr>
+      <tr><td><code>Title</code></td><td><code>16px / 400 Regular / #282425</code></td><td>Regular weight — not semibold</td></tr>
+      <tr><td><code>Description</code></td><td><code>14px / 400 / #322e2f</code></td><td>Secondary body colour</td></tr>
+      <tr><td><code>Value</code></td><td><code>14px / 400 / primary colour</code></td><td>Right-aligned, optional</td></tr>
+      <tr><td><code>Chevron</code></td><td><code>24×24px</code></td><td>Always trailing</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<style>
+  .list-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    height: 67px;
+    background: var(--surface-raised-enabled, #ffffff);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    transition: background .12s;
+    box-sizing: border-box;
+  }
+  .list-row:hover { background: var(--fill-neutral-soft-enabled); }
+  .list-row:active { background: var(--fill-neutral-medium-enabled); transform: scale(.99); }
+  .list-row--grey { background: var(--surface-base-enabled); box-shadow: none; }
+  .list-row--grey:hover { background: var(--fill-neutral-soft-enabled); }
+  .list-row--grey:active { background: var(--fill-neutral-medium-enabled); transform: scale(.99); }
+  .list-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--content-body-secondary);
+  }
+  .list-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .list-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--content-body-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .list-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--content-body-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .list-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--content-body-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .list-chevron {
+    flex-shrink: 0;
+    color: var(--content-body-tertiary);
+  }
+</style>

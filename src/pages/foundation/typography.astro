@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Typography">
+  <div class="s-overline">01 — Foundation</div>
+  <h1 class="s-title">Sora, always</h1>
+  <p class="s-desc">One family. SemiBold 600 for all headings and labels. Regular 400 for body. Light 300 only as a deliberate large-scale display choice. Sentence case everywhere — no exceptions.</p>
+  <hr class="s-rule" />
+
+  <div style="background:var(--surface-raised-enabled);border-radius:32px;padding:40px;box-shadow:var(--shadow-card)">
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Overline</div><div class="type-spec">12px / 600<br>tracking +0.01em<br>Sentence case</div></div>
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--content-body-tertiary)">Overline label</div>
+        <span class="ann">Eyebrow text above headings. Always sentence case — no uppercase.</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Display 1</div><div class="type-spec">96px / 600<br>lh 100% / -0.03em</div></div>
+      <div style="font-size:clamp(48px,7vw,96px);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--content-heading-primary)">Cities.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Display 2</div><div class="type-spec">72px / 600<br>lh 100% / -0.03em</div></div>
+      <div style="font-size:clamp(36px,6vw,72px);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--content-heading-primary)">Cities made for living.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H1</div><div class="type-spec">56px / 600<br>lh 110% / -0.02em</div></div>
+      <div style="font-size:clamp(32px,5vw,56px);font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--content-heading-primary)">Your ride is ready.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H2</div><div class="type-spec">48px / 600<br>lh 110% / -0.02em</div></div>
+      <div style="font-size:clamp(28px,4vw,48px);font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--content-heading-primary)">Start ride</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H3</div><div class="type-spec">36px / 600<br>lh 115% / -0.02em</div></div>
+      <div style="font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1.15;color:var(--content-heading-primary)">Helmet on. Wheels on the road.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H4</div><div class="type-spec">28px / 600<br>lh 120% / -0.01em</div></div>
+      <div style="font-size:28px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:var(--content-heading-primary)">0.25 €/min · Malmö zone</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H5</div><div class="type-spec">22px / 600<br>lh 130% / -0.01em</div></div>
+      <div style="font-size:22px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--content-heading-primary)">Battery at 82%</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">H6</div><div class="type-spec">18px / 600<br>lh 130% / -0.01em</div></div>
+      <div style="font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--content-heading-primary)">Parking zone · Central</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body XL</div><div class="type-spec">18px / 400<br>lh 150% / -0.01em</div></div>
+      <div style="font-size:18px;font-weight:400;letter-spacing:-.01em;line-height:1.5;color:var(--content-body-primary);max-width:520px">Voi is a shared micromobility service running across European cities. We keep your city moving — quietly, cleanly, always close by.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body LG</div><div class="type-spec">16px / 400<br>lh 140% / -0.01em</div></div>
+      <div style="font-size:16px;font-weight:400;letter-spacing:-.01em;line-height:1.4;color:var(--content-body-secondary);max-width:480px">Park responsibly after each ride. Tuck the scooter close to a wall or in a designated bay. A photo is required in some areas.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body MD</div><div class="type-spec">14px / 400<br>lh 140% / -0.01em</div></div>
+      <div style="font-size:14px;font-weight:400;letter-spacing:-.01em;line-height:1.4;color:var(--content-body-secondary)">Prices include VAT. Unlock fee + per-minute rate applies. Rates vary by city.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Body SM</div><div class="type-spec">12px / 400<br>lh 130%</div></div>
+      <div style="font-size:12px;font-weight:400;line-height:1.3;color:var(--content-body-tertiary)">No signal here. Try walking a few metres.</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Label</div><div class="type-spec">12–16px / 600<br>lh 130% / 0 tracking</div></div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:16px;font-weight:600;letter-spacing:0;color:var(--content-body-primary)">Large label</span>
+        <span style="font-size:14px;font-weight:600;letter-spacing:0;color:var(--content-body-primary)">Medium label</span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0;color:var(--content-body-primary)">Small label</span>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta"><div class="type-name">Link</div><div class="type-spec">14–16px / 600<br>lh 140%</div></div>
+      <div style="font-size:16px;font-weight:400;color:var(--content-body-primary)">
+        Need help? <a href="#" style="font-weight:600;color:var(--content-inline-link-enabled);text-decoration:underline;text-underline-offset:3px">Read the safety guide</a> before your first ride.
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Rules</div>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Weight: 600 / 400 only</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">SemiBold for all headings, labels, buttons. Regular for all body copy. Light 300 is intentional and rare — display headlines only.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Sentence case everywhere</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">No Title Case in UI. Buttons, labels, and headings all use sentence case. Exceptions: overline (uppercase), product names (Voi, Reef).</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Negative tracking on headings</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">All headings use -0.01em to -0.03em letter-spacing. Only overlines use positive tracking (+0.08em). Body copy uses -0.01em.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Minimum body size: 12px</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Never go below 12px for readable text. 12px is for secondary captions and footnotes only, not primary content.</p>
+    </div>
+  </div>
+</BaseLayout>

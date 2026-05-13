@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Avatar">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Avatar</h1>
+  <p class="s-desc">User identity element. Falls back gracefully from photo → initials → icon. Use the size appropriate to the context: xl for profile screens, sm/xs for list rows and comments.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Sizes</div>
+  <div class="demo">
+    <div class="row" style="align-items:flex-end;gap:16px">
+      <div style="text-align:center">
+        <div class="avatar avatar--xs"><div class="avatar-inner">JE</div></div>
+        <span class="ann">xs · 24px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--sm"><div class="avatar-inner">JE</div></div>
+        <span class="ann">sm · 32px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--md"><div class="avatar-inner">JE</div></div>
+        <span class="ann">md · 40px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--lg"><div class="avatar-inner">JE</div></div>
+        <span class="ann">lg · 56px</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--xl"><div class="avatar-inner">JE</div></div>
+        <span class="ann">xl · 80px</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Colour variants</div>
+  <div class="demo">
+    <div class="row" style="gap:12px">
+      <div style="text-align:center">
+        <div class="avatar avatar--md"><div class="avatar-inner">AS</div></div>
+        <span class="ann">default</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--md avatar-coral"><div class="avatar-inner">LK</div></div>
+        <span class="ann">coral</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--md avatar-sky"><div class="avatar-inner">MT</div></div>
+        <span class="ann">sky</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--md avatar-tire"><div class="avatar-inner">PW</div></div>
+        <span class="ann">tire</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--md avatar-success"><div class="avatar-inner">NR</div></div>
+        <span class="ann">success</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">With status indicator</div>
+  <div class="demo">
+    <div class="row" style="gap:20px">
+      <div style="text-align:center">
+        <div class="avatar avatar--lg avatar-coral">
+          <div class="avatar-inner">JE</div>
+          <div class="avatar-status avatar-status--online"></div>
+        </div>
+        <span class="ann">online</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--lg">
+          <div class="avatar-inner">AS</div>
+          <div class="avatar-status avatar-status--away"></div>
+        </div>
+        <span class="ann">away</span>
+      </div>
+      <div style="text-align:center">
+        <div class="avatar avatar--lg avatar-sky">
+          <div class="avatar-inner">MT</div>
+          <div class="avatar-status avatar-status--offline"></div>
+        </div>
+        <span class="ann">offline</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Group (stacked)</div>
+  <div class="demo">
+    <div class="avatar-group">
+      <div class="avatar avatar--md"><div class="avatar-inner">+5</div></div>
+      <div class="avatar avatar--md avatar-sky"><div class="avatar-inner">PW</div></div>
+      <div class="avatar avatar--md avatar-success"><div class="avatar-inner">NR</div></div>
+      <div class="avatar avatar--md avatar-coral"><div class="avatar-inner">LK</div></div>
+      <div class="avatar avatar--md"><div class="avatar-inner">AS</div></div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Initials avatar */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar avatar--md avatar-coral"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar-inner"</span><span class="c-tag">&gt;</span>JE<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* With status dot */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar avatar--md"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar-inner"</span><span class="c-tag">&gt;</span>JE<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar-status avatar-status--online"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Group stack */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar-group"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"avatar avatar--md"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>xs</code></td><td><code>24×24px, 9px font</code></td><td>Inline mentions, dense lists</td></tr>
+      <tr><td><code>sm</code></td><td><code>32×32px, 12px font</code></td><td>Comment threads, compact rows</td></tr>
+      <tr><td><code>md</code></td><td><code>40×40px, 14px font</code></td><td>Default — list rows, cards</td></tr>
+      <tr><td><code>lg</code></td><td><code>56×56px, 18px font</code></td><td>Profile headers, prominent context</td></tr>
+      <tr><td><code>xl</code></td><td><code>80×80px, 26px font</code></td><td>Account/profile page hero</td></tr>
+      <tr><td><code>Status dot</code></td><td><code>12px (md), 14px (lg), 18px (xl)</code></td><td>2px white border from surface-raised</td></tr>
+      <tr><td><code>Group overlap</code></td><td><code>-10px margin-right</code></td><td>2px border separates stacked avatars</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

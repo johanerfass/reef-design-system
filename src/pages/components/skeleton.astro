@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Skeleton">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Skeleton</h1>
+  <p class="s-desc">Loading placeholder that mirrors the shape of incoming content. Reduces perceived load time by showing structure before data. Always match skeleton shapes to the real content dimensions — never use a generic spinner instead.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Card skeleton</div>
+  <div class="demo" style="max-width:360px">
+    <div class="card" style="border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="skeleton" style="width:44px;height:44px;border-radius:50%"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <div class="skeleton" style="height:14px;width:60%;border-radius:8px"></div>
+          <div class="skeleton" style="height:12px;width:40%;border-radius:8px"></div>
+        </div>
+      </div>
+      <div class="skeleton" style="height:12px;border-radius:8px"></div>
+      <div class="skeleton" style="height:12px;width:85%;border-radius:8px"></div>
+      <div class="skeleton" style="height:12px;width:70%;border-radius:8px"></div>
+      <div class="skeleton" style="height:40px;border-radius:12px;margin-top:4px"></div>
+    </div>
+  </div>
+
+  <div class="sub-label">List skeleton</div>
+  <div class="demo" style="max-width:400px">
+    <div style="display:flex;flex-direction:column;gap:0">
+      {[1,2,3].map(() => (
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--fill-neutral-soft-enabled)">
+          <div class="skeleton" style="width:40px;height:40px;border-radius:12px;flex-shrink:0"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+            <div class="skeleton" style="height:13px;width:55%;border-radius:6px"></div>
+            <div class="skeleton" style="height:11px;width:38%;border-radius:6px"></div>
+          </div>
+          <div class="skeleton" style="height:13px;width:40px;border-radius:6px;flex-shrink:0"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="sub-label">Profile header skeleton</div>
+  <div class="demo" style="max-width:400px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px">
+      <div class="skeleton" style="width:80px;height:80px;border-radius:50%"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:100%">
+        <div class="skeleton" style="height:18px;width:160px;border-radius:8px"></div>
+        <div class="skeleton" style="height:13px;width:120px;border-radius:6px"></div>
+      </div>
+      <div style="display:flex;gap:24px;width:100%;justify-content:center;margin-top:4px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="skeleton" style="height:22px;width:48px;border-radius:6px"></div>
+          <div class="skeleton" style="height:11px;width:36px;border-radius:5px"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="skeleton" style="height:22px;width:48px;border-radius:6px"></div>
+          <div class="skeleton" style="height:11px;width:36px;border-radius:5px"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="skeleton" style="height:22px;width:48px;border-radius:6px"></div>
+          <div class="skeleton" style="height:11px;width:36px;border-radius:5px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Any element with class="skeleton" gets the shimmer */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"skeleton"</span> <span class="c-attr">style</span>=<span class="c-str">"height:14px;width:60%;border-radius:8px"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+
+<span class="c-comment">/* Avatar skeleton */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"skeleton"</span> <span class="c-attr">style</span>=<span class="c-str">"width:44px;height:44px;border-radius:50%"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+
+<span class="c-comment">/* Mirror exact dimensions of the incoming element */</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Base colour</code></td><td><code>neutral-soft (tinted Pearl)</code></td><td>Light-mode base</td></tr>
+      <tr><td><code>Shimmer</code></td><td><code>gradient 90° sweep, 1.5s linear infinite</code></td><td>White highlight moves left-to-right</td></tr>
+      <tr><td><code>Shape</code></td><td><code>Matches content element</code></td><td>Set border-radius inline to mirror content</td></tr>
+      <tr><td><code>Reduced motion</code></td><td><code>animation: none</code></td><td>Static placeholder respects user preference</td></tr>
+      <tr><td><code>Dark mode</code></td><td><code>darker base via token</code></td><td>Adapts via CSS custom property override</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>

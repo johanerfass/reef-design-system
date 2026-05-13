@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Tabs">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Tabs</h1>
+  <p class="s-desc">Horizontal switcher between related sibling views. Two visual styles: underline for web/Android, pill for iOS. Never use more than 5 tabs — consolidate or use a different navigation pattern for wider option sets.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">Underline tabs — scrollable overflow</div>
+  <div class="demo">
+    <div class="tabs" id="underline-tabs" style="max-width:500px">
+      <button class="tab active" data-tab="underline" data-panel="tab-u1">Overview</button>
+      <button class="tab" data-tab="underline" data-panel="tab-u2">History</button>
+      <button class="tab" data-tab="underline" data-panel="tab-u3">Statistics</button>
+      <button class="tab" data-tab="underline" data-panel="tab-u4">Settings</button>
+    </div>
+    <div style="padding:20px 4px 0;font-size:14px;color:var(--content-body-secondary)">
+      <div id="tab-u1">Overview content — ride summaries and recent activity.</div>
+      <div id="tab-u2" style="display:none">History content — past trips list.</div>
+      <div id="tab-u3" style="display:none">Statistics content — charts and totals.</div>
+      <div id="tab-u4" style="display:none">Settings content — preferences and notifications.</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Pill tabs — context switcher</div>
+  <div class="demo">
+    <div class="tabs--pill" id="pill-tabs">
+      <button class="tab active" data-tab="pill" data-panel="tab-p1">Map</button>
+      <button class="tab" data-tab="pill" data-panel="tab-p2">List</button>
+      <button class="tab" data-tab="pill" data-panel="tab-p3">Saved</button>
+    </div>
+    <div style="padding:20px 4px 0;font-size:14px;color:var(--content-body-secondary)">
+      <div id="tab-p1">Map view — vehicles on map.</div>
+      <div id="tab-p2" style="display:none">List view — nearby vehicles sorted by distance.</div>
+      <div id="tab-p3" style="display:none">Saved locations and favourite routes.</div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Underline tabs */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"tabs"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"tab active"</span><span class="c-tag">&gt;</span>Overview<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"tab"</span><span class="c-tag">&gt;</span>History<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Pill tabs (context switcher) */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"tabs--pill"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"tab active"</span><span class="c-tag">&gt;</span>Map<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"tab"</span><span class="c-tag">&gt;</span>List<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Tab height</code></td><td><code>44px</code></td><td>Underline style. Meets HIG 44px touch target.</td></tr>
+      <tr><td><code>Underline</code></td><td><code>2px solid var(--core-tire)</code></td><td>Active indicator, extends below border line</td></tr>
+      <tr><td><code>Active font</code></td><td><code>14px / 600</code></td><td>SemiBold on active, Regular on inactive</td></tr>
+      <tr><td><code>Pill container</code></td><td><code>bg: neutral-soft, 12px radius, 4px padding</code></td><td>Scrollable row for many tabs</td></tr>
+      <tr><td><code>Pill active</code></td><td><code>white bg, 8px radius, shadow-card</code></td><td>Lifted indicator, no underline</td></tr>
+      <tr><td><code>Pill tab height</code></td><td><code>36px</code></td><td>Slightly more compact than underline</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-tab]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const b = e.currentTarget as HTMLElement;
+      const group = b.dataset.tab!;
+      const panelId = b.dataset.panel!;
+      // deactivate siblings
+      document.querySelectorAll(`[data-tab="${group}"]`).forEach(s => s.classList.remove('active'));
+      b.classList.add('active');
+      // hide all panels for this group
+      const panels = document.querySelectorAll(`[data-tab="${group}"]`).length;
+      document.querySelectorAll(`[data-tab="${group}"]`).forEach(s => {
+        const p = document.getElementById((s as HTMLElement).dataset.panel!);
+        if (p) p.style.display = 'none';
+      });
+      const panel = document.getElementById(panelId);
+      if (panel) panel.style.display = 'block';
+    });
+  });
+</script>

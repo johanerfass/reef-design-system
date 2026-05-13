@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Inputs">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Form fields</h1>
+  <p class="s-desc">Standard text field for single-line user input. Focus changes only the border colour to Info blue — no box-shadow or fill change. Always pair with a visible label above and a hint below.</p>
+  <hr class="s-rule" />
+
+  <div class="grid-2" style="gap:32px">
+    <div class="col">
+      <div class="form-field">
+        <label class="form-label">Email address</label>
+        <input class="form-input" type="email" placeholder="name@example.com" />
+        <span class="form-hint">We'll send your receipt here.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Promo code</label>
+        <input class="form-input" type="text" placeholder="e.g. FREEVOI" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" style="opacity:.5">City</label>
+        <input class="form-input form-input--disabled" type="text" value="Stockholm" readonly />
+        <span class="form-hint">Detected from your location.</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-field">
+        <label class="form-label">Phone number</label>
+        <input class="form-input" id="focus-demo" type="tel" placeholder="+46 70 000 00 00" value="+46 70 123 45 67" />
+        <span class="form-hint">Focus: border becomes INFO blue. No box-shadow.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Phone number</label>
+        <input class="form-input form-input--error" type="tel" value="+46 7x" />
+        <span class="form-hint form-hint--error">Phone number must be 10 digits. Try again.</span>
+      </div>
+      <div class="card card-sm" style="border-radius:16px">
+        <p style="font-size:12px;font-weight:600;color:var(--content-body-tertiary);margin-bottom:12px;letter-spacing:.01em">Input states</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--content-body-secondary)">Default border</span><code class="token">fill.neutral.medium (Granite)</code></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--alert-info);font-weight:600">Focus border</span><code class="token">INFO #0075DB — border only</code></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--alert-error);font-weight:600">Error border</span><code class="token">ERROR #ED0A02</code></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--content-body-tertiary)">Radius</span><code class="token">12px (not 16px)</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">With leading icon — <code style="font-size:12px;font-family:monospace">icon</code> prop</div>
+  <div class="demo">
+    <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px;line-height:1.5">The React <code class="token">&lt;Input icon="…" /&gt;</code> prop places a 20px icon left of the text. Padding adjusts automatically. Common for phone, email, and location fields.</p>
+    <div class="grid-2" style="gap:24px">
+      <div class="form-field">
+        <label class="form-label">Phone number</label>
+        <div style="position:relative">
+          <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--content-icon-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.12 2.18 2 2 0 012.11.17h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.1-1.1a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          <input class="form-input" type="tel" placeholder="+46 70 000 00 00" style="padding-left:48px" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Drop-off location</label>
+        <div style="position:relative">
+          <svg style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--content-icon-primary)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <input class="form-input" type="text" placeholder="Enter address or tap map" style="padding-left:48px" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block">
+    <pre><span class="c-comment">{"// Text input"}</span>
+<span class="c-tag">{"<Input"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"Email address"'}</span>
+  <span class="c-attr">{"type="}</span><span class="c-string">{'"email"'}</span>
+  <span class="c-attr">{"placeholder="}</span><span class="c-string">{'"name@example.com"'}</span>
+  <span class="c-attr">{"hint="}</span><span class="c-string">{'"Your receipt will be sent here."'}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// With leading icon"}</span>
+<span class="c-tag">{"<Input"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"Phone number"'}</span>
+  <span class="c-attr">{"type="}</span><span class="c-string">{'"tel"'}</span>
+  <span class="c-attr">{"icon="}</span><span class="c-string">{'"<PhoneIcon />"'}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Error state"}</span>
+<span class="c-tag">{"<Input"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"Email address"'}</span>
+  <span class="c-attr">{"type="}</span><span class="c-string">{'"email"'}</span>
+  <span class="c-attr">{"error="}</span><span class="c-string">{'"Format not recognised. Try name@example.com"'}</span>
+<span class="c-tag">{"/>"}</span>
+
+<span class="c-comment">{"// Disabled"}</span>
+<span class="c-tag">{"<Input"}</span>
+  <span class="c-attr">{"label="}</span><span class="c-string">{'"City"'}</span>
+  <span class="c-attr">{"value="}</span><span class="c-string">{'"Stockholm"'}</span>
+  <span class="c-attr">{"disabled"}</span>
+  <span class="c-attr">{"hint="}</span><span class="c-string">{'"Detected from your location."'}</span>
+<span class="c-tag">{"/>"}</span></pre>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Props</div>
+  <table class="prop-table">
+    <thead>
+      <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code class="token">label</code></td><td><code class="token">string</code></td><td>—</td><td>Required. Always shown above the field.</td></tr>
+      <tr><td><code class="token">type</code></td><td><code class="token">string</code></td><td><code class="token">'text'</code></td><td>HTML input type. Passes through to native element.</td></tr>
+      <tr><td><code class="token">hint</code></td><td><code class="token">string</code></td><td>—</td><td>Helper text below field. Hidden when error is set.</td></tr>
+      <tr><td><code class="token">error</code></td><td><code class="token">string</code></td><td>—</td><td>Error message. Must explain problem + offer next step.</td></tr>
+      <tr><td><code class="token">icon</code></td><td><code class="token">ReactNode</code></td><td>—</td><td>Leading icon. 20×20 SVG. Auto-adjusts left padding.</td></tr>
+      <tr><td><code class="token">disabled</code></td><td><code class="token">boolean</code></td><td><code class="token">false</code></td><td>Chalk bg, reduced opacity, prevents interaction.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Error pattern</div>
+  <div class="demo">
+    <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px;line-height:1.5">Error messages must always explain the problem AND offer a fix. Never just "Invalid input".</p>
+    <div class="grid-2" style="gap:24px">
+      <div class="form-field">
+        <label class="form-label">Email address</label>
+        <input class="form-input form-input--error" type="email" value="not-an-email" />
+        <span class="form-hint form-hint--error">That doesn't look right. Check the format: name@example.com</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Password</label>
+        <input class="form-input form-input--error" type="password" value="abc" />
+        <span class="form-hint form-hint--error">Password needs at least 8 characters, one number, and one symbol.</span>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+const fd = document.getElementById('focus-demo');
+if (fd) {
+  fd.addEventListener('focus', function(this: HTMLInputElement) {
+    this.style.borderColor = 'var(--alert-info)';
+  });
+  fd.addEventListener('blur', function(this: HTMLInputElement) {
+    this.style.borderColor = '';
+  });
+}
+</script>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Toast">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Toast</h1>
+  <p class="s-desc">Ephemeral feedback message for non-blocking confirmations and alerts. Auto-dismisses after 4 seconds. Use for actions the user just triggered — never for proactive or system-initiated messages.</p>
+  <hr class="s-rule" />
+
+  <div class="sub-label">All variants</div>
+  <div class="demo" style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+    <!-- Default -->
+    <div class="toast">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="toast-body">Scooter unlocked successfully</div>
+      <button class="toast-close">×</button>
+    </div>
+    <!-- With action -->
+    <div class="toast">
+      <div class="toast-body">
+        <div class="toast-title">Ride ended</div>
+        Your ride has been saved to history.
+      </div>
+      <button class="toast-action">View</button>
+    </div>
+    <!-- Success -->
+    <div class="toast toast--success">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <div class="toast-body">Payment confirmed. Enjoy your ride!</div>
+      <button class="toast-close">×</button>
+    </div>
+    <!-- Error -->
+    <div class="toast toast--error">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <div class="toast-body">
+        <div class="toast-title">Payment failed</div>
+        Check your card details and try again.
+      </div>
+      <button class="toast-action">Retry</button>
+    </div>
+    <!-- Info -->
+    <div class="toast toast--info">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="toast-body">Helmet zone ahead — low speed limit applies.</div>
+      <button class="toast-close">×</button>
+    </div>
+    <!-- Warning -->
+    <div class="toast toast--warning">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="toast-body">Battery low — find a charging point soon.</div>
+      <button class="toast-close" style="color:rgba(0,0,0,.4)">×</button>
+    </div>
+  </div>
+
+  <div class="sub-label">Interactive — click to show toast</div>
+  <div class="demo">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-contrast btn-sm" id="show-toast-default">Show default</button>
+      <button class="btn btn-outlined btn-sm" id="show-toast-success">Show success</button>
+      <button class="btn btn-outlined btn-sm" id="show-toast-error">Show error</button>
+    </div>
+    <div id="toast-stage" style="margin-top:16px;min-height:56px;display:flex;align-items:center"></div>
+  </div>
+
+  <div class="sub-label" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Default toast */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast-body"</span><span class="c-tag">&gt;</span>Scooter unlocked<span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"toast-close"</span><span class="c-tag">&gt;</span>×<span class="c-tag">&lt;/button&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Semantic variants */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--success"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--error"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--info"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--warning"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+
+  <div class="sub-label" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Background</code></td><td><code>--neutral-charcoal (#2d292a)</code></td><td>Dark, high contrast against page</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>16px</code></td><td>Matches cards but smaller feel</td></tr>
+      <tr><td><code>Padding</code></td><td><code>14px 18px</code></td><td>Comfortable reading width</td></tr>
+      <tr><td><code>Max width</code></td><td><code>360px</code></td><td>Full width on mobile (minus 16px margins)</td></tr>
+      <tr><td><code>Shadow</code></td><td><code>0 8px 24px rgba(0,0,0,.18)</code></td><td>Floats above content</td></tr>
+      <tr><td><code>Auto-dismiss</code></td><td><code>4000ms</code></td><td>With action: 8000ms. Material spec.</td></tr>
+      <tr><td><code>Position</code></td><td><code>bottom-centre, 16px from edge</code></td><td>Above bottom nav if present</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('.toast-close').forEach(btn => {
+    btn.addEventListener('click', () => (btn.closest('.toast') as HTMLElement)?.remove());
+  });
+
+  function showToast(html: string) {
+    const stage = document.getElementById('toast-stage')!;
+    stage.innerHTML = html;
+    const t = stage.querySelector('.toast') as HTMLElement;
+    t?.querySelector('.toast-close')?.addEventListener('click', () => t.remove());
+    setTimeout(() => t?.remove(), 4000);
+  }
+
+  document.getElementById('show-toast-default')?.addEventListener('click', () =>
+    showToast('<div class="toast"><div class="toast-body"><div class="toast-title">Scooter unlocked</div>Enjoy your ride!</div><button class="toast-close">×</button></div>'));
+
+  document.getElementById('show-toast-success')?.addEventListener('click', () =>
+    showToast('<div class="toast toast--success"><div class="toast-body">Payment confirmed — €2.50</div><button class="toast-close">×</button></div>'));
+
+  document.getElementById('show-toast-error')?.addEventListener('click', () =>
+    showToast('<div class="toast toast--error"><div class="toast-body"><div class="toast-title">Connection lost</div>Check your network.</div><button class="toast-action">Retry</button></div>'));
+</script>

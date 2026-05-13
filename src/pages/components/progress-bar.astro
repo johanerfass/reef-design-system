@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Progress bar">
+  <div class="s-overline">02 — Components</div>
+  <h1 class="s-title">Progress bar</h1>
+  <p class="s-desc">Horizontal fill indicator for determinate and segmented progress. Use for onboarding steps, upload state, and profile completion. Never use for indeterminate loading — use spinner instead.</p>
+  <hr class="s-rule" />
+
+  <div class="s-overline">All type variants (60% fill)</div>
+  <div style="display:flex;flex-direction:column;gap:20px;max-width:360px">
+
+    <div>
+      <div class="variant-label">Brand</div>
+      <div class="pb-track pb-track--brand"><div class="pb-fill pb-fill--brand" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Accent</div>
+      <div class="pb-track pb-track--accent"><div class="pb-fill pb-fill--accent" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Contrast</div>
+      <div class="pb-track pb-track--contrast"><div class="pb-fill pb-fill--contrast" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Success</div>
+      <div class="pb-track pb-track--success"><div class="pb-fill pb-fill--success" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Warning</div>
+      <div class="pb-track pb-track--warning"><div class="pb-fill pb-fill--warning" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Info</div>
+      <div class="pb-track pb-track--info"><div class="pb-fill pb-fill--info" style="width:60%"></div></div>
+    </div>
+
+    <div>
+      <div class="variant-label">Error</div>
+      <div class="pb-track pb-track--error"><div class="pb-fill pb-fill--error" style="width:60%"></div></div>
+    </div>
+
+  </div>
+
+  <!-- Interactive demo — Brand type -->
+  <div style="margin-top:40px;max-width:360px">
+    <div class="s-overline">Interactive demo (Brand)</div>
+    <div class="pb-track pb-track--brand"><div class="pb-fill pb-fill--brand" id="demo-fill" style="width:40%"></div></div>
+    <div id="demo-pct" style="font-size:13px;color:var(--content-body-tertiary);margin-top:8px;font-weight:600">40%</div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="pb-demo-btn" id="dec-btn">−10%</button>
+      <button class="pb-demo-btn" id="inc-btn">+10%</button>
+    </div>
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Code</div>
+  <div class="code-block"><pre><span class="c-comment">/* Brand type */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"pb-track pb-track--brand"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"pb-fill pb-fill--brand"</span> <span class="c-attr">style</span>=<span class="c-str">"width:60%"</span><span class="c-tag">&gt;&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-comment">/* Other types: --accent --contrast --success --warning --info --error */</span></pre></div>
+
+  <div class="s-overline" style="margin-top:40px">Anatomy</div>
+  <table class="prop-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><code>Track size</code></td><td><code>308×16px</code></td><td>Outer container</td></tr>
+      <tr><td><code>Track radius</code></td><td><code>14px</code></td><td>Applied to track outer</td></tr>
+      <tr><td><code>Fill size</code></td><td><code>8px tall</code></td><td>Shorter than track — 4px inset all edges</td></tr>
+      <tr><td><code>Fill radius</code></td><td><code>8px</code></td><td>Applied to fill inner</td></tr>
+      <tr><td><code>Fill transition</code></td><td><code>width 0.3s ease</code></td><td>Smooth progress updates</td></tr>
+      <tr><td><code>Brand</code></td><td><code>track rgba(242,105,97,0.1) / fill #F26961</code></td><td>Coral</td></tr>
+      <tr><td><code>Accent</code></td><td><code>track rgba(103,133,165,0.1) / fill #455f85</code></td><td>Steel blue</td></tr>
+      <tr><td><code>Contrast</code></td><td><code>track rgba(0,0,0,0.1) / fill #282425</code></td><td>Tire (dark charcoal)</td></tr>
+      <tr><td><code>Success</code></td><td><code>track rgba(0,133,69,0.1) / fill #008545</code></td><td>Green</td></tr>
+      <tr><td><code>Warning</code></td><td><code>track rgba(255,177,0,0.1) / fill #ffb100</code></td><td>Amber</td></tr>
+      <tr><td><code>Info</code></td><td><code>track rgba(0,117,219,0.1) / fill #0075db</code></td><td>Blue</td></tr>
+      <tr><td><code>Error</code></td><td><code>track rgba(237,10,2,0.1) / fill #ed0a02</code></td><td>Red</td></tr>
+    </tbody>
+  </table>
+</BaseLayout>
+
+<script>
+  const fill = document.getElementById('demo-fill') as HTMLElement;
+  const pct = document.getElementById('demo-pct') as HTMLElement;
+  let val = 40;
+  document.getElementById('dec-btn')?.addEventListener('click', () => {
+    val = Math.max(0, val - 10);
+    fill.style.width = val + '%';
+    pct.textContent = val + '%';
+  });
+  document.getElementById('inc-btn')?.addEventListener('click', () => {
+    val = Math.min(100, val + 10);
+    fill.style.width = val + '%';
+    pct.textContent = val + '%';
+  });
+</script>
+
+<style>
+  .variant-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--content-body-tertiary);
+    margin-bottom: 8px;
+  }
+
+  /* Track: 308×16px, 14px radius */
+  .pb-track {
+    width: 308px;
+    height: 16px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+
+  /* Fill: 8px tall, 8px radius, grows inside 4px inset */
+  .pb-fill {
+    height: 8px;
+    border-radius: 8px;
+    transition: width .3s ease;
+    min-width: 0;
+  }
+
+  /* Type: Brand */
+  .pb-track--brand { background: rgba(242,105,97,0.1); }
+  .pb-fill--brand { background: var(--core-coral); }
+
+  /* Type: Accent */
+  .pb-track--accent { background: rgba(103,133,165,0.1); }
+  .pb-fill--accent { background: var(--fill-accent-medium-enabled); }
+
+  /* Type: Contrast */
+  .pb-track--contrast { background: rgba(0,0,0,0.1); }
+  .pb-fill--contrast { background: var(--core-tire); }
+
+  /* Type: Success */
+  .pb-track--success { background: rgba(0,133,69,0.1); }
+  .pb-fill--success { background: var(--alert-success); }
+
+  /* Type: Warning */
+  .pb-track--warning { background: rgba(255,177,0,0.1); }
+  .pb-fill--warning { background: #ffb100; }
+
+  /* Type: Info */
+  .pb-track--info { background: rgba(0,117,219,0.1); }
+  .pb-fill--info { background: #0075db; }
+
+  /* Type: Error */
+  .pb-track--error { background: rgba(237,10,2,0.1); }
+  .pb-fill--error { background: #ed0a02; }
+
+  /* Dark mode: contrast variant flips to white */
+  :global([data-theme="dark"]) .pb-track--contrast { background: rgba(255,255,255,0.15); }
+  :global([data-theme="dark"]) .pb-fill--contrast { background: #fff; }
+
+  .pb-demo-btn {
+    height: 36px;
+    padding: 0 14px;
+    font-size: 13px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    background: var(--fill-neutral-soft-enabled);
+    color: var(--content-body-primary);
+    transition: background .15s, transform .1s;
+  }
+  .pb-demo-btn:hover { background: var(--fill-neutral-medium-enabled); }
+  .pb-demo-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.97); }
+</style>
