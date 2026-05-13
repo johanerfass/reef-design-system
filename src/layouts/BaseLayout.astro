@@ -154,6 +154,10 @@ if (currentPath !== '/') {
     <div class="nav-bar__sep"></div>
     <div class="nav-bar__spacer"></div>
     <div class="nav-bar__controls">
+      <label class="toggle toggle-sm nav-frost-toggle" title="Toggle frosted atmospheres" aria-label="Toggle frosted atmospheres">
+        <input type="checkbox" id="frostToggle" />
+        <span class="toggle-track"></span>
+      </label>
       <label class="toggle toggle-sm nav-theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
         <input type="checkbox" id="themeToggle" />
         <span class="toggle-track"></span>
@@ -230,13 +234,6 @@ if (currentPath !== '/') {
           <div class="nav-section nav-section--sep nav-section--tools">
             <div class="nav-section-hd">
               <span class="nav-group-label">Tools</span>
-            </div>
-            <div class="nav-bento-tools-row">
-              <label class="toggle toggle-sm">
-                <input type="checkbox" id="frostToggle" />
-                <span class="toggle-track"></span>
-              </label>
-              <label for="frostToggle" class="nav-resource-toggle__label">Frosted atmospheres</label>
             </div>
             <a href="/tooling/atmospheres" class="nav-bento-text-link">Explore atmospheres →</a>
             <a href="/tooling/claude-skill" class="nav-bento-text-link">Claude Code skill →</a>
