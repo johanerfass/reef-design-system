@@ -622,10 +622,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     "type   shadows";
 }
 .bento-card {
-  background: var(--surface-base-enabled);
+  background: var(--surface-overlay-enabled);
   border-radius: 20px;
   padding: 16px 18px;
   box-shadow: var(--shadow-xs);
+}
+:global([data-frost="true"]) .bento-card {
+  background: var(--fill-frost-medium-enabled);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--fill-frost-stroke);
+  box-shadow: none;
 }
 .bento-card--type    { grid-area: type; }
 .bento-card--shadows { grid-area: shadows; }
