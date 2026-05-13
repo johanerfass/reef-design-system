@@ -148,7 +148,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
             <div class="bento-atmos-orb bento-atmos-orb--d"></div>
             <div class="bento-atmos-content">
               <div class="bento-label" style="color:rgba(40,36,37,.5)">Atmospheres · Tooling</div>
-              <div class="bento-atmos-headline">Living<br>backgrounds.</div>
+              <div class="bento-atmos-headline"><span class="bento-atmos-gradient">Living</span><br>backgrounds.</div>
               <div class="bento-atmos-link">Explore atmospheres →</div>
             </div>
           </a>
@@ -1021,6 +1021,12 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
   margin-top: 8px;
 }
 .bento-card--atmos:hover .bento-atmos-link { color: #282425; }
+.bento-atmos-gradient {
+  background: linear-gradient(105deg, #F26961 0%, #ABD1EA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 :global([data-theme="dark"]) .bento-card--atmos {
   background: #161314;
