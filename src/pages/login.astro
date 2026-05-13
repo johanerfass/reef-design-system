@@ -1,0 +1,152 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reef — Sign in</title>
+  <link rel="stylesheet" href="/fonts/sora.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(242,105,97,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 10%, rgba(171,209,234,0.22) 0%, transparent 55%),
+        #faf4ec;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 32px;
+      box-shadow: 0 4px 24px rgba(40,36,37,0.10), 0 1px 4px rgba(40,36,37,0.06);
+      padding: 48px 40px 40px;
+      width: 100%;
+      max-width: 400px;
+      margin: 24px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #282425;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .logo span {
+      color: #F26961;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #282425;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #7a7375;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #282425;
+      margin-bottom: 8px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid #d4d0d1;
+      border-radius: 12px;
+      padding: 0 16px;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      color: #282425;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+      margin-bottom: 8px;
+    }
+
+    input[type="password"]:focus {
+      border-color: #0075DB;
+    }
+
+    .error {
+      font-size: 12px;
+      color: #ED0A02;
+      font-weight: 500;
+      min-height: 18px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      height: 52px;
+      background: #282425;
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    button:hover { opacity: 0.88; }
+    button:active { opacity: 0.76; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">voi<span>.</span></div>
+    <h1>Reef design system</h1>
+    <p>Enter the password to access the design system.</p>
+    <label for="pw">Password</label>
+    <input type="password" id="pw" placeholder="Enter password" autocomplete="current-password" />
+    <div class="error" id="err"></div>
+    <button id="btn">Continue</button>
+  </div>
+
+  <script>
+    const input = document.getElementById('pw');
+    const err = document.getElementById('err');
+    const btn = document.getElementById('btn');
+    const params = new URLSearchParams(location.search);
+    const next = params.get('next') || '/';
+
+    function attempt() {
+      if (input.value === 'archipelago') {
+        document.cookie = 'reef-auth=archipelago; path=/; max-age=2592000; SameSite=Lax';
+        location.href = next;
+      } else {
+        err.textContent = 'Incorrect password. Try again.';
+        input.style.borderColor = '#ED0A02';
+        input.focus();
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+    input.addEventListener('input', () => {
+      err.textContent = '';
+      input.style.borderColor = '';
+    });
+  </script>
+</body>
+</html>
