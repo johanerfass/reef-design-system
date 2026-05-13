@@ -1022,6 +1022,18 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
 }
 .bento-card--atmos:hover .bento-atmos-link { color: #282425; }
 
+:global([data-theme="dark"]) .bento-card--atmos {
+  background: #161314;
+}
+:global([data-theme="dark"]) .bento-atmos-orb--a { background: rgba(242,105,97,0.28); }
+:global([data-theme="dark"]) .bento-atmos-orb--b { background: rgba(242,105,97,0.22); }
+:global([data-theme="dark"]) .bento-atmos-orb--c { background: rgba(171,209,234,0.15); }
+:global([data-theme="dark"]) .bento-atmos-orb--d { background: rgba(171,209,234,0.12); }
+:global([data-theme="dark"]) .bento-atmos-headline { color: #fff; }
+:global([data-theme="dark"]) .bento-card--atmos .bento-label { color: rgba(255,255,255,0.4) !important; }
+:global([data-theme="dark"]) .bento-atmos-link { color: rgba(255,255,255,0.4); }
+:global([data-theme="dark"]) .bento-card--atmos:hover .bento-atmos-link { color: #fff; }
+
 /* ─── DARK MODE FIXES ────────────────────────────────────────────────── */
 /* Frontify icons are black SVGs — invert on dark surfaces */
 :global([data-theme="dark"]) .assets-icon-chip img {
