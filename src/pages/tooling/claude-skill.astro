@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Claude Code skill">
@@ -22,7 +23,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div style="font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--content-heading-primary);margin-bottom:8px;max-width:560px;line-height:1.2">A Reef-aware AI pair for designers and developers.</div>
       <div style="font-size:14px;color:var(--content-body-secondary);margin-bottom:28px;max-width:480px;line-height:1.6">Drop the skill file into Claude Code and every conversation becomes Reef-fluent. Ask it to build components, review implementations, or explain a token — and get answers grounded in the actual system.</div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="/ui-designer.skill" download class="btn btn-contrast btn-md" style="text-decoration:none">
+        <a href={`${BASE}/ui-designer.skill`} download class="btn btn-contrast btn-md" style="text-decoration:none">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download skill
         </a>
@@ -159,7 +160,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <div style="border-radius:24px;border:1.5px dashed var(--fill-neutral-medium-enabled);padding:32px;text-align:center;margin-bottom:8px">
     <div style="font-size:16px;font-weight:600;color:var(--content-heading-primary);margin-bottom:8px">Ready when you are</div>
     <div style="font-size:13px;color:var(--content-body-secondary);margin-bottom:24px">One file. Drop it in. Reef is loaded.</div>
-    <a href="/ui-designer.skill" download class="btn btn-contrast btn-lg" style="text-decoration:none">
+    <a href={`${BASE}/ui-designer.skill`} download class="btn btn-contrast btn-lg" style="text-decoration:none">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download ui-designer.skill
     </a>

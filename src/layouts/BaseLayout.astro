@@ -7,6 +7,11 @@ export interface Props {
 }
 const { title, currentPath = Astro.url.pathname } = Astro.props;
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => href.startsWith('http') ? href : BASE + href;
+const stripBase = (path: string) => BASE && path.startsWith(BASE) ? path.slice(BASE.length) || '/' : path;
+const localPath = stripBase(currentPath);
+
 const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906L29.63 58.7818L44.3476 23.8032H58.6932ZM92.6092 75.9789C87.1897 75.9789 82.337 74.8454 78.0333 72.5784C73.8713 70.4354 70.3646 67.1767 67.9559 63.1563C65.5296 59.136 64.3252 54.5844 64.3252 49.4837C64.3252 44.383 65.5296 39.8313 67.9559 35.811C70.3823 31.7907 73.8713 28.5319 78.0333 26.3889C82.337 24.122 87.1897 22.9885 92.6092 22.9885C98.0287 22.9885 102.864 24.122 107.132 26.3889C111.276 28.5496 114.748 31.8084 117.174 35.811C119.6 39.8313 120.805 44.383 120.805 49.4837C120.805 54.5844 119.6 59.136 117.174 63.1563C114.765 67.1589 111.294 70.4177 107.15 72.5784C102.881 74.8454 98.0287 75.9789 92.6092 75.9789ZM92.6092 63.7408C96.4347 63.7408 99.5695 62.4479 102.031 59.8621C104.475 57.2764 105.715 53.8228 105.715 49.4837C105.715 45.1446 104.493 41.691 102.031 39.1052C99.5695 36.5194 96.4347 35.2266 92.6092 35.2443C88.7837 35.2443 85.6312 36.5372 83.1517 39.1229C80.6722 41.7087 79.4325 45.1623 79.4325 49.5014C79.4325 53.8405 80.6722 57.2941 83.1517 59.8798C85.6312 62.4656 88.7837 63.7408 92.6092 63.7408ZM135.522 23.7855H150.435V75.2173H135.522V23.7855ZM142.978 16.6303C140.233 16.6303 138.002 15.8334 136.284 14.2394C134.601 12.734 133.663 10.5733 133.716 8.32403C133.68 6.07477 134.619 3.89635 136.301 2.39094C138.019 0.796981 140.251 0 142.978 0C145.724 0 147.955 0.76156 149.673 2.30239C151.356 3.73696 152.294 5.82682 152.259 8.04065C152.33 10.3785 151.391 12.61 149.673 14.204C147.955 15.8156 145.724 16.6303 142.978 16.6303ZM174.716 75.9789C172.236 76.032 169.863 75.0579 168.128 73.3046C166.357 71.5335 165.382 69.1248 165.453 66.6099C165.453 63.8648 166.339 61.6509 168.128 59.9684C171.882 56.5857 177.567 56.5857 181.322 59.9684C183.111 61.6509 183.996 63.8648 183.996 66.6099C184.067 69.1071 183.093 71.5335 181.322 73.3046C179.569 75.0579 177.178 76.032 174.716 75.9789Z";
 
 const navGraphics: Record<string, string> = {
@@ -116,8 +121,8 @@ const navItems = [
 ];
 
 function isActive(href: string) {
-  if (href === "/") return currentPath === "/";
-  return currentPath.startsWith(href);
+  if (href === "/") return localPath === "/";
+  return localPath.startsWith(href);
 }
 
 let activeLabel = 'Overview';
@@ -136,7 +141,7 @@ if (currentPath !== '/') {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} — Reef</title>
-  <link rel="stylesheet" href="/fonts/sora.css" />
+  <link rel="stylesheet" href={withBase('/fonts/sora.css')} />
 </head>
 <body>
 
@@ -189,7 +194,7 @@ if (currentPath !== '/') {
           </div>
           <div class="nav-bento-links-grid">
             {navItems.find(g => g.group === 'Components')?.links.map((link) => (
-              <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+              <a href={withBase(link.href)} class:list={["nav-link", { active: isActive(link.href) }]}>
                 {link.label}
               </a>
             ))}
@@ -208,7 +213,7 @@ if (currentPath !== '/') {
             </div>
             <div class="nav-bento-links-list">
               {navItems.find(g => g.group === 'Foundation')?.links.map((link) => (
-                <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+                <a href={withBase(link.href)} class:list={["nav-link", { active: isActive(link.href) }]}>
                   {link.label}
                 </a>
               ))}
@@ -224,7 +229,7 @@ if (currentPath !== '/') {
             </div>
             <div class="nav-bento-links-list">
               {navItems.find(g => g.group === 'Patterns')?.links.map((link) => (
-                <a href={link.href} class:list={["nav-link", { active: isActive(link.href) }]}>
+                <a href={withBase(link.href)} class:list={["nav-link", { active: isActive(link.href) }]}>
                   {link.label}
                 </a>
               ))}
@@ -235,8 +240,8 @@ if (currentPath !== '/') {
             <div class="nav-section-hd">
               <span class="nav-group-label">Tools</span>
             </div>
-            <a href="/tooling/atmospheres" class="nav-bento-text-link">Explore atmospheres →</a>
-            <a href="/tooling/claude-skill" class="nav-bento-text-link">Claude Code skill →</a>
+            <a href={withBase('/tooling/atmospheres')} class="nav-bento-text-link">Explore atmospheres →</a>
+            <a href={withBase('/tooling/claude-skill')} class="nav-bento-text-link">Claude Code skill →</a>
           </div>
 
         </div>

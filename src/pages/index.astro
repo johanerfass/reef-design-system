@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906L29.63 58.7818L44.3476 23.8032H58.6932ZM92.6092 75.9789C87.1897 75.9789 82.337 74.8454 78.0333 72.5784C73.8713 70.4354 70.3646 67.1767 67.9559 63.1563C65.5296 59.136 64.3252 54.5844 64.3252 49.4837C64.3252 44.383 65.5296 39.8313 67.9559 35.811C70.3823 31.7907 73.8713 28.5319 78.0333 26.3889C82.337 24.122 87.1897 22.9885 92.6092 22.9885C98.0287 22.9885 102.864 24.122 107.132 26.3889C111.276 28.5496 114.748 31.8084 117.174 35.811C119.6 39.8313 120.805 44.383 120.805 49.4837C120.805 54.5844 119.6 59.136 117.174 63.1563C114.765 67.1589 111.294 70.4177 107.15 72.5784C102.881 74.8454 98.0287 75.9789 92.6092 75.9789ZM92.6092 63.7408C96.4347 63.7408 99.5695 62.4479 102.031 59.8621C104.475 57.2764 105.715 53.8228 105.715 49.4837C105.715 45.1446 104.493 41.691 102.031 39.1052C99.5695 36.5194 96.4347 35.2266 92.6092 35.2443C88.7837 35.2443 85.6312 36.5372 83.1517 39.1229C80.6722 41.7087 79.4325 45.1623 79.4325 49.5014C79.4325 53.8405 80.6722 57.2941 83.1517 59.8798C85.6312 62.4656 88.7837 63.7408 92.6092 63.7408ZM135.522 23.7855H150.435V75.2173H135.522V23.7855ZM142.978 16.6303C140.233 16.6303 138.002 15.8334 136.284 14.2394C134.601 12.734 133.663 10.5733 133.716 8.32403C133.68 6.07477 134.619 3.89635 136.301 2.39094C138.019 0.796981 140.251 0 142.978 0C145.724 0 147.955 0.76156 149.673 2.30239C151.356 3.73696 152.294 5.82682 152.259 8.04065C152.33 10.3785 151.391 12.61 149.673 14.204C147.955 15.8156 145.724 16.6303 142.978 16.6303ZM174.716 75.9789C172.236 76.032 169.863 75.0579 168.128 73.3046C166.357 71.5335 165.382 69.1248 165.453 66.6099C165.453 63.8648 166.339 61.6509 168.128 59.9684C171.882 56.5857 177.567 56.5857 181.322 59.9684C183.111 61.6509 183.996 63.8648 183.996 66.6099C184.067 69.1071 183.093 71.5335 181.322 73.3046C179.569 75.0579 177.178 76.032 174.716 75.9789Z";
 ---
 
@@ -21,8 +22,8 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
       <h1>Design<br>in <em>Voi's</em><br>language.</h1>
       <p class="hero-sub">35 components, 80+ tokens, and one golden rule. Every building block for Voi's digital products — in one place.</p>
       <div class="hero-btns">
-        <a href="/foundation/colours" class="btn btn-contrast btn-lg">Explore tokens</a>
-        <a href="/components/buttons" class="btn btn-outlined btn-lg">View components</a>
+        <a href={`${BASE}/foundation/colours`} class="btn btn-contrast btn-lg">Explore tokens</a>
+        <a href={`${BASE}/components/buttons`} class="btn btn-outlined btn-lg">View components</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -69,7 +70,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
         <div class="s-overline">Components</div>
         <h2 class="feat-heading">35 components.<br>Production-ready.</h2>
         <p class="feat-body">Every component is interactive, token-driven, and dark-mode aware. What you see here is exactly what ships — no extra translation needed.</p>
-        <a href="/components/buttons" class="btn btn-outlined btn-sm">Browse all components</a>
+        <a href={`${BASE}/components/buttons`} class="btn btn-outlined btn-sm">Browse all components</a>
       </div>
       <div class="feat-visual">
         <div class="feat-frame--bento">
@@ -141,7 +142,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
           </div>
 
           <!-- Atmosphere card (full width) -->
-          <a href="/tooling/atmospheres" class="bento-card bento-card--atmos">
+          <a href={`${BASE}/tooling/atmospheres`} class="bento-card bento-card--atmos">
             <div class="bento-atmos-orb bento-atmos-orb--a"></div>
             <div class="bento-atmos-orb bento-atmos-orb--b"></div>
             <div class="bento-atmos-orb bento-atmos-orb--c"></div>
@@ -234,7 +235,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
     <div class="s-overline">Explore</div>
     <h2 class="showcase-heading">Where do you want to go?</h2>
     <div class="grid-auto" style="margin-top:32px">
-      <a href="/foundation/colours" class="nav-card">
+      <a href={`${BASE}/foundation/colours`} class="nav-card">
         <div class="nav-card-thumb nav-card-thumb--foundation" style="background:linear-gradient(135deg,#F2F2F6 0%,#e8e4df 100%)">
           <div style="display:flex;gap:6px">
             <div style="width:20px;height:20px;border-radius:50%;background:#F26961"></div>
@@ -248,7 +249,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
         </div>
         <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="/components/buttons" class="nav-card">
+      <a href={`${BASE}/components/buttons`} class="nav-card">
         <div class="nav-card-thumb" style="background:linear-gradient(135deg,#282425 0%,#585455 100%)">
           <div style="display:flex;gap:6px">
             <div style="padding:4px 10px;border-radius:6px;background:#fff;font-size:9px;font-weight:700;color:#282425;font-family:'Sora',sans-serif">Btn</div>
@@ -261,7 +262,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
         </div>
         <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="/patterns/dos-donts" class="nav-card">
+      <a href={`${BASE}/patterns/dos-donts`} class="nav-card">
         <div class="nav-card-thumb" style="background:linear-gradient(135deg,#ABD1EA 0%,#243860 100%)">
           <div style="display:flex;gap:8px">
             <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center">
@@ -278,7 +279,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
         </div>
         <svg class="nav-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="/tooling/atmospheres" class="nav-card">
+      <a href={`${BASE}/tooling/atmospheres`} class="nav-card">
         <div class="nav-card-thumb" style="background:radial-gradient(ellipse at 20% 80%,rgba(242,105,97,.35) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(171,209,234,.4) 0%,transparent 60%),#faf4ec">
         </div>
         <div class="nav-card-body">
@@ -1022,10 +1023,19 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
 }
 .bento-card--atmos:hover .bento-atmos-link { color: #282425; }
 .bento-atmos-gradient {
-  background: linear-gradient(105deg, #F26961 0%, #ABD1EA 100%);
+  background: linear-gradient(105deg, #F26961 0%, #ABD1EA 50%, #F26961 100%);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: atmos-gradient-flow 8s ease-in-out infinite;
+}
+@keyframes atmos-gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bento-atmos-gradient { animation: none; }
 }
 
 :global([data-theme="dark"]) .bento-card--atmos {
