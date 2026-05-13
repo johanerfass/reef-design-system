@@ -68,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="s-overline">Components</div>
         <h2 class="feat-heading">35 components.<br>Production-ready.</h2>
         <p class="feat-body">Every component is interactive, token-driven, and dark-mode aware. What you see here is exactly what ships — no extra translation needed.</p>
-        <a href="/components/buttons" class="feat-link">Browse all components →</a>
+        <a href="/components/buttons" class="btn btn-outlined btn-sm">Browse all components</a>
       </div>
       <div class="feat-visual">
         <div class="feat-frame">
@@ -169,7 +169,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="s-overline">Foundation</div>
         <h2 class="feat-heading">Tokens,<br>not guesses.</h2>
         <p class="feat-body">80+ CSS custom properties covering colour, typography, spacing, shadows and radius. Light and dark mode — both perfect, right out of the box.</p>
-        <a href="/foundation/colours" class="feat-link">Explore tokens →</a>
+        <a href="/foundation/colours" class="btn btn-outlined btn-sm">Explore tokens</a>
       </div>
     </div>
   </div>
@@ -566,19 +566,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   margin: 0 0 24px;
   max-width: 360px;
 }
-.feat-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--content-heading-primary);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--fill-neutral-medium-enabled);
-  padding-bottom: 2px;
-  transition: border-color .15s;
-}
-.feat-link:hover { border-color: var(--content-heading-primary); }
 .feat-visual { flex: 1; min-width: 0; }
 .feat-frame {
   background: var(--surface-raised-enabled);
