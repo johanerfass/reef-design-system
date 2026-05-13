@@ -75,7 +75,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <!-- Buttons card (full width) -->
           <div class="bento-card bento-card--full">
-            <div class="bento-label">Buttons · 5 variants</div>
+            <div class="bento-label">Buttons · 4 variants</div>
             <div class="bento-btn-row">
               <button class="btn btn-contrast btn-sm">Start ride</button>
               <button class="btn btn-outlined btn-sm">End ride</button>
@@ -92,7 +92,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <span class="badge badge-warning">Low battery</span>
               <span class="badge badge-information">Charging</span>
               <span class="badge badge-contrast">Out of zone</span>
-              <span class="badge badge-contrast">No parking</span>
             </div>
           </div>
 
@@ -121,15 +120,80 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <!-- Colour dots card -->
-          <div class="bento-card bento-card--colors">
-            <div class="bento-label">5 colour families</div>
-            <div class="bento-color-row">
-              <div class="bento-dot" style="background:#F26961"></div>
-              <div class="bento-dot" style="background:#282425"></div>
-              <div class="bento-dot" style="background:#ABD1EA"></div>
-              <div class="bento-dot" style="background:#243860"></div>
-              <div class="bento-dot" style="background:#F2F2F6;border:1.5px solid rgba(0,0,0,.1)"></div>
+          <!-- Toggles card -->
+          <div class="bento-card bento-card--toggles">
+            <div class="bento-label">Toggles</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+              <label class="bento-toggle-row">
+                <span class="toggle toggle-sm"><input type="checkbox" checked><div class="toggle-track"></div></span>
+                <span class="bento-toggle-label">Notifications</span>
+              </label>
+              <label class="bento-toggle-row">
+                <span class="toggle toggle-sm"><input type="checkbox"><div class="toggle-track"></div></span>
+                <span class="bento-toggle-label" style="color:var(--content-body-secondary)">Safe parking</span>
+              </label>
+              <label class="bento-toggle-row">
+                <span class="toggle toggle-sm"><input type="checkbox" disabled><div class="toggle-track"></div></span>
+                <span class="bento-toggle-label" style="color:var(--content-body-tertiary)">Night mode</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Tabs card (full width) -->
+          <div class="bento-card bento-card--tabs">
+            <div class="bento-label">Tabs · 2 styles</div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+              <div class="tabs">
+                <button class="tab active">Nearby</button>
+                <button class="tab">My rides</button>
+                <button class="tab">Wallet</button>
+              </div>
+              <div class="tabs tabs--pill">
+                <button class="tab active">All</button>
+                <button class="tab">E-bikes</button>
+                <button class="tab">Scooters</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toast card -->
+          <div class="bento-card bento-card--toast">
+            <div class="bento-label">Toasts</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+              <div class="toast toast--success" style="font-size:12px;padding:10px 14px;border-radius:12px">
+                <svg class="toast-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <div class="toast-body"><div class="toast-title">Ride ended</div>Total: €3.20 · 12 min</div>
+              </div>
+              <div class="toast" style="font-size:12px;padding:10px 14px;border-radius:12px">
+                <svg class="toast-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div class="toast-body"><div class="toast-title">Parking zone ahead</div>Lock here for a €0.50 bonus.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avatar card -->
+          <div class="bento-card bento-card--avatar">
+            <div class="bento-label">Avatars · 3 sizes + status</div>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:6px">
+              <div class="avatar-group">
+                <div class="avatar avatar--md avatar-coral">
+                  <div class="avatar-inner">JE</div>
+                  <div class="avatar-status avatar-status--online"></div>
+                </div>
+                <div class="avatar avatar--md avatar-sky">
+                  <div class="avatar-inner">AK</div>
+                  <div class="avatar-status avatar-status--away"></div>
+                </div>
+                <div class="avatar avatar--md avatar-tire">
+                  <div class="avatar-inner">MR</div>
+                  <div class="avatar-status avatar-status--offline"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="avatar avatar--lg avatar-coral"><div class="avatar-inner">JE</div><div class="avatar-status avatar-status--online"></div></div>
+                <div class="avatar avatar--sm avatar-sky"><div class="avatar-inner">AK</div></div>
+                <div class="avatar avatar--xs avatar-tire"><div class="avatar-inner">MR</div></div>
+              </div>
             </div>
           </div>
 
@@ -612,9 +676,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "full  full"
-    "badges alert"
-    "chips  colors";
+    "full     full"
+    "badges   alert"
+    "chips    toggles"
+    "tabs     tabs"
+    "toast    avatar";
 }
 .feat-frame--bento-foundation {
   grid-template-areas:
@@ -636,11 +702,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 }
 .bento-card--type    { grid-area: type; }
 .bento-card--shadows { grid-area: shadows; }
-.bento-card--full   { grid-area: full; }
-.bento-card--badges { grid-area: badges; }
-.bento-card--alert  { grid-area: alert; }
-.bento-card--chips  { grid-area: chips; }
-.bento-card--colors { grid-area: colors; }
+.bento-card--full    { grid-area: full; }
+.bento-card--badges  { grid-area: badges; }
+.bento-card--alert   { grid-area: alert; }
+.bento-card--chips   { grid-area: chips; }
+.bento-card--toggles { grid-area: toggles; }
+.bento-card--tabs    { grid-area: tabs; }
+.bento-card--toast   { grid-area: toast; }
+.bento-card--avatar  { grid-area: avatar; }
 .bento-label {
   font-size: 10px;
   font-weight: 700;
@@ -671,6 +740,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   height: 32px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+.bento-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.bento-toggle-label {
+  font-size: 12px;
+  color: var(--content-body-primary);
 }
 .feat-swatch {
   border-radius: 14px;
