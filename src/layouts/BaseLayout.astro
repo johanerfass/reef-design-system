@@ -276,55 +276,12 @@ if (currentPath !== '/') {
 <!-- Footer — full width, outside .shell -->
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="site-footer__grid">
-
-      <!-- Branding column -->
-      <div class="site-footer__brand">
-        <svg width="44" height="18" viewBox="0 0 184 76" fill="none" xmlns="http://www.w3.org/2000/svg" class="site-footer__logo" aria-label="Voi">
-          <path d={VOI_LOGO_PATH} fill="currentColor" />
-        </svg>
-        <div class="site-footer__reef-name">Reef</div>
-        <p class="site-footer__tagline">Token-driven design system for Voi's digital products</p>
-        <span class="site-footer__version">v1.3.2</span>
-      </div>
-
-      <!-- Foundation links -->
-      <div class="site-footer__col">
-        <div class="site-footer__col-heading">Foundation</div>
-        <a href="/foundation/colours" class="site-footer__link">Colours</a>
-        <a href="/foundation/typography" class="site-footer__link">Typography</a>
-        <a href="/foundation/spacing" class="site-footer__link">Spacing</a>
-        <a href="/foundation/shadows-radius" class="site-footer__link">Shadows &amp; Radius</a>
-        <a href="/foundation/materials" class="site-footer__link">Materials</a>
-        <a href="/foundation/iconography" class="site-footer__link">Iconography</a>
-      </div>
-
-      <!-- Components links -->
-      <div class="site-footer__col">
-        <div class="site-footer__col-heading">Components</div>
-        <a href="/components/buttons" class="site-footer__link">Buttons</a>
-        <a href="/components/inputs" class="site-footer__link">Inputs</a>
-        <a href="/components/chips" class="site-footer__link">Chips</a>
-        <a href="/components/badges" class="site-footer__link">Badges</a>
-        <a href="/components/cards" class="site-footer__link">Cards</a>
-        <a href="/components/alert-card" class="site-footer__link">Alert card</a>
-        <a href="/components/toggle" class="site-footer__link">Toggle</a>
-        <a href="/components/tabs" class="site-footer__link">Tabs</a>
-      </div>
-
-      <!-- Patterns & Tooling links -->
-      <div class="site-footer__col">
-        <div class="site-footer__col-heading">Patterns &amp; Tooling</div>
-        <a href="/patterns/dos-donts" class="site-footer__link">Dos &amp; Don'ts</a>
-        <a href="/patterns/voice-tone" class="site-footer__link">Voice &amp; Tone</a>
-        <a href="/tooling/atmospheres" class="site-footer__link">Atmospheres</a>
-        <a href="/tooling/claude-skill" class="site-footer__link">Claude Code skill</a>
-      </div>
-
-    </div>
-
     <div class="site-footer__bottom">
-      <span>© Voi Technology AB · Reef v1.3.2 · Personal reference — not a public Voi asset</span>
+      <span>© {new Date().getFullYear()} Voi Technology AB · Reef v1.3.2</span>
+      <span class="site-footer__dot">·</span>
+      <span>Internal use only — not a public Voi asset</span>
+      <span class="site-footer__dot">·</span>
+      <span>Maintained by Johan Erfass</span>
     </div>
   </div>
 </footer>
