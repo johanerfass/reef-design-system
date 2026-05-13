@@ -261,9 +261,15 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   white-space: nowrap;
   margin-right: 8px;
 }
+.nav-bar__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
 .nav-menu-btn {
   width: 36px; height: 36px;
-  border: none; border-radius: 10px;
+  border: none; border-radius: 999px;
   background: var(--fill-neutral-soft-enabled);
   color: var(--content-body-primary);
   display: flex; align-items: center; justify-content: center;
@@ -1882,7 +1888,7 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 }
 
 @media (max-width: 600px) {
-  .nav-bar__toggles, .nav-bar__sep { display: none; }
+  .nav-bar__sep { display: none; }
   .nav-mega-inner { padding: 12px 16px 24px; }
   .nav-bento { grid-template-columns: 1fr; }
   .nav-bento-left { border-right: none; padding-right: 0; border-bottom: 1px solid var(--fill-frost-stroke); padding-bottom: 20px; }
