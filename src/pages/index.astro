@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906L29.63 58.7818L44.3476 23.8032H58.6932ZM92.6092 75.9789C87.1897 75.9789 82.337 74.8454 78.0333 72.5784C73.8713 70.4354 70.3646 67.1767 67.9559 63.1563C65.5296 59.136 64.3252 54.5844 64.3252 49.4837C64.3252 44.383 65.5296 39.8313 67.9559 35.811C70.3823 31.7907 73.8713 28.5319 78.0333 26.3889C82.337 24.122 87.1897 22.9885 92.6092 22.9885C98.0287 22.9885 102.864 24.122 107.132 26.3889C111.276 28.5496 114.748 31.8084 117.174 35.811C119.6 39.8313 120.805 44.383 120.805 49.4837C120.805 54.5844 119.6 59.136 117.174 63.1563C114.765 67.1589 111.294 70.4177 107.15 72.5784C102.881 74.8454 98.0287 75.9789 92.6092 75.9789ZM92.6092 63.7408C96.4347 63.7408 99.5695 62.4479 102.031 59.8621C104.475 57.2764 105.715 53.8228 105.715 49.4837C105.715 45.1446 104.493 41.691 102.031 39.1052C99.5695 36.5194 96.4347 35.2266 92.6092 35.2443C88.7837 35.2443 85.6312 36.5372 83.1517 39.1229C80.6722 41.7087 79.4325 45.1623 79.4325 49.5014C79.4325 53.8405 80.6722 57.2941 83.1517 59.8798C85.6312 62.4656 88.7837 63.7408 92.6092 63.7408ZM135.522 23.7855H150.435V75.2173H135.522V23.7855ZM142.978 16.6303C140.233 16.6303 138.002 15.8334 136.284 14.2394C134.601 12.734 133.663 10.5733 133.716 8.32403C133.68 6.07477 134.619 3.89635 136.301 2.39094C138.019 0.796981 140.251 0 142.978 0C145.724 0 147.955 0.76156 149.673 2.30239C151.356 3.73696 152.294 5.82682 152.259 8.04065C152.33 10.3785 151.391 12.61 149.673 14.204C147.955 15.8156 145.724 16.6303 142.978 16.6303ZM174.716 75.9789C172.236 76.032 169.863 75.0579 168.128 73.3046C166.357 71.5335 165.382 69.1248 165.453 66.6099C165.453 63.8648 166.339 61.6509 168.128 59.9684C171.882 56.5857 177.567 56.5857 181.322 59.9684C183.111 61.6509 183.996 63.8648 183.996 66.6099C184.067 69.1071 183.093 71.5335 181.322 73.3046C179.569 75.0579 177.178 76.032 174.716 75.9789Z";
 ---
 
 <BaseLayout title="Overview">
@@ -202,75 +203,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- ─── SPOTLIGHT 2: FOUNDATION ──────────────────────────────────────── -->
-  <div class="section-gap anim">
-    <div class="feat">
-      <div class="feat-visual">
-        <div class="feat-frame--bento feat-frame--bento-foundation">
-
-          <!-- Colours card (full width) -->
-          <div class="bento-card bento-card--full">
-            <div class="bento-label">Colour system · 5 families</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-              <div class="feat-swatch" style="background:#F26961"><span class="feat-swatch-name">Coral</span><span class="feat-swatch-hex">#F26961</span></div>
-              <div class="feat-swatch" style="background:#282425;color:#fff"><span class="feat-swatch-name">Tire</span><span class="feat-swatch-hex">#282425</span></div>
-              <div class="feat-swatch" style="background:#ABD1EA"><span class="feat-swatch-name">Sky</span><span class="feat-swatch-hex">#ABD1EA</span></div>
-              <div class="feat-swatch" style="background:#243860;color:#fff"><span class="feat-swatch-name">Space</span><span class="feat-swatch-hex">#243860</span></div>
-              <div class="feat-swatch" style="background:#F2F2F6;border:1px solid rgba(0,0,0,.08)"><span class="feat-swatch-name">Pearl</span><span class="feat-swatch-hex">#F2F2F6</span></div>
-            </div>
-          </div>
-
-          <!-- Type card -->
-          <div class="bento-card bento-card--type">
-            <div class="bento-label">Sora · one typeface, four weights</div>
-            <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-              <div style="font-size:28px;font-weight:700;line-height:1;letter-spacing:-.025em;color:var(--content-heading-primary)">Unlock it.</div>
-              <div style="font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--content-heading-primary)">Start your ride</div>
-              <div style="font-size:13px;font-weight:400;color:var(--content-body-secondary)">Park in marked zones. Avoid blocking paths.</div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.01em;color:var(--content-body-tertiary)">Status · Active</div>
-            </div>
-          </div>
-
-          <!-- Shadows card -->
-          <div class="bento-card bento-card--shadows">
-            <div class="bento-label">Shadows & Radius</div>
-            <div style="display:flex;gap:10px;align-items:flex-end;margin-top:8px">
-              <div style="width:40px;height:40px;border-radius:8px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-xs);border:1px solid var(--fill-neutral-soft-enabled)"></div>
-              <div style="width:40px;height:40px;border-radius:12px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-card)"></div>
-              <div style="width:40px;height:40px;border-radius:20px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-overlay)"></div>
-              <div style="width:40px;height:40px;border-radius:32px;background:var(--surface-raised-enabled);box-shadow:var(--shadow-sticky)"></div>
-            </div>
-            <div style="font-size:10px;color:var(--content-body-tertiary);margin-top:8px">xs → sticky</div>
-          </div>
-
-        </div>
-      </div>
-      <div class="feat-copy">
-        <div class="s-overline">Foundation</div>
-        <h2 class="feat-heading">Tokens,<br>not guesses.</h2>
-        <p class="feat-body">80+ CSS custom properties covering colour, typography, spacing, shadows and radius. Light and dark mode — both perfect, right out of the box.</p>
-        <a href="/foundation/colours" class="btn btn-outlined btn-sm">Explore tokens</a>
-      </div>
-    </div>
-  </div>
-
   <!-- ─── GOLDEN RULE STATEMENT ────────────────────────────────────────── -->
   <div class="section-gap anim">
     <div class="golden-statement">
       <div class="golden-statement-kicker">The golden rule</div>
-      <h2 class="golden-statement-heading">Coral is a brand colour,<br>not a CTA.</h2>
-      <p class="golden-statement-body">Primary actions always use Tire. Coral is reserved for brand moments only — one per screen maximum. This single rule keeps every surface calm and premium.</p>
-      <div class="golden-statement-demo">
-        <div class="golden-demo-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--alert-success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <button class="btn btn-contrast btn-sm">Start ride</button>
-          <span class="golden-demo-label">Tire CTA</span>
+      <h2 class="golden-statement-heading">Coral is the brand.<br>Tire runs the UI.</h2>
+      <p class="golden-statement-body">Logos, hero moments, and marketing accents — coral's territory. Every interactive element uses Tire. One rule that keeps every screen calm and premium.</p>
+      <div class="golden-brand-demo">
+        <div class="golden-brand-item">
+          <span class="golden-brand-label">Logo</span>
+          <svg class="golden-voi-logo" viewBox="0 0 184 76" fill="#F26961" aria-label="Voi" role="img"><path d={VOI_LOGO_PATH} /></svg>
         </div>
-        <div class="golden-demo-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--alert-error)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          <button class="btn btn-sm" style="background:#F26961;color:#fff;border:none;cursor:default">Start ride</button>
-          <span class="golden-demo-label">Coral CTA ✗</span>
+        <div class="golden-brand-divider"></div>
+        <div class="golden-brand-item">
+          <span class="golden-brand-label">Brand moments</span>
+          <div class="golden-brand-headline">Move<br>free.</div>
         </div>
+        <div class="golden-brand-divider"></div>
+        <div class="golden-brand-item">
+          <span class="golden-brand-label">Every action</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="btn btn-contrast btn-sm">Start ride</button>
+            <button class="btn btn-outlined btn-sm">End ride</button>
+          </div>
+          <span class="golden-brand-sublabel">Always Tire</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BRAND ASSETS ──────────────────────────────────────────────────── -->
+  <div class="section-gap anim">
+    <div class="feat feat--rev">
+      <div class="feat-visual">
+        <div class="assets-mosaic">
+          <img class="assets-photo assets-photo--a" src="https://media.ffycdn.net/eu/voi-technologies/eyJvYXV0aCI6eyJjbGllbnRfaWQiOiJmcm9udGlmeS1tY3AifSwicGF0aCI6InZvaS10ZWNobm9sb2dpZXNcL2FjY291bnRzXC9mMVwvNDAwMTEzM1wvcHJvamVjdHNcLzIxXC9hc3NldHNcL2I5XC8xNTEzNlwvMTA4YWUxYmFkMTQzZmU1YzVlMDM0OTMyZjBlN2NjNzktMTY0Mjc3MzU0MC5qcGcifQ:voi-technologies:xqXvNPg3rdbVZrJAoA73_Pubz8HtrzmTWd00tfPHwBQ?cid=frontify-mcp" alt="Voi riders in Stockholm" loading="lazy" />
+          <img class="assets-photo assets-photo--b" src="https://media.ffycdn.net/eu/voi-technologies/RdHVJY3ZseUnMnjKa6LQ.jpg?cid=frontify-mcp" alt="Voi rider on scooter" loading="lazy" />
+          <img class="assets-photo assets-photo--c" src="https://media.ffycdn.net/eu/voi-technologies/yDRNLTBwbZMTZNvQHyHs.png?cid=frontify-mcp" alt="Voi illustration — e-bike rider" loading="lazy" />
+          <img class="assets-photo assets-photo--d" src="https://media.ffycdn.net/eu/voi-technologies/MfLyuvLhQtTjC7iooTae.png?cid=frontify-mcp" alt="Voi illustration — two riders in city" loading="lazy" />
+        </div>
+      </div>
+      <div class="feat-copy">
+        <div class="s-overline">Brand assets</div>
+        <h2 class="feat-heading">Every asset.<br>One source.</h2>
+        <p class="feat-body">Photography, illustrations, and icons all live in Frontify — approved files served straight from CDN. No downloads, no stale copies.</p>
+        <div class="assets-icons-strip">
+          <div class="assets-icon-chip">
+            <img src="https://media.ffycdn.net/eu/voi-technologies/TBMAv2MdEb9aY17HEBYD.svg?cid=frontify-mcp" width="20" height="20" alt="scooter icon" />
+          </div>
+          <div class="assets-icon-chip">
+            <img src="https://media.ffycdn.net/eu/voi-technologies/p4NgmxHo4Hqmz7WfHwEv.svg?cid=frontify-mcp" width="20" height="20" alt="map-pin icon" />
+          </div>
+          <div class="assets-icon-chip">
+            <img src="https://media.ffycdn.net/eu/voi-technologies/45JctX59SZ5vxR9344pR.svg?cid=frontify-mcp" width="20" height="20" alt="map icon" />
+          </div>
+          <div class="assets-icon-chip">
+            <img src="https://media.ffycdn.net/eu/voi-technologies/xCDvq2QuUi9AEYSFCBgM.svg?cid=frontify-mcp" width="20" height="20" alt="helmet icon" />
+          </div>
+          <div class="assets-icon-chip">
+            <img src="https://media.ffycdn.net/eu/voi-technologies/Y9eanQP5KfVSRGdZuz6N.svg?cid=frontify-mcp" width="20" height="20" alt="gps icon" />
+          </div>
+          <div class="assets-icon-count">800+ icons</div>
+        </div>
+        <div class="assets-cdn-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>media.ffycdn.net/eu/voi-technologies/…</span>
+        </div>
+        <a href="https://brand.voi.com" target="_blank" rel="noopener" class="btn btn-outlined btn-sm" style="margin-top:24px">Browse Frontify</a>
       </div>
     </div>
   </div>
@@ -808,29 +807,133 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   font-size: 16px;
   color: var(--content-body-secondary);
   max-width: 480px;
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
   line-height: 1.65;
 }
-.golden-statement-demo {
+.golden-brand-demo {
   display: inline-flex;
-  gap: 32px;
+  align-items: center;
+  gap: 0;
   flex-wrap: wrap;
   justify-content: center;
 }
-.golden-demo-item {
+.golden-brand-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  padding: 0 40px;
 }
-.golden-demo-label {
-  font-size: 12px;
+.golden-brand-divider {
+  width: 1px;
+  height: 80px;
+  background: rgba(242,105,97,.2);
+  flex-shrink: 0;
+}
+.golden-brand-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--content-body-tertiary);
+}
+.golden-brand-sublabel {
+  font-size: 11px;
   font-weight: 600;
   color: var(--content-body-tertiary);
 }
-@media (max-width: 480px) {
+.golden-voi-logo {
+  height: 28px;
+  width: auto;
+}
+.golden-brand-headline {
+  font-size: 40px;
+  font-weight: 700;
+  color: #F26961;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-align: left;
+}
+@media (max-width: 680px) {
   .golden-statement { padding: 48px 24px; }
   .golden-statement-heading { font-size: 28px; }
+  .golden-brand-divider { width: 80px; height: 1px; }
+  .golden-brand-demo { gap: 24px; }
+  .golden-brand-item { padding: 0 16px; }
 }
+
+/* ─── BRAND ASSETS ──────────────────────────────────────────────────── */
+.assets-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220px 160px;
+  grid-template-areas:
+    "a b"
+    "c d";
+  gap: 8px;
+}
+.assets-photo {
+  border-radius: 20px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.assets-photo--a { grid-area: a; }
+.assets-photo--b { grid-area: b; }
+.assets-photo--c { grid-area: c; object-fit: contain; background: #f7f4ef; padding: 12px; }
+.assets-photo--d { grid-area: d; object-fit: contain; background: #f7f4ef; padding: 8px; }
+.assets-icons-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.assets-icon-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface-raised-enabled);
+  box-shadow: var(--shadow-xs);
+  border: 1px solid var(--fill-neutral-soft-enabled);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:global([data-frost="true"]) .assets-icon-chip {
+  background: var(--fill-frost-medium-enabled);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--fill-frost-stroke);
+  box-shadow: none;
+}
+.assets-icon-chip img { display: block; }
+.assets-icon-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--content-body-tertiary);
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--surface-raised-enabled);
+  border: 1px solid var(--fill-neutral-soft-enabled);
+  display: flex;
+  align-items: center;
+}
+.assets-cdn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--surface-overlay-enabled);
+  border: 1px solid var(--fill-neutral-soft-enabled);
+  font-size: 11px;
+  font-family: 'SFMono-Regular', 'Menlo', monospace;
+  color: var(--content-body-tertiary);
+}
+.assets-cdn-chip svg { flex-shrink: 0; color: var(--content-body-tertiary); }
 
 /* ─── NAV CARDS ─────────────────────────────────────────────────────── */
 .nav-card {
