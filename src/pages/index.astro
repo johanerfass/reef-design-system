@@ -74,6 +74,31 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
       <div class="feat-visual">
         <div class="feat-frame--bento">
 
+          <!-- Live Activity card (full width) -->
+          <div class="bento-card bento-card--live">
+            <div class="bento-label">Live activity · Dynamic Island</div>
+            <div class="la-widget">
+              <div class="la-left">
+                <svg class="la-logo" viewBox="0 0 184 76" fill="#F26961" aria-label="Voi"><path d={VOI_LOGO_PATH} /></svg>
+                <div class="la-meta">
+                  <span class="la-meta-item">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 6 5 10c0 6 7 12 7 12s7-6 7-12c0-4-3-8-7-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                    XC23
+                  </span>
+                  <span class="la-meta-sep">·</span>
+                  <span class="la-meta-item">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M20 10v4" stroke-width="2.5"/></svg>
+                    Almost full
+                  </span>
+                </div>
+              </div>
+              <div class="la-right">
+                <span class="la-badge">Riding</span>
+                <span class="la-timer" id="la-timer">00:01</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Buttons card (full width) -->
           <div class="bento-card bento-card--full">
             <div class="bento-label">Buttons · 4 variants</div>
@@ -93,31 +118,6 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
               <span class="badge badge-warning">Low battery</span>
               <span class="badge badge-information">Charging</span>
               <span class="badge badge-contrast">Out of zone</span>
-            </div>
-          </div>
-
-          <!-- Alert card -->
-          <div class="bento-card bento-card--alert">
-            <div class="bento-label">Alert cards</div>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
-              <div class="alert-card alert-card-success">
-                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <div class="alert-card-content"><div class="title">Ride ended</div><div class="body">Parked correctly. €0.50 discount applied.</div></div>
-              </div>
-              <div class="alert-card alert-card-warning">
-                <svg class="alert-card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                <div class="alert-card-content"><div class="title">Battery at 12%</div><div class="body">This scooter may not reach your destination.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Chips card -->
-          <div class="bento-card bento-card--chips">
-            <div class="bento-label">Filter chips</div>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
-              <button class="chip chip-sm chip-filter-active">E-bike</button>
-              <button class="chip chip-sm chip-filter-inactive">E-scooter</button>
-              <button class="chip chip-sm chip-filter-inactive">Cargo</button>
             </div>
           </div>
 
@@ -153,47 +153,6 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
                 <button class="tab active">All</button>
                 <button class="tab">E-bikes</button>
                 <button class="tab">Scooters</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Toast card -->
-          <div class="bento-card bento-card--toast">
-            <div class="bento-label">Toasts</div>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
-              <div class="toast toast--success" style="font-size:12px;padding:10px 14px;border-radius:12px">
-                <svg class="toast-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <div class="toast-body"><div class="toast-title">Ride ended</div>Total: €3.20 · 12 min</div>
-              </div>
-              <div class="toast" style="font-size:12px;padding:10px 14px;border-radius:12px">
-                <svg class="toast-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                <div class="toast-body"><div class="toast-title">Parking zone ahead</div>Lock here for a €0.50 bonus.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Avatar card -->
-          <div class="bento-card bento-card--avatar">
-            <div class="bento-label">Avatars · 3 sizes + status</div>
-            <div style="display:flex;flex-direction:column;gap:14px;margin-top:6px">
-              <div class="avatar-group">
-                <div class="avatar avatar--md avatar-coral">
-                  <div class="avatar-inner">JE</div>
-                  <div class="avatar-status avatar-status--online"></div>
-                </div>
-                <div class="avatar avatar--md avatar-sky">
-                  <div class="avatar-inner">AK</div>
-                  <div class="avatar-status avatar-status--away"></div>
-                </div>
-                <div class="avatar avatar--md avatar-tire">
-                  <div class="avatar-inner">MR</div>
-                  <div class="avatar-status avatar-status--offline"></div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:8px">
-                <div class="avatar avatar--lg avatar-coral"><div class="avatar-inner">JE</div><div class="avatar-status avatar-status--online"></div></div>
-                <div class="avatar avatar--sm avatar-sky"><div class="avatar-inner">AK</div></div>
-                <div class="avatar avatar--xs avatar-tire"><div class="avatar-inner">MR</div></div>
               </div>
             </div>
           </div>
@@ -456,6 +415,19 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
   tick();
 })();
 
+// ─── LIVE ACTIVITY TIMER ────────────────────────────────────────────────
+(function () {
+  const el = document.getElementById('la-timer');
+  if (!el) return;
+  let secs = 1;
+  setInterval(() => {
+    secs++;
+    const m = String(Math.floor(secs / 60)).padStart(2, '0');
+    const s = String(secs % 60).padStart(2, '0');
+    el.textContent = `${m}:${s}`;
+  }, 1000);
+})();
+
 </script>
 
 <style>
@@ -675,11 +647,10 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "full     full"
-    "badges   alert"
-    "chips    toggles"
-    "tabs     tabs"
-    "toast    avatar";
+    "live    live"
+    "full    full"
+    "badges  toggles"
+    "tabs    tabs";
 }
 .feat-frame--bento-foundation {
   grid-template-areas:
@@ -701,14 +672,11 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
 }
 .bento-card--type    { grid-area: type; }
 .bento-card--shadows { grid-area: shadows; }
+.bento-card--live    { grid-area: live; padding: 14px 16px; }
 .bento-card--full    { grid-area: full; }
 .bento-card--badges  { grid-area: badges; }
-.bento-card--alert   { grid-area: alert; }
-.bento-card--chips   { grid-area: chips; }
 .bento-card--toggles { grid-area: toggles; }
 .bento-card--tabs    { grid-area: tabs; }
-.bento-card--toast   { grid-area: toast; }
-.bento-card--avatar  { grid-area: avatar; }
 .bento-label {
   font-size: 10px;
   font-weight: 700;
@@ -961,6 +929,78 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
 .nav-card-title { font-size: 15px; font-weight: 700; color: var(--content-heading-primary); margin-bottom: 4px; }
 .nav-card-desc { font-size: 12px; color: var(--content-body-tertiary); }
 .nav-card-arrow { margin: 0 20px 20px auto; color: var(--content-body-tertiary); display: block; }
+
+/* ─── LIVE ACTIVITY WIDGET ──────────────────────────────────────────── */
+.la-widget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0a0a0a;
+  border-radius: 20px;
+  padding: 14px 20px;
+  margin-top: 8px;
+  gap: 16px;
+}
+.la-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.la-logo {
+  height: 20px;
+  width: auto;
+}
+.la-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.la-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+}
+.la-meta-sep {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+}
+.la-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.la-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: #2a2a2a;
+  border-radius: 20px;
+  padding: 3px 10px;
+  letter-spacing: 0.01em;
+}
+.la-timer {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── DARK MODE FIXES ────────────────────────────────────────────────── */
+/* Frontify icons are black SVGs — invert on dark surfaces */
+:global([data-theme="dark"]) .assets-icon-chip img {
+  filter: invert(1);
+}
+/* Illustration tiles have a hardcoded light background */
+:global([data-theme="dark"]) .assets-photo--c,
+:global([data-theme="dark"]) .assets-photo--d {
+  background: #2a2425;
+}
 
 /* ─── RESOURCE LINKS ────────────────────────────────────────────────── */
 .resource-link {
