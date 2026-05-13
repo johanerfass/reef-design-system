@@ -1923,9 +1923,6 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 }
 
 @media (max-width: 600px) {
-  /* Nav goes edge-to-edge — no floating pill on small screens */
-  .nav-bar { top: 0; left: 0; right: 0; border-radius: 0 0 16px 16px; }
-  .nav-bar.nav-open { border-radius: 0 0 20px 20px; }
   /* Footer blends into the page background */
   .site-footer { background: var(--surface-base-enabled); border-top-color: var(--fill-neutral-soft-enabled); }
   [data-frost="true"] .site-footer { background: transparent; }
