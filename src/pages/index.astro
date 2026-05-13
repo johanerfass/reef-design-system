@@ -140,22 +140,18 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
             </div>
           </div>
 
-          <!-- Tabs card (full width) -->
-          <div class="bento-card bento-card--tabs">
-            <div class="bento-label">Tabs · 2 styles</div>
-            <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
-              <div class="tabs">
-                <button class="tab active">Nearby</button>
-                <button class="tab">My rides</button>
-                <button class="tab">Wallet</button>
-              </div>
-              <div class="tabs tabs--pill">
-                <button class="tab active">All</button>
-                <button class="tab">E-bikes</button>
-                <button class="tab">Scooters</button>
-              </div>
+          <!-- Atmosphere card (full width) -->
+          <a href="/tooling/atmospheres" class="bento-card bento-card--atmos">
+            <div class="bento-atmos-orb bento-atmos-orb--a"></div>
+            <div class="bento-atmos-orb bento-atmos-orb--b"></div>
+            <div class="bento-atmos-orb bento-atmos-orb--c"></div>
+            <div class="bento-atmos-orb bento-atmos-orb--d"></div>
+            <div class="bento-atmos-content">
+              <div class="bento-label" style="color:rgba(40,36,37,.5)">Atmospheres · Tooling</div>
+              <div class="bento-atmos-headline">Living<br>backgrounds.</div>
+              <div class="bento-atmos-link">Explore atmospheres →</div>
             </div>
-          </div>
+          </a>
 
         </div>
       </div>
@@ -649,7 +645,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
     "live    live"
     "full    full"
     "badges  toggles"
-    "tabs    tabs";
+    "atmos   atmos";
 }
 .feat-frame--bento-foundation {
   grid-template-areas:
@@ -675,7 +671,7 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
 .bento-card--full    { grid-area: full; }
 .bento-card--badges  { grid-area: badges; }
 .bento-card--toggles { grid-area: toggles; }
-.bento-card--tabs    { grid-area: tabs; }
+.bento-card--atmos   { grid-area: atmos; position: relative; overflow: hidden; min-height: 120px; background: #faf4ec; text-decoration: none; display: block; }
 .bento-label {
   font-size: 10px;
   font-weight: 700;
@@ -990,6 +986,41 @@ const VOI_LOGO_PATH = "M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
+
+/* ─── ATMOSPHERE BENTO CARD ─────────────────────────────────────────── */
+.bento-atmos-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+.bento-atmos-orb--a { width: 55%; aspect-ratio: 1; background: rgba(242,105,97,0.22); bottom: -20%; left: -8%; animation: voi-coral-a 44s ease-in-out infinite; }
+.bento-atmos-orb--b { width: 35%; aspect-ratio: 1; background: rgba(242,105,97,0.18); bottom: 10%; left: 10%; animation: voi-coral-c 22s ease-in-out infinite; }
+.bento-atmos-orb--c { width: 45%; aspect-ratio: 1; background: rgba(171,209,234,0.28); top: -20%; right: -5%; animation: voi-sky-a 40s ease-in-out infinite; }
+.bento-atmos-orb--d { width: 28%; aspect-ratio: 1; background: rgba(171,209,234,0.22); top: 5%; right: 15%; animation: voi-sky-c 18s ease-in-out infinite; }
+.bento-atmos-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bento-atmos-headline {
+  font-size: 28px;
+  font-weight: 700;
+  color: #282425;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-top: 4px;
+}
+.bento-atmos-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(40,36,37,0.5);
+  margin-top: 8px;
+}
+.bento-card--atmos:hover .bento-atmos-link { color: #282425; }
 
 /* ─── DARK MODE FIXES ────────────────────────────────────────────────── */
 /* Frontify icons are black SVGs — invert on dark surfaces */
