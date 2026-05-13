@@ -1806,10 +1806,16 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   position: relative;
   z-index: 1;
 }
+[data-frost="true"] .site-footer {
+  background: var(--fill-frost-medium-enabled);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-color: var(--fill-frost-stroke);
+}
 .site-footer__inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 56px 56px 32px;
+  padding: 20px 56px;
 }
 .site-footer__grid {
   display: grid;
@@ -1872,9 +1878,6 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   text-decoration: underline;
 }
 .site-footer__bottom {
-  border-top: 1px solid var(--fill-neutral-soft-enabled);
-  padding-top: 20px;
-  margin-top: 40px;
   font-size: 12px;
   color: var(--content-body-tertiary);
   display: flex;
