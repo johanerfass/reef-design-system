@@ -262,7 +262,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   const js = document.createElement('script');
   js.src = 'https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js';
   js.onload = function () {
-    mapboxgl.accessToken = 'MAPBOX_TOKEN';
+    mapboxgl.accessToken = import.meta.env.PUBLIC_MAPBOX_TOKEN || '';
     const STYLE = 'mapbox://styles/johanerfass/cmevazjhe006a01scckk0envo';
     [
       { id: 'mat-map-1', center: [18.0676, 59.3293], zoom: 14.5 },
