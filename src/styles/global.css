@@ -1556,18 +1556,24 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   transition: background .15s, border-color .15s, box-shadow .15s;
   position: relative;
 }
-/* Hover (unselected) — border darkens, subtle fill */
+/* Unselected — hover / pressed (neutral medium + raised surface) */
 .radio-input:hover:not(:disabled):not(:checked) {
-  border-color: var(--fill-neutral-hard-enabled);
-  background: var(--surface-base-hover);
+  border-color: var(--fill-neutral-medium-hover);
+  background: var(--surface-raised-hover);
 }
-/* Selected — ring + centred dot */
+.radio-input:active:not(:disabled):not(:checked) {
+  border-color: var(--fill-neutral-medium-pressed);
+  background: var(--surface-raised-pressed);
+}
+/* Selected — accent/medium ring + centred dot (Sea → Thunder → Space) */
 .radio-input:checked {
-  border-color: var(--fill-neutral-hard-enabled);
-  background: var(--surface-raised-enabled);
+  border-color: var(--fill-accent-medium-enabled);
 }
 .radio-input:checked:hover:not(:disabled) {
-  border-color: var(--fill-neutral-hard-hover);
+  border-color: var(--fill-accent-medium-hover);
+}
+.radio-input:checked:active:not(:disabled) {
+  border-color: var(--fill-accent-medium-pressed);
 }
 .radio-input:checked::after {
   content: '';
@@ -1578,16 +1584,14 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--fill-neutral-hard-enabled);
+  background: var(--fill-accent-medium-enabled);
 }
-.radio-input:checked:hover:not(:disabled)::after {
-  background: var(--fill-neutral-hard-hover);
-}
-/* Focus — blue border + ring hugging the control (matches Figma) */
+.radio-input:checked:hover:not(:disabled)::after { background: var(--fill-accent-medium-hover); }
+.radio-input:checked:active:not(:disabled)::after { background: var(--fill-accent-medium-pressed); }
+/* Focus — 2px surface gap + 5px INFO-blue ring (matches Figma _focus effect) */
 .radio-input:focus-visible {
   outline: none;
-  border-color: var(--alert-info);
-  box-shadow: 0 0 0 3px var(--alert-info20);
+  box-shadow: 0 0 0 2px var(--surface-raised-enabled), 0 0 0 5px var(--alert-info);
 }
 .radio-input:disabled { opacity: .4; cursor: not-allowed; }
 .radio-label {
