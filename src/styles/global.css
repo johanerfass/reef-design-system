@@ -610,8 +610,9 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 .nav-overlay { display: none; position: fixed; inset: 0; z-index: 99; }
 .nav-overlay.open { display: block; }
 
-[data-theme="dark"] .btn-contrast { color: var(--core-tire); }
-[data-theme="dark"] .btn-contrast:hover { background: var(--fill-neutral-hard-hover); color: #fff; }
+[data-theme="dark"] .btn-contrast { background: var(--core-white); color: var(--core-tire); }
+[data-theme="dark"] .btn-contrast:hover { background: var(--neutral-chalk); color: var(--core-tire); }
+[data-theme="dark"] .btn-contrast:active { background: #d8d8d8; color: var(--core-tire); }
 [data-theme="dark"] .btn-filled {
   background: rgba(255, 255, 255, 0.14);
   color: var(--core-white);
