@@ -7,7 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <p class="s-desc">Persistent full-width notification for system-level messages. Use sparingly — one at a time, never stacked. Dismiss via the close action only; never auto-dismiss a banner.</p>
   <hr class="s-rule" />
 
-  <div class="s-overline">Example</div>
+  <div class="s-overline">Mobile</div>
   <div class="banner-frame">
     <div class="banner">
       <!-- Coral inbox icon -->
@@ -20,6 +20,71 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="banner-desc">Local regulations require you to wear a helmet while riding in Stockholm.</div>
       </div>
       <button class="banner-btn">Learn more</button>
+    </div>
+  </div>
+
+  <div class="s-overline" style="margin-top:40px">Web — integrated</div>
+  <p style="font-size:14px;color:var(--content-body-secondary);line-height:1.6;max-width:560px;margin-bottom:20px">
+    On web the banner becomes a contained, rounded surface that sits inline in the page flow and stretches to its container. Severity is carried by a coloured leading icon and a thin accent edge, while the surface stays white so it reads calmly against the page. Inline controls hover and press against <code class="token">surface.raised.hover</code> / <code class="token">pressed</code> — the lightest neutral steps, never the darker fills.
+  </p>
+  <div class="banner-web-stack">
+    <div class="banner-web banner-web--info">
+      <span class="banner-web-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+      <div class="banner-web-body">
+        <div class="banner-web-title">Scheduled maintenance tonight</div>
+        <div class="banner-web-desc">The app may be briefly unavailable between 2–3am CET while we ship improvements.</div>
+      </div>
+      <div class="banner-web-actions">
+        <button class="banner-web-btn">Learn more</button>
+        <button class="banner-web-close" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+    </div>
+
+    <div class="banner-web banner-web--success">
+      <span class="banner-web-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+      <div class="banner-web-body">
+        <div class="banner-web-title">Your account is verified</div>
+        <div class="banner-web-desc">You can now unlock vehicles and start a ride straight from the map.</div>
+      </div>
+      <div class="banner-web-actions">
+        <button class="banner-web-close" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+    </div>
+
+    <div class="banner-web banner-web--warning">
+      <span class="banner-web-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+      <div class="banner-web-body">
+        <div class="banner-web-title">Low battery in your area</div>
+        <div class="banner-web-desc">Some vehicles nearby are running low. Check the range before you start a longer trip.</div>
+      </div>
+      <div class="banner-web-actions">
+        <button class="banner-web-btn">View map</button>
+        <button class="banner-web-close" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+    </div>
+
+    <div class="banner-web banner-web--error">
+      <span class="banner-web-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+      <div class="banner-web-body">
+        <div class="banner-web-title">Payment failed</div>
+        <div class="banner-web-desc">We couldn't charge your card. Update your payment method to keep riding.</div>
+      </div>
+      <div class="banner-web-actions">
+        <button class="banner-web-btn">Update</button>
+        <button class="banner-web-close" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+    </div>
+
+    <div class="banner-web banner-web--brand">
+      <span class="banner-web-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+      <div class="banner-web-body">
+        <div class="banner-web-title">Voi+ is here</div>
+        <div class="banner-web-desc">Unlock free rides and member pricing across every city you ride in.</div>
+      </div>
+      <div class="banner-web-actions">
+        <button class="banner-web-btn">See benefits</button>
+        <button class="banner-web-close" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
     </div>
   </div>
 
@@ -108,6 +173,91 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     white-space: nowrap;
     transition: background .15s, transform .1s;
   }
-  .banner-btn:hover { background: var(--fill-neutral-medium-enabled); }
-  .banner-btn:active { background: var(--fill-neutral-medium-enabled); transform: scale(.97); }
+  .banner-btn:hover { background: var(--fill-neutral-soft-hover); }
+  .banner-btn:active { background: var(--fill-neutral-soft-pressed); transform: scale(.97); }
+
+  /* ─── Web banner — integrated, responsive ─────────────────────────────── */
+  .banner-web-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 720px;
+  }
+  .banner-web {
+    --banner-accent: var(--alert-info);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 16px 16px 18px;
+    background: var(--surface-raised-enabled);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    border-left: 4px solid var(--banner-accent);
+    border-radius: 16px;
+    box-shadow: var(--shadow-xs);
+  }
+  .banner-web--info    { --banner-accent: var(--alert-info); }
+  .banner-web--success { --banner-accent: var(--alert-success); }
+  .banner-web--warning { --banner-accent: var(--alert-warning); }
+  .banner-web--error   { --banner-accent: var(--alert-error); }
+  .banner-web--brand   { --banner-accent: var(--core-coral); }
+  .banner-web-icon {
+    flex-shrink: 0;
+    color: var(--banner-accent);
+    margin-top: 1px;
+    display: flex;
+  }
+  .banner-web-body { flex: 1; min-width: 0; }
+  .banner-web-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--content-heading-primary);
+    margin-bottom: 2px;
+  }
+  .banner-web-desc {
+    font-size: 13px;
+    color: var(--content-body-secondary);
+    line-height: 1.5;
+  }
+  .banner-web-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .banner-web-btn {
+    height: 36px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 18px;
+    background: transparent;
+    color: var(--content-body-primary);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s;
+  }
+  .banner-web-btn:hover  { background: var(--surface-raised-hover); }
+  .banner-web-btn:active { background: var(--surface-raised-pressed); }
+  .banner-web-close {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--content-body-tertiary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  .banner-web-close:hover  { background: var(--surface-raised-hover); color: var(--content-body-primary); }
+  .banner-web-close:active { background: var(--surface-raised-pressed); }
+  @media (max-width: 600px) {
+    .banner-web { flex-wrap: wrap; }
+    .banner-web-actions { width: 100%; justify-content: flex-end; }
+  }
 </style>
