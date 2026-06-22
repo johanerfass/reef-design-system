@@ -1,44 +1,54 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const scooter = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/><path d="M7.5 17.5h6.5l3.5-10.5"/><path d="M16 7h3"/></svg>`;
+const bike = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="16.5" r="3"/><circle cx="18" cy="16.5" r="3"/><path d="M5.5 16.5l4-8h5.5"/><path d="M9.5 8.5l5.5 8"/><path d="M14.5 16.5h3.5"/><path d="M15 8.5l1.6-2.5h2"/></svg>`;
 ---
 <BaseLayout title="Segmented control">
   <div class="s-overline">02 — Components</div>
   <div class="s-title-row">
     <h1 class="s-title" style="margin-bottom:0">Segmented control</h1>
-    <span class="badge badge-ai" title="Not in the Reef Figma library — generated for this showcase"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/></svg>AI generated</span>
+    <span class="beta-tag">Pending in Figma</span>
   </div>
-  <p class="s-desc">Inline toggle for 2–4 mutually exclusive views or filter states. Used for switching between related views (map/list), sort orders, or content tabs. Do not exceed 4 segments — use a select or chips for more options.</p>
+  <p class="s-desc">Inline toggle for 2–4 mutually exclusive views or filter states — switching between related views (map/list), sort orders, or a vehicle type. A pill track holds a sliding white thumb; the active segment lifts onto it. Do not exceed 4 segments — use a select or chips for more.</p>
   <hr class="s-rule" />
 
   <div class="ai-notice">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
     <div>
-      <div class="ai-notice-title">Showcase extension — not in the Reef Figma library</div>
-      <div class="ai-notice-body">Reef switches between options with <code>button-toggle</code> or <code>chip-filter</code> — there is no dedicated segmented-control component in the library.</div>
+      <div class="ai-notice-title">Production pattern — not yet formalised in the Figma library</div>
+      <div class="ai-notice-body">This reflects the real Voi segmented control (used for the scooter / e-bike selector), pending addition to the v1.4.0 Figma library. The active vehicle icon uses Coral as a selection accent; labels stay Tire.</div>
     </div>
   </div>
 
-  <div class="sub-label">Default (medium)</div>
+  <div class="sub-label">Horizontal — icon + label</div>
   <div class="demo">
-    <div class="segmented" id="seg-view" role="group" aria-label="View mode">
+    <div class="segmented" id="seg-vehicle" role="group" aria-label="Vehicle type" style="min-width:340px">
+      <button class="segmented-btn active" data-seg="vehicle"><Fragment set:html={scooter} />Scooters</button>
+      <button class="segmented-btn" data-seg="vehicle"><Fragment set:html={bike} />E-Bikes</button>
+    </div>
+  </div>
+
+  <div class="sub-label">Vertical — icon only</div>
+  <div class="demo">
+    <div class="segmented segmented--vertical segmented--icon" id="seg-vert" role="group" aria-label="Vehicle type">
+      <button class="segmented-btn active" data-seg="vert" aria-label="E-Bikes"><Fragment set:html={bike} /></button>
+      <button class="segmented-btn" data-seg="vert" aria-label="Scooters"><Fragment set:html={scooter} /></button>
+    </div>
+  </div>
+
+  <div class="sub-label">Text only</div>
+  <div class="demo">
+    <div class="segmented" id="seg-view" role="group" aria-label="View mode" style="min-width:300px">
       <button class="segmented-btn active" data-seg="view">Map</button>
       <button class="segmented-btn" data-seg="view">List</button>
       <button class="segmented-btn" data-seg="view">Saved</button>
     </div>
   </div>
 
-  <div class="sub-label">Large</div>
+  <div class="sub-label">Small · two options</div>
   <div class="demo">
-    <div class="segmented segmented--lg" id="seg-mode" role="group" aria-label="Ride mode">
-      <button class="segmented-btn active" data-seg="mode">Standard</button>
-      <button class="segmented-btn" data-seg="mode">Eco</button>
-      <button class="segmented-btn" data-seg="mode">Sport</button>
-    </div>
-  </div>
-
-  <div class="sub-label">Two options</div>
-  <div class="demo">
-    <div class="segmented" id="seg-period" role="group" aria-label="Period">
+    <div class="segmented segmented--sm" id="seg-period" role="group" aria-label="Period" style="min-width:220px">
       <button class="segmented-btn active" data-seg="period">Week</button>
       <button class="segmented-btn" data-seg="period">Month</button>
     </div>
@@ -46,7 +56,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <div class="sub-label">Disabled</div>
   <div class="demo">
-    <div class="segmented" style="opacity:.4;pointer-events:none" role="group" aria-label="Disabled example">
+    <div class="segmented" style="opacity:.4;pointer-events:none;min-width:300px" role="group" aria-label="Disabled example">
       <button class="segmented-btn active">Option A</button>
       <button class="segmented-btn">Option B</button>
       <button class="segmented-btn">Option C</button>
@@ -54,25 +64,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 
   <div class="sub-label" style="margin-top:40px">Code</div>
-  <div class="code-block"><pre><span class="c-comment">/* Default */</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented"</span> <span class="c-attr">role</span>=<span class="c-str">"group"</span> <span class="c-attr">aria-label</span>=<span class="c-str">"View mode"</span><span class="c-tag">&gt;</span>
-  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn active"</span><span class="c-tag">&gt;</span>Map<span class="c-tag">&lt;/button&gt;</span>
-  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn"</span><span class="c-tag">&gt;</span>List<span class="c-tag">&lt;/button&gt;</span>
+  <div class="code-block"><pre><span class="c-comment">/* Horizontal — icon + label */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented"</span> <span class="c-attr">role</span>=<span class="c-str">"group"</span> <span class="c-attr">aria-label</span>=<span class="c-str">"Vehicle type"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn active"</span><span class="c-tag">&gt;</span>&lt;ScooterIcon /&gt;Scooters<span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"segmented-btn"</span><span class="c-tag">&gt;</span>&lt;BikeIcon /&gt;E-Bikes<span class="c-tag">&lt;/button&gt;</span>
 <span class="c-tag">&lt;/div&gt;</span>
 
-<span class="c-comment">/* Large */</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented segmented--lg"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+<span class="c-comment">/* Vertical, icon only */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"segmented segmented--vertical segmented--icon"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
 
   <div class="sub-label" style="margin-top:40px">Anatomy</div>
   <table class="prop-table">
     <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
     <tbody>
-      <tr><td><code>Container</code></td><td><code>neutral-soft bg, 12px radius, 3px padding</code></td><td>The pill tray</td></tr>
-      <tr><td><code>Button height</code></td><td><code>36px (md), 44px (lg)</code></td><td>lg meets HIG 44px touch minimum</td></tr>
-      <tr><td><code>Active state</code></td><td><code>white bg, 9px radius, shadow</code></td><td>Floating panel on top of tray</td></tr>
-      <tr><td><code>Active font</code></td><td><code>600 (SemiBold)</code></td><td>Regular weight when inactive</td></tr>
-      <tr><td><code>Max items</code></td><td><code>5</code></td><td>HIG recommends 2–5 segments</td></tr>
-      <tr><td><code>Colour</code></td><td><code>Tire active — never Coral</code></td><td>Coral is brand only</td></tr>
+      <tr><td><code>Track</code></td><td><code>neutral-soft bg, 999px radius, 4px padding</code></td><td>Fully rounded pill tray</td></tr>
+      <tr><td><code>Thumb (active)</code></td><td><code>white, 999px radius, shadow-card</code></td><td>Floating pill the active segment lifts onto</td></tr>
+      <tr><td><code>Segment height</code></td><td><code>44px (md), 36px (sm)</code></td><td>md meets the 44px touch minimum</td></tr>
+      <tr><td><code>Icon</code></td><td><code>22px · secondary → Coral when active</code></td><td>Coral as the selection accent</td></tr>
+      <tr><td><code>Label</code></td><td><code>500 → 600 when active · Tire</code></td><td>Labels never use Coral</td></tr>
+      <tr><td><code>Orientation</code></td><td><code>horizontal · vertical</code></td><td>Add <code>--vertical</code> / <code>--icon</code></td></tr>
+      <tr><td><code>Max items</code></td><td><code>4</code></td><td>Use a select or chips beyond 4</td></tr>
     </tbody>
   </table>
 
@@ -80,11 +91,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <div class="grid-2" style="gap:12px">
     <div class="card card-sm" style="border-radius:16px">
       <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">iOS (HIG)</p>
-      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Maps to <code class="token">UISegmentedControl</code>. Use <code class="token">selectedSegmentTintColor</code> for active pill. Support <code class="token">UIAccessibility</code> via <code class="token">accessibilityLabel</code> per segment.</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Maps to <code class="token">UISegmentedControl</code>. Use <code class="token">selectedSegmentTintColor</code> for the white thumb; set per-segment <code class="token">accessibilityLabel</code>.</p>
     </div>
     <div class="card card-sm" style="border-radius:16px">
       <p style="font-size:11px;font-weight:700;color:var(--content-body-tertiary);margin-bottom:6px">Android (Material)</p>
-      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Use Material <code class="token">ButtonGroup</code> (filled) or <code class="token">SingleChoiceSegmentedButtonRow</code> (M3). Map Tire to active container colour.</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.5">Use <code class="token">SingleChoiceSegmentedButtonRow</code> (M3) with fully-rounded segments. Map the white thumb to the selected container colour.</p>
     </div>
   </div>
 </BaseLayout>
