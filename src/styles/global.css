@@ -1552,7 +1552,13 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   background: var(--fill-neutral-medium-enabled);
   border-color: var(--fill-neutral-medium-enabled);
 }
-.checkbox-input--error { border-color: var(--alert-error) !important; }
+.checkbox-input--error {
+  border-color: var(--alert-error) !important;
+  border-width: 2px;
+}
+.checkbox-input--error:focus-visible {
+  box-shadow: 0 0 0 2px var(--surface-raised-enabled), 0 0 0 5px var(--alert-error);
+}
 .checkbox-label {
   font-size: 14px;
   font-weight: 400;
