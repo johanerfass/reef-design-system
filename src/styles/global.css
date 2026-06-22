@@ -1553,22 +1553,42 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
   background: var(--surface-raised-enabled);
   cursor: pointer;
   flex-shrink: 0;
-  transition: background .15s, border-color .15s;
+  transition: background .15s, border-color .15s, box-shadow .15s;
   position: relative;
 }
+/* Hover (unselected) — border darkens, subtle fill */
+.radio-input:hover:not(:disabled):not(:checked) {
+  border-color: var(--fill-neutral-hard-enabled);
+  background: var(--surface-base-hover);
+}
+/* Selected — ring + centred dot */
 .radio-input:checked {
   border-color: var(--fill-neutral-hard-enabled);
   background: var(--surface-raised-enabled);
 }
+.radio-input:checked:hover:not(:disabled) {
+  border-color: var(--fill-neutral-hard-hover);
+}
 .radio-input:checked::after {
   content: '';
   position: absolute;
-  left: 3px; top: 3px;
-  width: 10px; height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--fill-neutral-hard-enabled);
 }
-.radio-input:focus-visible { outline: 3px solid var(--alert-info); outline-offset: 2px; }
+.radio-input:checked:hover:not(:disabled)::after {
+  background: var(--fill-neutral-hard-hover);
+}
+/* Focus — blue border + ring hugging the control (matches Figma) */
+.radio-input:focus-visible {
+  outline: none;
+  border-color: var(--alert-info);
+  box-shadow: 0 0 0 3px var(--alert-info20);
+}
 .radio-input:disabled { opacity: .4; cursor: not-allowed; }
 .radio-label {
   font-size: 14px;
