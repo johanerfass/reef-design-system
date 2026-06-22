@@ -1,32 +1,36 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const badges = {
+  success: `<svg class="alert-badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="var(--alert-success)"/><path d="M8 12.4l2.8 2.8L16.4 9.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  info: `<svg class="alert-badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="var(--alert-info)"/><circle cx="12" cy="7.9" r="1.25" fill="#fff"/><rect x="10.85" y="10.4" width="2.3" height="6.4" rx="1.15" fill="#fff"/></svg>`,
+  warning: `<svg class="alert-badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 2.6h8L21.4 8v8L16 21.4H8L2.6 16V8z" fill="var(--alert-warning)"/><rect x="10.85" y="6.4" width="2.3" height="7.2" rx="1.15" fill="#fff"/><circle cx="12" cy="16.6" r="1.3" fill="#fff"/></svg>`,
+  error: `<svg class="alert-badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.7 3.4a1.5 1.5 0 0 1 2.6 0l8 14a1.5 1.5 0 0 1-1.3 2.25H4a1.5 1.5 0 0 1-1.3-2.25z" fill="var(--alert-error)"/><rect x="10.85" y="8.4" width="2.3" height="6.2" rx="1.15" fill="#fff"/><circle cx="12" cy="17.3" r="1.25" fill="#fff"/></svg>`,
+};
+
+const closeSvg = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 ---
 <BaseLayout title="Toast">
   <div class="s-overline">02 — Components</div>
-  <div class="s-title-row">
-    <h1 class="s-title" style="margin-bottom:0">Toast</h1>
-    <span class="badge badge-ai" title="Not in the Reef Figma library — generated for this showcase"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/></svg>AI generated</span>
-  </div>
-  <p class="s-desc">Ephemeral feedback message for non-blocking confirmations and alerts. Auto-dismisses after 4 seconds. Use for actions the user just triggered — never for proactive or system-initiated messages.</p>
+  <h1 class="s-title">Toast</h1>
+  <p class="s-desc">Ephemeral feedback for non-blocking confirmations and alerts. Auto-dismisses after 4 seconds. Use for actions the user just triggered — never for proactive or system-initiated messages.</p>
   <hr class="s-rule" />
 
-  <div class="ai-notice">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    <div>
-      <div class="ai-notice-title">Showcase extension — not in the Reef Figma library</div>
-      <div class="ai-notice-body">Reef uses the <code>Banner</code> component for inline notifications; there is no transient toast / snackbar component in the v1.4.0 library.</div>
+  <div class="alert-card alert-card-info" style="margin-bottom:36px">
+    <Fragment set:html={badges.info} />
+    <div class="alert-card-content">
+      <div class="title">Same component as the alert card — inverted</div>
+      <div class="body">A toast is the <a href="/components/alert-card" style="color:var(--content-inline-link-enabled);font-weight:600;text-decoration:underline;text-underline-offset:3px">alert card</a> with its light/dark polarity flipped. It uses a dark surface in light mode and a light surface in dark mode, so a transient message reads as elevated against the page. Same badges, same structure — only the contrast flips. Toggle the theme to see it swap.</div>
     </div>
   </div>
 
   <div class="sub-label">All variants</div>
   <div class="demo" style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
-    <!-- Default -->
     <div class="toast">
-      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <Fragment set:html={badges.info} />
       <div class="toast-body">Scooter unlocked successfully</div>
-      <button class="toast-close">×</button>
+      <button class="toast-close" aria-label="Dismiss"><Fragment set:html={closeSvg} /></button>
     </div>
-    <!-- With action -->
     <div class="toast">
       <div class="toast-body">
         <div class="toast-title">Ride ended</div>
@@ -34,32 +38,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <button class="toast-action">View</button>
     </div>
-    <!-- Success -->
     <div class="toast toast--success">
-      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <Fragment set:html={badges.success} />
       <div class="toast-body">Payment confirmed. Enjoy your ride!</div>
-      <button class="toast-close">×</button>
+      <button class="toast-close" aria-label="Dismiss"><Fragment set:html={closeSvg} /></button>
     </div>
-    <!-- Error -->
     <div class="toast toast--error">
-      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <Fragment set:html={badges.error} />
       <div class="toast-body">
         <div class="toast-title">Payment failed</div>
         Check your card details and try again.
       </div>
       <button class="toast-action">Retry</button>
     </div>
-    <!-- Info -->
     <div class="toast toast--info">
-      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <Fragment set:html={badges.info} />
       <div class="toast-body">Helmet zone ahead — low speed limit applies.</div>
-      <button class="toast-close">×</button>
+      <button class="toast-close" aria-label="Dismiss"><Fragment set:html={closeSvg} /></button>
     </div>
-    <!-- Warning -->
     <div class="toast toast--warning">
-      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <Fragment set:html={badges.warning} />
       <div class="toast-body">Battery low — find a charging point soon.</div>
-      <button class="toast-close" style="color:rgba(0,0,0,.4)">×</button>
+      <button class="toast-close" aria-label="Dismiss"><Fragment set:html={closeSvg} /></button>
     </div>
   </div>
 
@@ -74,28 +74,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 
   <div class="sub-label" style="margin-top:40px">Code</div>
-  <div class="code-block"><pre><span class="c-comment">/* Default toast */</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast"</span><span class="c-tag">&gt;</span>
-  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast-body"</span><span class="c-tag">&gt;</span>Scooter unlocked<span class="c-tag">&lt;/div&gt;</span>
+  <div class="code-block"><pre><span class="c-comment">/* Toast = alert card, contrast inverted */</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--success"</span><span class="c-tag">&gt;</span>
+  <span class="c-comment">&lt;!-- filled colour badge --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast-body"</span><span class="c-tag">&gt;</span>Payment confirmed<span class="c-tag">&lt;/div&gt;</span>
   <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"toast-close"</span><span class="c-tag">&gt;</span>×<span class="c-tag">&lt;/button&gt;</span>
-<span class="c-tag">&lt;/div&gt;</span>
-
-<span class="c-comment">/* Semantic variants */</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--success"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--error"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--info"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"toast toast--warning"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre></div>
+<span class="c-tag">&lt;/div&gt;</span></pre></div>
 
   <div class="sub-label" style="margin-top:40px">Anatomy</div>
   <table class="prop-table">
     <thead><tr><th>Token</th><th>Value</th><th>Note</th></tr></thead>
     <tbody>
-      <tr><td><code>Background</code></td><td><code>--neutral-charcoal (#2d292a)</code></td><td>Dark, high contrast against page</td></tr>
-      <tr><td><code>Border radius</code></td><td><code>16px</code></td><td>Matches cards but smaller feel</td></tr>
-      <tr><td><code>Padding</code></td><td><code>14px 18px</code></td><td>Comfortable reading width</td></tr>
-      <tr><td><code>Max width</code></td><td><code>360px</code></td><td>Full width on mobile (minus 16px margins)</td></tr>
-      <tr><td><code>Shadow</code></td><td><code>0 8px 24px rgba(0,0,0,.18)</code></td><td>Floats above content</td></tr>
-      <tr><td><code>Auto-dismiss</code></td><td><code>4000ms</code></td><td>With action: 8000ms. Material spec.</td></tr>
+      <tr><td><code>Surface (light)</code></td><td><code>dark — inverted alert card</code></td><td>Charcoal / dark colour-mix per type</td></tr>
+      <tr><td><code>Surface (dark)</code></td><td><code>light — inverted alert card</code></td><td>White / light colour-mix per type</td></tr>
+      <tr><td><code>Border</code></td><td><code>1.5px solid · status colour</code></td><td>Same border as the alert card</td></tr>
+      <tr><td><code>Border radius</code></td><td><code>16px</code></td><td>Matches the alert card</td></tr>
+      <tr><td><code>Shadow</code></td><td><code>--shadow-overlay</code></td><td>Floats above content</td></tr>
+      <tr><td><code>Auto-dismiss</code></td><td><code>4000ms</code></td><td>With action: 8000ms</td></tr>
       <tr><td><code>Position</code></td><td><code>bottom-centre, 16px from edge</code></td><td>Above bottom nav if present</td></tr>
     </tbody>
   </table>
@@ -106,20 +101,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     btn.addEventListener('click', () => (btn.closest('.toast') as HTMLElement)?.remove());
   });
 
-  function showToast(html: string) {
+  const successBadge = `<svg class="alert-badge" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" fill="var(--alert-success)"/><path d="M8 12.4l2.8 2.8L16.4 9.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const errorBadge = `<svg class="alert-badge" viewBox="0 0 24 24" fill="none"><path d="M10.7 3.4a1.5 1.5 0 0 1 2.6 0l8 14a1.5 1.5 0 0 1-1.3 2.25H4a1.5 1.5 0 0 1-1.3-2.25z" fill="var(--alert-error)"/><rect x="10.85" y="8.4" width="2.3" height="6.2" rx="1.15" fill="#fff"/><circle cx="12" cy="17.3" r="1.25" fill="#fff"/></svg>`;
+
+  function showToast(html: string, ms = 4000) {
     const stage = document.getElementById('toast-stage')!;
     stage.innerHTML = html;
     const t = stage.querySelector('.toast') as HTMLElement;
     t?.querySelector('.toast-close')?.addEventListener('click', () => t.remove());
-    setTimeout(() => t?.remove(), 4000);
+    setTimeout(() => t?.remove(), ms);
   }
 
   document.getElementById('show-toast-default')?.addEventListener('click', () =>
-    showToast('<div class="toast"><div class="toast-body"><div class="toast-title">Scooter unlocked</div>Enjoy your ride!</div><button class="toast-close">×</button></div>'));
+    showToast('<div class="toast"><div class="toast-body"><div class="toast-title">Scooter unlocked</div>Enjoy your ride!</div><button class="toast-close" aria-label="Dismiss">×</button></div>'));
 
   document.getElementById('show-toast-success')?.addEventListener('click', () =>
-    showToast('<div class="toast toast--success"><div class="toast-body">Payment confirmed — €2.50</div><button class="toast-close">×</button></div>'));
+    showToast(`<div class="toast toast--success">${successBadge}<div class="toast-body">Payment confirmed — €2.50</div><button class="toast-close" aria-label="Dismiss">×</button></div>`));
 
   document.getElementById('show-toast-error')?.addEventListener('click', () =>
-    showToast('<div class="toast toast--error"><div class="toast-body"><div class="toast-title">Connection lost</div>Check your network.</div><button class="toast-action">Retry</button></div>'));
+    showToast(`<div class="toast toast--error">${errorBadge}<div class="toast-body"><div class="toast-title">Connection lost</div>Check your network.</div><button class="toast-action">Retry</button></div>`, 8000));
 </script>
