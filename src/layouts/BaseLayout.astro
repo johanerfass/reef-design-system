@@ -154,6 +154,17 @@ if (currentPath !== '/') {
         var overlay = document.createElement('div');
         overlay.id = 'reef-gate-overlay';
         overlay.innerHTML = '\
+          <div class="reef-gate-orbs">\
+            <div class="voi-orb voi-orb--coral-a"></div>\
+            <div class="voi-orb voi-orb--coral-b"></div>\
+            <div class="voi-orb voi-orb--coral-c"></div>\
+            <div class="voi-orb voi-orb--coral-d"></div>\
+            <div class="voi-orb voi-orb--coral-e"></div>\
+            <div class="voi-orb voi-orb--sky-a"></div>\
+            <div class="voi-orb voi-orb--sky-b"></div>\
+            <div class="voi-orb voi-orb--sky-c"></div>\
+            <div class="voi-orb voi-orb--sky-d"></div>\
+          </div>\
           <div class="reef-gate-card">\
             <svg width="44" height="18" viewBox="0 0 184 76" fill="#F26961" style="margin-bottom:24px"><path d="M58.6932 23.8032L36.9976 75.2173H21.607L0 23.8032H15.3906L29.63 58.7818L44.3476 23.8032H58.6932ZM92.6092 75.9789C87.1897 75.9789 82.337 74.8454 78.0333 72.5784C73.8713 70.4354 70.3646 67.1767 67.9559 63.1563C65.5296 59.136 64.3252 54.5844 64.3252 49.4837C64.3252 44.383 65.5296 39.8313 67.9559 35.811C70.3823 31.7907 73.8713 28.5319 78.0333 26.3889C82.337 24.122 87.1897 22.9885 92.6092 22.9885C98.0287 22.9885 102.864 24.122 107.132 26.3889C111.276 28.5496 114.748 31.8084 117.174 35.811C119.6 39.8313 120.805 44.383 120.805 49.4837C120.805 54.5844 119.6 59.136 117.174 63.1563C114.765 67.1589 111.294 70.4177 107.15 72.5784C102.881 74.8454 98.0287 75.9789 92.6092 75.9789ZM92.6092 63.7408C96.4347 63.7408 99.5695 62.4479 102.031 59.8621C104.475 57.2764 105.715 53.8228 105.715 49.4837C105.715 45.1446 104.493 41.691 102.031 39.1052C99.5695 36.5194 96.4347 35.2266 92.6092 35.2443C88.7837 35.2443 85.6312 36.5372 83.1517 39.1229C80.6722 41.7087 79.4325 45.1623 79.4325 49.5014C79.4325 53.8405 80.6722 57.2941 83.1517 59.8798C85.6312 62.4656 88.7837 63.7408 92.6092 63.7408ZM135.522 23.7855H150.435V75.2173H135.522V23.7855ZM142.978 16.6303C140.233 16.6303 138.002 15.8334 136.284 14.2394C134.601 12.734 133.663 10.5733 133.716 8.32403C133.68 6.07477 134.619 3.89635 136.301 2.39094C138.019 0.796981 140.251 0 142.978 0C145.724 0 147.955 0.76156 149.673 2.30239C151.356 3.73696 152.294 5.82682 152.259 8.04065C152.33 10.3785 151.391 12.61 149.673 14.204C147.955 15.8156 145.724 16.6303 142.978 16.6303ZM174.716 75.9789C172.236 76.032 169.863 75.0579 168.128 73.3046C166.357 71.5335 165.382 69.1248 165.453 66.6099C165.453 63.8648 166.339 61.6509 168.128 59.9684C171.882 56.5857 177.567 56.5857 181.322 59.9684C183.111 61.6509 183.996 63.8648 183.996 66.6099C184.067 69.1071 183.093 71.5335 181.322 73.3046C179.569 75.0579 177.178 76.032 174.716 75.9789Z"/></svg>\
             <h2 class="reef-gate-title">Reef showcase</h2>\
@@ -163,6 +174,7 @@ if (currentPath !== '/') {
               <button type="submit">Enter</button>\
             </form>\
             <p class="reef-gate-err" id="reef-gate-err"></p>\
+            <p class="reef-gate-ver">Design system · v1.4.0</p>\
           </div>';
         document.body.appendChild(overlay);
         document.documentElement.style.visibility = 'visible';
@@ -180,6 +192,57 @@ if (currentPath !== '/') {
             input.focus();
           }
         });
+
+        // ─── Orb pointer reactivity + click scatter ───────────────────────
+        (function () {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var field = document.querySelector('.reef-gate-orbs');
+          if (!field) return;
+          var orbs = Array.prototype.slice.call(field.querySelectorAll('.voi-orb'));
+          var factors = [0.10, -0.07, 0.15, -0.09, 0.12, -0.06, 0.13, -0.10, 0.08];
+          var scatter = orbs.map(function () { return { x: 0, y: 0 }; });
+          var targetX = 0, targetY = 0, currentX = 0, currentY = 0, active = false;
+          function onPointer(e) {
+            var rect = overlay.getBoundingClientRect();
+            var cx = e.touches ? e.touches[0].clientX : e.clientX;
+            var cy = e.touches ? e.touches[0].clientY : e.clientY;
+            targetX = cx - (rect.left + rect.width / 2);
+            targetY = cy - (rect.top + rect.height / 2);
+            active = true;
+          }
+          function onLeave() { targetX = 0; targetY = 0; active = false; }
+          function onClick(e) {
+            var rect = overlay.getBoundingClientRect();
+            var cx = e.clientX - (rect.left + rect.width / 2);
+            var cy = e.clientY - (rect.top + rect.height / 2);
+            orbs.forEach(function (_, i) {
+              var angle = (i / orbs.length) * Math.PI * 2 + Math.random() * 0.4;
+              var radius = 120 + Math.random() * 80;
+              scatter[i].x = Math.cos(angle) * radius - cx * 0.15;
+              scatter[i].y = Math.sin(angle) * radius - cy * 0.15;
+            });
+          }
+          overlay.addEventListener('mousemove', onPointer, { passive: true });
+          overlay.addEventListener('touchstart', onPointer, { passive: true });
+          overlay.addEventListener('touchmove', onPointer, { passive: true });
+          overlay.addEventListener('mouseleave', onLeave);
+          overlay.addEventListener('touchend', onLeave);
+          overlay.addEventListener('click', onClick);
+          (function tick() {
+            if (!document.body.contains(overlay)) return;
+            var speed = active ? 0.04 : 0.025;
+            currentX += (targetX - currentX) * speed;
+            currentY += (targetY - currentY) * speed;
+            orbs.forEach(function (orb, i) {
+              scatter[i].x *= 0.92;
+              scatter[i].y *= 0.92;
+              var f = factors[i % factors.length];
+              orb.style.setProperty('--rx', (currentX * f + scatter[i].x).toFixed(2) + 'px');
+              orb.style.setProperty('--ry', (currentY * f + scatter[i].y).toFixed(2) + 'px');
+            });
+            requestAnimationFrame(tick);
+          })();
+        })();
       });
     })();
   </script>
@@ -187,20 +250,55 @@ if (currentPath !== '/') {
     #reef-gate-overlay {
       position: fixed; inset: 0; z-index: 99999;
       background: #faf4ec;
-      background-image:
-        radial-gradient(ellipse at 15% 85%, rgba(242,105,97,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 10%, rgba(171,209,234,0.22) 0%, transparent 55%);
+      overflow: hidden;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Sora', system-ui, sans-serif;
       padding: 24px;
     }
+    /* ── Animated orb mesh ── */
+    .reef-gate-orbs { position: absolute; inset: 0; pointer-events: none; }
+    .reef-gate-orbs .voi-orb {
+      position: absolute; border-radius: 50%; filter: blur(85px);
+      will-change: transform; pointer-events: none;
+      translate: var(--rx, 0px) var(--ry, 0px);
+    }
+    .voi-orb--coral-a { width: 62%; aspect-ratio: 1; background: rgba(242,105,97,0.14); bottom: -15%; left: -12%; animation: voi-coral-a 44s ease-in-out infinite; }
+    .voi-orb--coral-b { width: 42%; aspect-ratio: 1; background: rgba(242,105,97,0.14); bottom:   2%; left:   4%; animation: voi-coral-b 29s ease-in-out infinite; }
+    .voi-orb--coral-c { width: 28%; aspect-ratio: 1; background: rgba(242,105,97,0.14); bottom:  12%; left:  16%; animation: voi-coral-c 18s ease-in-out infinite; }
+    .voi-orb--coral-d { width: 35%; aspect-ratio: 1; background: rgba(242,105,97,0.14); bottom:  -5%; left:  20%; animation: voi-coral-d 37s ease-in-out infinite; }
+    .voi-orb--coral-e { width: 20%; aspect-ratio: 1; background: rgba(242,105,97,0.14); bottom:  20%; left:   8%; animation: voi-coral-e 22s ease-in-out infinite; }
+    .voi-orb--sky-a { width: 52%; aspect-ratio: 1; background: rgba(171,209,234,0.20); top: -14%; right:  -8%; animation: voi-sky-a 40s ease-in-out infinite; }
+    .voi-orb--sky-b { width: 32%; aspect-ratio: 1; background: rgba(171,209,234,0.20); top:   4%; right:   4%; animation: voi-sky-b 25s ease-in-out infinite; }
+    .voi-orb--sky-c { width: 22%; aspect-ratio: 1; background: rgba(171,209,234,0.20); top:  16%; right:  14%; animation: voi-sky-c 16s ease-in-out infinite; }
+    .voi-orb--sky-d { width: 38%; aspect-ratio: 1; background: rgba(171,209,234,0.20); top:  -2%; right:  20%; animation: voi-sky-d 33s ease-in-out infinite; }
+    @keyframes voi-coral-a { 0%{transform:translate(0%,0%) scale(1)} 20%{transform:translate(18%,-22%) scale(1.18)} 45%{transform:translate(-5%,-30%) scale(.8)} 65%{transform:translate(28%,-15%) scale(1.22)} 85%{transform:translate(10%,-8%) scale(.92)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-coral-b { 0%{transform:translate(0%,0%) scale(1)} 25%{transform:translate(-20%,-18%) scale(.78)} 50%{transform:translate(25%,-25%) scale(1.25)} 75%{transform:translate(5%,-10%) scale(.85)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-coral-c { 0%{transform:translate(0%,0%) scale(1)} 33%{transform:translate(15%,20%) scale(1.3)} 66%{transform:translate(-12%,15%) scale(.75)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-coral-d { 0%{transform:translate(0%,0%) scale(1)} 30%{transform:translate(-22%,12%) scale(1.15)} 55%{transform:translate(18%,22%) scale(.82)} 80%{transform:translate(-10%,-8%) scale(1.1)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-coral-e { 0%{transform:translate(0%,0%) scale(1)} 40%{transform:translate(20%,-20%) scale(.76)} 75%{transform:translate(-15%,18%) scale(1.28)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-sky-a { 0%{transform:translate(0%,0%) scale(1)} 30%{transform:translate(-20%,18%) scale(1.2)} 60%{transform:translate(12%,25%) scale(.78)} 80%{transform:translate(-8%,10%) scale(1.15)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-sky-b { 0%{transform:translate(0%,0%) scale(1)} 40%{transform:translate(22%,-15%) scale(.8)} 70%{transform:translate(-18%,20%) scale(1.28)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-sky-c { 0%{transform:translate(0%,0%) scale(1)} 35%{transform:translate(-25%,-20%) scale(1.32)} 70%{transform:translate(15%,-25%) scale(.74)} 100%{transform:translate(0%,0%) scale(1)} }
+    @keyframes voi-sky-d { 0%{transform:translate(0%,0%) scale(1)} 28%{transform:translate(20%,22%) scale(.82)} 58%{transform:translate(-18%,8%) scale(1.18)} 82%{transform:translate(10%,-15%) scale(.88)} 100%{transform:translate(0%,0%) scale(1)} }
+    @media (prefers-reduced-motion: reduce) { .reef-gate-orbs .voi-orb { animation: none; } }
+
+    /* ── Liquid-glass card (v1.4.0 frost material) ── */
     .reef-gate-card {
-      background: #fff;
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.62);
+      -webkit-backdrop-filter: blur(40px) saturate(1.5);
+      backdrop-filter: blur(40px) saturate(1.5);
+      border: 1px solid rgba(255,255,255,0.6);
       border-radius: 32px;
       padding: 48px 40px;
       max-width: 400px; width: 100%;
-      box-shadow: 0 20px 60px rgba(40,36,37,0.12);
+      box-shadow: 0 24px 70px rgba(40,36,37,0.16), 0 2px 8px rgba(40,36,37,0.06);
       text-align: center;
+      animation: reef-gate-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes reef-gate-in {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
     .reef-gate-title {
       font-size: 28px; font-weight: 600;
@@ -220,31 +318,42 @@ if (currentPath !== '/') {
       font-family: inherit;
       font-size: 15px;
       padding: 14px 16px;
-      border: 1.5px solid rgba(40,36,37,0.12);
+      border: 1.5px solid rgba(40,36,37,0.14);
       border-radius: 12px;
       outline: none;
       color: #282425;
-      background: #fff;
-      transition: border-color 0.15s;
+      background: rgba(255,255,255,0.7);
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
-    #reef-gate-input:focus { border-color: #282425; }
+    #reef-gate-input::placeholder { color: rgba(40,36,37,0.4); }
+    #reef-gate-input:focus {
+      border-color: #282425;
+      box-shadow: 0 0 0 3px rgba(40,36,37,0.08);
+    }
     #reef-gate-form button {
       font-family: inherit;
       font-size: 15px; font-weight: 600;
-      padding: 14px 16px;
+      padding: 15px 16px;
       background: #282425;
       color: #fff;
       border: none;
-      border-radius: 12px;
+      border-radius: 32px;
       cursor: pointer;
-      transition: opacity 0.15s;
+      transition: background 0.15s, transform 0.1s;
     }
-    #reef-gate-form button:hover { opacity: 0.85; }
+    #reef-gate-form button:hover { background: #3a3537; }
+    #reef-gate-form button:active { background: #1a1718; transform: scale(0.985); }
     .reef-gate-err {
       font-size: 13px;
       color: #D04740;
       margin: 12px 0 0;
       min-height: 18px;
+    }
+    .reef-gate-ver {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.02em;
+      color: rgba(40,36,37,0.4);
+      margin: 20px 0 0;
     }
   </style>
 </head>
