@@ -8,6 +8,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <p class="s-desc">The primary trigger for all user actions. Contrast (Tire) for primary CTAs, Outlined for secondary, Transparent for tertiary. Never use Coral as a CTA — it signals brand, not action.</p>
   <hr class="s-rule" />
 
+  <div style="display:flex;align-items:flex-start;gap:12px;background:var(--fill-accent-subtle-enabled);border:1px solid var(--fill-accent-soft-enabled);border-radius:16px;padding:14px 16px;margin-bottom:40px">
+    <span class="beta-tag" style="margin-top:1px;flex-shrink:0">New v1.4.0</span>
+    <div style="font-size:12px;line-height:1.55;color:var(--content-body-secondary)">Button and button-icon gain accent type variants — <code class="token">accent-subtle</code>, <code class="token">accent-medium</code>, and <code class="token">accent-hard</code> — mapped to the blue accent scale. Use them for secondary emphasis without reaching for brand coral.</div>
+  </div>
+
   <div class="sub-label">Variants — all at large (64px)</div>
   <div class="demo">
     <div class="row" style="margin-bottom:24px">

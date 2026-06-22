@@ -3,9 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Segmented control">
   <div class="s-overline">02 — Components</div>
-  <h1 class="s-title">Segmented control</h1>
+  <div class="s-title-row">
+    <h1 class="s-title" style="margin-bottom:0">Segmented control</h1>
+    <span class="badge badge-ai" title="Not in the Reef Figma library — generated for this showcase"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/></svg>AI generated</span>
+  </div>
   <p class="s-desc">Inline toggle for 2–4 mutually exclusive views or filter states. Used for switching between related views (map/list), sort orders, or content tabs. Do not exceed 4 segments — use a select or chips for more options.</p>
   <hr class="s-rule" />
+
+  <div class="ai-notice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      <div class="ai-notice-title">Showcase extension — not in the Reef Figma library</div>
+      <div class="ai-notice-body">Reef switches between options with <code>button-toggle</code> or <code>chip-filter</code> — there is no dedicated segmented-control component in the library.</div>
+    </div>
+  </div>
 
   <div class="sub-label">Default (medium)</div>
   <div class="demo">

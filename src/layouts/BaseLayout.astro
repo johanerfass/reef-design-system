@@ -115,7 +115,7 @@ const navItems = [
     group: "Tooling",
     links: [
       { href: "/tooling/claude-skill", label: "Claude Code skill" },
-      { href: "/tooling/atmospheres", label: "Atmospheres" },
+      { href: "/tooling/splashes", label: "Splashes" },
     ],
   },
 ];
@@ -259,15 +259,11 @@ if (currentPath !== '/') {
       <svg id="voi-logo" width="44" height="18" viewBox="0 0 184 76" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d={VOI_LOGO_PATH} fill="#F26961" />
       </svg>
-      <span class="nav-logo-meta"><strong>Reef</strong> v1.3.2</span>
+      <span class="nav-logo-meta"><strong>Reef</strong> v1.4.0</span>
     </a>
     <div class="nav-bar__sep"></div>
     <div class="nav-bar__spacer"></div>
     <div class="nav-bar__controls">
-      <label class="toggle toggle-sm nav-frost-toggle" title="Toggle frosted atmospheres" aria-label="Toggle frosted atmospheres">
-        <input type="checkbox" id="frostToggle" />
-        <span class="toggle-track"></span>
-      </label>
       <label class="toggle toggle-sm nav-theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
         <input type="checkbox" id="themeToggle" />
         <span class="toggle-track"></span>
@@ -345,7 +341,7 @@ if (currentPath !== '/') {
             <div class="nav-section-hd">
               <span class="nav-group-label">Tools</span>
             </div>
-            <a href={withBase('/tooling/atmospheres')} class="nav-bento-text-link">Explore atmospheres →</a>
+            <a href={withBase('/tooling/splashes')} class="nav-bento-text-link">Splashes <span class="beta-tag">Beta</span> →</a>
             <a href={withBase('/tooling/claude-skill')} class="nav-bento-text-link">Claude Code skill →</a>
           </div>
 
@@ -388,7 +384,7 @@ if (currentPath !== '/') {
   <div class="site-footer__inner">
     <div class="site-footer__bottom">
       <svg class="site-footer__voi-logo" viewBox="0 0 184 76" fill="#F26961" aria-label="Voi" role="img"><path d={VOI_LOGO_PATH} /></svg>
-      <span>© {new Date().getFullYear()} Voi Technology AB · Reef v1.3.2</span>
+      <span>© {new Date().getFullYear()} Voi Technology AB · Reef v1.4.0</span>
       <span class="site-footer__dot">·</span>
       <span>Internal use only — not a public Voi asset</span>
       <span class="site-footer__dot">·</span>
@@ -418,23 +414,15 @@ toggle.addEventListener('change', () => {
   applyTheme(dark);
 });
 
-// ─── FROST MODE ────────────────────────────────────────────────────────
-const frostToggle = document.getElementById('frostToggle') as HTMLInputElement;
-let frosted = localStorage.getItem('reef-frost') !== 'false';
+// ─── SPLASH MODE (opt-in beta) ──────────────────────────────────────────
+// The on/off control lives on /tooling/splashes. Here we only apply the saved
+// state so an enabled splash background persists across pages. Defaults OFF.
+(function () {
+  const splashOn = localStorage.getItem('reef-frost') === 'true';
+  document.documentElement.setAttribute('data-frost', splashOn ? 'true' : '');
+})();
 
-function applyFrost(isFrosted: boolean) {
-  document.documentElement.setAttribute('data-frost', isFrosted ? 'true' : '');
-  frostToggle.checked = isFrosted;
-}
-applyFrost(frosted);
-
-frostToggle.addEventListener('change', () => {
-  frosted = frostToggle.checked;
-  localStorage.setItem('reef-frost', frosted ? 'true' : 'false');
-  applyFrost(frosted);
-});
-
-// ─── ATMOSPHERE SETTINGS ───────────────────────────────────────────────
+// ─── SPLASH SETTINGS ───────────────────────────────────────────────────
 const savedAtmCoral = localStorage.getItem('reef-orb-coral');
 const savedAtmSky   = localStorage.getItem('reef-orb-sky');
 const savedAtmBlur  = localStorage.getItem('reef-orb-blur');

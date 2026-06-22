@@ -1,15 +1,61 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="Materials">
   <div class="s-overline">01 — Foundation</div>
   <h1 class="s-title">Materials</h1>
-  <p class="s-desc">A layered surface system — fill, blur, stroke, shadow — applied to buttons, icon buttons, cards, and any component that floats above content. Three frost levels for Android and web. On iOS, use the native liquid glass material instead.</p>
+  <p class="s-desc">Materials are the surfaces content sits on. Reef v1.4.0 introduces a full material system: Frost, a liquid-glass family for floating surfaces; Splashes, a living gradient for atmospheric backgrounds; and Asphalt, the deep near-black that grounds the dark theme. Each is a token, not a one-off, so surfaces stay consistent across the rider app, web, and the Business and Ops tools.</p>
   <hr class="s-rule" />
 
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- FROST / LIQUID GLASS                                              -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <div class="s-overline" style="margin-top:8px">The headline of v1.4.0</div>
+  <h2 class="s-title" style="font-size:30px;margin-bottom:12px">Frost · liquid glass</h2>
+  <p class="s-desc" style="margin-bottom:32px">A frosted material for any surface that floats above content. On iOS 26 it maps to the native liquid-glass material; on Android and web Reef renders an equivalent frosted layer. The recipe is always the same four properties: a translucent fill, a backdrop blur, a hairline stroke, and a shadow. Three levels tune how much the surface separates from what is behind it.</p>
+
+  <!-- LIVE DEMO — frost over a vivid gradient -->
+  <div class="sub-label">Live demo — real backdrop blur</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Three glass cards floating over a Voi mesh gradient. The blur is real: each card samples and blurs the coral and sky orbs behind it. Toggle the theme to see how the same tokens adapt.</p>
+
+  <div class="frost-stage">
+    <div class="frost-stage-bg" aria-hidden="true">
+      <span class="frost-blob frost-blob--coral-a"></span>
+      <span class="frost-blob frost-blob--coral-b"></span>
+      <span class="frost-blob frost-blob--sky-a"></span>
+      <span class="frost-blob frost-blob--sky-b"></span>
+    </div>
+    <div class="frost-demo-group">
+
+      <div class="frost-demo-card material-frost-soft">
+        <div class="frost-demo-name">Soft</div>
+        <div class="frost-demo-blur">blur 8px</div>
+        <div class="frost-demo-token"><code>--fill-frost-soft-enabled</code></div>
+        <p class="frost-demo-note">Subtle veil. The background reads clearly through it.</p>
+      </div>
+
+      <div class="frost-demo-card material-frost-medium">
+        <div class="frost-demo-name">Medium</div>
+        <div class="frost-demo-blur">blur 32px</div>
+        <div class="frost-demo-token"><code>--fill-frost-medium-enabled</code></div>
+        <p class="frost-demo-note">The default for interactive glass. Balanced legibility.</p>
+      </div>
+
+      <div class="frost-demo-card material-frost-hard">
+        <div class="frost-demo-name">Hard</div>
+        <div class="frost-demo-blur">blur 80px</div>
+        <div class="frost-demo-token"><code>--fill-frost-hard-enabled</code></div>
+        <p class="frost-demo-note">Near-opaque. For sheets and high-attention overlays.</p>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ANATOMY -->
-  <div class="sub-label">Anatomy — frost medium</div>
+  <div class="sub-label" style="margin-top:40px">Anatomy — frost medium</div>
   <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">Every frosted surface is four stacked properties. The blur is the foundation; fill, stroke, and shadow tune prominence.</p>
 
   <div class="anatomy-wrap">
@@ -31,16 +77,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="anatomy-swatch" style="background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.08);border-radius:4px"></div>
         <div>
           <div class="anatomy-prop">border</div>
-          <div class="anatomy-val"><code>1px solid rgba(255,255,255,0.90)</code></div>
-          <div class="anatomy-desc">Inner stroke — sharpens the edge against content</div>
+          <div class="anatomy-val"><code>1px solid var(--fill-frost-stroke)</code></div>
+          <div class="anatomy-desc">Hairline stroke — sharpens the edge against content</div>
         </div>
       </div>
       <div class="anatomy-row">
         <div class="anatomy-swatch" style="background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.08);border-radius:4px"></div>
         <div>
           <div class="anatomy-prop">background</div>
-          <div class="anatomy-val"><code>rgba(255,255,255,0.50)</code></div>
-          <div class="anatomy-desc">Fill — controls opacity/tint of the surface</div>
+          <div class="anatomy-val"><code>var(--fill-frost-medium-enabled)</code></div>
+          <div class="anatomy-desc">Fill — controls opacity and tint of the surface</div>
         </div>
       </div>
       <div class="anatomy-row">
@@ -56,7 +102,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <!-- LEVELS -->
   <div class="sub-label" style="margin-top:40px">Levels — frost soft / medium / hard / solid</div>
-  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">More fill = less transparency, stronger presence. Choose based on how much the surface needs to stand out from content behind it.</p>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">More fill means less transparency and stronger presence. Choose based on how much the surface needs to stand out from content behind it. Solid is the fallback when there is nothing meaningful to blur.</p>
   <div class="map-stage">
     <div class="map-bg" id="mat-map-1"></div>
     <div class="mat-demo-group">
@@ -93,6 +139,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="mat-sub">100% · no blur</div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- FIGMA EFFECT + ELEVATION STYLES -->
+  <div class="sub-label" style="margin-top:40px">Figma styles — new in v1.4.0</div>
+  <p style="font-size:13px;color:var(--content-body-secondary);margin-bottom:20px">In Figma the material ships as two families of named styles, so designers apply glass the same way engineers do. Effect styles carry just the blur; elevation styles add a deep shadow below for surfaces that float free of any edge.</p>
+  <div class="grid-2" style="gap:16px">
+    <div class="card card-sm" style="border-radius:16px">
+      <div class="fx-head">
+        <span class="fx-kind">Effect styles</span>
+        <span style="font-size:11px;color:var(--content-body-tertiary)">frosted blur only</span>
+      </div>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5;margin-bottom:14px">Background blur with no shadow. Use when the glass sits flush against a sheet edge or another surface and does not need to read as lifted.</p>
+      <ul class="fx-list">
+        <li><code class="token">frost/soft</code><span>blur 8px</span></li>
+        <li><code class="token">frost/medium</code><span>blur 32px</span></li>
+        <li><code class="token">frost/hard</code><span>blur 80px</span></li>
+      </ul>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <div class="fx-head">
+        <span class="fx-kind">Elevation styles</span>
+        <span style="font-size:11px;color:var(--content-body-tertiary)">blur + deep shadow</span>
+      </div>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5;margin-bottom:14px">The same blur plus a soft shadow cast below, for floating glass — navigation islands, toolbars, and cards that hover over the map.</p>
+      <ul class="fx-list">
+        <li><code class="token">frost-deep-below/soft</code><span>8px + shadow</span></li>
+        <li><code class="token">frost-deep-below/medium</code><span>32px + shadow</span></li>
+        <li><code class="token">frost-deep-below/hard</code><span>80px + shadow</span></li>
+      </ul>
     </div>
   </div>
 
@@ -194,16 +270,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 
   <!-- TOKENS -->
-  <div class="sub-label" style="margin-top:40px">Tokens</div>
+  <div class="sub-label" style="margin-top:40px">Frost tokens</div>
   <table class="prop-table">
-    <thead><tr><th>Token</th><th>Value</th><th>Blur</th><th>Use</th></tr></thead>
+    <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Blur</th><th>Use</th></tr></thead>
     <tbody>
-      <tr><td><code>--fill-frost-soft-enabled</code></td><td><code>rgba(255,255,255,0.10)</code></td><td><code>8px</code></td><td>Subtle overlays, secondary non-interactive surfaces</td></tr>
-      <tr><td><code>--fill-frost-medium-enabled</code></td><td><code>rgba(255,255,255,0.50)</code></td><td><code>32px</code></td><td>Icon buttons, interactive cards, navigation islands</td></tr>
-      <tr><td><code>--fill-frost-hard-enabled</code></td><td><code>rgba(255,255,255,0.70)</code></td><td><code>80px</code></td><td>Prominent cards, overlays, bottom sheets</td></tr>
-      <tr><td><code>--fill-frost-stroke</code></td><td><code>rgba(255,255,255,0.90)</code></td><td>—</td><td>Border on all frosted surfaces</td></tr>
+      <tr><td><code>--fill-frost-soft-enabled</code></td><td>white 10%</td><td>grey 10%</td><td><code>8px</code></td><td>Subtle overlays, secondary non-interactive surfaces</td></tr>
+      <tr><td><code>--fill-frost-medium-enabled</code></td><td>white 50%</td><td>grey 50%</td><td><code>32px</code></td><td>Icon buttons, interactive cards, navigation islands</td></tr>
+      <tr><td><code>--fill-frost-hard-enabled</code></td><td>white 70%</td><td>grey 70%</td><td><code>80px</code></td><td>Prominent cards, overlays, bottom sheets</td></tr>
+      <tr><td><code>--fill-frost-stroke</code></td><td>white 60%</td><td>white 10%</td><td>—</td><td>Hairline border on every frosted surface</td></tr>
     </tbody>
   </table>
+  <p style="font-size:12px;color:var(--content-body-tertiary);margin-top:12px"><code>fill/frost-stroke</code> is new in v1.4.0. It is white 60% in the light theme and drops to white 10% in dark, so the edge stays a faint catch of light rather than a hard line.</p>
 
   <!-- CODE -->
   <div class="sub-label" style="margin-top:40px">Code</div>
@@ -222,9 +299,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-frost-hard"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
 <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"material-solid"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
 
-<span class="c-comment">/* iOS — use native material instead */</span>
+<span class="c-comment">/* iOS 26 — use the native liquid glass material */</span>
 <span class="c-comment">/* SwiftUI: .glassBackgroundEffect() */</span>
-<span class="c-comment">/* UIKit:   UIBlurEffect(style: .systemMaterial) */</span></pre></div>
+<span class="c-comment">/* UIKit:   UIGlassEffect() / UIBlurEffect(.systemMaterial) */</span></pre></div>
 
   <!-- RULES -->
   <div class="sub-label" style="margin-top:40px">Usage rules</div>
@@ -236,20 +313,74 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <li>Use <code class="token">frost-medium</code> as the default for interactive components</li>
         <li>Use <code class="token">frost-hard</code> for sheets, prominent overlays, and high-attention surfaces</li>
         <li>Use <code class="token">frost-soft</code> for decorative or secondary non-interactive layers</li>
-        <li>On iOS, use native liquid glass — the OS handles adaptation automatically</li>
+        <li>Reach for an elevation style when the glass floats free; an effect style when it sits flush</li>
+        <li>On iOS 26, use native liquid glass — the OS handles adaptation automatically</li>
       </ul>
     </div>
     <div class="card card-sm" style="border-radius:16px">
       <div style="font-size:12px;font-weight:600;color:var(--alert-error);margin-bottom:8px">✗ Don't</div>
       <ul style="font-size:13px;color:var(--content-body-secondary);display:flex;flex-direction:column;gap:6px;padding-left:16px">
-        <li>Place frosted surfaces on flat colour backgrounds — there's nothing to blur</li>
+        <li>Place frosted surfaces on flat colour backgrounds — there is nothing to blur</li>
         <li>Nest frosted surfaces inside other frosted surfaces</li>
         <li>Apply <code class="token">backdrop-filter</code> to full-screen backgrounds — severe performance hit</li>
-        <li>Use iOS liquid glass tokens on Android or web</li>
+        <li>Use iOS liquid-glass APIs on Android or web</li>
         <li>Omit the <code class="token">-webkit-backdrop-filter</code> prefix — Safari requires it</li>
       </ul>
     </div>
   </div>
+
+  <hr class="s-rule" style="margin-top:56px" />
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- SPLASHES                                                          -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <div class="s-overline" style="margin-top:8px">New in v1.4.0</div>
+  <h2 class="s-title" style="font-size:30px;margin-bottom:12px">Splashes <span class="beta-tag" style="font-size:11px;vertical-align:middle">Beta</span></h2>
+  <p class="s-desc" style="margin-bottom:32px">Splashes is Voi's animated gradient material: a slow, living mesh of coral and sky orbs drifting over a calm sand base. It gives marketing surfaces, hero sections, and splash screens a sense of quiet motion without pulling focus. It is the surface our frosted glass loves to sit on, because there is always something soft moving behind the blur.</p>
+
+  <div class="splash-feature">
+    <a href={`${BASE}/tooling/splashes`} class="splash-preview" aria-label="Open the Splashes tool">
+      <span class="splash-orb splash-orb--coral-a"></span>
+      <span class="splash-orb splash-orb--coral-b"></span>
+      <span class="splash-orb splash-orb--sky-a"></span>
+      <span class="splash-orb splash-orb--sky-b"></span>
+      <span class="splash-preview-tag">Living gradient</span>
+    </a>
+    <div class="splash-copy">
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6;margin-bottom:8px">Splashes is still settling. It is built for atmospheric, low-density surfaces — not yet for dense product UI. Defaults and the snippet API may change before it leaves beta.</p>
+      <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6;margin-bottom:20px">The Splashes tool lets you tune orb density, opacity, blur, and motion, then copy a ready-made snippet. Coral stays the brand accent, so keep it sparing and let sand and sky carry the canvas.</p>
+      <a href={`${BASE}/tooling/splashes`} class="btn btn-contrast btn-md" style="text-decoration:none">Open the Splashes tool →</a>
+    </div>
+  </div>
+
+  <hr class="s-rule" style="margin-top:56px" />
+
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <!-- ASPHALT                                                           -->
+  <!-- ════════════════════════════════════════════════════════════════ -->
+  <div class="s-overline" style="margin-top:8px">New in v1.4.0</div>
+  <h2 class="s-title" style="font-size:30px;margin-bottom:12px">Asphalt</h2>
+  <p class="s-desc" style="margin-bottom:32px">Asphalt is the deep, near-black material the dark theme is built on. It is the ground floor: the base surface every other dark surface, shadow, and frosted layer is measured against. Warmer than pure black, it keeps the dark theme feeling like Voi rather than a void, and gives glass something rich to blur.</p>
+
+  <div class="grid-2" style="gap:16px;align-items:stretch">
+    <div class="asphalt-swatch">
+      <div>
+        <div class="asphalt-swatch-name">Asphalt</div>
+        <div class="asphalt-swatch-hex">#161314</div>
+      </div>
+    </div>
+    <div class="card card-sm" style="border-radius:16px;display:flex;flex-direction:column;justify-content:center">
+      <div class="sub-label" style="padding-top:0;margin-bottom:14px">Token</div>
+      <table class="prop-table" style="margin:0">
+        <tbody>
+          <tr><td><code>--neutral-asphalt</code></td><td>Primitive — <code>#161314</code></td></tr>
+          <tr><td><code>--surface-base-enabled</code></td><td>Maps to asphalt in dark</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--content-body-tertiary);margin-top:14px;line-height:1.5">In the light theme <code class="token">--surface-base-enabled</code> resolves to pearl; in dark it resolves to asphalt. Use the semantic surface token in product, not the raw primitive.</p>
+    </div>
+  </div>
+
 </BaseLayout>
 
 <script is:inline>
@@ -279,7 +410,55 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </script>
 
 <style>
-  /* Anatomy */
+  /* ─── FROST LIVE DEMO ─────────────────────────────────────────────── */
+  .frost-stage {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    padding: 40px 32px;
+    background: #faf4ec;
+  }
+  .frost-stage-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .frost-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  /* Vivid coral + sky orbs so the blur is unmistakable. Demo surface — fixed rgba is intentional. */
+  .frost-blob--coral-a { width: 46%; aspect-ratio: 1; background: rgba(242,105,97,.55); top: -8%; left: -4%; }
+  .frost-blob--coral-b { width: 34%; aspect-ratio: 1; background: rgba(242,105,97,.45); bottom: -14%; left: 32%; }
+  .frost-blob--sky-a   { width: 44%; aspect-ratio: 1; background: rgba(124,182,224,.65); top: -10%; right: -6%; }
+  .frost-blob--sky-b   { width: 30%; aspect-ratio: 1; background: rgba(124,182,224,.5); bottom: -10%; right: 24%; }
+
+  .frost-demo-group {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  /* Cards force light scheme so frost reads as glass regardless of site theme */
+  .frost-demo-card {
+    color-scheme: light;
+    border-radius: 20px;
+    border: 1px solid var(--fill-frost-stroke);
+    padding: 20px;
+    min-height: 156px;
+    display: flex;
+    flex-direction: column;
+    color: #282425;
+  }
+  .frost-demo-name { font-size: 16px; font-weight: 700; letter-spacing: -.01em; color: #282425; }
+  .frost-demo-blur { font-size: 11px; font-weight: 600; color: rgba(40,36,37,.55); margin-top: 2px; }
+  .frost-demo-token { margin-top: 10px; }
+  .frost-demo-token code { font-size: 10.5px; font-family: monospace; color: rgba(40,36,37,.7); }
+  .frost-demo-note { font-size: 12px; line-height: 1.45; color: rgba(40,36,37,.65); margin-top: auto; padding-top: 14px; }
+
+  /* ─── ANATOMY ─────────────────────────────────────────────────────── */
   .anatomy-wrap {
     display: flex;
     gap: 32px;
@@ -357,7 +536,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: var(--content-body-tertiary);
   }
 
-  /* Map stage */
+  /* ─── MAP STAGE ───────────────────────────────────────────────────── */
   .map-stage {
     position: relative;
     border-radius: 32px;
@@ -456,4 +635,115 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .mat-card-icon { color: #282425; margin-bottom: 4px; }
   .mat-card-title { font-size: 15px; font-weight: 700; color: #282425; letter-spacing: -.01em; }
   .mat-card-body { font-size: 12px; color: rgba(40,36,37,.55); line-height: 1.5; }
+
+  /* ─── FIGMA STYLE CARDS ───────────────────────────────────────────── */
+  .fx-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .fx-kind {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--content-heading-primary);
+    letter-spacing: -.01em;
+  }
+  .fx-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fx-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .fx-list span {
+    font-size: 11px;
+    color: var(--content-body-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── SPLASHES FEATURE ────────────────────────────────────────────── */
+  .splash-feature {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .splash-preview {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 240px;
+    background: #faf4ec;
+    display: block;
+    text-decoration: none;
+    box-shadow: var(--shadow-card);
+  }
+  .splash-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .splash-orb--coral-a { width: 60%; aspect-ratio: 1; background: rgba(242,105,97,.34); bottom: -16%; left: -10%; }
+  .splash-orb--coral-b { width: 36%; aspect-ratio: 1; background: rgba(242,105,97,.30); bottom: 6%; left: 30%; }
+  .splash-orb--sky-a   { width: 50%; aspect-ratio: 1; background: rgba(124,182,224,.40); top: -14%; right: -8%; }
+  .splash-orb--sky-b   { width: 30%; aspect-ratio: 1; background: rgba(124,182,224,.34); top: 8%; right: 26%; }
+  .splash-preview-tag {
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+    z-index: 1;
+    color-scheme: light;
+    background: var(--fill-frost-medium-enabled);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--fill-frost-stroke);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #282425;
+  }
+  .splash-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* ─── ASPHALT SWATCH ──────────────────────────────────────────────── */
+  .asphalt-swatch {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 200px;
+    background: #161314;
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+  }
+  .asphalt-swatch-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -.01em;
+  }
+  .asphalt-swatch-hex {
+    font-size: 12px;
+    font-family: monospace;
+    color: rgba(255,255,255,.55);
+    margin-top: 2px;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────────────────── */
+  @media (max-width: 720px) {
+    .frost-demo-group { grid-template-columns: 1fr; }
+    .splash-feature { grid-template-columns: 1fr; }
+  }
 </style>

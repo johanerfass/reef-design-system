@@ -1,27 +1,58 @@
 /* ─── REEF TOKENS ─────────────────────────────────────────────────────── */
 :root {
+  /* ── Core ── */
   --core-black:#000000; --core-tire:#282425; --core-white:#ffffff;
   --core-coral:#f26961; --core-rose:#f8b3ad; --core-sand:#faf4ec;
 
-  --supporting-pink:#ffdcd9; --supporting-salmon:#f58e87; --supporting-brick:#d04740;
-  --supporting-cherry:#8d0601; --supporting-chestnut:#500402;
-  --supporting-sky:#abd1ea; --supporting-overcast:#89abc8; --supporting-thunder:#6785a5;
-  --supporting-sea:#455f85; --supporting-space:#243860;
+  /* ── Brand supporting (coral family) — v1.4.0 adds blush + obsidian ── */
+  --supporting-blush:#fff0f5; --supporting-pink:#ffdcd9; --supporting-salmon:#f58e87;
+  --supporting-brick:#d04740; --supporting-cherry:#8d0601; --supporting-chestnut:#500402;
+  --supporting-obsidian:#1f0505;
 
+  /* ── Accent supporting (blue-grey family) — v1.4.0 adds mist + abyss ── */
+  --supporting-mist:#ebf5fb; --supporting-sky:#abd1ea; --supporting-overcast:#89abc8;
+  --supporting-thunder:#6785a5; --supporting-sea:#455f85; --supporting-space:#243860;
+  --supporting-abyss:#0b121f;
+
+  /* ── Neutral ramp (chalk → asphalt) ── */
   --neutral-pearl:#f2f2f6; --neutral-chalk:#edebed; --neutral-shell:#e8e4e5;
   --neutral-marble:#d0cccd; --neutral-granite:#b8b4b5; --neutral-gravel:#989495;
   --neutral-slate:#787475; --neutral-tarmac:#585455; --neutral-basalt:#403c3d;
   --neutral-graphite:#322e2f; --neutral-charcoal:#2d292a;
   --neutral-rubber:#1f1c1d; --neutral-asphalt:#161314;
 
-  --alert-success:#008545; --alert-success-dark:#005d30; --alert-success-light:#4daa7d;
-  --alert-warning:#ffb100; --alert-warning-dark:#b27c00; --alert-warning-light:#ffc84d;
-  --alert-error:#ed0a02;   --alert-error-dark:#a60701;   --alert-error-light:#f4716c;
-  --alert-info:#0075db;    --alert-info-dark:#005299;    --alert-info-light:#4d9ee6;
-  --alert-mandatory:#c802e9; --alert-mandatory-dark:#8c01a3; --alert-mandatory-light:#d94ef0;
-  --alert-pending:#52d1dc; --alert-pending-dark:#39929a; --alert-pending-light:#86dfe7;
+  /* ── Alert (+ 10/20 transparents) ── */
+  --alert-success:#008545; --alert-success-dark:#005d30; --alert-success-light:#4daa7d; --alert-success10:#0085451a; --alert-success20:#00854533;
+  --alert-warning:#ffb100; --alert-warning-dark:#b27c00; --alert-warning-light:#ffc84d; --alert-warning10:#ffb1001a; --alert-warning20:#ffb10033;
+  --alert-error:#ed0a02;   --alert-error-dark:#a60701;   --alert-error-light:#f4716c;   --alert-error10:#ed0a021a;   --alert-error20:#ed0a0233;
+  --alert-info:#0075db;    --alert-info-dark:#005299;    --alert-info-light:#4d9ee6;    --alert-info10:#0075db1a;    --alert-info20:#0075db33;
+  --alert-mandatory:#c802e9; --alert-mandatory-dark:#8c01a3; --alert-mandatory-light:#d94ef0; --alert-mandatory10:#c802e91a; --alert-mandatory20:#c802e933;
+  --alert-pending:#52d1dc; --alert-pending-dark:#39929a; --alert-pending-light:#86dfe7; --alert-pending10:#52d1dc1a; --alert-pending20:#52d1dc33;
 
-  /* THEME TOKENS — light */
+  /* ── Transparent ranges (v1.4.0: full grey range added) ── */
+  --transparent-black-10:#0000001a; --transparent-black-20:#00000033; --transparent-black-30:#0000004d;
+  --transparent-black-40:#00000066; --transparent-black-50:#00000080; --transparent-black-60:#00000099;
+  --transparent-black-70:#000000b2; --transparent-black-80:#000000cc; --transparent-black-90:#000000e5;
+  --transparent-grey-10:#403c3d1a; --transparent-grey-20:#403c3d33; --transparent-grey-30:#403c3d4d;
+  --transparent-grey-40:#403c3d66; --transparent-grey-50:#403c3d80; --transparent-grey-60:#403c3d99;
+  --transparent-grey-70:#403c3db2; --transparent-grey-80:#403c3dcc; --transparent-grey-90:#403c3de5;
+  --transparent-white-0:#ffffff00; --transparent-white-10:#ffffff1a; --transparent-white-20:#ffffff33;
+  --transparent-white-30:#ffffff4d; --transparent-white-40:#ffffff66; --transparent-white-50:#ffffff80;
+  --transparent-white-60:#ffffff99; --transparent-white-70:#ffffffb2; --transparent-white-80:#ffffffcc;
+  --transparent-white-90:#ffffffe5;
+
+  /* ═══════════ THEME — LIGHT ═══════════ */
+  /* content */
+  --content-disabled: var(--neutral-granite);
+  --content-nonadaptable-black: var(--core-black);
+  --content-nonadaptable-white: var(--core-white);
+  --content-icon-primary: var(--core-black);
+  --content-icon-brand: var(--core-coral);
+  --content-icon-inverted: var(--core-white);
+  --content-alert-error: var(--alert-error);
+  --content-alert-info: var(--alert-info);
+  --content-alert-success: var(--alert-success);
+  --content-alert-warning: var(--alert-warning);
   --content-heading-primary: var(--core-black);
   --content-heading-secondary: var(--core-tire);
   --content-heading-accent: var(--core-coral);
@@ -30,84 +61,205 @@
   --content-body-secondary: var(--neutral-graphite);
   --content-body-tertiary: var(--neutral-tarmac);
   --content-body-inverted: var(--core-white);
-  --content-disabled: var(--neutral-granite);
-  --content-icon-primary: var(--core-black);
-  --content-icon-brand: var(--core-coral);
   --content-inline-link-enabled: var(--supporting-brick);
   --content-inline-link-hover: var(--core-coral);
+  --content-inline-link-pressed: var(--supporting-cherry);
 
-  --surface-base-enabled: var(--neutral-pearl);
-  --surface-raised-enabled: var(--core-white);
-  --surface-overlay-enabled: var(--core-white);
-  --surface-brand-enabled: var(--core-sand);
-  --surface-backdrop: rgba(0,0,0,0.4);
+  /* fill — accent (12-step scale, v1.4.0) */
+  --fill-accent-subtle-enabled: var(--supporting-mist);
+  --fill-accent-subtle-hover: var(--supporting-sky);
+  --fill-accent-subtle-pressed: var(--supporting-overcast);
+  --fill-accent-soft-enabled: var(--supporting-sky);
+  --fill-accent-soft-hover: var(--supporting-overcast);
+  --fill-accent-soft-pressed: var(--supporting-thunder);
+  --fill-accent-medium-enabled: var(--supporting-sea);
+  --fill-accent-medium-hover: var(--supporting-thunder);
+  --fill-accent-medium-pressed: var(--supporting-space);
+  --fill-accent-hard-enabled: var(--supporting-space);
+  --fill-accent-hard-hover: var(--supporting-sea);
+  --fill-accent-hard-pressed: var(--supporting-thunder);
 
+  /* fill — brand (subtle added v1.4.0) */
+  --fill-brand-subtle-enabled: var(--supporting-blush);
+  --fill-brand-subtle-hover: var(--supporting-pink);
+  --fill-brand-subtle-pressed: var(--core-rose);
+  --fill-brand-soft-enabled: var(--supporting-pink);
+  --fill-brand-soft-hover: var(--core-rose);
+  --fill-brand-soft-pressed: var(--supporting-salmon);
+  --fill-brand-medium-enabled: var(--core-coral);
+  --fill-brand-medium-hover: var(--supporting-salmon);
+  --fill-brand-medium-pressed: var(--supporting-brick);
+  --fill-brand-medium-accessible-enabled: var(--supporting-brick);
+  --fill-brand-medium-accessible-hover: var(--core-coral);
+  --fill-brand-medium-accessible-pressed: var(--supporting-cherry);
+  --fill-brand-hard-enabled: var(--supporting-chestnut);
+  --fill-brand-hard-hover: var(--supporting-cherry);
+  --fill-brand-hard-pressed: var(--supporting-brick);
+
+  /* fill — neutral (subtle added v1.4.0) */
+  --fill-neutral-subtle-enabled: var(--neutral-chalk);
+  --fill-neutral-subtle-hover: var(--neutral-shell);
+  --fill-neutral-subtle-pressed: var(--neutral-marble);
   --fill-neutral-soft-enabled: var(--neutral-shell);
+  --fill-neutral-soft-hover: var(--neutral-marble);
+  --fill-neutral-soft-pressed: var(--neutral-granite);
   --fill-neutral-medium-enabled: var(--neutral-granite);
+  --fill-neutral-medium-hover: var(--neutral-gravel);
+  --fill-neutral-medium-pressed: var(--neutral-slate);
   --fill-neutral-hard-enabled: var(--core-tire);
   --fill-neutral-hard-hover: var(--neutral-basalt);
   --fill-neutral-hard-pressed: var(--core-black);
-  --fill-brand-soft-enabled: var(--supporting-pink);
-  --fill-brand-medium-enabled: var(--core-coral);
-  --fill-brand-medium-accessible-enabled: var(--supporting-brick);
-  --fill-brand-hard-enabled: var(--supporting-chestnut);
-  --fill-accent-soft-enabled: var(--supporting-sky);
-  --fill-accent-medium-enabled: var(--supporting-sea);
-  --fill-accent-hard-enabled: var(--supporting-space);
-  --fill-disabled: var(--neutral-chalk);
 
+  /* fill — frost / liquid glass (mapped to transparent-white, v1.4.0) */
+  --fill-frost-soft-enabled: var(--transparent-white-10);
+  --fill-frost-soft-hover: var(--transparent-white-20);
+  --fill-frost-soft-pressed: var(--transparent-white-30);
+  --fill-frost-medium-enabled: var(--transparent-white-50);
+  --fill-frost-medium-hover: var(--transparent-white-60);
+  --fill-frost-medium-pressed: var(--transparent-white-70);
+  --fill-frost-hard-enabled: var(--transparent-white-70);
+  --fill-frost-hard-hover: var(--transparent-white-80);
+  --fill-frost-hard-pressed: var(--transparent-white-90);
+  --fill-frost-stroke: var(--transparent-white-60);
+
+  /* fill — alert + disabled */
+  --fill-alert-error-enabled: var(--alert-error); --fill-alert-error-hover: var(--alert-error-light); --fill-alert-error-pressed: var(--alert-error-dark); --fill-alert-error-transparent: var(--alert-error10);
+  --fill-alert-info-enabled: var(--alert-info); --fill-alert-info-hover: var(--alert-info-light); --fill-alert-info-pressed: var(--alert-info-dark); --fill-alert-info-transparent: var(--alert-info10);
+  --fill-alert-mandatory-enabled: var(--alert-mandatory); --fill-alert-mandatory-hover: var(--alert-mandatory-light); --fill-alert-mandatory-pressed: var(--alert-mandatory-dark); --fill-alert-mandatory-transparent: var(--alert-mandatory10);
+  --fill-alert-pending-enabled: var(--alert-pending); --fill-alert-pending-hover: var(--alert-pending-light); --fill-alert-pending-pressed: var(--alert-pending-dark); --fill-alert-pending-transparent: var(--alert-pending10);
+  --fill-alert-success-enabled: var(--alert-success); --fill-alert-success-hover: var(--alert-success-light); --fill-alert-success-pressed: var(--alert-success-dark); --fill-alert-success-transparent: var(--alert-success10);
+  --fill-alert-warning-enabled: var(--alert-warning); --fill-alert-warning-hover: var(--alert-warning-light); --fill-alert-warning-pressed: var(--alert-warning-dark); --fill-alert-warning-transparent: var(--alert-warning10);
+  --fill-disabled: var(--neutral-chalk);
+  --fill-disabled-transparent: var(--transparent-white-60);
+
+  /* surface */
+  --surface-base-enabled: var(--neutral-pearl);
+  --surface-base-hover: var(--neutral-chalk);
+  --surface-base-pressed: var(--neutral-shell);
+  --surface-raised-enabled: var(--core-white);
+  --surface-raised-hover: var(--neutral-chalk);
+  --surface-raised-pressed: var(--neutral-shell);
+  --surface-overlay-enabled: var(--core-white);
+  --surface-overlay-hover: var(--neutral-chalk);
+  --surface-overlay-pressed: var(--neutral-shell);
+  --surface-brand-enabled: var(--core-sand);
+  --surface-brand-hover: var(--neutral-shell);
+  --surface-brand-pressed: var(--neutral-marble);
+  --surface-backdrop: var(--transparent-black-40);
+  --surface-loader: var(--transparent-black-10);
+
+  /* ── Radius / space (Reef sizing) ── */
   --radius-xs:4px; --radius-sm:8px; --radius-md:12px; --radius-lg:16px;
   --radius-xl:32px; --radius-2xl:40px; --radius-pill:999px;
   --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
   --space-6:24px; --space-8:32px; --space-12:48px;
 
-  --shadow-shallow:    0 0 16px 0 rgba(0,0,0,.12);
-  --shadow-card:       0 0 16px 0 rgba(0,0,0,.08);
-  --shadow-deep:       0 16px 48px 0 rgba(0,0,0,.12);
-  --shadow-deep-above: 0 -16px 48px 0 rgba(0,0,0,.12);
+  /* ── Shadow / elevation ── */
+  --shadow-xs:          0 1px 2px 0 rgba(0,0,0,.05), 0 0 1px 0 rgba(0,0,0,.04);
+  --shadow-shallow:     0 0 16px 0 rgba(0,0,0,.12);
+  --shadow-card:        0 0 16px 0 rgba(0,0,0,.08);
+  --shadow-overlay:     0 8px 32px 0 rgba(0,0,0,.12);
+  --shadow-deep:        0 16px 48px 0 rgba(0,0,0,.12);
+  --shadow-deep-above:  0 -16px 48px 0 rgba(0,0,0,.12);
 
-  /* Frost / glass material fills */
-  --fill-frost-soft-enabled:   rgba(255,255,255,0.10);
-  --fill-frost-medium-enabled: rgba(255,255,255,0.50);
-  --fill-frost-hard-enabled:   rgba(255,255,255,0.70);
-  --fill-frost-stroke:         rgba(255,255,255,0.90);
-
-  /* Atmosphere orb settings — tunable via the Atmospheres tool */
+  /* Splash orb settings — tunable via the Splashes tool */
   --orb-coral-opacity: 0.05;
   --orb-sky-opacity: 0.07;
   --orb-blur: 85px;
 }
 
 [data-theme="dark"] {
+  /* content */
+  --content-disabled: var(--neutral-tarmac);
+  --content-icon-primary: var(--core-white);
+  --content-icon-inverted: var(--core-black);
   --content-heading-primary: var(--core-white);
   --content-heading-secondary: var(--neutral-pearl);
+  --content-heading-inverted: var(--core-black);
   --content-body-primary: var(--core-white);
   --content-body-secondary: var(--neutral-pearl);
   --content-body-tertiary: var(--neutral-granite);
   --content-body-inverted: var(--core-tire);
-  --content-disabled: var(--neutral-tarmac);
-  --content-icon-primary: var(--core-white);
   --content-inline-link-enabled: var(--core-coral);
   --content-inline-link-hover: var(--supporting-salmon);
+  --content-inline-link-pressed: var(--supporting-brick);
 
-  --surface-base-enabled: var(--neutral-asphalt);
-  --surface-raised-enabled: var(--neutral-rubber);
-  --surface-overlay-enabled: var(--core-tire);
-  --surface-brand-enabled: var(--core-black);
-
-  --fill-neutral-soft-enabled: var(--neutral-basalt);
-  --fill-neutral-medium-enabled: var(--neutral-slate);
-  --fill-neutral-hard-enabled: var(--core-white);
-  --fill-brand-soft-enabled: var(--supporting-chestnut);
-  --fill-brand-hard-enabled: var(--core-rose);
+  /* fill — accent */
+  --fill-accent-subtle-enabled: var(--supporting-abyss);
+  --fill-accent-subtle-hover: var(--supporting-space);
+  --fill-accent-subtle-pressed: var(--supporting-sea);
   --fill-accent-soft-enabled: var(--supporting-space);
+  --fill-accent-soft-hover: var(--supporting-sea);
+  --fill-accent-soft-pressed: var(--supporting-thunder);
+  --fill-accent-medium-enabled: var(--supporting-thunder);
+  --fill-accent-medium-hover: var(--supporting-overcast);
+  --fill-accent-medium-pressed: var(--supporting-sea);
   --fill-accent-hard-enabled: var(--supporting-sky);
-  --fill-disabled: var(--neutral-graphite);
+  --fill-accent-hard-hover: var(--supporting-overcast);
+  --fill-accent-hard-pressed: var(--supporting-thunder);
 
-  --fill-frost-soft-enabled:   rgba(255, 255, 255, 0.05);
-  --fill-frost-medium-enabled: rgba(255, 255, 255, 0.10);
-  --fill-frost-hard-enabled:   rgba(255, 255, 255, 0.18);
-  --fill-frost-stroke:         rgba(255, 255, 255, 0.20);
+  /* fill — brand */
+  --fill-brand-subtle-enabled: var(--supporting-obsidian);
+  --fill-brand-subtle-hover: var(--supporting-chestnut);
+  --fill-brand-subtle-pressed: var(--supporting-cherry);
+  --fill-brand-soft-enabled: var(--supporting-chestnut);
+  --fill-brand-soft-hover: var(--supporting-cherry);
+  --fill-brand-soft-pressed: var(--supporting-brick);
+  --fill-brand-medium-enabled: var(--core-coral);
+  --fill-brand-medium-hover: var(--supporting-salmon);
+  --fill-brand-medium-pressed: var(--supporting-brick);
+  --fill-brand-medium-accessible-enabled: var(--core-coral);
+  --fill-brand-medium-accessible-hover: var(--supporting-salmon);
+  --fill-brand-medium-accessible-pressed: var(--supporting-brick);
+  --fill-brand-hard-enabled: var(--core-rose);
+  --fill-brand-hard-hover: var(--supporting-salmon);
+  --fill-brand-hard-pressed: var(--core-coral);
+
+  /* fill — neutral */
+  --fill-neutral-subtle-enabled: var(--neutral-charcoal);
+  --fill-neutral-subtle-hover: var(--neutral-graphite);
+  --fill-neutral-subtle-pressed: var(--neutral-basalt);
+  --fill-neutral-soft-enabled: var(--neutral-basalt);
+  --fill-neutral-soft-hover: var(--neutral-tarmac);
+  --fill-neutral-soft-pressed: var(--neutral-graphite);
+  --fill-neutral-medium-enabled: var(--neutral-slate);
+  --fill-neutral-medium-hover: var(--neutral-gravel);
+  --fill-neutral-medium-pressed: var(--neutral-tarmac);
+  --fill-neutral-hard-enabled: var(--core-white);
+  --fill-neutral-hard-hover: var(--neutral-shell);
+  --fill-neutral-hard-pressed: var(--neutral-granite);
+
+  /* fill — frost / liquid glass (mapped to transparent-grey in dark) */
+  --fill-frost-soft-enabled: var(--transparent-grey-10);
+  --fill-frost-soft-hover: var(--transparent-grey-20);
+  --fill-frost-soft-pressed: var(--transparent-grey-30);
+  --fill-frost-medium-enabled: var(--transparent-grey-50);
+  --fill-frost-medium-hover: var(--transparent-grey-60);
+  --fill-frost-medium-pressed: var(--transparent-grey-70);
+  --fill-frost-hard-enabled: var(--transparent-grey-70);
+  --fill-frost-hard-hover: var(--transparent-grey-80);
+  --fill-frost-hard-pressed: var(--transparent-grey-90);
+  --fill-frost-stroke: var(--transparent-white-10);
+
+  /* fill — disabled */
+  --fill-disabled: var(--neutral-graphite);
+  --fill-disabled-transparent: var(--transparent-white-20);
+
+  /* surface */
+  --surface-base-enabled: var(--neutral-asphalt);
+  --surface-base-hover: var(--neutral-graphite);
+  --surface-base-pressed: var(--neutral-charcoal);
+  --surface-raised-enabled: var(--neutral-rubber);
+  --surface-raised-hover: var(--neutral-graphite);
+  --surface-raised-pressed: var(--neutral-charcoal);
+  --surface-overlay-enabled: var(--core-tire);
+  --surface-overlay-hover: var(--neutral-graphite);
+  --surface-overlay-pressed: var(--neutral-charcoal);
+  --surface-brand-enabled: var(--core-black);
+  --surface-brand-hover: var(--neutral-asphalt);
+  --surface-brand-pressed: var(--core-tire);
+  --surface-backdrop: var(--transparent-black-60);
+  --surface-loader: var(--transparent-white-10);
 }
 
 /* ─── RESET ───────────────────────────────────────────────────────────── */
@@ -627,7 +779,7 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 [data-theme="dark"] .voi-orb--sky-a,[data-theme="dark"] .voi-orb--sky-b,
 [data-theme="dark"] .voi-orb--sky-c,[data-theme="dark"] .voi-orb--sky-d{background:rgba(171,209,234,.15)}
 
-/* Frost background layer — opacity and blur driven by CSS vars (tunable via Atmospheres tool) */
+/* Splash background layer — opacity and blur driven by CSS vars (tunable via Splashes tool) */
 .frost-bg-layer .voi-orb--coral-a,.frost-bg-layer .voi-orb--coral-b,
 .frost-bg-layer .voi-orb--coral-c,.frost-bg-layer .voi-orb--coral-d,
 .frost-bg-layer .voi-orb--coral-e{background:rgba(242,105,97,var(--orb-coral-opacity,.05));filter:blur(var(--orb-blur,85px))}
@@ -970,6 +1122,40 @@ button{font-family:'Sora',sans-serif;cursor:pointer}
 .badge-neutral { background: var(--surface-base-enabled); color: var(--content-heading-primary); }
 .badge-warning { background: var(--alert-warning); color: #000; }
 .badge-disabled { background: var(--fill-disabled); color: var(--content-disabled); }
+.badge-ai { background: var(--fill-accent-subtle-enabled); color: var(--fill-accent-hard-enabled); }
+
+/* ─── BETA TAG + AI-GENERATED FLAG ──────────────────────────────────────── */
+/* Beta tag — small inline status pill (accent, never coral — coral is brand-only) */
+.beta-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--fill-accent-hard-enabled);
+  background: var(--fill-accent-subtle-enabled);
+  border-radius: 5px;
+  padding: 2px 5px;
+  vertical-align: middle;
+}
+/* Notice banner shown on showcase-only component pages (not in the Figma library) */
+.ai-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--fill-accent-subtle-enabled);
+  border: 1px solid var(--fill-accent-soft-enabled);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 0 0 40px;
+}
+.ai-notice svg { flex-shrink: 0; color: var(--fill-accent-hard-enabled); margin-top: 1px; }
+.ai-notice-title { font-size: 13px; font-weight: 700; color: var(--content-heading-primary); margin-bottom: 2px; }
+.ai-notice-body { font-size: 12px; line-height: 1.55; color: var(--content-body-secondary); }
+.ai-notice-body code { font-family: monospace; font-size: 11px; background: var(--fill-neutral-soft-enabled); color: var(--content-body-primary); padding: 1px 5px; border-radius: 4px; }
+/* Title can carry an inline flag badge */
+.s-title-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 
 /* ─── INPUTS ──────────────────────────────────────────────────────────── */
 .form-field { display: flex; flex-direction: column; gap: 8px; }

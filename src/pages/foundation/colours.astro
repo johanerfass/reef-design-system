@@ -1,79 +1,532 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+/*
+ * Foundation → Colours
+ * Complete reference for the Reef v1.4.0 colour system.
+ *
+ * Two layers are documented:
+ *   1. Primitives — the raw palette (core, supporting, neutral, alert, transparent).
+ *      These are fixed hex values and never change between themes.
+ *   2. Semantic tokens — what we actually build with. These remap to different
+ *      primitives in light vs dark, so each is shown as a light chip + dark chip pair.
+ *
+ * Swatch chips use literal hex (not live theme vars) so the documented colour is
+ * shown truthfully no matter which theme the reader is viewing the page in.
+ */
+
+// Light chips for very pale colours need a hairline so they read on a white card.
+const LIGHT = '#e8e4e5'; // = neutral-shell, matches --fill-neutral-soft-enabled in light
+
+// ── Primitive groups ────────────────────────────────────────────────────────
+const core = [
+  { n: 'Black',  h: '#000000', note: 'pure black' },
+  { n: 'Tire',   h: '#282425', note: 'primary CTA' },
+  { n: 'White',  h: '#ffffff', note: 'pure white', pale: true },
+  { n: 'Coral',  h: '#f26961', note: 'brand only, never a CTA' },
+  { n: 'Rose',   h: '#f8b3ad', note: 'brand fill on dark' },
+  { n: 'Sand',   h: '#faf4ec', note: 'hero / gradient base', pale: true },
+];
+
+const brandSupporting = [
+  { n: 'Blush',    h: '#fff0f5', note: 'lightest brand tint', pale: true, isNew: true },
+  { n: 'Pink',     h: '#ffdcd9' },
+  { n: 'Salmon',   h: '#f58e87' },
+  { n: 'Coral',    h: '#f26961', note: 'brand anchor' },
+  { n: 'Brick',    h: '#d04740', note: 'WCAG-safe coral' },
+  { n: 'Cherry',   h: '#8d0601' },
+  { n: 'Chestnut', h: '#500402', note: 'Voi+ surface' },
+  { n: 'Obsidian', h: '#1f0505', note: 'deepest brand tint', isNew: true },
+];
+
+const accentSupporting = [
+  { n: 'Mist',     h: '#ebf5fb', note: 'lightest accent tint', pale: true, isNew: true },
+  { n: 'Sky',      h: '#abd1ea' },
+  { n: 'Overcast', h: '#89abc8' },
+  { n: 'Thunder',  h: '#6785a5' },
+  { n: 'Sea',      h: '#455f85', note: 'filter active' },
+  { n: 'Space',    h: '#243860' },
+  { n: 'Abyss',    h: '#0b121f', note: 'deepest accent tint', isNew: true },
+];
+
+const neutral = [
+  { n: 'Pearl',    h: '#f2f2f6', note: 'base bg (light)', pale: true },
+  { n: 'Chalk',    h: '#edebed', pale: true },
+  { n: 'Shell',    h: '#e8e4e5', pale: true },
+  { n: 'Marble',   h: '#d0cccd' },
+  { n: 'Granite',  h: '#b8b4b5' },
+  { n: 'Gravel',   h: '#989495' },
+  { n: 'Slate',    h: '#787475' },
+  { n: 'Tarmac',   h: '#585455' },
+  { n: 'Basalt',   h: '#403c3d', note: 'grey transparent base' },
+  { n: 'Graphite', h: '#322e2f' },
+  { n: 'Charcoal', h: '#2d292a', isNew: true },
+  { n: 'Rubber',   h: '#1f1c1d' },
+  { n: 'Asphalt',  h: '#161314', note: 'base bg (dark)' },
+];
+
+// Alert — base + dark/light + 10/20 transparent variants.
+const alert = [
+  { n: 'Success',   base: '#008545', dark: '#005d30', light: '#4daa7d', t10: '#0085451a', t20: '#00854533' },
+  { n: 'Warning',   base: '#ffb100', dark: '#b27c00', light: '#ffc84d', t10: '#ffb1001a', t20: '#ffb10033' },
+  { n: 'Error',     base: '#ed0a02', dark: '#a60701', light: '#f4716c', t10: '#ed0a021a', t20: '#ed0a0233' },
+  { n: 'Info',      base: '#0075db', dark: '#005299', light: '#4d9ee6', t10: '#0075db1a', t20: '#0075db33' },
+  { n: 'Mandatory', base: '#c802e9', dark: '#8c01a3', light: '#d94ef0', t10: '#c802e91a', t20: '#c802e933' },
+  { n: 'Pending',   base: '#52d1dc', dark: '#39929a', light: '#86dfe7', t10: '#52d1dc1a', t20: '#52d1dc33' },
+];
+
+// Transparent ranges — over a chequerboard so opacity reads truthfully.
+const black10 = ['#0000001a','#00000033','#0000004d','#00000066','#00000080','#00000099','#000000b2','#000000cc','#000000e5'];
+const grey10  = ['#403c3d1a','#403c3d33','#403c3d4d','#403c3d66','#403c3d80','#403c3d99','#403c3db2','#403c3dcc','#403c3de5'];
+const white0  = ['#ffffff00','#ffffff1a','#ffffff33','#ffffff4d','#ffffff66','#ffffff80','#ffffff99','#ffffffb2','#ffffffcc','#ffffffe5'];
+const blackSteps = ['10','20','30','40','50','60','70','80','90'];
+const whiteSteps = ['0','10','20','30','40','50','60','70','80','90'];
+
+// ── Semantic token rows (light value + dark value, by primitive name) ────────
+// Each row: token suffix, the CSS custom property, light primitive, dark primitive.
+type TokenRow = { step: string; token: string; light: { n: string; h: string; pale?: boolean }; dark: { n: string; h: string; pale?: boolean }; isNew?: boolean };
+
+const fillAccent: TokenRow[] = [
+  { step: 'Subtle', token: '--fill-accent-subtle-enabled', light: { n: 'Mist',    h: '#ebf5fb', pale: true }, dark: { n: 'Abyss',   h: '#0b121f' }, isNew: true },
+  { step: 'Soft',   token: '--fill-accent-soft-enabled',   light: { n: 'Sky',     h: '#abd1ea' },            dark: { n: 'Space',   h: '#243860' } },
+  { step: 'Medium', token: '--fill-accent-medium-enabled', light: { n: 'Sea',     h: '#455f85' },            dark: { n: 'Thunder', h: '#6785a5' } },
+  { step: 'Hard',   token: '--fill-accent-hard-enabled',   light: { n: 'Space',   h: '#243860' },            dark: { n: 'Sky',     h: '#abd1ea' } },
+];
+
+const fillBrand: TokenRow[] = [
+  { step: 'Subtle',            token: '--fill-brand-subtle-enabled',            light: { n: 'Blush',    h: '#fff0f5', pale: true }, dark: { n: 'Obsidian', h: '#1f0505' }, isNew: true },
+  { step: 'Soft',              token: '--fill-brand-soft-enabled',              light: { n: 'Pink',     h: '#ffdcd9' },             dark: { n: 'Chestnut', h: '#500402' } },
+  { step: 'Medium',            token: '--fill-brand-medium-enabled',            light: { n: 'Coral',    h: '#f26961' },             dark: { n: 'Coral',    h: '#f26961' } },
+  { step: 'Medium accessible', token: '--fill-brand-medium-accessible-enabled', light: { n: 'Brick',    h: '#d04740' },             dark: { n: 'Coral',    h: '#f26961' } },
+  { step: 'Hard',              token: '--fill-brand-hard-enabled',              light: { n: 'Chestnut', h: '#500402' },             dark: { n: 'Rose',     h: '#f8b3ad' } },
+];
+
+const fillNeutral: TokenRow[] = [
+  { step: 'Subtle', token: '--fill-neutral-subtle-enabled', light: { n: 'Chalk',   h: '#edebed', pale: true }, dark: { n: 'Charcoal', h: '#2d292a' }, isNew: true },
+  { step: 'Soft',   token: '--fill-neutral-soft-enabled',   light: { n: 'Shell',   h: '#e8e4e5', pale: true }, dark: { n: 'Basalt',   h: '#403c3d' } },
+  { step: 'Medium', token: '--fill-neutral-medium-enabled', light: { n: 'Granite', h: '#b8b4b5' },            dark: { n: 'Slate',    h: '#787475' } },
+  { step: 'Hard',   token: '--fill-neutral-hard-enabled',   light: { n: 'Tire',    h: '#282425' },            dark: { n: 'White',    h: '#ffffff', pale: true } },
+];
+
+// Frost maps to transparent primitives — chips sit on a chequerboard.
+const fillFrost: { step: string; token: string; light: { n: string; h: string }; dark: { n: string; h: string } }[] = [
+  { step: 'Soft',   token: '--fill-frost-soft-enabled',   light: { n: 'White 10%', h: '#ffffff1a' }, dark: { n: 'Grey 10%', h: '#403c3d1a' } },
+  { step: 'Medium', token: '--fill-frost-medium-enabled', light: { n: 'White 50%', h: '#ffffff80' }, dark: { n: 'Grey 50%', h: '#403c3d80' } },
+  { step: 'Hard',   token: '--fill-frost-hard-enabled',   light: { n: 'White 70%', h: '#ffffffb2' }, dark: { n: 'Grey 70%', h: '#403c3db2' } },
+  { step: 'Stroke', token: '--fill-frost-stroke',         light: { n: 'White 60%', h: '#ffffff99' }, dark: { n: 'White 10%', h: '#ffffff1a' } },
+];
+
+const surface: TokenRow[] = [
+  { step: 'Base',    token: '--surface-base-enabled',    light: { n: 'Pearl', h: '#f2f2f6', pale: true }, dark: { n: 'Asphalt', h: '#161314' } },
+  { step: 'Raised',  token: '--surface-raised-enabled',  light: { n: 'White', h: '#ffffff', pale: true }, dark: { n: 'Rubber',  h: '#1f1c1d' } },
+  { step: 'Overlay', token: '--surface-overlay-enabled', light: { n: 'White', h: '#ffffff', pale: true }, dark: { n: 'Tire',    h: '#282425' } },
+  { step: 'Brand',   token: '--surface-brand-enabled',   light: { n: 'Sand',  h: '#faf4ec', pale: true }, dark: { n: 'Black',   h: '#000000' } },
+];
+// Backdrop + loader are transparent — shown on the chequerboard.
+const surfaceTransparent = [
+  { step: 'Backdrop', token: '--surface-backdrop', light: { n: 'Black 40%', h: '#00000066' }, dark: { n: 'Black 60%', h: '#00000099' } },
+  { step: 'Loader',   token: '--surface-loader',   light: { n: 'Black 10%', h: '#0000001a' }, dark: { n: 'White 10%', h: '#ffffff1a' } },
+];
+
+const content: TokenRow[] = [
+  { step: 'Heading',     token: '--content-heading-primary',     light: { n: 'Black', h: '#000000' }, dark: { n: 'White', h: '#ffffff', pale: true } },
+  { step: 'Body',        token: '--content-body-primary',        light: { n: 'Tire',  h: '#282425' }, dark: { n: 'White', h: '#ffffff', pale: true } },
+  { step: 'Icon',        token: '--content-icon-primary',        light: { n: 'Black', h: '#000000' }, dark: { n: 'White', h: '#ffffff', pale: true } },
+  { step: 'Inline link', token: '--content-inline-link-enabled', light: { n: 'Brick', h: '#d04740' }, dark: { n: 'Coral', h: '#f26961' } },
+];
+
+// Count totals for the report (primitives shown as swatches).
+const primitiveCount = core.length + brandSupporting.length + accentSupporting.length
+  + neutral.length + (alert.length * 5) + black10.length + grey10.length + white0.length;
+const newCount = [...core, ...brandSupporting, ...accentSupporting, ...neutral].filter(c => (c as any).isNew).length;
 ---
 
 <BaseLayout title="Colours">
   <div class="s-overline">01 — Foundation</div>
   <h1 class="s-title">The palette</h1>
-  <p class="s-desc">Coral is a brand colour, not a CTA. Primary actions are Tire. One accent per screen. Colour is punctuation, not wallpaper.</p>
+  <p class="s-desc">Coral is a brand colour, not a button. Primary actions are Tire. One calm accent per screen. Colour is punctuation, not wallpaper. Reef v1.4.0 widens the system with frost glass, two extra steps on every supporting ramp, and a full set of fill scales.</p>
   <hr class="s-rule" />
 
+  <!-- What changed in v1.4.0 -->
+  <div class="ai-notice">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="9" cy="9" r="7.25"/><path d="M9 12.25v-3.5"/><path d="M9 5.9h.01"/>
+    </svg>
+    <div>
+      <div class="ai-notice-title">New in v1.4.0</div>
+      <div class="ai-notice-body">
+        Six new primitives — <code>blush</code>, <code>obsidian</code>, <code>mist</code>, <code>abyss</code>, <code>charcoal</code> — extend the brand, accent and neutral ramps at both ends. A full <strong>grey transparent range</strong> joins black and white. On the semantic layer, the <strong>frost</strong> fill scale (liquid glass) is new, the <strong>accent</strong> fill is now a 12-step scale, and brand and neutral both gain a <strong>subtle</strong> step. Items below carry a <span class="beta-tag">New</span> tag.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PRIMITIVES ═══════════════════ -->
+  <div class="sub-label">Primitives — the raw palette</div>
+
   <div class="palette-group">
-    <div class="palette-group-title">Brand core</div>
+    <div class="palette-group-title">Core</div>
     <div class="palette-grid">
-      <div class="swatch"><div class="swatch-color" style="background:#f26961"></div><div class="swatch-info"><div class="swatch-name">Coral</div><div class="swatch-hex">#f26961 · brand only, never CTA</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#282425"></div><div class="swatch-info"><div class="swatch-name">Tire</div><div class="swatch-hex">#282425 · primary CTA</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#faf4ec"></div><div class="swatch-info"><div class="swatch-name">Sand</div><div class="swatch-hex">#faf4ec · hero/gradient base</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#f8b3ad"></div><div class="swatch-info"><div class="swatch-name">Rose</div><div class="swatch-hex">#f8b3ad · dark brand fill</div></div></div>
+      {core.map((c) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background:${c.h}${c.pale ? `;border:1px solid ${LIGHT}` : ''}`}></div>
+          <div class="swatch-info">
+            <div class="swatch-name">{c.n}</div>
+            <div class="swatch-hex">{c.h}{c.note ? ` · ${c.note}` : ''}</div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
   <div class="palette-group">
-    <div class="palette-group-title">Coral family</div>
+    <div class="palette-group-title">Brand supporting · coral family</div>
     <div class="palette-grid">
-      <div class="swatch"><div class="swatch-color" style="background:#ffdcd9"></div><div class="swatch-info"><div class="swatch-name">Pink</div><div class="swatch-hex">#ffdcd9</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#f8b3ad"></div><div class="swatch-info"><div class="swatch-name">Rose</div><div class="swatch-hex">#f8b3ad</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#f58e87"></div><div class="swatch-info"><div class="swatch-name">Salmon</div><div class="swatch-hex">#f58e87</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#f26961"></div><div class="swatch-info"><div class="swatch-name">Coral</div><div class="swatch-hex">#f26961</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#d04740"></div><div class="swatch-info"><div class="swatch-name">Brick</div><div class="swatch-hex">#d04740 · WCAG-safe coral</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#8d0601"></div><div class="swatch-info"><div class="swatch-name">Cherry</div><div class="swatch-hex">#8d0601</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#500402"></div><div class="swatch-info"><div class="swatch-name">Chestnut</div><div class="swatch-hex">#500402 · Voi+ surface</div></div></div>
+      {brandSupporting.map((c) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background:${c.h}${c.pale ? `;border:1px solid ${LIGHT}` : ''}`}></div>
+          <div class="swatch-info">
+            <div class="swatch-name">{c.n}{c.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <div class="swatch-hex">{c.h}{c.note ? ` · ${c.note}` : ''}</div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
   <div class="palette-group">
-    <div class="palette-group-title">Sky family</div>
+    <div class="palette-group-title">Accent supporting · blue-grey family</div>
     <div class="palette-grid">
-      <div class="swatch"><div class="swatch-color" style="background:#abd1ea"></div><div class="swatch-info"><div class="swatch-name">Sky</div><div class="swatch-hex">#abd1ea</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#89abc8"></div><div class="swatch-info"><div class="swatch-name">Overcast</div><div class="swatch-hex">#89abc8</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#6785a5"></div><div class="swatch-info"><div class="swatch-name">Thunder</div><div class="swatch-hex">#6785a5</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#455f85"></div><div class="swatch-info"><div class="swatch-name">Sea</div><div class="swatch-hex">#455f85 · filter active</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#243860"></div><div class="swatch-info"><div class="swatch-name">Space</div><div class="swatch-hex">#243860</div></div></div>
+      {accentSupporting.map((c) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background:${c.h}${c.pale ? `;border:1px solid ${LIGHT}` : ''}`}></div>
+          <div class="swatch-info">
+            <div class="swatch-name">{c.n}{c.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <div class="swatch-hex">{c.h}{c.note ? ` · ${c.note}` : ''}</div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
   <div class="palette-group">
-    <div class="palette-group-title">Neutrals</div>
+    <div class="palette-group-title">Neutral ramp · pearl → asphalt</div>
     <div class="palette-grid">
-      <div class="swatch"><div class="swatch-color" style="background:#f2f2f6"></div><div class="swatch-info"><div class="swatch-name">Pearl</div><div class="swatch-hex">#f2f2f6 · base bg</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#edebed"></div><div class="swatch-info"><div class="swatch-name">Chalk</div><div class="swatch-hex">#edebed</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#e8e4e5"></div><div class="swatch-info"><div class="swatch-name">Shell</div><div class="swatch-hex">#e8e4e5</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#d0cccd"></div><div class="swatch-info"><div class="swatch-name">Marble</div><div class="swatch-hex">#d0cccd</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#b8b4b5"></div><div class="swatch-info"><div class="swatch-name">Granite</div><div class="swatch-hex">#b8b4b5</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#989495"></div><div class="swatch-info"><div class="swatch-name">Gravel</div><div class="swatch-hex">#989495</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#787475"></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#787475</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#585455"></div><div class="swatch-info"><div class="swatch-name">Tarmac</div><div class="swatch-hex">#585455</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#403c3d"></div><div class="swatch-info"><div class="swatch-name">Basalt</div><div class="swatch-hex">#403c3d</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#322e2f"></div><div class="swatch-info"><div class="swatch-name">Graphite</div><div class="swatch-hex">#322e2f</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#1f1c1d"></div><div class="swatch-info"><div class="swatch-name">Rubber</div><div class="swatch-hex">#1f1c1d</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#161314"></div><div class="swatch-info"><div class="swatch-name">Asphalt</div><div class="swatch-hex">#161314 · dark base</div></div></div>
+      {neutral.map((c) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background:${c.h}${c.pale ? `;border:1px solid ${LIGHT}` : ''}`}></div>
+          <div class="swatch-info">
+            <div class="swatch-name">{c.n}{c.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <div class="swatch-hex">{c.h}{c.note ? ` · ${c.note}` : ''}</div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
+  <!-- Alert: base + dark/light + transparents in one row each -->
   <div class="palette-group">
-    <div class="palette-group-title">Status</div>
-    <div class="palette-grid">
-      <div class="swatch"><div class="swatch-color" style="background:#008545"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#008545</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#ffb100"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#ffb100</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#ed0a02"></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#ed0a02</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#0075db"></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-hex">#0075db</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#c802e9"></div><div class="swatch-info"><div class="swatch-name">Mandatory</div><div class="swatch-hex">#c802e9</div></div></div>
-      <div class="swatch"><div class="swatch-color" style="background:#52d1dc"></div><div class="swatch-info"><div class="swatch-name">Pending</div><div class="swatch-hex">#52d1dc</div></div></div>
+    <div class="palette-group-title">Alert · each with dark, light and 10% / 20% transparent variants</div>
+    <div class="col" style="gap:14px">
+      {alert.map((a) => (
+        <div class="demo" style="margin-bottom:0;padding:18px 20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <span class="swatch-name" style="font-size:13px">{a.n}</span>
+            <span class="token">--alert-{a.n.toLowerCase()}</span>
+          </div>
+          <div class="alert-ramp">
+            <div class="alert-chip"><span style={`background:${a.dark}`}></span><div><b>Dark</b><code>{a.dark}</code></div></div>
+            <div class="alert-chip"><span style={`background:${a.base}`}></span><div><b>Base</b><code>{a.base}</code></div></div>
+            <div class="alert-chip"><span style={`background:${a.light}`}></span><div><b>Light</b><code>{a.light}</code></div></div>
+            <div class="alert-chip"><span class="chk"><i style={`background:${a.t20}`}></i></span><div><b>20%</b><code>{a.t20}</code></div></div>
+            <div class="alert-chip"><span class="chk"><i style={`background:${a.t10}`}></i></span><div><b>10%</b><code>{a.t10}</code></div></div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 
+  <!-- Transparent ranges over a chequerboard -->
+  <div class="palette-group">
+    <div class="palette-group-title">Transparent ranges · shown over a chequerboard so opacity reads true</div>
+    <div class="grid-3" style="gap:16px">
+      <div class="demo" style="margin-bottom:0">
+        <span class="demo-label">Black 10 → 90</span>
+        <div class="alpha-strip chk">
+          {black10.map((h, i) => <div class="alpha-cell" style={`background:${h}`}><span>{blackSteps[i]}</span></div>)}
+        </div>
+        <span class="token" style="margin-top:12px;display:inline-block">--transparent-black-10…90</span>
+      </div>
+      <div class="demo" style="margin-bottom:0">
+        <span class="demo-label">Grey 10 → 90 <span class="beta-tag" style="margin-left:4px">New</span></span>
+        <div class="alpha-strip chk">
+          {grey10.map((h, i) => <div class="alpha-cell" style={`background:${h}`}><span>{blackSteps[i]}</span></div>)}
+        </div>
+        <span class="token" style="margin-top:12px;display:inline-block">--transparent-grey-10…90</span>
+      </div>
+      <div class="demo" style="margin-bottom:0">
+        <span class="demo-label">White 0 → 90</span>
+        <div class="alpha-strip chk">
+          {white0.map((h, i) => <div class="alpha-cell" style={`background:${h}`}><span style="color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5)">{whiteSteps[i]}</span></div>)}
+        </div>
+        <span class="token" style="margin-top:12px;display:inline-block">--transparent-white-0…90</span>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--content-body-tertiary);line-height:1.6;margin-top:12px">Base hex for the grey range is Basalt <code style="font-family:monospace;font-size:11px">#403c3d</code>. These power the frost fills below.</p>
+  </div>
+
+  <hr class="s-rule" style="margin-top:8px" />
+
+  <!-- ═══════════════════ SEMANTIC TOKENS ═══════════════════ -->
+  <div class="sub-label" style="padding-top:0">Semantic tokens — what you build with</div>
+  <p style="font-size:14px;color:var(--content-body-secondary);line-height:1.6;max-width:640px;margin-bottom:28px">
+    Never reach for a primitive directly in product UI. Use a semantic token and it adapts across light and dark for you. Each token below shows its <b>light</b> value, its <b>dark</b> value, and the primitive each maps to. Every fill also carries <code style="font-family:monospace;font-size:11px;background:var(--fill-neutral-soft-enabled);padding:1px 5px;border-radius:4px">-hover</code> and <code style="font-family:monospace;font-size:11px;background:var(--fill-neutral-soft-enabled);padding:1px 5px;border-radius:4px">-pressed</code> states; the enabled value is shown here.
+  </p>
+
+  <!-- Fill · accent -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Fill · accent</span>
+      <span class="beta-tag">New 12-step scale</span>
+    </div>
+    <p class="tok-note">The calm accent. One per screen — filters, selection, informational highlights. Subtle, soft, medium and hard, each with hover and pressed.</p>
+    <div class="tok-rows">
+      {fillAccent.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}{r.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.light.h}${r.light.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.dark.h}${r.dark.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Fill · brand -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Fill · brand</span>
+    </div>
+    <p class="tok-note">Coral and its family. Brand expression, never a primary CTA. <b>Medium accessible</b> swaps to Brick in light so small text and icons stay AA. Subtle is new in v1.4.0.</p>
+    <div class="tok-rows">
+      {fillBrand.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}{r.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.light.h}${r.light.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.dark.h}${r.dark.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Fill · neutral -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Fill · neutral</span>
+    </div>
+    <p class="tok-note">Greys for surfaces, dividers, disabled states and the contrast button. <b>Hard</b> is Tire in light and White in dark. Subtle is new in v1.4.0.</p>
+    <div class="tok-rows">
+      {fillNeutral.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}{r.isNew && <span class="beta-tag" style="margin-left:6px">New</span>}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.light.h}${r.light.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.dark.h}${r.dark.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Fill · frost -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Fill · frost · liquid glass</span>
+      <span class="beta-tag">New</span>
+    </div>
+    <p class="tok-note">Translucent fills for floating controls and glass surfaces, always paired with a backdrop blur. Maps to White transparents in light and Grey transparents in dark. Chips sit on a chequerboard so the translucency is visible.</p>
+    <div class="tok-rows">
+      {fillFrost.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot chk"><i style={`background:${r.light.h}`}></i></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot chk"><i style={`background:${r.dark.h}`}></i></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Surface -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Surface</span>
+    </div>
+    <p class="tok-note">The backgrounds everything sits on. Base is the page, raised is cards, overlay is sheets and dialogs, brand is the warm Sand canvas. Backdrop and loader are transparent.</p>
+    <div class="tok-rows">
+      {surface.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.light.h}${r.light.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.dark.h}${r.dark.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+      {surfaceTransparent.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot chk"><i style={`background:${r.light.h}`}></i></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot chk"><i style={`background:${r.dark.h}`}></i></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="tok-group">
+    <div class="tok-group-hd">
+      <span class="palette-group-title" style="margin-bottom:0">Content</span>
+    </div>
+    <p class="tok-note">Text and icon colours. Headings reach full black or white; body softens by one step. Inline links carry the brand, using Brick in light for AA contrast.</p>
+    <div class="tok-rows">
+      {content.map((r) => (
+        <div class="tok-row">
+          <div class="tok-meta">
+            <div class="tok-step">{r.step}</div>
+            <span class="token">{r.token}</span>
+          </div>
+          <div class="tok-pair">
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.light.h}${r.light.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Light</b>{r.light.n}</div></div>
+            <div class="tok-chip"><span class="tok-dot" style={`background:${r.dark.h}${r.dark.pale ? `;border:1px solid ${LIGHT}` : ''}`}></span><div class="tok-cap"><b>Dark</b>{r.dark.n}</div></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <hr class="s-rule" style="margin-top:8px" />
+
+  <!-- ═══════════════════ RULES ═══════════════════ -->
+  <div class="sub-label" style="padding-top:0">Rules</div>
+  <div class="grid-2" style="gap:16px;margin-bottom:24px">
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Coral is brand, not a button</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Never style a primary CTA coral. Primary actions are Tire (contrast). Coral expresses the brand — accents, illustration, moments of warmth.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">One calm accent per screen</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">The accent fill is the blue-grey family. Pick one accent moment per view. Colour is punctuation — generous whitespace does the rest.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Tokens over primitives</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Build with semantic tokens, not raw hex. They carry light and dark for free and keep every surface consistent across the system.</p>
+    </div>
+    <div class="card card-sm" style="border-radius:16px">
+      <p style="font-size:13px;font-weight:600;color:var(--content-body-primary);margin-bottom:6px">Frost needs a blur</p>
+      <p style="font-size:12px;color:var(--content-body-secondary);line-height:1.5">Frost fills only read as glass with a backdrop blur and the frost stroke behind them. Never use a frost fill as a flat solid.</p>
+    </div>
+  </div>
+
+  <!-- Coral accessibility rule (kept from previous page) -->
   <div class="card" style="border-radius:24px;background:rgba(242,105,97,.06);box-shadow:none;border:1px solid rgba(242,105,97,.2)">
     <p style="font-size:14px;font-weight:600;color:var(--supporting-brick);margin-bottom:4px">Coral accessibility rule</p>
-    <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Coral (#F26961) <strong>fails WCAG AA</strong> on white for small text. Use Brick (#D04740) for text links, icons below 24px, and small button labels. The React <code style="font-family:monospace;font-size:12px">accent</code> variant does this automatically at <code style="font-family:monospace;font-size:12px">small</code> size.</p>
+    <p style="font-size:13px;color:var(--content-body-secondary);line-height:1.6">Coral <code style="font-family:monospace;font-size:12px">#f26961</code> <strong>fails WCAG AA</strong> on white for small text. Use Brick <code style="font-family:monospace;font-size:12px">#d04740</code> — the <code style="font-family:monospace;font-size:12px">medium accessible</code> brand fill — for text links, icons below 24px, and small button labels. The React <code style="font-family:monospace;font-size:12px">accent</code> variant does this automatically at <code style="font-family:monospace;font-size:12px">small</code> size.</p>
   </div>
 </BaseLayout>
+
+<style>
+  /* Alert ramp — five labelled chips per alert colour */
+  .alert-ramp { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .alert-chip { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .alert-chip span {
+    width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  }
+  .alert-chip div { min-width: 0; line-height: 1.3; }
+  .alert-chip b { display: block; font-size: 11px; font-weight: 600; color: var(--content-body-primary); }
+  .alert-chip code { font-family: monospace; font-size: 10px; color: var(--content-body-tertiary); }
+
+  /* Transparent strips */
+  .alpha-strip { display: flex; border-radius: 10px; overflow: hidden; height: 64px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .alpha-cell { flex: 1; display: flex; align-items: flex-end; justify-content: center; }
+  .alpha-cell span { font-size: 9px; font-family: monospace; color: var(--content-body-primary); padding-bottom: 4px; opacity: .7; }
+
+  /* Semantic token groups */
+  .tok-group {
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    border-radius: 24px;
+    padding: 24px 28px 28px;
+    margin-bottom: 20px;
+    background: var(--surface-raised-enabled);
+  }
+  .tok-group-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .tok-note { font-size: 12.5px; color: var(--content-body-secondary); line-height: 1.55; max-width: 600px; margin-bottom: 20px; }
+  .tok-rows { display: flex; flex-direction: column; }
+  .tok-row {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--fill-neutral-soft-enabled);
+  }
+  .tok-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .tok-row:first-child { padding-top: 0; }
+  .tok-meta { min-width: 0; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .tok-step { font-size: 13px; font-weight: 600; color: var(--content-heading-primary); }
+  .tok-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tok-chip { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .tok-dot {
+    width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  }
+  .tok-cap { font-size: 12px; color: var(--content-body-primary); line-height: 1.35; min-width: 0; }
+  .tok-cap b { display: block; font-size: 10px; font-weight: 600; letter-spacing: .01em; color: var(--content-body-tertiary); }
+
+  /* Chequerboard behind translucent chips */
+  .chk {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #d8d4d5 25%, transparent 25%),
+      linear-gradient(-45deg, #d8d4d5 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d8d4d5 75%),
+      linear-gradient(-45deg, transparent 75%, #d8d4d5 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  }
+  /* Translucent swatches paint their colour on an inner <i> so the chequerboard
+     on the .chk parent stays visible underneath (an inline background shorthand
+     would otherwise wipe the pattern off the same element). */
+  .chk > i { display: block; width: 100%; height: 100%; border-radius: inherit; }
+
+  @media (max-width: 720px) {
+    .tok-row { grid-template-columns: 1fr; gap: 14px; }
+    .tok-pair { max-width: 320px; }
+    .alert-ramp { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>

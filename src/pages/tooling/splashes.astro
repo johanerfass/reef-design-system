@@ -2,11 +2,35 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Atmospheres">
+<BaseLayout title="Splashes">
   <div class="s-overline">04 — Tooling</div>
-  <h1 class="s-title">Atmospheres</h1>
-  <p class="s-desc">Tune the animated orb background and copy a self-contained snippet — no dependencies, no build step. Drop it into any HTML page or web app. Adjust the sliders to see changes live on this page's background.</p>
+  <div class="s-title-row">
+    <h1 class="s-title" style="margin-bottom:0">Splashes</h1>
+    <span class="beta-tag">Beta</span>
+  </div>
+  <p class="s-desc">Splashes are Voi's signature animated gradient backgrounds — a living mesh of coral and sky orbs that drift, breathe, react to the pointer, and scatter on click. Tune one below, preview it live on this page, switch it on across the showcase, or copy a self-contained snippet for any HTML page or web app.</p>
   <hr class="s-rule" />
+
+  <!-- Beta notice -->
+  <div class="ai-notice" style="background:var(--fill-brand-subtle-enabled);border-color:var(--fill-brand-soft-enabled);max-width:720px">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--core-coral)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L19.5 11l-5.6 2.2L12 19l-1.9-5.8L4.5 11l5.6-2.2z"/></svg>
+    <div>
+      <div class="ai-notice-title">Splashes is a beta material</div>
+      <div class="ai-notice-body">New in Reef v1.4.0 and still settling. Great for marketing surfaces, hero sections, and splash screens — not yet for dense product UI. Expect defaults and the snippet API to change.</div>
+    </div>
+  </div>
+
+  <!-- Site-wide enable — relocated here from the global nav -->
+  <div class="splash-enable">
+    <div class="splash-enable-text">
+      <div class="splash-enable-title">Show splashes across the showcase <span class="beta-tag">Beta</span></div>
+      <div class="splash-enable-sub">This page always previews them. Turn this on to carry the splash background across every other page — your choice is remembered. Off by default.</div>
+    </div>
+    <label class="toggle" title="Show splashes across the showcase" aria-label="Show splashes across the showcase">
+      <input type="checkbox" id="splashSiteToggle" />
+      <span class="toggle-track"></span>
+    </label>
+  </div>
 
   <!-- ── FLOATING TUNE PANEL ── -->
   <div class="atm-panel" id="atm-panel">
@@ -200,6 +224,32 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  /* ── Site-wide enable row ── */
+  .splash-enable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--surface-raised-enabled);
+    border: 1px solid var(--fill-neutral-soft-enabled);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+    max-width: 720px; /* keep the toggle clear of the floating Tune panel */
+  }
+  @media (max-width: 1080px) { .splash-enable { max-width: none; } }
+  .splash-enable-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--content-heading-primary);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .splash-enable-sub {
+    font-size: 12px; line-height: 1.55;
+    color: var(--content-body-secondary);
+    max-width: 520px;
+  }
+
   /* ── Floating panel ── */
   .atm-panel {
     position: fixed;
@@ -296,8 +346,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .atm-btn-secondary:hover { background: var(--fill-neutral-medium-enabled); }
   .atm-btn-secondary:active { background: var(--fill-neutral-medium-enabled); transform: scale(.97); }
 
-  /* ── Mobile: panel flows inline ── */
-  @media (max-width: 600px) {
+  /* ── Narrow viewports: panel flows inline so it never overlaps content/toggle ── */
+  @media (max-width: 1080px) {
     .atm-panel {
       position: static;
       width: 100%;
@@ -328,6 +378,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
   window.atmSetVar = atmSetVar;
   window.atmSetV   = atmSetV;
+
+  /* ── Splash site-wide enable (relocated from the nav) + live preview ── */
+  root.setAttribute('data-frost', 'true'); // this page always previews splashes
+  const splashToggle = atmGet('splashSiteToggle') as HTMLInputElement;
+  if (splashToggle) {
+    splashToggle.checked = localStorage.getItem('reef-frost') === 'true';
+    splashToggle.addEventListener('change', () => {
+      localStorage.setItem('reef-frost', splashToggle.checked ? 'true' : 'false');
+    });
+  }
 
   /* ── Init sliders from localStorage ── */
   const savedCoral = localStorage.getItem('reef-orb-coral');
@@ -479,7 +539,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ${orbCss}
 ${usedAnims.map(a => KFS[a]).join('\n')}`;
 
-    let out = `<!-- Atmospheres · Reef design system -->\n\n`;
+    let out = `<!-- Splash · Reef design system -->\n\n`;
     out += `<div id="voi-bg">\n${htmlLines}\n</div>\n\n`;
     out += `<style>\n${css}\n</style>`;
     if (incJS) {

@@ -3,9 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Tabs">
   <div class="s-overline">02 — Components</div>
-  <h1 class="s-title">Tabs</h1>
+  <div class="s-title-row">
+    <h1 class="s-title" style="margin-bottom:0">Tabs</h1>
+    <span class="badge badge-ai" title="Not in the Reef Figma library — generated for this showcase"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/></svg>AI generated</span>
+  </div>
   <p class="s-desc">Horizontal switcher between related sibling views. Two visual styles: underline for web/Android, pill for iOS. Never use more than 5 tabs — consolidate or use a different navigation pattern for wider option sets.</p>
   <hr class="s-rule" />
+
+  <div class="ai-notice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      <div class="ai-notice-title">Showcase extension — not in the Reef Figma library</div>
+      <div class="ai-notice-body">Reef switches views with <code>chip-filter</code> or <code>button-toggle</code>; there is no tab-bar component in the library.</div>
+    </div>
+  </div>
 
   <div class="sub-label">Underline tabs — scrollable overflow</div>
   <div class="demo">
